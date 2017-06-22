@@ -14,7 +14,6 @@ class PuzzleInfo extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch' />
         <TouchableOpacity onPress={() => this.props.navigation.goBack()} style={{
           position: 'absolute',
           paddingTop: 30,
@@ -24,11 +23,13 @@ class PuzzleInfo extends React.Component {
           <Image source={Images.backButton} />
         </TouchableOpacity>
         <View style={styles.centered}>
-          <Image source={Images.igniteClear} style={styles.logo} />
+          <Image source={Images.puzzle} style={styles.logo} />
         </View>
         <View style={styles.sectionHeader}>
           <Text>Puzzle Information Here</Text>
           <Text>Props from MapScreen: {this.props.navigation.state.params.test}</Text>
+        </View>
+        <View style={ApplicationStyles.darkLabelContainer}>
         </View>
       </View>
     )
