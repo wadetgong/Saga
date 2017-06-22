@@ -1,7 +1,7 @@
 import React from 'react'
 import { ScrollView, Text, Image, View } from 'react-native'
 import DevscreensButton from '../../ignite/DevScreens/DevscreensButton.js'
-import Login_RoundedButton from '../Components/Button/Login_RoundedButton'
+import RoundedButton from '../Components/Button/RoundedButton'
 import { Images } from '../Themes'
 
 // Styles
@@ -27,7 +27,11 @@ export default class LaunchScreen extends React.Component {
           </View>
 
           <DevscreensButton />
-          <Login_RoundedButton navigate={navigate}/>
+          
+          <RoundedButton onPress={() => navigate('LoginScreen')}>
+            Login
+          </RoundedButton>
+          
         </ScrollView>
       </View>
     )
