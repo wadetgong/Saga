@@ -43,7 +43,6 @@ class TreasureHunt extends React.Component {
       showUserLocation: true
     }
     this.renderMapMarkers = this.renderMapMarkers.bind(this)
-    this.onRegionChange = this.onRegionChange.bind(this)
   }
 
   componentWillReceiveProps (newProps) {
