@@ -22,22 +22,37 @@ class MapScreen extends React.Component {
   }
 
   componentWillMount() {
+    console.log('listener added for location changes')
     BackgroundGeolocation.on('location', this.onLocation)
   }
 
   onLocation(location) {
+    //My location passing: 41.90, -87.67
+    //My location failing 41.88, -87.67
+    let polygon = [
+      { latitude: 41.89, longitude: -87.66 },
+      { latitude: 41.89, longitude: -87.68},
+      { latitude: 41.92, longitude:  -87.68},
+      { latitude: 41.92, longitude:  -87.66},
+      { latitude: 41.89, longitude: -87.66 } // last point has to be same as first point
+    ]
+
+    let point = {
+      latitude: location.coords.latitude,
+      longitude: location.coords.longitude,
+    }
+
     console.log('- [js]location: ', JSON.stringify(location));
     this.setState({
       longitude: location.coords.longitude,
       latitude: location.coords.latitude,
+      insideRange: geolib.isPointInside(point, polygon),
     })
   }
 
   componentDidMount() {
-
-    //My location passing: 41.90, -87.67
-    //My location failing 41.88, -87.67
-    const polygon = [
+    console.log('componentDidMount in MapScreen')
+    let polygon = [
       { latitude: 41.89, longitude: -87.66 },
       { latitude: 41.89, longitude: -87.68},
       { latitude: 41.92, longitude:  -87.68},
@@ -57,13 +72,15 @@ class MapScreen extends React.Component {
         longitude: crd.longitude,
         insideRange: geolib.isPointInside(point, polygon),
       })
-
-
-
-
-
     })
   }
+  // You must remove listeners when your component unmounts
+  componentWillUnmount() {
+    // Remove BackgroundGeolocation listeners
+    console.log('Unmounting listeners in MapScreen')
+    BackgroundGeolocation.un('location', this.onLocation);
+  }
+
 
   render () {
     return (
@@ -79,6 +96,7 @@ class MapScreen extends React.Component {
           <View style={ApplicationStyles.darkLabelContainer}>
             <TreasureHunt/>
           </View>
+          <Tracker />
         </View>
       </View>
     )
