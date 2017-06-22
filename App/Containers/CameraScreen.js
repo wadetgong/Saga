@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, Switch, Image } from 'react-native';
 import cameraStyles from './Styles/CameraScreenStyles.js';
 import Camera from 'react-native-camera';
+import TreasureChest from '../Components/TreasureChest';
 
 export default class CameraScreen extends Component {
     static navigationOptions = {
@@ -26,7 +27,7 @@ export default class CameraScreen extends Component {
                 style={cameraStyles.camera}
                 aspect={Camera.constants.Aspect.fill}
                 type={this.state.cameraType}>
-
+                <TreasureChest/>
                 </Camera>
         )
     }
