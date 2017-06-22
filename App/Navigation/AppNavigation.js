@@ -5,6 +5,7 @@ import LoginScreen from '../Containers/LoginScreen'
 import StoryScreen from '../Containers/StoryScreen'
 import MapScreen from '../Containers/MapScreen'
 import PuzzleInfo from '../Containers/PuzzleInfo'
+import CameraScreen from '../Containers/CameraScreen'
 import styles from './Styles/NavigationStyles'
 
 // Manifest of possible screens
@@ -18,10 +19,11 @@ const PrimaryNav = StackNavigator({
   StoryScreen: { screen: StoryScreen },
   MapScreen: {screen: MapScreen},
   PuzzleInfo: {screen: PuzzleInfo},
+  CameraScreen: { screen: CameraScreen},
 }, {
   // Default config for all screens
   headerMode: 'none',
-  initialRouteName: 'MapScreen',
+  initialRouteName: 'CameraScreen',
   navigationOptions: {
     headerStyle: styles.header
   }
