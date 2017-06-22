@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Modal } from 'react-native'
 import DebugConfig from '../../App/Config/DebugConfig'
-import RoundedButton from '../../App/Components/RoundedButton'
+import RoundedButton from '../../App/Components/Button/RoundedButton'
 import PresentationScreen from './PresentationScreen'
 
 export default class DevscreensButton extends React.Component {
