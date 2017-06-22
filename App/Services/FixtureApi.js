@@ -20,5 +20,11 @@ export default {
       ok: true,
       data: username.toLowerCase() === 'gantman' ? gantmanData : skellockData
     }
+  },
+  getStories: () => {
+      const storyData = require('../Fixtures/Story.json')
+      return {
+          data: storyData.list,
+      }
   }
 }

@@ -40,7 +40,9 @@ class LoginScreen extends React.Component {
     this.forceUpdate()
     // Did the login attempt complete?
     if (this.isAttempting && !newProps.fetching) {
-      this.props.navigation.goBack()
+      // don't do this for testing purposes
+      // this.props.navigation.goBack() 
+      this.props.navigation.navigate('StoryScreen')
     }
   }
 
