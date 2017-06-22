@@ -30,10 +30,7 @@ class TreasureHunt extends React.Component {
     * Set the array of locations to be displayed on your map. You'll need to define at least
     * a latitude and longitude as well as any additional information you wish to display.
     *************************************************************/
-    const locations = [
-      { title: 'Location A', latitude: 41.888969, longitude: -87.6361147 },
-      { title: 'Location B', latitude: 41.888128, longitude: -87.628771 }
-    ]
+
     /* ***********************************************************
     * STEP 2
     * Set your initial region either by dynamically calculating from a list of locations (as below)
@@ -41,11 +38,8 @@ class TreasureHunt extends React.Component {
     * You can generate a handy `calculateRegion` function with
     * `ignite generate map-utilities`
     *************************************************************/
-    const region = calculateRegion(locations, { latPadding: 0.01, longPadding: 0.01 })
-    // const region = { latitude: 123, longitude: 123, latitudeDelta: 0.1, longitudeDelta: 0.1}
+
     this.state = {
-      region,
-      locations,
       showUserLocation: true
     }
     this.renderMapMarkers = this.renderMapMarkers.bind(this)
@@ -103,14 +97,19 @@ class TreasureHunt extends React.Component {
   }
 
   render () {
+    console.log('state in TreasureHunt', this.state);
+    console.log('props in TreasureHunt', this.props);
+    const newRegion = calculateRegion([{
+          longitude: this.props.longitude,
+          latitude: this.props.latitude
+        }], { latPadding: 0.01, longPadding: 0.01 })
+
     return (
       <MapView
         style={Styles.map}
-        initialRegion={this.state.region}
-        onRegionChangeComplete={this.onRegionChange}
+        region={newRegion}
         showsUserLocation={this.state.showUserLocation}
       >
-        {this.state.locations.map((location) => this.renderMapMarkers(location))}
       </MapView>
     )
   }

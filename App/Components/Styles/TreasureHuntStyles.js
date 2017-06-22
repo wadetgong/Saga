@@ -18,6 +18,6 @@ export default StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    height: 400
+    height: 200
   }
 })

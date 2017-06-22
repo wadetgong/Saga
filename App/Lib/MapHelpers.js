@@ -32,6 +32,7 @@ export const calculateRegion = (locations: Array<Object>, options: Object) => {
     let latDelta = (maxLat - minLat) + latPadding
     let longDelta = (maxLong - minLong) + longPadding
 
+    console.log('calculated Region ', middleLat, middleLong, latDelta, longDelta)
     // return markers
     return {
       latitude: middleLat,
