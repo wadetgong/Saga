@@ -14,9 +14,9 @@ class MapScreen extends React.Component {
   constructor (props) {
     super (props)
     this.state = {
-      longitude: '',
-      latitude: '',
       insideRange: false,
+      longitude: null,
+      latitude: null,
     }
     this.onLocation = this.onLocation.bind(this);
   }
@@ -42,7 +42,7 @@ class MapScreen extends React.Component {
       longitude: location.coords.longitude,
     }
 
-    console.log('- [js]location: ', JSON.stringify(location));
+    // console.log('- [js]location: ', JSON.stringify(location));
     this.setState({
       longitude: location.coords.longitude,
       latitude: location.coords.latitude,
@@ -66,6 +66,7 @@ class MapScreen extends React.Component {
         latitude: crd.latitude,
         longitude: crd.longitude,
       }
+      console.log('long lat being set: ', point)
 
       this.setState({
         latitude: crd.latitude,
@@ -83,6 +84,7 @@ class MapScreen extends React.Component {
 
 
   render () {
+    console.log('state in MapScreen', this.state)
     return (
       <View style={styles.container}>
         <View style={styles.sectionHeader}>
@@ -94,9 +96,12 @@ class MapScreen extends React.Component {
             : <Text>Inside range? No</Text>
           }
           <View style={ApplicationStyles.darkLabelContainer}>
-            <TreasureHunt/>
+            <TreasureHunt
+              longitude={this.state.longitude}
+              latitude={this.state.latitude}
+            />
           </View>
-          <Tracker />
+          {/*<Tracker />*/}
         </View>
       </View>
     )
