@@ -15,7 +15,7 @@ const PrimaryNav = StackNavigator({
     screen: LoginScreen,
     navigationOptions: { title: 'Login' }
   },
-  StoryScreen: { screen: StoryScreen }
+  StoryScreen: { screen: StoryScreen },
   MapScreen: {screen: MapScreen},
   PuzzleInfo: {screen: PuzzleInfo},
 }, {
