@@ -21,7 +21,7 @@ export default class SearchBar extends React.Component {
           ref='searchText'
           autoFocus
           placeholder='Search'
-          placeholderTextColor={Colors.snow}
+          placeholderTextColor={Colors.charcoal}
           underlineColorAndroid='transparent'
           style={styles.searchInput}
           value={this.props.searchTerm}
@@ -30,11 +30,11 @@ export default class SearchBar extends React.Component {
           onSubmitEditing={onSubmitEditing}
           returnKeyType={'search'}
           autoCorrect={false}
-          selectionColor={Colors.snow}
+          selectionColor={Colors.charcoal}
         />
-        <TouchableOpacity onPress={onCancel} style={styles.cancelButton}>
+        {/*<TouchableOpacity onPress={onCancel} style={styles.cancelButton}>
           <Text style={styles.buttonLabel}>Cancel</Text>
-        </TouchableOpacity>
+        </TouchableOpacity>*/}
       </View>
     )
   }

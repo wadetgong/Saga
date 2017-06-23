@@ -24,7 +24,7 @@ const PrimaryNav = StackNavigator({
   StoryPreview: { screen: StoryPreview },
   Friends: { screen: Friends },
   TeamScreen: { screen: TeamScreen },
-  
+
   MapScreen: {screen: MapScreen},
   PuzzleInfo: {screen: PuzzleInfo},
   CameraScreen: { screen: CameraScreen},
