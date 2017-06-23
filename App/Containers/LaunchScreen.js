@@ -31,7 +31,15 @@ export default class LaunchScreen extends React.Component {
           <RoundedButton onPress={() => navigate('LoginScreen')}>
             Login
           </RoundedButton>
-          
+          <RoundedButton onPress={() => navigate('MapScreen')}>
+            Map
+          </RoundedButton>
+          <RoundedButton onPress={() => navigate('TextablesScreen')}>
+            Textables
+          </RoundedButton>
+          <RoundedButton onPress={() => navigate('CameraScreen')}>
+            Camera
+          </RoundedButton>
         </ScrollView>
       </View>
     )
