@@ -46,7 +46,7 @@ const StoryPreview = ({ navigation }) => {
             justifyContent: 'center',
             alignItems: 'flex-start',
             alignItems: 'center'}}>
-        <RoundedButton onPress={() => navigate('Friends')}>Assemble Team</RoundedButton>
+        <RoundedButton onPress={() => navigate('Friends', {story: item})}>Assemble Team</RoundedButton>
       </View>
     </View>
   )

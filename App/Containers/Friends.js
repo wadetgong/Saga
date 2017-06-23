@@ -64,7 +64,7 @@ export default class Friends extends React.Component {
         return (
           <View style={styles.container}>
             <View style={styles.sectionHeader}>
-              <Text style={styles.boldLabel}>Add Friends</Text>
+              <Text style={styles.boldLabel}>Add Friends to '{this.props.navigation.state.params.story.title}'</Text>
             </View>
             <View style={{
                 flexDirection: 'row',
@@ -105,7 +105,10 @@ export default class Friends extends React.Component {
               alignItems: 'flex-start',
               alignItems: 'center'
             }}>
-              <RoundedButton onPress={() => navigate('TeamScreen')}>Next</RoundedButton>
+              {/*<RoundedButton onPress={() => navigate('TeamScreen')}>*/}
+              <RoundedButton onPress={() => navigate('MapScreen')}>
+                Next
+              </RoundedButton>
             </View>
           </View>
         )

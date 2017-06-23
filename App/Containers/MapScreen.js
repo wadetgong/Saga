@@ -146,7 +146,7 @@ class MapScreen extends React.Component {
         <View style = {ApplicationStyles.darkLabelContainer} >
           <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum sem eget fringilla commodo. Etiam condimentum nibh vel est ullamcorper, sit amet aliquet leo fermentum. Etiam nibh nulla, varius sit amet egestas nec, sodales condimentum ex. Morbi fringilla, dui eu efficitur commodo, est justo finibus massa, a iaculis purus diam ut massa.</Text>
         </View>
-        <View style = {{backgroundColor: 'black'}} >
+        <View >
           <RoundedButton onPress={this.openComponents}>
             Explore
           </RoundedButton>
