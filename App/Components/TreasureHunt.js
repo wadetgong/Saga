@@ -105,7 +105,7 @@ class TreasureHunt extends React.Component {
 
     return (
       <MapView
-        style={Styles.map}
+        style={this.props.style || Styles.map}
         region={newRegion}
         showsUserLocation={this.state.showUserLocation}
       >
