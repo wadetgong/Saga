@@ -12,7 +12,7 @@ import styles from './Styles/NavigationStyles'
 // Manifest of possible screens
 const PrimaryNav = StackNavigator({
   TextablesScreen: { screen: TextablesScreen },
-  
+
   LaunchScreen: { screen: LaunchScreen },
   LoginScreen: {
     screen: LoginScreen,
@@ -20,14 +20,14 @@ const PrimaryNav = StackNavigator({
   },
   StoryScreen: { screen: StoryScreen },
   StoryPreview: { screen: StoryPreview },
-  
+
   MapScreen: {screen: MapScreen},
   PuzzleInfo: {screen: PuzzleInfo},
   CameraScreen: { screen: CameraScreen},
 }, {
   // Default config for all screens
   headerMode: 'none',
-  initialRouteName: 'CameraScreen',
+  initialRouteName: 'LoginScreen',
   navigationOptions: {
     headerStyle: styles.header
   }
