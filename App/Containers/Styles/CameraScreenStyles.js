@@ -8,6 +8,9 @@ let cameraStyles = StyleSheet.create({
     },
     cameraText: {
         color: '#FFF',
+        position: 'absolute',
+        marginTop: 50,
+        marginLeft: 80
     },
     cameraStream: {
         height: 200

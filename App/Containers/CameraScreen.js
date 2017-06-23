@@ -27,6 +27,7 @@ export default class CameraScreen extends Component {
                 style={cameraStyles.camera}
                 aspect={Camera.constants.Aspect.fill}
                 type={this.state.cameraType}>
+                <Text style={cameraStyles.cameraText}> Find the Treasure Chest!! </Text>
                 <TreasureChest/>
                 </Camera>
         )
