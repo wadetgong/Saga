@@ -4,6 +4,7 @@ import { Fonts, Colors, Metrics } from '../../../Themes/'
 export default StyleSheet.create({
   button: {
     height: 45,
+    width: 300,
     borderRadius: 5,
     paddingHorizontal: 30,
     marginHorizontal: Metrics.section,

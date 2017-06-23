@@ -24,14 +24,14 @@ const PrimaryNav = StackNavigator({
   StoryPreview: { screen: StoryPreview },
   Friends: { screen: Friends },
   TeamScreen: { screen: TeamScreen },
-  
+
   MapScreen: {screen: MapScreen},
   PuzzleInfo: {screen: PuzzleInfo},
   CameraScreen: { screen: CameraScreen},
 }, {
   // Default config for all screens
   headerMode: 'none',
-  initialRouteName: 'LaunchScreen',
+  initialRouteName: 'StoryScreen',
   navigationOptions: {
     headerStyle: styles.header
   }
