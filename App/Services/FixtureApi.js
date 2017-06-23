@@ -26,5 +26,8 @@ export default {
       return {
           data: storyData.list,
       }
-  }
+  },
+  getFriends: () => ({
+      data: require('../Fixtures/Friends.json').list
+  })
 }

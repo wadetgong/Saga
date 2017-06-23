@@ -4,6 +4,8 @@ import LaunchScreen from '../Containers/LaunchScreen'
 import LoginScreen from '../Containers/LoginScreen'
 import StoryScreen from '../Containers/StoryScreen'
 import StoryPreview from '../Containers/StoryPreview'
+import Friends from '../Containers/Friends'
+import TeamScreen from '../Containers/TeamScreen'
 import MapScreen from '../Containers/MapScreen'
 import PuzzleInfo from '../Containers/PuzzleInfo'
 import styles from './Styles/NavigationStyles'
@@ -19,6 +21,8 @@ const PrimaryNav = StackNavigator({
   },
   StoryScreen: { screen: StoryScreen },
   StoryPreview: { screen: StoryPreview },
+  Friends: { screen: Friends },
+  TeamScreen: { screen: TeamScreen },
   
   MapScreen: {screen: MapScreen},
   PuzzleInfo: {screen: PuzzleInfo},

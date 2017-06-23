@@ -17,7 +17,7 @@ const StoryPreview = ({ navigation }) => {
             <Text>Time: {item.estimatedTime}hrs</Text>
             <Text>Lat: {item.startingLocation.lat}</Text>
             <Text>Long: {item.startingLocation.long}</Text>
-            <RoundedButton onPress={() => navigate('LaunchScreen')}>Assemble Avengers</RoundedButton>
+            <RoundedButton onPress={() => navigate('Friends')}>Assemble Avengers</RoundedButton>
         </View>
     )
 }
