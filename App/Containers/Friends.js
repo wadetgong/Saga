@@ -18,16 +18,17 @@ import styles from './Styles/FriendsStyles'
 
 // import styles from './Styles/Friends' // not there
 export default class Friends extends React.Component {
-    static defaultProps = {
-        date: new Date(),
-        timeZoneOffsetInHours: (-1) * (new Date()).getTimezoneOffset() / 60,
-    }
+    // static defaultProps = {
+    //     date: new Date(),
+    //     timeZoneOffsetInHours: (-1) * (new Date()).getTimezoneOffset() / 60,
+    // }
 
     // state also holds all switchs inside FriendListItem
-    state = {
-        date: this.props.date,
-        timeZoneOffsetInHours: this.props.timeZoneOffsetInHours,
-    };
+    // state = {
+    //     date: this.props.date,
+    //     timeZoneOffsetInHours: this.props.timeZoneOffsetInHours,
+    // };
+    state = {}
 
     onSearchSearchBar () {
         console.log('searching in Friends Searchbar')
@@ -60,11 +61,12 @@ export default class Friends extends React.Component {
         data = data.cloneWithRows(friends)
 
         const { navigate } = this.props.navigation
+        // const story = this.props.navigation.state.params.story
 
         return (
           <View style={styles.container}>
             <View style={styles.sectionHeader}>
-              <Text style={styles.boldLabel}>Add Friends to '{this.props.navigation.state.params.story.title}'</Text>
+              <Text style={styles.boldLabel}>Add Friends to Story</Text>
             </View>
             <View style={{
                 flexDirection: 'row',
@@ -72,7 +74,7 @@ export default class Friends extends React.Component {
               }}>
               <SearchBar
                   onSearch={this.onSearchSearchBar}
-                  onCancel={this.onCancelSearchBar}
+                  /*onCancel={this.onCancelSearchBar}*/
               />
             </View>
             <View style={{
@@ -83,6 +85,7 @@ export default class Friends extends React.Component {
             }}>
               <ListView
                 dataSource={data}
+                removeClippedSubviews={false}
                 renderRow={(item) => <
                     FriendListItem
                     item={item}
@@ -106,7 +109,7 @@ export default class Friends extends React.Component {
               alignItems: 'center'
             }}>
               {/*<RoundedButton onPress={() => navigate('TeamScreen')}>*/}
-              <RoundedButton onPress={() => navigate('MapScreen')}>
+              <RoundedButton onPress={() => navigate('Chapter')}>
                 Next
               </RoundedButton>
             </View>

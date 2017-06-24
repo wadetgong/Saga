@@ -27,7 +27,7 @@ class PuzzleInfo extends React.Component {
         </View>
         <View style={styles.sectionHeader}>
           <Text>Puzzle Information Here</Text>
-          <Text>Props from MapScreen: {this.props.navigation.state.params.test}</Text>
+          <Text>Props from Chapter: {this.props.navigation.state.params.test}</Text>
         </View>
         <View style={ApplicationStyles.darkLabelContainer}>
         </View>

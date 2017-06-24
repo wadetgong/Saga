@@ -10,7 +10,7 @@ import styles from './Styles/LaunchScreenStyles'
 export default class LaunchScreen extends React.Component {
   render () {
     const { navigate } = this.props.navigation
-      
+
     return (
       <View style={styles.mainContainer}>
         <Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch' />
@@ -27,11 +27,11 @@ export default class LaunchScreen extends React.Component {
           </View>
 
           <DevscreensButton />
-          
+
           <RoundedButton onPress={() => navigate('LoginScreen')}>
             Login
           </RoundedButton>
-          <RoundedButton onPress={() => navigate('MapScreen')}>
+          <RoundedButton onPress={() => navigate('Chapter')}>
             Map
           </RoundedButton>
           <RoundedButton onPress={() => navigate('TextablesScreen')}>

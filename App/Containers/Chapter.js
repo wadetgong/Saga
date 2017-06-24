@@ -9,9 +9,13 @@ import geolib from 'geolib'
 import BackgroundGeolocation from "react-native-background-geolocation";
 
 // Styles
-import styles from './Styles/MapScreenStyles'
+import styles from './Styles/ChapterStyles'
 
-class MapScreen extends React.Component {
+class Chapter extends React.Component {
+  static navigationOptions = {
+    tabBarLabel: 'Chapter',
+    // Note: By default the icon is only shown on iOS. Search the showIcon option below.
+  };
   constructor (props) {
     super (props)
     this.state = {
@@ -61,7 +65,7 @@ class MapScreen extends React.Component {
   }
 
   componentDidMount() {
-    console.log('componentDidMount in MapScreen')
+    console.log('componentDidMount in Chapter')
     let polygon = [
       { latitude: 41.89, longitude: -87.66 },
       { latitude: 41.89, longitude: -87.68},
@@ -88,7 +92,7 @@ class MapScreen extends React.Component {
   // You must remove listeners when your component unmounts
   componentWillUnmount() {
     // Remove BackgroundGeolocation listeners
-    console.log('Unmounting listeners in MapScreen')
+    console.log('Unmounting listeners in Chapter')
     BackgroundGeolocation.un('location', this.onLocation);
   }
 
@@ -122,11 +126,11 @@ class MapScreen extends React.Component {
   }
 
   render () {
-    console.log('state in MapScreen', this.state)
+    console.log('state in Chapter', this.state)
     return (
       <View style={styles.container}>
         <View style={styles.sectionHeader}>
-          <Text style={styles.boldLabel}>MapScreen Section</Text>
+          <Text style={styles.boldLabel}>Chapter Section</Text>
         </View>
         <View>
           <TreasureHunt
@@ -171,4 +175,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MapScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(Chapter)

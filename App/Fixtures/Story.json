@@ -1,30 +1,57 @@
 {
 	"list": [{
-		"title": "Art Thief",
+    "title": "Art Thief",
         "name": "artThief",
-		"startingLocation": {
-			"lat": 41.8796,
-			"long": -87.6237
-		},
-		"description": "Steal stuff from museums. Steal stuff from museums. Steal stuff from museums.",
-		"estimatedTime": 3.5
-	}, {
-		"title": "Batman",
+    "startingLocation": {
+      "lat": 41.8796,
+      "long": -87.6237
+    },
+    "description": "Steal stuff from museums. Steal stuff from museums. Steal stuff from museums.",
+    "estimatedTime": 3.5
+  }, {
+    "title": "Batman",
         "name": "batman",
-		"startingLocation": {
-			"lat": 41.8885,
-			"long": -87.6354
-		},
-		"description": "Catch bad guys",
-		"estimatedTime": 5.5
-	}, {
-		"title": "Woodelves",
+    "startingLocation": {
+      "lat": 41.8885,
+      "long": -87.6354
+    },
+    "description": "Catch bad guys",
+    "estimatedTime": 5.5
+  }, {
+    "title": "Woodelves",
         "name": "woodElves",
-		"startingLocation": {
-			"lat": 41.8972,
-			"long": -87.6612
-		},
-		"description": "Fairies are everywhere",
-		"estimatedTime": 1.5
-	}]
+    "startingLocation": {
+      "lat": 41.8972,
+      "long": -87.6612
+    },
+    "description": "Fairies are everywhere",
+    "estimatedTime": 1.5
+  },{
+    "title": "Art Thief 2",
+        "name": "artThief",
+    "startingLocation": {
+      "lat": 41.8796,
+      "long": -87.6237
+    },
+    "description": "Steal stuff from museums. Steal stuff from museums. Steal stuff from museums.",
+    "estimatedTime": 3.5
+  }, {
+    "title": "Batman2",
+        "name": "batman",
+    "startingLocation": {
+      "lat": 41.8885,
+      "long": -87.6354
+    },
+    "description": "Catch bad guys",
+    "estimatedTime": 5.5
+  }, {
+    "title": "Woodelves2",
+        "name": "woodElves",
+    "startingLocation": {
+      "lat": 41.8972,
+      "long": -87.6612
+    },
+    "description": "Fairies are everywhere",
+    "estimatedTime": 1.5
+  }]
 }
