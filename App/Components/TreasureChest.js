@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import {
     Image,
-    View
+    View,
+    Dimensions
 } from 'react-native';
 import styles from './Styles/TreasureChestStyles';
 import { connect } from 'react-redux';
 
+let width = Dimensions.get('window').width
 
 class TreasureChest extends Component {
     constructor(props) {
@@ -15,18 +17,48 @@ class TreasureChest extends Component {
             offScreenRight: false
         }
     }
+    componentWillReceiveProps(nextProps) {
+        if((nextProps.startingPosX + nextProps.xOffset) < 0) {
+            this.setState({ offScreenLeft: true});
+        } else {
+            this.setState({ offScreenLeft: false});
+        }
+        if((nextProps.startingPosX + nextProps.xOffset) > width ) {
+            this.setState({ offScreenRight: true});
+        } else {
+            this.setState({ offScreenRight: false});
+        }
+    }
+    shouldComponentUpdate(nextProps) {
+        return (
+            this.props.xOffset != nextProps.xOffset ||
+            this.props.yOffset != nextProps.yOffset
+        )
+    }
 
     render() {
+        console.log(this.props);
         return (
             <View style={styles.container}>
                 <Image
                     source={require('../Images/treasureChest.png')}
                     resizeMode='contain'
-                    style={[styles.arObject, styles.row]}
+                    style={[styles.arObject, styles.row, {
+                        top: this.props.startingPosY + this.props.yOffset,
+                        left: this.props.startingPosX + this.props.xOffset
+                    }]}
                     />
             </View>
         )
     }
 }
 
-export default TreasureChest;
+function mapStateToProps({ augmented }) {
+    return {
+        ...augmented
+    }
+}
+
+export default connect(
+    mapStateToProps
+)(TreasureChest);

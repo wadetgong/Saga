@@ -1,0 +1,2 @@
+export const ADD_AR_OBJECT = 'ADD_AR_OBJECT';
+export const UPDATE_GYRO_DATA = 'UPDATE_GYRO_DATA';
