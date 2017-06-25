@@ -1,9 +1,11 @@
 import React from 'react'
-import { Text, View, ListView, DatePickerIOS } from 'react-native'
+import { Text, View, ListView, DatePickerIOS, TouchableOpacity } from 'react-native'
 import API from '../Services/FixtureApi'
 import FriendListItem from '../Components/FriendListItem'
 import SearchBar from '../Components/SearchBar'
 import RoundedButton from '../Components/Button/RoundedButton'
+
+import { Colors } from '../Themes'
 
 // Styles
 import styles from './Styles/FriendsStyles'
@@ -65,9 +67,17 @@ export default class Friends extends React.Component {
 
         return (
           <View style={styles.container}>
-            <View style={styles.sectionHeader}>
-              <Text style={styles.boldLabel}>Add Friends to Story</Text>
+            <View style={[styles.sectionHeader, {flexDirection: 'row'}]}>
+              <View style={{flex:1, flexDirection: 'row', justifyContent: 'flex-end'}}>
+                <Text style={styles.boldLabel}>Add Friends to Story</Text>
+              </View>
+              <View style={{flex:0.5, flexDirection: 'row', justifyContent: 'space-around'}}>
+                <TouchableOpacity onPress={() => navigate('Chapter')}>
+                  <Text style={{color: Colors.active}}>Next</Text>
+                </TouchableOpacity>
+              </View>
             </View>
+
             <View style={{
                 flexDirection: 'row',
                 justifyContent: 'center',
@@ -101,18 +111,6 @@ export default class Friends extends React.Component {
                 timeZoneOffsetInMinutes={this.state.timeZoneOffsetInHours * 60}
                 onDateChange={this.onDateChange.bind(this)}
               />*/}
-            <View style={{
-              flex: .2,
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'flex-start',
-              alignItems: 'center'
-            }}>
-              {/*<RoundedButton onPress={() => navigate('TeamScreen')}>*/}
-              <RoundedButton onPress={() => navigate('Chapter')}>
-                Next
-              </RoundedButton>
-            </View>
           </View>
         )
 

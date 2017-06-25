@@ -155,10 +155,6 @@ class Chapter extends React.Component {
             Explore
           </RoundedButton>
         </View>
-        <Button
-          onPress={() => this.props.navigation.navigate('LaunchScreen')}
-          title="Go to launch screen"
-        />
       </View>
     )
   }

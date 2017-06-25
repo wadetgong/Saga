@@ -10,7 +10,7 @@ import { Images } from '../Themes'
 const FriendListItem = ({ item, navigate, addFriendToTeam, switchValue }) => (
     <View style={{flex: 1,
       flexDirection: 'row',
-      padding: 10,
+      padding: 5,
     }}>
         <TouchableOpacity
             onPress={() => navigate('Profile', { navigate, item })}

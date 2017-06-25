@@ -14,6 +14,7 @@ import CameraScreen from '../Containers/CameraScreen'
 import styles from './Styles/NavigationStyles'
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
 import React from 'react'
+import { Colors } from '../Themes'
 
 const StoryStack = StackNavigator({
     StoryScreen: { screen: StoryScreen },
@@ -21,6 +22,7 @@ const StoryStack = StackNavigator({
     Friends: { screen: Friends },
     TeamScreen: { screen: TeamScreen },
     Chapter: {screen: Chapter},
+    PuzzleInfo: {screen: PuzzleInfo},
   }, {
     // Default config for all screens
     headerMode: 'none',
@@ -84,7 +86,7 @@ const TabNav = TabNavigator({
 }, {
   initialRouteName: 'UserProfile',
   tabBarOptions: {
-    tintColor: '#e91e63',
+    tintColor: Colors.tintColor,
     showLabel: false
   },
 });
