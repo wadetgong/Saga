@@ -1,0 +1,40 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+# This creates an .xcworkspace file for your app
+# use this file for future development on app
+# include analytics by default
+pod 'Firebase/Core'
+# https://firebase.google.com/docs/ios/setup#available_pods
+
+
+target 'TestIgniteApp' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for TestIgniteApp
+
+  target 'TestIgniteApp-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'TestIgniteAppTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
+
+target 'TestIgniteApp-tvOS' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for TestIgniteApp-tvOS
+
+  target 'TestIgniteApp-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
