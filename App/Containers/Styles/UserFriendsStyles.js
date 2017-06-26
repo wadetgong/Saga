@@ -21,18 +21,5 @@ export default StyleSheet.create({
     textAlign: 'center',
     marginBottom: Metrics.smallMargin
   },
-  logo: {
-    height: Metrics.images.logo,
-    width: Metrics.images.logo,
-    resizeMode: 'contain',
-  },
-  centered: {
-    alignItems: 'center'
-  },
-  modalClose: {
-    position: 'absolute',
-    paddingTop: 10,
-    paddingHorizontal: 5,
-    zIndex: 10
-  },
+
 })

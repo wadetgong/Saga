@@ -1,14 +1,37 @@
 import React from 'react'
-import { View } from 'react-native'
+import { View, Text } from 'react-native'
 import RoundedButton from '../Components/Button/RoundedButton'
+import { NavigationActions } from 'react-navigation'
 
-const TeamScreen = ({}) => (
-    <View>
-    
-        <RoundedButton>
-            begin journey
+class TeamScreen extends React.Component {
+  constructor() {
+    super()
+    this.generateStory = this.generateStory.bind(this)
+  }
+  generateStory() {
+    const resetAction = NavigationActions.reset({
+      index: 0,
+      actions: [
+        NavigationActions.navigate({ routeName: 'StoryScreen'})
+      ]
+    })
+    this.props.navigation.dispatch(resetAction)
+
+    // this.props.navigation.navigate('Chapter')
+  }
+
+  render() {
+    const { navigate } = this.props.navigation
+    return (
+      <View>
+        <Text>Your Team:</Text>
+        <RoundedButton onPress={() => navigate('Chapter')}>
+        {/*<RoundedButton onPress={this.generateStory}>*/}
+          begin journey
         </RoundedButton>
-    </View>
-)
+      </View>
+    )
+  }
+}
 
 export default TeamScreen

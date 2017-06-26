@@ -9,7 +9,7 @@ export default StyleSheet.create({
     width: Metrics.screenWidth - Metrics.baseMargin,
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 5,
+    paddingBottom: 5,
     paddingRight: 20,
   },
   searchInput: {

@@ -1,31 +1,34 @@
 import React from 'react'
-import { View, Text, Button } from 'react-native'
+import { View, Text, Button, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import TreasureHunt from '../Components/TreasureHunt'
 import Tracker from '../Components/Tracker'
+import ChapterDetails from '../Containers/ChapterDetails'
+import ChapterScrollBar from '../Components/ChapterScrollBar'
 import RoundedButton from '../Components/Button/RoundedButton'
 import { ApplicationStyles } from '../Themes'
 import geolib from 'geolib'
 import BackgroundGeolocation from "react-native-background-geolocation";
 
 // Styles
-import styles from './Styles/MapScreenStyles'
+import styles from './Styles/ChapterStyles'
 
-class MapScreen extends React.Component {
+class Chapter extends React.Component {
   constructor (props) {
     super (props)
     this.state = {
       insideRange: false,
       longitude: null,
       latitude: null,
+      selectedChap: 1,
     }
     this.onLocation = this.onLocation.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentWillMount() {
     console.log('listener added for location changes')
     BackgroundGeolocation.on('location', this.onLocation)
-
     BackgroundGeolocation.configure({
       // Geolocation Config
       desiredAccuracy: 0,
@@ -61,7 +64,7 @@ class MapScreen extends React.Component {
   }
 
   componentDidMount() {
-    console.log('componentDidMount in MapScreen')
+    console.log('componentDidMount in Chapter')
     let polygon = [
       { latitude: 41.89, longitude: -87.66 },
       { latitude: 41.89, longitude: -87.68},
@@ -88,7 +91,7 @@ class MapScreen extends React.Component {
   // You must remove listeners when your component unmounts
   componentWillUnmount() {
     // Remove BackgroundGeolocation listeners
-    console.log('Unmounting listeners in MapScreen')
+    console.log('Unmounting listeners in Chapter')
     BackgroundGeolocation.un('location', this.onLocation);
   }
 
@@ -116,45 +119,56 @@ class MapScreen extends React.Component {
     })
   }
 
-
-  openComponents = () => {
-    this.props.navigation.navigate('PuzzleInfo', {test: 'testing'})
+  handleClick(e) {
+    console.log('chapter button clicked, ', e)
+    this.setState({
+      selectedChap: e
+    })
   }
 
   render () {
-    console.log('state in MapScreen', this.state)
+    const chapters = [
+      {id: 1, puzzles: [{id: 1}, {id: 2}]},
+      {id: 2, puzzles: [{id: 3}]},
+      {id: 3, puzzles: [{id: 4},{id: 5},{id: 6}]},
+      {id: 4, puzzles: [{id: 7},{id: 8},{id: 9}, {id: 10}]},
+      {id: 5, puzzles: [{id: 11},{id: 12},{id: 13}]},
+      {id: 6, puzzles: [{id: 14},{id: 15}]}
+    ]
+    const selectedChapInfo = chapters[this.state.selectedChap-1]
+    console.log('state in Chapter', this.state)
     return (
       <View style={styles.container}>
         <View style={styles.sectionHeader}>
-          <Text style={styles.boldLabel}>MapScreen Section</Text>
+          <Text style={styles.boldLabel}>Batman - Chapter {this.state.selectedChap}</Text>
         </View>
-        <View>
-          <TreasureHunt
-            longitude={this.state.longitude}
-            latitude={this.state.latitude}
+        <ScrollView style={styles.container}>
+          <View>
+            <TreasureHunt
+              longitude={this.state.longitude}
+              latitude={this.state.latitude}
+            />
+          </View>
+          <ChapterScrollBar
+            chapters={chapters}
+            handleClick={this.handleClick}
+            selectedChap={this.state.selectedChap}
           />
-        </View>
-        {/*<Tracker />*/}
-        <View style={ApplicationStyles.darkLabelContainer}>
-          <Text style={styles.boldLabel}>Location is: {this.state.latitude}, {this.state.longitude}</Text>
-          {
-            this.state.insideRange
-            ? <Text>Inside range? Yes</Text>
-            : <Text>Inside range? No</Text>
-          }
-        </View>
-        <View style = {ApplicationStyles.darkLabelContainer} >
-          <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum sem eget fringilla commodo. Etiam condimentum nibh vel est ullamcorper, sit amet aliquet leo fermentum. Etiam nibh nulla, varius sit amet egestas nec, sodales condimentum ex. Morbi fringilla, dui eu efficitur commodo, est justo finibus massa, a iaculis purus diam ut massa.</Text>
-        </View>
-        <View >
-          <RoundedButton onPress={this.openComponents}>
-            Explore
-          </RoundedButton>
-        </View>
-        <Button
-          onPress={() => this.props.navigation.navigate('LaunchScreen')}
-          title="Go to launch screen"
-        />
+          {/*<Tracker />*/}
+          <View>
+            <Text style={styles.boldLabel}>Location is: {this.state.latitude}, {this.state.longitude}</Text>
+            {
+              this.state.insideRange
+              ? <Text>Inside range? Yes</Text>
+              : <Text>Inside range? No</Text>
+            }
+          </View>
+          <ChapterDetails
+            screenProps={{rootNavigation: this.props.navigation}}
+            selectedChap={this.state.selectedChap}
+            chapterInfo={selectedChapInfo}
+          />
+        </ScrollView>
       </View>
     )
   }
@@ -171,4 +185,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MapScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(Chapter)

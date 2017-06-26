@@ -2,12 +2,12 @@ import React from 'react'
 import { View, Text, TextInput, TouchableOpacity } from 'react-native'
 import styles from './Styles/SearchBarStyles'
 import { Colors, Metrics } from '../Themes/'
-import Icon from 'react-native-vector-icons/FontAwesome'
+import Icon from 'react-native-vector-icons/SimpleLineIcons'
 
 export default class SearchBar extends React.Component {
   static propTypes = {
     onSearch: React.PropTypes.func.isRequired,
-    onCancel: React.PropTypes.func.isRequired,
+    // onCancel: React.PropTypes.func.isRequired,
     searchTerm: React.PropTypes.string
   }
 
@@ -16,7 +16,7 @@ export default class SearchBar extends React.Component {
     const onSubmitEditing = () => onSearch(searchTerm)
     return (
       <View style={styles.container}>
-        <Icon name='search' size={Metrics.icons.tiny} style={styles.searchIcon} />
+        <Icon name='magnifier' size={Metrics.icons.tiny} style={styles.searchIcon} />
         <TextInput
           ref='searchText'
           autoFocus
