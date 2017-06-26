@@ -167,6 +167,7 @@ class Chapter extends React.Component {
             screenProps={{rootNavigation: this.props.navigation}}
             selectedChap={this.state.selectedChap}
             chapterInfo={selectedChapInfo}
+            storyKey={'artThief'}
           />
         </ScrollView>
       </View>
