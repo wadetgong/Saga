@@ -96,8 +96,8 @@ class TreasureHunt extends React.Component {
   }
 
   render () {
-    console.log('state in TreasureHunt', this.state);
-    console.log('props in TreasureHunt', this.props);
+    // console.log('state in TreasureHunt', this.state);
+    // console.log('props in TreasureHunt', this.props);
     const newRegion = calculateRegion([{
           longitude: this.props.longitude,
           latitude: this.props.latitude

@@ -13,7 +13,7 @@ class ChapterDetails extends React.Component {
   }
 
   toggleModal = (puzzleId) => {
-    console.log('New puzzle selected: ', puzzleId)
+    // console.log('New puzzle selected: ', puzzleId)
     this.setState({
       showModal: !this.state.showModal,
       selectedPuzzle: puzzleId
@@ -25,7 +25,7 @@ class ChapterDetails extends React.Component {
   }
 
   render() {
-    console.log('props in ChapterDetails', this.props)
+    // console.log('props in ChapterDetails', this.props)
     return (
       <View>
         <View style={{padding: 10, margin: 10, backgroundColor: 'beige', borderRadius: 5,
