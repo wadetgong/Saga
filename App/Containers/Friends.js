@@ -1,12 +1,16 @@
 import React from 'react'
 import { Text, View, ListView, DatePickerIOS } from 'react-native'
-import API from '../Services/FixtureApi'
 import FriendListItem from '../Components/FriendListItem'
 import SearchBar from '../Components/SearchBar'
 import RoundedButton from '../Components/Button/RoundedButton'
 
 // Styles
 import styles from './Styles/FriendsStyles'
+
+// Initialize Firebase
+import API from '../Services/FixtureApi'
+import firebaseApp from '../Firebase'
+
 
 //there is a search bar at top but it's hard to see and also it doesn't work
 // WARNING DATEPICKER is IOS only oh noes
@@ -25,8 +29,11 @@ export default class Friends extends React.Component {
 
     // state also holds all switchs inside FriendListItem
     state = {
-        date: this.props.date,
-        timeZoneOffsetInHours: this.props.timeZoneOffsetInHours,
+        // date: this.props.date,
+        // timeZoneOffsetInHours: this.props.timeZoneOffsetInHours,
+        dataSource: new ListView.DataSource({
+          rowHasChanged: (r1, r2) => r1 !== r2,
+        })
     };
 
     onSearchSearchBar () {
@@ -53,12 +60,37 @@ export default class Friends extends React.Component {
     //     this.setState({ timeZoneOffsetInHours: offset });
     // };
 
+
+    // firebase
+    friendsRef = firebaseApp.database().ref();
+    
+    onComponentDidMount () {
+        // const friendList = API.getFriends().data
+        // this.setState({ dataSource: this.state.dataSource.cloneWithRows(friendList) })
+        this.listenForItems(this.friendsRef);
+        console.log('friendsRef in Friends onComponentDidMount', this.friendsRef)
+    }
+    
+    listenForItems(friendsRef) {
+        friendsRef.on('value', (snap) => {
+            // get children as an array
+            const items = [];
+            snap.forEach((child) => items.push(
+                { title: child.val().title, _key: child.key }
+            ))
+            
+            this.setState({ dataSource: this.state.dataSource.cloneWithRows(items) })
+        })
+    }
+
     render() {
         // data for all friends
-        const friends = API.getFriends().data;
-        let data = new ListView.DataSource({rowHasChanged : (r1, r2) => r1 != r2})
-        data = data.cloneWithRows(friends)
-
+        // const friends = API.getFriends().data;
+        // let data = new ListView.DataSource({rowHasChanged : (r1, r2) => r1 != r2})
+        // data = data.cloneWithRows(friends)
+        data = this.state.dataSource
+        console.log('data in Friends render', data)
+        
         const { navigate } = this.props.navigation
 
         return (

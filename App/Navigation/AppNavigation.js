@@ -31,7 +31,7 @@ const PrimaryNav = StackNavigator({
 }, {
   // Default config for all screens
   headerMode: 'none',
-  initialRouteName: 'LaunchScreen',
+  initialRouteName: 'StoryScreen',
   navigationOptions: {
     headerStyle: styles.header
   }
