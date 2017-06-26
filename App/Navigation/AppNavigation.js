@@ -46,17 +46,31 @@ const StoryGameStack = StackNavigator({
       }
   });
 
+
+const DevStack = StackNavigator({
+    LaunchScreen: {screen: LaunchScreen},
+    CameraScreen: {screen: CameraScreen},
+    TextablesScreen: { screen: TextablesScreen },
+    LoginScreen: {
+      screen: LoginScreen,
+      navigationOptions: { title: 'Login' }
+    },
+  }, {
+      // Default config for all screens
+      headerMode: 'none',
+      initialRouteName: 'LaunchScreen',
+      navigationOptions: {
+        headerStyle: styles.header
+      }
+  });
+
 const TabNav = TabNavigator({
   CurrentStory: {
     screen: StoryGameStack,
     navigationOptions: {
       tabBarLabel: 'Current Story',
       tabBarIcon: ({ tintColor }) => (
-      <Icon
-        name='notebook'
-        size={20}
-        color={tintColor}
-      />),
+      <Icon name='notebook' size={20} color={tintColor} />),
     },
   },
   Stories: {
@@ -64,11 +78,7 @@ const TabNav = TabNavigator({
     navigationOptions: {
       tabBarLabel: 'Search',
       tabBarIcon: ({ tintColor }) => (
-      <Icon
-        name='magnifier'
-        size={20}
-        color={tintColor}
-      />),
+      <Icon name='magnifier' size={20} color={tintColor} />),
     },
   },
   UserProfile: {
@@ -76,11 +86,7 @@ const TabNav = TabNavigator({
     navigationOptions: {
       tabBarLabel: 'My Profile',
       tabBarIcon: ({ tintColor }) => (
-      <Icon
-        name='user'
-        size={20}
-        color={tintColor}
-      />),
+      <Icon name='user' size={20} color={tintColor} />),
     },
   },
   UserFriends: {
@@ -88,13 +94,17 @@ const TabNav = TabNavigator({
     navigationOptions: {
       tabBarLabel: 'My Friends',
       tabBarIcon: ({ tintColor }) => (
-      <Icon
-        name='people'
-        size={20}
-        color={tintColor}
-      />),
+      <Icon name='people' size={20} color={tintColor} />),
     },
   },
+  LaunchScreen: {
+    screen: DevStack,
+    navigationOptions: {
+      tabBarLabel: 'Dev Screen',
+      tabBarIcon: ({ tintColor }) => (
+      <Icon name='settings' size={20} color={tintColor}/>),
+    }
+  }
 
 }, {
   initialRouteName: 'UserProfile',
@@ -107,7 +117,7 @@ const TabNav = TabNavigator({
 // Manifest of possible screens
 // const PrimaryNav = StackNavigator({
 //   TextablesScreen: { screen: TextablesScreen },
-
+//   CameraScreen: {screen: CameraScreen},
 //   LaunchScreen: { screen: LaunchScreen },
 //   LoginScreen: {
 //     screen: LoginScreen,
@@ -121,7 +131,6 @@ const TabNav = TabNavigator({
 
 //   Chapter: {screen: Chapter},
 //   PuzzleInfo: {screen: PuzzleInfo},
-//   CameraScreen: { screen: CameraScreen},
 // }, {
 //   // Default config for all screens
 //   headerMode: 'none',

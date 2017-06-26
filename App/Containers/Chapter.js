@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Button } from 'react-native'
+import { View, Text, Button, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import TreasureHunt from '../Components/TreasureHunt'
 import Tracker from '../Components/Tracker'
@@ -127,10 +127,18 @@ class Chapter extends React.Component {
   }
 
   render () {
-    const chapters = [{id: 1}, {id: 2}, {id: 3}, {id: 4}, {id: 5}, {id: 6}]
+    const chapters = [
+      {id: 1, puzzles: [{id: 1}, {id: 2}]},
+      {id: 2, puzzles: [{id: 3}]},
+      {id: 3, puzzles: [{id: 4},{id: 5},{id: 6}]},
+      {id: 4, puzzles: [{id: 7},{id: 8},{id: 9}, {id: 10}]},
+      {id: 5, puzzles: [{id: 11},{id: 12},{id: 13}]},
+      {id: 6, puzzles: [{id: 14},{id: 15}]}
+    ]
+    const selectedChapInfo = chapters[this.state.selectedChap-1]
     console.log('state in Chapter', this.state)
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <View style={styles.sectionHeader}>
           <Text style={styles.boldLabel}>Story: Batman</Text>
         </View>
@@ -157,8 +165,9 @@ class Chapter extends React.Component {
         <ChapterDetails
           screenProps={{rootNavigation: this.props.navigation}}
           selectedChap={this.state.selectedChap}
+          chapterInfo={selectedChapInfo}
         />
-      </View>
+      </ScrollView>
     )
   }
 }

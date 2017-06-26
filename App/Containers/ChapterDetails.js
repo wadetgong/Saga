@@ -1,10 +1,23 @@
 import React from 'react'
-import { View, Text } from 'react-native'
-import RoundedButton from '../Components/Button/RoundedButton'
+import { View, Text, Modal } from 'react-native'
+import FullButton from '../Components/Button/FullButton'
+import PuzzleInfo from '../Containers/PuzzleInfo'
 
 class ChapterDetails extends React.Component {
   constructor() {
     super()
+      this.state = {
+      showModal: false,
+      selectedPuzzle: null
+    }
+  }
+
+  toggleModal = (puzzleId) => {
+    console.log('New puzzle selected: ', puzzleId)
+    this.setState({
+      showModal: !this.state.showModal,
+      selectedPuzzle: puzzleId
+    })
   }
 
   openComponents = () => {
@@ -17,12 +30,28 @@ class ChapterDetails extends React.Component {
       <View>
         <View>
           <Text>Showing the chapter details for Chapter {this.props.selectedChap}</Text>
-          <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum sem eget fringilla commodo. Etiam condimentum nibh vel est ullamcorper, sit amet aliquet leo fermentum. Etiam nibh nulla, varius sit amet egestas nec, sodales condimentum ex. Morbi fringilla, dui eu efficitur commodo, est justo finibus massa, a iaculis purus diam ut massa.</Text>
+          <Text>(Chapter Narrrative): Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum sem eget fringilla commodo. Etiam condimentum nibh vel est ullamcorper, sit amet aliquet leo fermentum.</Text>
         </View>
         <View >
-          <RoundedButton onPress={this.openComponents}>
-            Explore
-          </RoundedButton>
+          {
+            this.props.chapterInfo.puzzles.map((puzzle,i) => (
+              <FullButton
+                key={i}
+                onPress={() => this.toggleModal(puzzle.id)}
+                text={`Puzzle #${puzzle.id}`}
+              />
+            ))
+          }
+          <Modal
+            animationType={"slide"}
+            visible={this.state.showModal}
+            onRequestClose={this.toggleModal}>
+            <PuzzleInfo
+              screenProps={{ toggle: this.toggleModal}}
+              puzzleInfo={this.state.selectedPuzzle}
+              chapterInfo={this.props.chapterInfo}
+            />
+          </Modal>
         </View>
       </View>
     )

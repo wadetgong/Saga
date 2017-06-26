@@ -9,8 +9,6 @@ class ChapterScrollBar extends React.Component {
     super()
   }
 
-
-
   render() {
     return (
       <View style={styles.scrollContainer}>
@@ -23,12 +21,12 @@ class ChapterScrollBar extends React.Component {
           showsHorizontalScrollIndicator={false}
         >
           {
-            this.props.chapters.map(chapter => {
+            this.props.chapters.map((chapter,i) => {
               let buttonColor = chapter.id === this.props.selectedChap
                 ? Colors.buttonActive
                 : 'white'
               return (
-                <TouchableOpacity key={chapter.id} onPress={() => this.props.handleClick(chapter.id)}>
+                <TouchableOpacity key={i} onPress={() => this.props.handleClick(chapter.id)}>
                   <View style={[styles.chapterButton, {backgroundColor: buttonColor}]}>
                     <Text style={{color:Colors.text}}>{chapter.id}</Text>
                   </View>
