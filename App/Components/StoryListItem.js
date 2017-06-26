@@ -12,7 +12,7 @@ const StoryListItem = ({ item, navigate }) => (
       >
       <Image
           style={{width: 100, height: 100}}
-          source={Images.storyMain[item.name]}
+          source={Images.storyMain[item._key]}
       />
       </TouchableOpacity>
     </View>

@@ -27,7 +27,7 @@ class Chapter extends React.Component {
   }
 
   componentWillMount() {
-    console.log('listener added for location changes')
+    // console.log('listener added for location changes')
     BackgroundGeolocation.on('location', this.onLocation)
     BackgroundGeolocation.configure({
       // Geolocation Config
@@ -53,18 +53,18 @@ class Chapter extends React.Component {
       //   "auth_token": "maybe_your_server_authenticates_via_token_YES?"
       // }
     }, function(state) {
-      console.log("- BackgroundGeolocation is configured and ready: ", state.enabled);
+      // console.log("- BackgroundGeolocation is configured and ready: ", state.enabled);
 
       if (!state.enabled) {
         BackgroundGeolocation.start(function() {
-          console.log("- Start success");
+          // console.log("- Start success");
         });
       }
     });
   }
 
   componentDidMount() {
-    console.log('componentDidMount in Chapter')
+    // console.log('componentDidMount in Chapter')
     let polygon = [
       { latitude: 41.89, longitude: -87.66 },
       { latitude: 41.89, longitude: -87.68},
@@ -79,7 +79,7 @@ class Chapter extends React.Component {
         latitude: crd.latitude,
         longitude: crd.longitude,
       }
-      console.log('long lat being set: ', point)
+      // console.log('long lat being set: ', point)
 
       this.setState({
         latitude: crd.latitude,
@@ -91,7 +91,7 @@ class Chapter extends React.Component {
   // You must remove listeners when your component unmounts
   componentWillUnmount() {
     // Remove BackgroundGeolocation listeners
-    console.log('Unmounting listeners in Chapter')
+    // console.log('Unmounting listeners in Chapter')
     BackgroundGeolocation.un('location', this.onLocation);
   }
 
@@ -120,7 +120,7 @@ class Chapter extends React.Component {
   }
 
   handleClick(e) {
-    console.log('chapter button clicked, ', e)
+    // console.log('chapter button clicked, ', e)
     this.setState({
       selectedChap: e
     })
@@ -136,7 +136,7 @@ class Chapter extends React.Component {
       {id: 6, puzzles: [{id: 14},{id: 15}]}
     ]
     const selectedChapInfo = chapters[this.state.selectedChap-1]
-    console.log('state in Chapter', this.state)
+    // console.log('state in Chapter', this.state)
     return (
       <View style={styles.container}>
         <View style={styles.sectionHeader}>

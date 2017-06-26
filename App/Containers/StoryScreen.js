@@ -1,6 +1,6 @@
 import React from 'react'
 import { ListView, View, Text } from 'react-native'
-import API from '../Services/FixtureApi'
+import firebaseApp from '../Firebase'
 import StoryListItem from '../Components/StoryListItem'
 import SearchBar from '../Components/SearchBar'
 
@@ -8,18 +8,36 @@ import styles from './Styles/StoryScreenStyles'
 
 // import styles from './Styles/StoryScreen' // not there
 export default class StoryScreen extends React.Component {
+  state = {
+    stories: new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
+  }
+  
+  storyRef = firebaseApp.database().ref('/story');
+  
+  componentDidMount () {
+    console.log('storyRef', this.storyRef)
+    this.listenForItems(this.storyRef)
+  }
+  
   onSearchSearchBar () {
     console.log('searching in Friends Searchbar')
   }
 
-  render () {
-    // data for all stories
-    const stories = API.getStories().data;
-    //Should change ListView to FlatList eventually?
-    let data = new ListView.DataSource({rowHasChanged : (r1, r2) => r1 != r2})
-    data = data.cloneWithRows(stories)
-    //Ignite boilerplate says not to do clonewithrows in render?
+  listenForItems(ref) {
+    // get stories
+    ref.on('value', (snap) => {
+      const items = []
+      snap.forEach((child) => {
+        console.log('CHILD', child.val(), child.key)
+        items.push({ _key: child.key, ...child.val() })
+        this.setState({ stories: this.state.stories.cloneWithRows(items) })
+      })
+      console.log('HEY STORY ITEMS')
+      console.log(items)
+    })
+  }
 
+  render () {
     const { navigate } = this.props.navigation
 
     return (
@@ -37,7 +55,7 @@ export default class StoryScreen extends React.Component {
           />
         </View>
         <ListView
-            dataSource={data}
+            dataSource={this.state.stories}
             removeClippedSubviews={false}
             renderRow={(item) => <
                 StoryListItem

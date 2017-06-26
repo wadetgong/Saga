@@ -18,7 +18,7 @@ const StoryPreview = ({ navigation }) => {
       <View>
       <Image
           style={{ width: '100%', height: 200 }}
-          source={Images.storyMain[item.name]}
+          source={Images.storyMain[item._key]}
       />
       </View>
       <View style={{flex: .5,
