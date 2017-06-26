@@ -404,7 +404,7 @@
             "failedAttempts": 0,
             "hintsLeft": 1,
             "status": {
-                "text": "Current",
+                "text": "Completed",
                 "timestamp": ""
             },
             "points": {
@@ -415,7 +415,21 @@
                 "start": "",
                 "end": ""
             },
-            "photos": {}
+            "photos": {},
+            "solved": {
+                "1": {
+                    "1-1": true
+                },
+                "2": {
+                    "2-1": true
+                },
+                "3": {
+                    "3-1": false
+                },
+                "4": {
+                    "4-1": false
+                }
+            }
         },
         "1": {
             "story": "batman",
@@ -429,7 +443,7 @@
             "failedAttempts": 0,
             "hintsLeft": 1,
             "status": {
-                "text": "Current",
+                "text": "Completed",
                 "timestamp": ""
             },
             "points": {
@@ -440,7 +454,30 @@
                 "start": "",
                 "end": ""
             },
-            "photos": {}
+            "photos": {},
+            "solved": {
+                "1": {
+                    "1-1": true
+                },
+                "2": {
+                    "2-1": true
+                },
+                "3": {
+                    "3-1": true
+                },
+                "4": {
+                    "4-1": true
+                },
+                "5": {
+                    "5-1": true
+                },
+                "6": {
+                    "6-1": true
+                },
+                "7": {
+                    "7-1": true
+                },
+            }
         },
         "2": {
             "story": "woodElves",
@@ -451,7 +488,7 @@
             "failedAttempts": 0,
             "hintsLeft": 1,
             "status": {
-                "text": "Current",
+                "text": "Completed",
                 "timestamp": ""
             },
             "points": {
@@ -462,7 +499,21 @@
                 "start": "",
                 "end": ""
             },
-            "photos": {}
+            "photos": {},
+            "solved": {
+                "1": {
+                    "1-1": true
+                },
+                "2": {
+                    "2-1": true
+                },
+                "3": {
+                    "3-1": false
+                },
+                "4": {
+                    "4-1": false
+                }
+            }
         },
         "3": {
             "story": "woodElves",
@@ -485,7 +536,15 @@
                 "start": "",
                 "end": ""
             },
-            "photos": {}
+            "photos": {},
+            "solved": {
+                "1": {
+                    "1-1": true
+                },
+                "2": {
+                    "2-1": false
+                }
+            }
         }
     }
 }
