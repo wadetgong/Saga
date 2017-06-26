@@ -49,6 +49,7 @@
 		6BA6BDF80B554CFEA76C2D7A /* libcxxreact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AE7B12569D8475E8C704353 /* libcxxreact.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		8B320AAFB3FE42A38C76EAA2 /* libRCTCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 86FF88598EFA426B999A2193 /* libRCTCamera.a */; };
+		950FB75E1EFD9CE70010FE6C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 950FB75D1EFD9CE70010FE6C /* GoogleService-Info.plist */; };
 		C8408CAF1EFAC015004FB7F9 /* libCocoaLumberjack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8408CA61EFABFE7004FB7F9 /* libCocoaLumberjack.a */; };
 		C8408CB01EFAC015004FB7F9 /* libRNBackgroundFetch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8408C8F1EFABFCB004FB7F9 /* libRNBackgroundFetch.a */; };
 		C8408CB11EFAC015004FB7F9 /* libRNBackgroundGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8408C861EFABFA2004FB7F9 /* libRNBackgroundGeolocation.a */; };
@@ -420,6 +421,7 @@
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		857085B50BDC4BEA82107AD6 /* AirMaps.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = AirMaps.xcodeproj; path = "../node_modules/react-native-maps/ios/AirMaps.xcodeproj"; sourceTree = "<group>"; };
 		86FF88598EFA426B999A2193 /* libRCTCamera.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTCamera.a; sourceTree = "<group>"; };
+		950FB75D1EFD9CE70010FE6C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A5C300C2EBD645E9959B37FC /* RCTCamera.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTCamera.xcodeproj; path = "../node_modules/react-native-camera/ios/RCTCamera.xcodeproj"; sourceTree = "<group>"; };
 		B6D665044BCD4298AE5181E2 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		C8408C801EFABFA2004FB7F9 /* RNBackgroundGeolocation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNBackgroundGeolocation.xcodeproj; path = "../node_modules/react-native-background-geolocation/ios/RNBackgroundGeolocation.xcodeproj"; sourceTree = "<group>"; };
@@ -584,6 +586,7 @@
 		13B07FAE1A68108700A75B9A /* TestIgniteApp */ = {
 			isa = PBXGroup;
 			children = (
+				950FB75D1EFD9CE70010FE6C /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -1318,6 +1321,7 @@
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				EDB8F6438A324490813E0A4A /* Entypo.ttf in Resources */,
 				51321E99FFD34B32A32BDE85 /* EvilIcons.ttf in Resources */,
+				950FB75E1EFD9CE70010FE6C /* GoogleService-Info.plist in Resources */,
 				CA8DFB601134450BA0D37807 /* FontAwesome.ttf in Resources */,
 				470FEC1C46FD4FCCA2DF5B6D /* Foundation.ttf in Resources */,
 				DFE545EDBF314071997D4B7A /* Ionicons.ttf in Resources */,
