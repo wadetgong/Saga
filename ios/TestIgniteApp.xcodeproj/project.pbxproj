@@ -50,6 +50,10 @@
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		8B320AAFB3FE42A38C76EAA2 /* libRCTCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 86FF88598EFA426B999A2193 /* libRCTCamera.a */; };
 		950FB75E1EFD9CE70010FE6C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 950FB75D1EFD9CE70010FE6C /* GoogleService-Info.plist */; };
+		9545BA221F01AAB500AEB8B9 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9545BA211F01AAB500AEB8B9 /* Bolts.framework */; };
+		9545BA241F01AAC100AEB8B9 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9545BA231F01AAC100AEB8B9 /* FBSDKCoreKit.framework */; };
+		9545BA261F01AAC700AEB8B9 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9545BA251F01AAC700AEB8B9 /* FBSDKLoginKit.framework */; };
+		9545BA281F01AADA00AEB8B9 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9545BA271F01AADA00AEB8B9 /* FBSDKShareKit.framework */; };
 		C8408CAF1EFAC015004FB7F9 /* libCocoaLumberjack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8408CA61EFABFE7004FB7F9 /* libCocoaLumberjack.a */; };
 		C8408CB01EFAC015004FB7F9 /* libRNBackgroundFetch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8408C8F1EFABFCB004FB7F9 /* libRNBackgroundFetch.a */; };
 		C8408CB11EFAC015004FB7F9 /* libRNBackgroundGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8408C861EFABFA2004FB7F9 /* libRNBackgroundGeolocation.a */; };
@@ -422,6 +426,10 @@
 		857085B50BDC4BEA82107AD6 /* AirMaps.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = AirMaps.xcodeproj; path = "../node_modules/react-native-maps/ios/AirMaps.xcodeproj"; sourceTree = "<group>"; };
 		86FF88598EFA426B999A2193 /* libRCTCamera.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTCamera.a; sourceTree = "<group>"; };
 		950FB75D1EFD9CE70010FE6C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9545BA211F01AAB500AEB8B9 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		9545BA231F01AAC100AEB8B9 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		9545BA251F01AAC700AEB8B9 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		9545BA271F01AADA00AEB8B9 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		A5C300C2EBD645E9959B37FC /* RCTCamera.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTCamera.xcodeproj; path = "../node_modules/react-native-camera/ios/RCTCamera.xcodeproj"; sourceTree = "<group>"; };
 		B6D665044BCD4298AE5181E2 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		C8408C801EFABFA2004FB7F9 /* RNBackgroundGeolocation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNBackgroundGeolocation.xcodeproj; path = "../node_modules/react-native-background-geolocation/ios/RNBackgroundGeolocation.xcodeproj"; sourceTree = "<group>"; };
@@ -460,15 +468,19 @@
 				C8408CB01EFAC015004FB7F9 /* libRNBackgroundFetch.a in Frameworks */,
 				C8408CB11EFAC015004FB7F9 /* libRNBackgroundGeolocation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
+				9545BA221F01AAB500AEB8B9 /* Bolts.framework in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
 				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
 				133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */,
 				00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */,
+				9545BA281F01AADA00AEB8B9 /* FBSDKShareKit.framework in Frameworks */,
 				139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */,
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
+				9545BA241F01AAC100AEB8B9 /* FBSDKCoreKit.framework in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
+				9545BA261F01AAC700AEB8B9 /* FBSDKLoginKit.framework in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				D5008681FAB9474BBF0B2579 /* libRNDeviceInfo.a in Frameworks */,
 				4E5300546FDF41DA9866FC44 /* libRNVectorIcons.a in Frameworks */,
@@ -786,6 +798,10 @@
 		C8408CB21EFAC046004FB7F9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9545BA271F01AADA00AEB8B9 /* FBSDKShareKit.framework */,
+				9545BA251F01AAC700AEB8B9 /* FBSDKLoginKit.framework */,
+				9545BA231F01AAC100AEB8B9 /* FBSDKCoreKit.framework */,
+				9545BA211F01AAB500AEB8B9 /* Bolts.framework */,
 				C8408CB71EFAC0A1004FB7F9 /* TSBackgroundFetch.framework */,
 				C8408CB51EFAC07D004FB7F9 /* TSLocationManager.framework */,
 				C8408CB31EFAC046004FB7F9 /* libsqlite3.tbd */,
@@ -1537,6 +1553,7 @@
 					"$(PROJECT_DIR)/../node_modules/react-native-background-geolocation/ios/**",
 					"$(PROJECT_DIR)/../node_modules/react-native-background-fetch/ios/**",
 					"$(PROJECT_DIR)",
+					"~/Documents/FacebookSDK",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1572,6 +1589,7 @@
 					"$(PROJECT_DIR)/../node_modules/react-native-background-geolocation/ios/**",
 					"$(PROJECT_DIR)/../node_modules/react-native-background-fetch/ios/**",
 					"$(PROJECT_DIR)",
+					"~/Documents/FacebookSDK",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

@@ -15,7 +15,6 @@ export default class StoryScreen extends React.Component {
   storyRef = firebaseApp.database().ref('/story');
   
   componentDidMount () {
-    console.log('storyRef', this.storyRef)
     this.listenForItems(this.storyRef)
   }
   
@@ -28,12 +27,9 @@ export default class StoryScreen extends React.Component {
     ref.on('value', (snap) => {
       const items = []
       snap.forEach((child) => {
-        console.log('CHILD', child.val(), child.key)
         items.push({ _key: child.key, ...child.val() })
         this.setState({ stories: this.state.stories.cloneWithRows(items) })
       })
-      console.log('HEY STORY ITEMS')
-      console.log(items)
     })
   }
 
