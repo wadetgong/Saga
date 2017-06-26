@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, Image } from 'react-native'
 import RoundedButton from '../Components/Button/RoundedButton'
+import Puzzle from '../Components/Puzzle'
 import { ApplicationStyles, Images } from '../Themes'
 
 // Styles
@@ -12,6 +13,14 @@ class PuzzleInfo extends React.Component {
   }
 
   render() {
+
+    const puzzle = {
+      id: this.props.puzzleInfo,
+      question: 'What goes up when rain comes down?',
+      answer: 'An umbrella',
+      puzzleType: 'fillBlank',
+      maxAttempts: 3
+    }
     console.log('props in PuzzleInfo', this.props)
     return (
       <View style={styles.container}>
@@ -33,6 +42,7 @@ class PuzzleInfo extends React.Component {
           <Text>Props from Chapter: {this.props.chapterInfo.id}</Text>
           <Text>Puzzle ID: {this.props.puzzleInfo}</Text>
         </View>
+        <Puzzle puzzle={puzzle}/>
       </View>
     )
   }

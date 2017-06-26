@@ -140,7 +140,7 @@ class Chapter extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.sectionHeader}>
-          <Text style={styles.boldLabel}>Story: Batman</Text>
+          <Text style={styles.boldLabel}>Batman - Chapter {this.state.selectedChap}</Text>
         </View>
         <ScrollView style={styles.container}>
           <View>
