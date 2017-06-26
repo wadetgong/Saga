@@ -72,7 +72,7 @@ export default class Friends extends React.Component {
                 <Text style={styles.boldLabel}>Add Friends to Story</Text>
               </View>
               <View style={{flex:0.5, flexDirection: 'row', justifyContent: 'space-around'}}>
-                <TouchableOpacity onPress={() => navigate('Chapter')}>
+                <TouchableOpacity onPress={() => navigate('TeamScreen')}>
                   <Text style={{color: Colors.active}}>Next</Text>
                 </TouchableOpacity>
               </View>

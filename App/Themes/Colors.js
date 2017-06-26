@@ -23,7 +23,9 @@ const colors = {
   banner: '#5F3E63',
   text: '#000000',
   tintColor: '#e91e63',
-  active: '#1e63e9'
+  active: '#1e63e9',
+  borderGray: '#5e6977',
+  buttonActive: '#ff8787',
 }
 
 export default colors

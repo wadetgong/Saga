@@ -3,6 +3,8 @@ import { View, Text, Button } from 'react-native'
 import { connect } from 'react-redux'
 import TreasureHunt from '../Components/TreasureHunt'
 import Tracker from '../Components/Tracker'
+import ChapterDetails from '../Containers/ChapterDetails'
+import ChapterScrollBar from '../Components/ChapterScrollBar'
 import RoundedButton from '../Components/Button/RoundedButton'
 import { ApplicationStyles } from '../Themes'
 import geolib from 'geolib'
@@ -12,24 +14,21 @@ import BackgroundGeolocation from "react-native-background-geolocation";
 import styles from './Styles/ChapterStyles'
 
 class Chapter extends React.Component {
-  static navigationOptions = {
-    tabBarLabel: 'Chapter',
-    // Note: By default the icon is only shown on iOS. Search the showIcon option below.
-  };
   constructor (props) {
     super (props)
     this.state = {
       insideRange: false,
       longitude: null,
       latitude: null,
+      selectedChap: 1,
     }
     this.onLocation = this.onLocation.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentWillMount() {
     console.log('listener added for location changes')
     BackgroundGeolocation.on('location', this.onLocation)
-
     BackgroundGeolocation.configure({
       // Geolocation Config
       desiredAccuracy: 0,
@@ -120,17 +119,20 @@ class Chapter extends React.Component {
     })
   }
 
-
-  openComponents = () => {
-    this.props.navigation.navigate('PuzzleInfo', {test: 'testing'})
+  handleClick(e) {
+    console.log('chapter button clicked, ', e)
+    this.setState({
+      selectedChap: e
+    })
   }
 
   render () {
+    const chapters = [{id: 1}, {id: 2}, {id: 3}, {id: 4}, {id: 5}, {id: 6}]
     console.log('state in Chapter', this.state)
     return (
       <View style={styles.container}>
         <View style={styles.sectionHeader}>
-          <Text style={styles.boldLabel}>Chapter Section</Text>
+          <Text style={styles.boldLabel}>Story: Batman</Text>
         </View>
         <View>
           <TreasureHunt
@@ -138,8 +140,13 @@ class Chapter extends React.Component {
             latitude={this.state.latitude}
           />
         </View>
+        <ChapterScrollBar
+          chapters={chapters}
+          handleClick={this.handleClick}
+          selectedChap={this.state.selectedChap}
+        />
         {/*<Tracker />*/}
-        <View style={ApplicationStyles.darkLabelContainer}>
+        <View>
           <Text style={styles.boldLabel}>Location is: {this.state.latitude}, {this.state.longitude}</Text>
           {
             this.state.insideRange
@@ -147,14 +154,10 @@ class Chapter extends React.Component {
             : <Text>Inside range? No</Text>
           }
         </View>
-        <View style = {ApplicationStyles.darkLabelContainer} >
-          <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum sem eget fringilla commodo. Etiam condimentum nibh vel est ullamcorper, sit amet aliquet leo fermentum. Etiam nibh nulla, varius sit amet egestas nec, sodales condimentum ex. Morbi fringilla, dui eu efficitur commodo, est justo finibus massa, a iaculis purus diam ut massa.</Text>
-        </View>
-        <View >
-          <RoundedButton onPress={this.openComponents}>
-            Explore
-          </RoundedButton>
-        </View>
+        <ChapterDetails
+          screenProps={{rootNavigation: this.props.navigation}}
+          selectedChap={this.state.selectedChap}
+        />
       </View>
     )
   }

@@ -12,6 +12,7 @@ class PuzzleInfo extends React.Component {
   }
 
   render() {
+    console.log('props in puzzleinfo', this.props)
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={() => this.props.navigation.goBack()} style={{
