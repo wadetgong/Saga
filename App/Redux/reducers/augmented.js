@@ -13,7 +13,6 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
-    console.log('what is action arObject? ', action.arObject);
     switch(action.type) {
         case ADD_AR_Object:
         return {
