@@ -5,6 +5,8 @@ let styles = StyleSheet.create({
         position: 'absolute',
         width: Dimensions.get('window').width / 2,
         height: Dimensions.get('window').height / 3,
+        paddingTop: 800,
+        marginLeft: Dimensions.get('window').width / 4
     },
     row: flex('row', 'wrap'),
     container: {

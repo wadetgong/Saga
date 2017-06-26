@@ -9,6 +9,13 @@ import { Gyroscope } from 'NativeModules';
 import { addArObject, updateGyroData } from '../Redux/actions/augmented';
 import { connect } from 'react-redux';
 
+import {
+    GYRO_MOVE_THRESHOLD_X,
+    GYRO_MOVE_THRESHOLD_Y,
+    MOVE_FACTOR_X,
+    MOVE_FACTOR_Y
+} from '../Redux/constants';
+
 let width = Dimensions.get('window').width;
 let height = Dimensions.get('window').height;
 
@@ -19,10 +26,7 @@ let height = Dimensions.get('window').height;
 
     constructor(props) {
         super(props);
-        this.state = {
-            cameraType: Camera.constants.Type.back,
-            frame: 1,
-        }
+        this.state = {}
         this.handleArStart = this.handleArStart.bind(this);
         this.createAr = this.createAr.bind(this);
     }
@@ -30,20 +34,18 @@ let height = Dimensions.get('window').height;
         Gyroscope.stopGyroUpdates();
         Gyroscope.setGyroUpdateInterval(0.05);
         DeviceEventEmitter.addListener('GyroData', this.props.updateGyroData);
+        this.handleArStart();
     }
     componentWillUnmount() {
         Gyroscope.stopGyroUpdates();
     }
-    componentDidUpdate() {
-        this.handleArStart();
-    }
     handleArStart() {
         Gyroscope.startGyroUpdates();
-        this.createAr();
+        // this.createAr();
     }
     createAr() {
         let startingPosX = Math.random() * width * (Math.random() > 0.5 ? -1 : 1) + (width * 0.5);
-        let startingPosY = Math.random() * height * .75(Math.random() > 0.5 ? -1 : 1) + (height * .8);
+        let startingPosY = Math.random() * height * .75 * (Math.random() > 0.5 ? -1 : 1) + (height * .8);
 
         this.props.addArObject({
             startingPosX: startingPosX,
@@ -60,7 +62,7 @@ let height = Dimensions.get('window').height;
                 style={cameraStyles.camera}
                 aspect={Camera.constants.Aspect.fill}
                 type={this.state.cameraType}>
-                <Text style={cameraStyles.cameraText}> Find the Treasure Chest!! </Text>
+                <Text style={cameraStyles.cameraText}> {this.props.gyroX} </Text>
                 <TreasureChest
                     startingPosX={arObj.startingPosX}
                     startingPosY={arObj.startingPosY}

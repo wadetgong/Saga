@@ -7,6 +7,13 @@ import {
 import styles from './Styles/TreasureChestStyles';
 import { connect } from 'react-redux';
 
+import {
+    GYRO_MOVE_THRESHOLD_X,
+    GYRO_MOVE_THRESHOLD_Y,
+    MOVE_FACTOR_X,
+    MOVE_FACTOR_Y
+} from '../Redux/constants';
+
 let width = Dimensions.get('window').width
 
 class TreasureChest extends Component {
@@ -37,7 +44,6 @@ class TreasureChest extends Component {
     }
 
     render() {
-        console.log(this.props);
         return (
             <View style={styles.container}>
                 <Image
