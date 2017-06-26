@@ -138,36 +138,38 @@ class Chapter extends React.Component {
     const selectedChapInfo = chapters[this.state.selectedChap-1]
     console.log('state in Chapter', this.state)
     return (
-      <ScrollView style={styles.container}>
+      <View style={styles.container}>
         <View style={styles.sectionHeader}>
           <Text style={styles.boldLabel}>Story: Batman</Text>
         </View>
-        <View>
-          <TreasureHunt
-            longitude={this.state.longitude}
-            latitude={this.state.latitude}
+        <ScrollView style={styles.container}>
+          <View>
+            <TreasureHunt
+              longitude={this.state.longitude}
+              latitude={this.state.latitude}
+            />
+          </View>
+          <ChapterScrollBar
+            chapters={chapters}
+            handleClick={this.handleClick}
+            selectedChap={this.state.selectedChap}
           />
-        </View>
-        <ChapterScrollBar
-          chapters={chapters}
-          handleClick={this.handleClick}
-          selectedChap={this.state.selectedChap}
-        />
-        {/*<Tracker />*/}
-        <View>
-          <Text style={styles.boldLabel}>Location is: {this.state.latitude}, {this.state.longitude}</Text>
-          {
-            this.state.insideRange
-            ? <Text>Inside range? Yes</Text>
-            : <Text>Inside range? No</Text>
-          }
-        </View>
-        <ChapterDetails
-          screenProps={{rootNavigation: this.props.navigation}}
-          selectedChap={this.state.selectedChap}
-          chapterInfo={selectedChapInfo}
-        />
-      </ScrollView>
+          {/*<Tracker />*/}
+          <View>
+            <Text style={styles.boldLabel}>Location is: {this.state.latitude}, {this.state.longitude}</Text>
+            {
+              this.state.insideRange
+              ? <Text>Inside range? Yes</Text>
+              : <Text>Inside range? No</Text>
+            }
+          </View>
+          <ChapterDetails
+            screenProps={{rootNavigation: this.props.navigation}}
+            selectedChap={this.state.selectedChap}
+            chapterInfo={selectedChapInfo}
+          />
+        </ScrollView>
+      </View>
     )
   }
 }

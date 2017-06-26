@@ -28,9 +28,14 @@ class ChapterDetails extends React.Component {
     console.log('props in ChapterDetails', this.props)
     return (
       <View>
-        <View>
+        <View style={{padding: 10, margin: 10, backgroundColor: 'beige', borderRadius: 5,
+          /*shadowColor: 'black',
+          hadowOffset: {width: 1, height: 1},
+          shadowRadius: 1,
+          shadowOpacity: 0.5*/
+        }}>
           <Text>Showing the chapter details for Chapter {this.props.selectedChap}</Text>
-          <Text>(Chapter Narrrative): Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum sem eget fringilla commodo. Etiam condimentum nibh vel est ullamcorper, sit amet aliquet leo fermentum.</Text>
+          <Text style={{fontStyle: 'italic'}}>(Chapter Narrrative): Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum sem eget fringilla commodo. Etiam condimentum nibh vel est ullamcorper, sit amet aliquet leo fermentum.</Text>
         </View>
         <View >
           {

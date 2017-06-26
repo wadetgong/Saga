@@ -15,27 +15,23 @@ class PuzzleInfo extends React.Component {
     console.log('props in PuzzleInfo', this.props)
     return (
       <View style={styles.container}>
-        <TouchableOpacity
-          onPress={this.props.screenProps.toggle}
-          style={{
-            position: 'absolute',
-            paddingTop: 30,
-            paddingHorizontal: 5,
-            zIndex: 10
-        }}>
-          <Image source={Images.closeButton} />
-        </TouchableOpacity>
+        <View style={styles.sectionHeader}>
+          <Text style={styles.boldLabel}>Puzzle #{this.props.puzzleInfo}</Text>
+          <TouchableOpacity
+            onPress={this.props.screenProps.toggle}
+            style={styles.modalClose}>
+            <Image source={Images.closeButton} />
+          </TouchableOpacity>
+        </View>
         <View style={styles.centered}>
           <Image source={Images.puzzle} style={styles.logo} />
         </View>
-        <View style={styles.sectionHeader}>
+        <View style={{padding: 10, margin: 10, backgroundColor: 'beige', borderRadius: 5}}>
           <Text>
             (Puzzle Information Here) Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum sem eget fringilla commodo. Etiam condimentum nibh vel est ullamcorper, sit amet aliquet leo fermentum.
           </Text>
           <Text>Props from Chapter: {this.props.chapterInfo.id}</Text>
           <Text>Puzzle ID: {this.props.puzzleInfo}</Text>
-        </View>
-        <View style={ApplicationStyles.darkLabelContainer}>
         </View>
       </View>
     )

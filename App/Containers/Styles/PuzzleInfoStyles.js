@@ -25,10 +25,14 @@ export default StyleSheet.create({
     height: Metrics.images.logo,
     width: Metrics.images.logo,
     resizeMode: 'contain',
-    marginTop: Metrics.doubleBaseMargin
   },
   centered: {
     alignItems: 'center'
   },
-
+  modalClose: {
+    position: 'absolute',
+    paddingTop: 10,
+    paddingHorizontal: 5,
+    zIndex: 10
+  },
 })

@@ -15,6 +15,7 @@ export default class StoryScreen extends React.Component {
   render () {
     // data for all stories
     const stories = API.getStories().data;
+    //Should change ListView to FlatList eventually?
     let data = new ListView.DataSource({rowHasChanged : (r1, r2) => r1 != r2})
     data = data.cloneWithRows(stories)
     //Ignite boilerplate says not to do clonewithrows in render?
