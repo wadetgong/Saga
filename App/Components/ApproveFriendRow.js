@@ -23,28 +23,48 @@ const ApproveFriendRow = ({ user }) => (
             alignItems: 'flex-start',
             paddingHorizontal: 10,}}
         >
-          <Text style={{fontWeight: 'bold'}}>{user.name}</Text>
-          <Text><Icon name='user' style={{paddingHorizontal: 5, justifyContent: 'center'}}/> : {user.username}</Text>
-          <Text><Icon name='envelope' style={{paddingHorizontal: 5, justifyContent: 'center'}}/> : {user.email}</Text>
-        </View>
-        <View style={{flex: .6,
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'flex-start',}}
-        >
-          <TouchableOpacity style={{
-            borderRadius: 5,
-            paddingHorizontal: 10,
-            paddingVertical: 5,
-            backgroundColor: Colors.buttonActive,
-            justifyContent: 'center',
-            alignItems: 'center'}}
-          >
-            <Text style={{
-              color: Colors.snow,
-              textAlign: 'center',
-            }}>Cancel</Text>
-          </TouchableOpacity>
+          <Text><Text style={{fontWeight: 'bold'}}>{user.name}</Text> ({user.username})</Text>
+          <Text style={{fontStyle: 'italic'}}>Date Requested: 6/22/2017</Text>
+          <View style={{flex: 1, flexDirection: 'row'}}>
+            <View style={{flex: 1,
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',}}
+            >
+              <TouchableOpacity style={{
+                borderRadius: 5,
+                paddingHorizontal: 25,
+                paddingVertical: 5,
+                backgroundColor: Colors.buttonActive,
+                justifyContent: 'center',
+                alignItems: 'center'}}
+              >
+                <Text style={{
+                  color: Colors.snow,
+                  textAlign: 'center',
+                }}>Confirm</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={{flex: 1,
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',}}
+            >
+              <TouchableOpacity style={{
+                borderRadius: 5,
+                paddingHorizontal: 25,
+                paddingVertical: 5,
+                backgroundColor: Colors.charcoal,
+                justifyContent: 'center',
+                alignItems: 'center'}}
+              >
+                <Text style={{
+                  color: Colors.snow,
+                  textAlign: 'center',
+                }}>Decline</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
         </View>
     </View>
 )
