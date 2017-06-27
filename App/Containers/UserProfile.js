@@ -1,10 +1,49 @@
 import React from 'react'
+import { TabNavigator } from 'react-navigation'
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import { Images } from '../Themes'
 import API from '../Services/FixtureApi'
 
+import ViewFriends from './ViewFriends'
+import UserJourneys from './UserJourneys'
+
 
 import styles from './Styles/UserProfileStyles'
+import { Colors } from '../Themes'
+import Icon from 'react-native-vector-icons/SimpleLineIcons'
+
+
+const UserProfileStack = TabNavigator({
+  ViewFriends: {
+    screen: ViewFriends,
+    navigationOptions: {
+      tabBarLabel: 'My Friends',
+      tabBarIcon: ({ tintColor }) => (
+      <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+        <Icon name='people' size={20} color={tintColor} style={{paddingHorizontal: 5}}/><Text style={{color: tintColor}}>Friends</Text>
+      </View>),
+    },
+  },
+  UserJourneys: {
+    screen: UserJourneys,
+    navigationOptions: {
+      tabBarLabel: 'My Stories',
+      tabBarIcon: ({ tintColor }) => (
+      <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+        <Icon name='book-open' size={20} color={tintColor} style={{paddingHorizontal: 5}}/><Text style={{color: tintColor}}>Stories</Text>
+      </View>),
+    },
+  },
+}, {
+  initialRouteName: 'ViewFriends',
+  tabBarPosition: 'top',
+  tabBarOptions: {
+    tintColor: Colors.tintColor,
+    activeBackgroundColor: 'white',
+    showLabel: false
+  },
+})
+
 
 export default class UserProfile extends React.Component {
   render() {
@@ -18,7 +57,7 @@ export default class UserProfile extends React.Component {
         <View style={{flexDirection: 'row', paddingHorizontal: 10, paddingBottom: 10}}>
           <Image
             source={{uri: user.profilePicture}}
-            style={{width: 150, height: 150}}
+            style={{width: 120, height: 120}}
           />
 
           <View style={{padding: 10, flexDirection: 'column', backgroundColor: 'pink', flex: 1}}>
@@ -29,13 +68,7 @@ export default class UserProfile extends React.Component {
             </TouchableOpacity>
           </View>
         </View>
-        <View style={{flex: 1, flexDirection: 'row', padding: 10, backgroundColor: 'green'}}>
-          <Text style={styles.boldLabel}>Current Story</Text>
-
-        </View>
-        <View style={{flex: 1, flexDirection: 'row', padding: 10, backgroundColor: 'blue'}}>
-          <Text style={styles.boldLabel}>My History</Text>
-        </View>
+        <UserProfileStack />
       </View>
     )
   }
