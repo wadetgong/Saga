@@ -14,6 +14,10 @@ import styles from './Styles/LoginScreenStyles'
 import {Images, Metrics} from '../Themes'
 import LoginActions from '../Redux/LoginRedux'
 
+
+const FBSDK = require('react-native-fbsdk');
+const { LoginButton, AccessToken } = FBSDK;
+
 class LoginScreen extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func,
@@ -98,7 +102,29 @@ class LoginScreen extends React.Component {
     const editable = !fetching
     const textInputStyle = editable ? styles.textInput : styles.textInputReadonly
     return (
-      <ScrollView contentContainerStyle={{justifyContent: 'center'}} style={[styles.container, {height: this.state.visibleHeight}]} keyboardShouldPersistTaps='always'>
+      <ScrollView 
+        contentContainerStyle={{justifyContent: 'center'}} 
+        style={[styles.container, {height: this.state.visibleHeight}]} 
+        keyboardShouldPersistTaps='always'
+      >
+        
+        <LoginButton
+          publishPermissions={["publish_actions"]}
+          onLoginFinished={ (error, result) => {
+            if (error) {
+              alert("login has error: " + result.error);
+            } else if (result.isCancelled) {
+              alert("login is cancelled.");
+            } else {
+              AccessToken.getCurrentAccessToken().then( (data) => {
+                alert('this is our access token!', data.accessToken.toString())
+              })
+            }
+          }}
+          
+          onLogoutFinished={() => alert("logout.")}
+        />
+        
         <Image source={Images.logo} style={[styles.topLogo, this.state.topLogo]} />
         <View style={styles.form}>
           <View style={styles.row}>
