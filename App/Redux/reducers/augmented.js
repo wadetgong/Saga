@@ -1,4 +1,4 @@
-import { ADD_AR_Object, UPDATE_GYRO_DATA } from '../constants/actionTypes';
+import { ADD_AR_OBJECT, UPDATE_GYRO_DATA } from '../constants/actionTypes';
 import {
     MOVE_FACTOR_X,
     MOVE_FACTOR_Y
@@ -13,8 +13,9 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
+
     switch(action.type) {
-        case ADD_AR_Object:
+        case ADD_AR_OBJECT:
         return {
             ...state,
             arObject: action.arObject

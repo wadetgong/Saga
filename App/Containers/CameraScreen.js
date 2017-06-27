@@ -27,8 +27,11 @@ let height = Dimensions.get('window').height;
     constructor(props) {
         super(props);
         this.state = {}
-        // this.handleArStart = this.handleArStart.bind(this);
-        // this.createAr = this.createAr.bind(this);
+        this.handleArStart = this.handleArStart.bind(this);
+        this.createAr = this.createAr.bind(this);
+    }
+    componentWillMount() {
+        this.handleArStart();
     }
     componentDidMount() {
         Gyroscope.setGyroUpdateInterval(0.05);
@@ -40,36 +43,31 @@ let height = Dimensions.get('window').height;
     componentWillUnmount() {
         Gyroscope.stopGyroUpdates();
     }
-    // componentDidUpdate() {
-    //     this.handleArStart();
-    // }
-    // handleArStart() {
-    //     this.createAr();
-    // }
-    // createAr() {
-    //     let startingPosX = Math.random() * width * (Math.random() > 0.5 ? -1 : 1) + (width * 0.5);
-    //     let startingPosY = Math.random() * height * .75 * (Math.random() > 0.5 ? -1 : 1) + (height * .8);
+    handleArStart() {
+        this.createAr();
+    }
+    createAr() {
+        let startingPosX = Math.random() * width * (Math.random() > 0.5 ? -1 : 1) + (width * 0.5);
+        let startingPosY = Math.random() * height * .75 * (Math.random() > 0.5 ? -1 : 1) + (height * .8);
 
-    //     this.props.addArObject({
-    //         startingPosX: startingPosX,
-    //         startingPosY: startingPosY
-    //     })
-    // }
+        this.props.addArObject({
+            startingPosX: startingPosX,
+            startingPosY: startingPosY
+        })
+    }
 
     render() {
         let arObj = this.props.arObject
-        console.log('what is props? ', this.props );
+        console.log('AROBBJBJBJJBJBJBJBJBJBJBJ????? ', this.props);
         return (
             <Camera
                 ref={cam => { this.camera = cam }}
                 style={cameraStyles.camera}
                 aspect={Camera.constants.Aspect.fill}
                 type={this.state.cameraType}>
-                <Text style={cameraStyles.cameraText}> {this.props.gyroX} </Text>
-                {/*<TreasureChest
-                    startingPosX={arObj.startingPosX}
-                    startingPosY={arObj.startingPosY}
-                />*/}
+                <Text style={cameraStyles.cameraText}> </Text>
+                <TreasureChest
+                />
             </Camera>
         )
     }
@@ -84,11 +82,7 @@ function mapStateToProps({ augmented }) {
 function mapDispatchToProps(dispatch) {
     return {
         addArObject: arObj => dispatch(addArObject(arObj)),
-        updateGyroData: data => {
-            let action = updateGyroData(data);
-            console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!H#$#+!!!<@<<!<!<@')
-            console.log(action);
-            return dispatch(action)}
+        updateGyroData: data => dispatch(updateGyroData(data))
     }
 }
 
