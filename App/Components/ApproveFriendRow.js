@@ -4,7 +4,7 @@ import { Images } from '../Themes'
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
 import { Fonts, Colors, Metrics } from '../Themes/'
 
-const FriendUserRow = ({ user }) => (
+const ApproveFriendRow = ({ user }) => (
     <View style={{flex: 1,
       flexDirection: 'row',
       padding: 5,
@@ -43,11 +43,11 @@ const FriendUserRow = ({ user }) => (
             <Text style={{
               color: Colors.snow,
               textAlign: 'center',
-            }}>Add Friend</Text>
+            }}>Cancel</Text>
           </TouchableOpacity>
         </View>
     </View>
 )
 
 
-export default FriendUserRow
+export default ApproveFriendRow

@@ -5,7 +5,7 @@ import { Images } from '../Themes'
 import API from '../Services/FixtureApi'
 
 import FindFriends from './FindFriends'
-import ApproveFriends from './ApproveFriends'
+import PendingFriends from './PendingFriends'
 
 import styles from './Styles/UserFriendsStyles'
 import { Colors } from '../Themes'
@@ -23,8 +23,8 @@ const FriendStack = TabNavigator({
       </View>),
     },
   },
-  ApproveFriends: {
-    screen: ApproveFriends,
+  PendingFriends: {
+    screen: PendingFriends,
     navigationOptions: {
       tabBarLabel: 'Pending Requests',
       tabBarIcon: ({ tintColor }) => (
@@ -42,7 +42,7 @@ const FriendStack = TabNavigator({
   //   },
   // },
 }, {
-  initialRouteName: 'ApproveFriends',
+  initialRouteName: 'PendingFriends',
   tabBarPosition: 'top',
   tabBarOptions: {
     tintColor: Colors.tintColor,

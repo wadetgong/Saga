@@ -55,16 +55,31 @@ export default class UserProfile extends React.Component {
           <Text style={styles.boldLabel}>My Account</Text>
         </View>
         <View style={{flexDirection: 'row', paddingHorizontal: 10, paddingBottom: 10}}>
-          <Image
-            source={{uri: user.profilePicture}}
-            style={{width: 120, height: 120}}
-          />
-
-          <View style={{padding: 10, flexDirection: 'column', backgroundColor: 'pink', flex: 1}}>
+          <View style={{borderBottomLeftRadius: 3, borderTopLeftRadius: 3, overflow: 'hidden'}}>
+            <Image
+              source={{uri: user.profilePicture}}
+              style={{width: 120, height: 120}}
+            />
+          </View>
+          <View style={{padding: 10, flexDirection: 'column', borderColor: Colors.border, borderWidth: 1, flex: 1, borderBottomRightRadius: 3, borderTopRightRadius: 3}}>
             <Text><Text style={{fontWeight: 'bold',}}>{user.name}</Text> ({user.username})</Text>
             <Text>Email: {user.email}</Text>
-            <TouchableOpacity>
-              <Text>Edit Profile</Text>
+            <TouchableOpacity style={{
+              borderRadius: 5,
+              paddingHorizontal: 10,
+              paddingVertical: 5,
+              width: '50%',
+              marginVertical: 5,
+              backgroundColor: 'lightgray',
+              justifyContent: 'center',
+              alignItems: 'center'}}
+            >
+              <Text style={{
+                color: Colors.text,
+                textAlign: 'center',
+              }}>
+                Edit Profile
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
