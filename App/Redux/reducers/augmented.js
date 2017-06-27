@@ -21,6 +21,15 @@ export default function reducer(state = initialState, action) {
             arObject: action.arObject
         }
         case UPDATE_GYRO_DATA:
+        // console.log('xOffset is? ', state.xOffset + (action.moveX * (MOVE_FACTOR_X * action.rotationRate.y)) )
+        // console.log('moveX is? ', action.moveX * (MOVE_FACTOR_X * action.rotationRate.y))
+        // console.log('old sate.xoffSet is? ', state.xOffset)
+        // console.log('YRotation rate is? ', action.rotationRate.y)
+        // console.log('yOffset is? ', state.yOffset + (action.moveY * (MOVE_FACTOR_Y * action.rotationRate.x)) )
+        // console.log('moveY is? ', action.moveY * (MOVE_FACTOR_Y * action.rotationRate.x))
+        // console.log('old sate.yoffSet is? ', state.yOffset)        
+        // console.log('xRotation rate is? ', action.rotationRate.x)
+
         return {
             ...state,
             gyroX: action.rotationRate.x,

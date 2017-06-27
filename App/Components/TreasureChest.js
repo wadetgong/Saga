@@ -53,6 +53,8 @@ class TreasureChest extends Component {
     }
 
     render() {
+        // console.log('top is?????? ', this.props.arObject.startingPosY + this.props.yOffset, this.props.arObject.startingPosY, this.props.yOffset )
+        // console.log('left is?????? ', this.props.arObject.startingPosX + this.props.xOffset, this.props.arObject.startingPosX, this.props.xOffset )
         return (
             <View style={styles.container}>
                 <TouchableHighlight onPress={this.clickedTreasureChest}>

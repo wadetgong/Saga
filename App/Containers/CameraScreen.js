@@ -34,9 +34,13 @@ let height = Dimensions.get('window').height;
         this.handleArStart();
     }
     componentDidMount() {
-        Gyroscope.setGyroUpdateInterval(0.05);
+        Gyroscope.setGyroUpdateInterval(0.04);
         DeviceEventEmitter.addListener('GyroData', (data) => {
-            if(data.rotationRate.y && data.rotationRate.x) this.props.updateGyroData(data);
+            if(data.rotationRate.y && data.rotationRate.x){
+                data.rotationRate.y;
+                data.rotationRate.x;
+                this.props.updateGyroData(data);
+            }
         });
         Gyroscope.startGyroUpdates();
     }
@@ -47,8 +51,8 @@ let height = Dimensions.get('window').height;
         this.createAr();
     }
     createAr() {
-        let startingPosX = Math.random() * width * (Math.random() > 0.5 ? -1 : 1) + (width * 0.5);
-        let startingPosY = Math.random() * height * .75 * (Math.random() > 0.5 ? -1 : 1) + (height * .8);
+        let startingPosX = Math.random() * width * (Math.random() > 0.5 ? 1 : 1) + (width * 0.5);
+        let startingPosY = Math.random() * height * .75 * (Math.random() > 0.75 ? 1 : 1) + (height * .8);
 
         this.props.addArObject({
             startingPosX: startingPosX,
@@ -58,7 +62,6 @@ let height = Dimensions.get('window').height;
 
     render() {
         let arObj = this.props.arObject
-        console.log('AROBBJBJBJJBJBJBJBJBJBJBJ????? ', this.props);
         return (
             <Camera
                 ref={cam => { this.camera = cam }}

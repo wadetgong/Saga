@@ -5,9 +5,7 @@ import {
 } from '../constants';
 
 export function addArObject(arObject) {
-    console.log('how about here??????? ', arObject)
     return dispatch => {
-        console.log('how abourt inside the thunk???', arObject)
         dispatch({
             type: ADD_AR_OBJECT,
             arObject
