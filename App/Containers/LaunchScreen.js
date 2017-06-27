@@ -15,9 +15,7 @@ export default class LaunchScreen extends React.Component {
       <View style={styles.mainContainer}>
         <Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch' />
         <ScrollView style={styles.container}>
-          <View style={styles.centered}>
-            <Image source={Images.launch} style={styles.logo} />
-          </View>
+
 
           <View style={styles.section} >
             <Image source={Images.ready} />
@@ -27,7 +25,6 @@ export default class LaunchScreen extends React.Component {
           </View>
 
           <DevscreensButton />
-
           <RoundedButton onPress={() => navigate('LoginScreen')}>
             Login
           </RoundedButton>
@@ -40,6 +37,13 @@ export default class LaunchScreen extends React.Component {
           <RoundedButton onPress={() => navigate('CameraScreen')}>
             Camera
           </RoundedButton>
+      
+          <View style={styles.centered}>
+            <Image source={Images.launch} style={styles.logo} />
+          </View>
+
+
+      
         </ScrollView>
       </View>
     )
