@@ -15,8 +15,9 @@ import {Images, Metrics} from '../Themes'
 import LoginActions from '../Redux/LoginRedux'
 
 
-const FBSDK = require('react-native-fbsdk');
-const { LoginButton, AccessToken } = FBSDK;
+import { LoginButton, AccessToken, LoginManager } from 'react-native-fbsdk';
+import firebaseApp from '../Firebase'
+
 
 class LoginScreen extends React.Component {
   static propTypes = {
@@ -117,7 +118,7 @@ class LoginScreen extends React.Component {
               alert("login is cancelled.");
             } else {
               AccessToken.getCurrentAccessToken().then( (data) => {
-                alert('this is our access token!', data.accessToken.toString())
+                alert('this is our access token!\n' + data.accessToken.toString())
               })
             }
           }}
