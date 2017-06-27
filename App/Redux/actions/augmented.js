@@ -5,7 +5,6 @@ import {
 } from '../constants';
 
 export function addArObject(arObject) {
-    console.log('how about here??????? ', arObject)
     return dispatch => {
         dispatch({
             type: ADD_AR_OBJECT,
@@ -17,9 +16,6 @@ export function addArObject(arObject) {
 export function updateGyroData(gyroData) {
     let moveX = 0;
     let moveY = 0;
-    console.log('is this working?')
-    console.log('gyroX ', gyroData.rotationRate.x);
-    console.log('gyroY ', gyroData.rotationRate.y);
     if(gyroData.rotationRate.x > GYRO_MOVE_THRESHOLD_Y || gyroData.rotationRate.x < GYRO_MOVE_THRESHOLD_Y * -1) {
         moveY = 1;
     }
