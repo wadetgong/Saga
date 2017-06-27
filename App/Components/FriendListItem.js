@@ -22,9 +22,10 @@ const FriendListItem = ({ item, navigate, addFriendToTeam, switchValue }) => (
         </TouchableOpacity>
         <View style={{flex: 1,
             flexDirection: 'column',
-            justifyContent: 'center',
-            padding: 10,}}>
-          <Text>{item.id}: {item.username}</Text>
+            justifyContent: 'flex-start',
+            paddingHorizontal: 10,}}>
+          <Text>{item.name}</Text>
+          <Text>{item.username}</Text>
           <Text>{item.email}</Text>
           <Switch
               onValueChange={(value) => addFriendToTeam(item.id, value)}

@@ -14,16 +14,6 @@ import Icon from 'react-native-vector-icons/SimpleLineIcons'
 
 
 const UserProfileStack = TabNavigator({
-  ViewFriends: {
-    screen: ViewFriends,
-    navigationOptions: {
-      tabBarLabel: 'My Friends',
-      tabBarIcon: ({ tintColor }) => (
-      <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
-        <Icon name='people' size={20} color={tintColor} style={{paddingHorizontal: 5}}/><Text style={{color: tintColor}}>Friends</Text>
-      </View>),
-    },
-  },
   UserJourneys: {
     screen: UserJourneys,
     navigationOptions: {
@@ -34,8 +24,18 @@ const UserProfileStack = TabNavigator({
       </View>),
     },
   },
+  ViewFriends: {
+    screen: ViewFriends,
+    navigationOptions: {
+      tabBarLabel: 'My Friends',
+      tabBarIcon: ({ tintColor }) => (
+      <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
+        <Icon name='people' size={20} color={tintColor} style={{paddingHorizontal: 5}}/><Text style={{color: tintColor}}>Friends</Text>
+      </View>),
+    },
+  },
 }, {
-  initialRouteName: 'ViewFriends',
+  initialRouteName: 'UserJourneys',
   tabBarPosition: 'top',
   tabBarOptions: {
     tintColor: Colors.tintColor,
@@ -61,7 +61,7 @@ export default class UserProfile extends React.Component {
           />
 
           <View style={{padding: 10, flexDirection: 'column', backgroundColor: 'pink', flex: 1}}>
-            <Text>Name: {user.username}</Text>
+            <Text><Text style={{fontWeight: 'bold',}}>{user.name}</Text> ({user.username})</Text>
             <Text>Email: {user.email}</Text>
             <TouchableOpacity>
               <Text>Edit Profile</Text>

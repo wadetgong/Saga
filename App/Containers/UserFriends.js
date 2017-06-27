@@ -58,7 +58,7 @@ export default class UserProfile extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.sectionHeader}>
-          <Text style={styles.boldLabel}>Friends</Text>
+          <Text style={styles.boldLabel}>Add Friends</Text>
         </View>
         <View style={{flex:1}}>
           <FriendStack/>

@@ -1,32 +1,38 @@
 {
 	"list": [{
         "id": 1,
-        "username": "Justin",
+        "name": "Justin Gehr",
+        "username": "gehr",
         "email": "justin@gmail.com",
         "profilePicture": "https://avatars1.githubusercontent.com/u/26335236?v=3&s=400"
     }, {
         "id": 2,
-        "username": "Monica",
+        "name": "Monica He",
+        "username": "ehacinom",
         "email": "monica@gmail.com",
         "profilePicture": "https://avatars2.githubusercontent.com/u/8092859?v=3&s=400"
     }, {
         "id": 3,
-        "username": "Wade",
+        "name": "Wade Gong",
+        "username": "wadetgong",
         "email": "wade@gmail.com",
         "profilePicture": "https://avatars3.githubusercontent.com/u/7991556?v=3&s=400"
     }, {
         "id": 4,
-        "username": "Bob",
+        "name": "Bob Smith",
+        "username": "hurlabob",
         "email": "bob@gmail.com",
         "profilePicture": "https://avatars3.githubusercontent.com/u/7991556?v=3&s=400"
     }, {
         "id": 5,
-        "username": "Sarah",
+        "name": "Sarah Jacobs",
+        "username": "jacobss",
         "email": "sarah@gmail.com",
         "profilePicture": "https://avatars3.githubusercontent.com/u/7991556?v=3&s=400"
     }, {
         "id": 6,
-        "username": "Steve",
+        "name": "Steve White",
+        "username": "snowwhite",
         "email": "steve@gmail.com",
         "profilePicture": "https://avatars3.githubusercontent.com/u/7991556?v=3&s=400"
     }]
