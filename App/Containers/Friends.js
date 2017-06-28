@@ -32,7 +32,7 @@ export default class Friends extends React.Component {
     // };
     state = {}
 
-    onSearchSearchBar () {
+    onSearch () {
         console.log('searching in Friends Searchbar')
     }
 
@@ -83,7 +83,7 @@ export default class Friends extends React.Component {
                 justifyContent: 'center',
               }}>
               <SearchBar
-                  onSearch={this.onSearchSearchBar}
+                  onSearch={this.onSearch}
                   /*onCancel={this.onCancelSearchBar}*/
               />
             </View>

@@ -54,7 +54,7 @@ export default class UserProfile extends React.Component {
         <View style={styles.sectionHeader}>
           <Text style={styles.boldLabel}>My Account</Text>
         </View>
-        <View style={{flexDirection: 'row', paddingHorizontal: 10, paddingBottom: 10}}>
+        <View style={{flexDirection: 'row', paddingHorizontal: 15, paddingBottom: 10}}>
           <View style={{borderBottomLeftRadius: 3, borderTopLeftRadius: 3, overflow: 'hidden'}}>
             <Image
               source={{uri: user.profilePicture}}
@@ -65,10 +65,10 @@ export default class UserProfile extends React.Component {
             <Text><Text style={{fontWeight: 'bold',}}>{user.name}</Text> ({user.username})</Text>
             <Text>Email: {user.email}</Text>
             <TouchableOpacity style={{
-              borderRadius: 5,
+              borderRadius: 4,
               paddingHorizontal: 10,
               paddingVertical: 5,
-              width: '50%',
+              width: '75%',
               marginVertical: 5,
               backgroundColor: 'lightgray',
               justifyContent: 'center',
