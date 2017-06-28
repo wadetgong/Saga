@@ -21,5 +21,15 @@ export default StyleSheet.create({
     textAlign: 'center',
     marginBottom: Metrics.smallMargin
   },
+  searchBarContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  friendSearchContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    paddingHorizontal: 10
+  }
 
 })

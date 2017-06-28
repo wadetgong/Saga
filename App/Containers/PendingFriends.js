@@ -3,7 +3,7 @@ import { View, Text, Image, ListView, ScrollView } from 'react-native'
 import ApproveFriendRow from '../Components/ApproveFriendRow'
 import PendingFriendRow from '../Components/PendingFriendRow'
 
-import styles from './Styles/FriendsStyles'
+import styles from './Styles/JourneyFriendsStyles'
 
 import API from '../Services/FixtureApi'
 import { Colors } from '../Themes'

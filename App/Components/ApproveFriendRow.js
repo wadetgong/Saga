@@ -33,9 +33,9 @@ const ApproveFriendRow = ({ user }) => (
             >
               <TouchableOpacity style={{
                 borderRadius: 5,
-                paddingHorizontal: 25,
+                paddingHorizontal: 20,
                 paddingVertical: 5,
-                backgroundColor: Colors.buttonActive,
+                backgroundColor: Colors.buttonStandard,
                 justifyContent: 'center',
                 alignItems: 'center'}}
               >
@@ -52,7 +52,7 @@ const ApproveFriendRow = ({ user }) => (
             >
               <TouchableOpacity style={{
                 borderRadius: 5,
-                paddingHorizontal: 25,
+                paddingHorizontal: 20,
                 paddingVertical: 5,
                 backgroundColor: Colors.charcoal,
                 justifyContent: 'center',

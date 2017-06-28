@@ -6,34 +6,55 @@ import SearchBar from '../Components/SearchBar'
 
 import styles from './Styles/StoryScreenStyles'
 
-// import styles from './Styles/StoryScreen' // not there
 export default class StoryScreen extends React.Component {
-  state = {
-    stories: new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
+  constructor() {
+    super()
+    this.state = {
+      ds: new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 }),
+      stories: [],
+      text: '',
+    }
+    this.storyRef = firebaseApp.database().ref('/story')
+    this.onSearch = this.onSearch.bind(this)
   }
-  
-  storyRef = firebaseApp.database().ref('/story');
-  
+
+
   componentDidMount () {
     this.listenForItems(this.storyRef)
   }
-  
-  onSearchSearchBar () {
-    console.log('searching in Friends Searchbar')
+
+  onSearch (searchTerm) {
+    // console.log('searching in Friends Searchbar')
+    this.setState({
+      text: searchTerm
+    })
   }
 
   listenForItems(ref) {
     // get stories
-    ref.on('value', (snap) => {
+    this.unsubscribe = ref.on('value', (snap) => {
       const items = []
       snap.forEach((child) => {
         items.push({ _key: child.key, ...child.val() })
-        this.setState({ stories: this.state.stories.cloneWithRows(items) })
+        this.setState({ stories: items})
       })
     })
   }
 
+  checkMatch(searchTerm, story) {
+    return story.title.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1;
+  }
+
+  componentWillUnmount () {
+    this.storyRef.off('value'. this.unsubscribe)
+  }
+
   render () {
+    const filteredStories = this.state.text.length
+      ? this.state.stories.filter(story => this.checkMatch(this.state.text, story))
+      : this.state.stories;
+
+    const storyList = this.state.ds.cloneWithRows(filteredStories)
     const { navigate } = this.props.navigation
 
     return (
@@ -46,18 +67,19 @@ export default class StoryScreen extends React.Component {
           justifyContent: 'center',
         }}>
           <SearchBar
-              onSearch={this.onSearchSearchBar}
+              onSearch={this.onSearch}
               /*onCancel={this.onCancelSearchBar}*/
           />
         </View>
         <ListView
-            dataSource={this.state.stories}
-            removeClippedSubviews={false}
-            renderRow={(item) => <
-                StoryListItem
-                item={item}
-                navigate={navigate}
-            />}
+          dataSource={storyList}
+          removeClippedSubviews={false}
+          enableEmptySections={true}
+          renderRow={(item) => <
+            StoryListItem
+            item={item}
+            navigate={navigate}
+          />}
         />
       </View>
     )
