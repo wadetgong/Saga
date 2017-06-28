@@ -49,7 +49,12 @@ const StoryGameStack = StackNavigator({
 
 const DevStack = StackNavigator({
     LaunchScreen: {screen: LaunchScreen},
-    CameraScreen: {screen: CameraScreen},
+    CameraScreen: {
+      screen: CameraScreen,
+      navigationOptions: {
+        tabBarVisible: false
+      }
+    },
     TextablesScreen: { screen: TextablesScreen },
     LoginScreen: {
       screen: LoginScreen,

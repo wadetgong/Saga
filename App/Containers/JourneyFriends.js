@@ -59,7 +59,7 @@ export default class JourneyFriends extends React.Component {
   }
 
   componentWillUnmount () {
-    this.unsubscribe()
+    this.friendsRef.off('value', this.unsubscribe)
   }
 
   listenForItems(ref) {

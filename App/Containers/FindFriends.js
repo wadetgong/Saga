@@ -49,7 +49,7 @@ export default class FindFriends extends React.Component {
   }
 
   componentWillUnmount () {
-    this.unsubscribe()
+    this.friendsRef.off('value', this.unsubscribe)
   }
 
   render() {

@@ -24,7 +24,7 @@ export default class StoryScreen extends React.Component {
   }
 
   onSearch (searchTerm) {
-    console.log('searching in Friends Searchbar')
+    // console.log('searching in Friends Searchbar')
     this.setState({
       text: searchTerm
     })
@@ -46,7 +46,7 @@ export default class StoryScreen extends React.Component {
   }
 
   componentWillUnmount () {
-    this.unsubscribe()
+    this.storyRef.off('value'. this.unsubscribe)
   }
 
   render () {
