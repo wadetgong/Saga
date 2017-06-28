@@ -37,8 +37,8 @@ let height = Dimensions.get('window').height;
         Gyroscope.setGyroUpdateInterval(0.04);
         DeviceEventEmitter.addListener('GyroData', (data) => {
             if(data.rotationRate.y && data.rotationRate.x){
-                data.rotationRate.y;
-                data.rotationRate.x;
+                data.rotationRate.y += 0.06;
+                data.rotationRate.x -= 0.02;
                 this.props.updateGyroData(data);
             }
         });
