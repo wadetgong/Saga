@@ -148,12 +148,12 @@ class Chapter extends React.Component {
               longitude={this.state.longitude}
               latitude={this.state.latitude}
             />
+            <ChapterScrollBar
+              chapters={chapters}
+              handleClick={this.handleClick}
+              selectedChap={this.state.selectedChap}
+            />
           </View>
-          <ChapterScrollBar
-            chapters={chapters}
-            handleClick={this.handleClick}
-            selectedChap={this.state.selectedChap}
-          />
           {/*<Tracker />*/}
           <View>
             <Text style={styles.boldLabel}>Location is: {this.state.latitude}, {this.state.longitude}</Text>
@@ -167,6 +167,7 @@ class Chapter extends React.Component {
             screenProps={{rootNavigation: this.props.navigation}}
             selectedChap={this.state.selectedChap}
             chapterInfo={selectedChapInfo}
+            storyKey={'artThief'}
           />
         </ScrollView>
       </View>

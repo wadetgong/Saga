@@ -55,6 +55,7 @@ class ChapterDetails extends React.Component {
               screenProps={{ toggle: this.toggleModal}}
               puzzleInfo={this.state.selectedPuzzle}
               chapterInfo={this.props.chapterInfo}
+              storyKey={this.props.storyKey}
             />
           </Modal>
         </View>

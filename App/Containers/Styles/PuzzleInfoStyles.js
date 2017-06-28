@@ -22,9 +22,12 @@ export default StyleSheet.create({
     marginBottom: Metrics.smallMargin
   },
   logo: {
-    height: Metrics.images.logo,
-    width: Metrics.images.logo,
-    resizeMode: 'contain',
+    // height: Metrics.images.logo,
+    // width: Metrics.images.logo,
+    height: 200,
+    width: '100%',
+    // resizeMode: 'contain',
+    alignItems: 'center',
   },
   centered: {
     alignItems: 'center'

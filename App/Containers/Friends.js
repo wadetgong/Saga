@@ -36,9 +36,9 @@ export default class Friends extends React.Component {
         console.log('searching in Friends Searchbar')
     }
 
-    onCancelSearchBar () {
-        console.log('cancel search in Friends Searchbar')
-    }
+    // onCancelSearchBar () {
+    //     console.log('cancel search in Friends Searchbar')
+    // }
 
     addFriendToTeam (id, value) {
         console.log('addfriendtoteam in Friends container', id, value, typeof id)

@@ -10,7 +10,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingBottom: 5,
-    paddingRight: 20,
+    paddingRight: 15,
   },
   searchInput: {
     flex: 5,
