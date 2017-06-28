@@ -35,7 +35,7 @@ const ApproveFriendRow = ({ user }) => (
                 borderRadius: 5,
                 paddingHorizontal: 20,
                 paddingVertical: 5,
-                backgroundColor: Colors.buttonActive,
+                backgroundColor: Colors.buttonStandard,
                 justifyContent: 'center',
                 alignItems: 'center'}}
               >

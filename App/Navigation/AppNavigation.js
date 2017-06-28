@@ -4,7 +4,7 @@ import LaunchScreen from '../Containers/LaunchScreen'
 import LoginScreen from '../Containers/LoginScreen'
 import StoryScreen from '../Containers/StoryScreen'
 import StoryPreview from '../Containers/StoryPreview'
-import Friends from '../Containers/Friends'
+import JourneyFriends from '../Containers/JourneyFriends'
 import UserProfile from '../Containers/UserProfile'
 import UserFriends from '../Containers/UserFriends'
 import TeamScreen from '../Containers/TeamScreen'
@@ -20,7 +20,7 @@ import { Colors } from '../Themes'
 const ChooseStoryStack = StackNavigator({
     StoryScreen: { screen: StoryScreen },
     StoryPreview: { screen: StoryPreview },
-    Friends: { screen: Friends },
+    JourneyFriends: { screen: JourneyFriends },
     TeamScreen: { screen: TeamScreen },
     // TeamScreen: { screen: ({ navigation }) => <TeamScreen screenProps={{ rootNavigation: navigation }} /> }
 

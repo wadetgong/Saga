@@ -15,7 +15,7 @@ export default class FindFriends extends React.Component {
       text: '',
     }
     this.friendsRef = firebaseApp.database().ref('/users')
-    this.onSearch = this.onSearch.bind(this);
+    this.onSearch = this.onSearch.bind(this)
   }
 
   onSearch (searchTerm) {
