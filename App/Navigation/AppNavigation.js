@@ -112,7 +112,7 @@ const TabNav = TabNavigator({
   }
 
 }, {
-  initialRouteName: 'Stories',
+  initialRouteName: 'LaunchScreen',
   tabBarOptions: {
     tintColor: Colors.tintColor,
     showLabel: false
