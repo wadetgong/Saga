@@ -26,6 +26,7 @@ const colors = {
   active: '#1e63e9',
   borderGray: '#5e6977',
   buttonActive: '#ff8787',
+  buttonStandard: '#467EEB'
 }
 
 export default colors

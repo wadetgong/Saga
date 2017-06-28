@@ -8,6 +8,10 @@ export default class UserJourneys extends React.Component {
   render() {
     return (
       <View style={{flex: 1}}>
+        <View style={{flex: 1, flexDirection: 'row', padding: 10, backgroundColor: 'pink'}}>
+          <Text style={styles.boldLabel}>Pending Story Invites</Text>
+
+        </View>
         <View style={{flex: 1, flexDirection: 'row', padding: 10, backgroundColor: 'green'}}>
           <Text style={styles.boldLabel}>Current Story</Text>
 

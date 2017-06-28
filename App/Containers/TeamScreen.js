@@ -25,7 +25,7 @@ class TeamScreen extends React.Component {
     return (
       <View>
         <Text>Your Team:</Text>
-        <RoundedButton onPress={() => navigate('Chapter')}>
+        <RoundedButton onPress={() => navigate('CurrentStory')}>
         {/*<RoundedButton onPress={this.generateStory}>*/}
           begin journey
         </RoundedButton>
