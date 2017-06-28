@@ -51,7 +51,7 @@ class LoginScreen extends React.Component {
         // create a new firebase credential with the token
         const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
         
-        console.log('data!', data)
+        console.log('FB Oauth data!', data)
         
         return firebase.auth().signInWithCredential(credential); // login with credential
       })
