@@ -14,7 +14,13 @@ exports.initUser = functions.auth.user()
   .onCreate(event => {
     // The Firebase user.
     const { displayName, email, photoURL, uid } = event.data; 
-    const user = { displayName, email, fb_thumbnail: photoURL, }
+    const user = { 
+      displayName, email, fb_thumbnail: photoURL, 
+      friends: null,
+      journeys: null,
+      profilePicture: null,
+      username: null,
+    }
     
     return admin.database().ref('/users').child(uid).set(user)
   });
