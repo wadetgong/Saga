@@ -28,7 +28,6 @@ class RootContainer extends Component {
   }
 
   render () {
-    console.log('props in rootcontainer', this.props)
     return (
       <View style={styles.applicationView}>
         <StatusBar barStyle='dark-content' />

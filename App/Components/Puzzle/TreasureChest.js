@@ -1,5 +1,5 @@
 
-// Left drift is coming from render styling maybe we can fix this top and left maybe we can find other way? 
+// Left drift is coming from render styling maybe we can fix this top and left maybe we can find other way?
 //take a look at ../reducers/constants/index to see the threshold to mess with that as well
 
 import React, { Component } from 'react';
@@ -17,7 +17,7 @@ import {
     GYRO_MOVE_THRESHOLD_Y,
     MOVE_FACTOR_X,
     MOVE_FACTOR_Y
-} from '../Redux/constants';
+} from '../../Redux/constants';
 
 let width = Dimensions.get('window').width
 
@@ -59,11 +59,11 @@ class TreasureChest extends Component {
             <View style={styles.container}>
                 <TouchableHighlight onPress={this.clickedTreasureChest}>
                     <Image
-                        source={require('../Images/treasureChest.png')}
+                        source={require('../../Images/treasureChest.png')}
                         resizeMode='contain'
                         style={[styles.arObject, styles.row, {
                             top: this.props.arObject.startingPosY + this.props.yOffset,
-                            left: this.props.arObject.startingPosX + this.props.xOffset 
+                            left: this.props.arObject.startingPosX + this.props.xOffset
                         }]}
                     />
                 </TouchableHighlight>

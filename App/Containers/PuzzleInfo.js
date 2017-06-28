@@ -18,7 +18,7 @@ class PuzzleInfo extends React.Component {
       id: this.props.puzzleInfo,
       question: 'What goes up when rain comes down?',
       answer: 'An umbrella',
-      puzzleType: 'fillBlank',
+      puzzleType: 'simpleFind',
       maxAttempts: 3
     }
     console.log('props in PuzzleInfo', this.props)

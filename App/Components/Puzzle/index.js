@@ -1,7 +1,8 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import { Images, Fonts } from '../../Themes'
 import FillBlank from './FillBlank'
+// import SimpleFin from './FillBlank'
 
 class Puzzle extends React.Component {
   constructor() {
@@ -38,6 +39,17 @@ class Puzzle extends React.Component {
     switch(puzzle.puzzleType) {
       case 'fillBlank':
         return <FillBlank puzzle={puzzle} handleSubmit={this.handleSubmit}/>
+        break;
+      case 'simpleFind':
+        return (
+          <View>
+            <TouchableOpacity
+              onPress={() => {}}
+              style={{}}>
+              <Text>Click to launch camera</Text>
+            </TouchableOpacity>
+          </View>
+        )
         break;
       default:
         throw new Error('Puzzle type not recognized.')

@@ -8,6 +8,7 @@ import ChapterScrollBar from '../Components/ChapterScrollBar'
 import RoundedButton from '../Components/Button/RoundedButton'
 import { ApplicationStyles } from '../Themes'
 import geolib from 'geolib'
+import firebaseApp from '../Firebase'
 
 // Styles
 import styles from './Styles/ChapterStyles'
@@ -18,12 +19,16 @@ class Chapter extends React.Component {
     this.state = {
       // insideRange: false,
       selectedChap: 1,
+      story: {},
     }
     // this.onLocation = this.onLocation.bind(this);
     this.handleClick = this.handleClick.bind(this);
+
+    this.storyRef = firebaseApp.database().ref('/story/batman')
   }
 
   componentDidMount() {
+    this.listenForChange(this.storyRef)
     // // console.log('componentDidMount in Chapter')
     // let polygon = [
     //   { latitude: 41.89, longitude: -87.66 },
@@ -42,6 +47,19 @@ class Chapter extends React.Component {
       //   insideRange: geolib.isPointInside(point, polygon),
       // })
     // })
+  }
+
+  componentWillUnmount () {
+    this.storyRef.off('value', this.unsubscribe)
+  }
+
+  listenForChange(ref) {
+    this.unsubscribe = ref.on('value', story => {
+      console.log('new info', story.val())
+      this.setState({
+        story: story.val()
+      })
+    })
   }
 
   onLocation(location) {
@@ -69,20 +87,23 @@ class Chapter extends React.Component {
   }
 
   render () {
-    const chapters = [
-      {id: 1, puzzles: [{id: 1}, {id: 2}]},
-      {id: 2, puzzles: [{id: 3}]},
-      {id: 3, puzzles: [{id: 4},{id: 5},{id: 6}]},
-      {id: 4, puzzles: [{id: 7},{id: 8},{id: 9}, {id: 10}]},
-      {id: 5, puzzles: [{id: 11},{id: 12},{id: 13}]},
-      {id: 6, puzzles: [{id: 14},{id: 15}]}
-    ]
-    const selectedChapInfo = chapters[this.state.selectedChap-1]
+    // const chapters = [
+    //   {id: 1, puzzles: [{id: 1}, {id: 2}]},
+    //   {id: 2, puzzles: [{id: 3}]},
+    //   {id: 3, puzzles: [{id: 4},{id: 5},{id: 6}]},
+    //   {id: 4, puzzles: [{id: 7},{id: 8},{id: 9}, {id: 10}]},
+    //   {id: 5, puzzles: [{id: 11},{id: 12},{id: 13}]},
+    //   {id: 6, puzzles: [{id: 14},{id: 15}]}
+    // ]
+
+    const chapters = this.state.story.chapters || []
+    const selectedChapInfo = (chapters && chapters[this.state.selectedChap-1]) || 0
+    const storyName = this.state.story && this.state.story.title
 
     return (
       <View style={styles.container}>
         <View style={styles.sectionHeader}>
-          <Text style={styles.boldLabel}>Batman - Chapter {this.state.selectedChap}</Text>
+          <Text style={styles.boldLabel}>{storyName} - Chapter {this.state.selectedChap}</Text>
         </View>
         <ScrollView style={styles.container}>
           <View>

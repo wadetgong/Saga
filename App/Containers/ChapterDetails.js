@@ -39,13 +39,15 @@ class ChapterDetails extends React.Component {
         </View>
         <View >
           {
-            this.props.chapterInfo.puzzles.map((puzzle,i) => (
-              <FullButton
-                key={i}
-                onPress={() => this.toggleModal(puzzle.id)}
-                text={`Puzzle #${puzzle.id}`}
-              />
-            ))
+            this.props.chapterInfo
+            ? this.props.chapterInfo.puzzles.map((puzzle,i) => (
+                <FullButton
+                  key={i}
+                  onPress={() => this.toggleModal(puzzle.id)}
+                  text={`Chapter ${this.props.selectedChap} - Puzzle ${puzzle.id}`}
+                />
+              ))
+            : null
           }
           <Modal
             animationType={"slide"}

@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, Switch, Image, Dimensions, DeviceEventEmitter } from 'react-native';
 import cameraStyles from './Styles/CameraScreenStyles.js';
 import Camera from 'react-native-camera';
-import TreasureChest from '../Components/TreasureChest';
+import TreasureChest from '../Components/Puzzle/TreasureChest';
 import { Gyroscope } from 'NativeModules';
 import { addArObject, updateGyroData } from '../Redux/actions/augmented';
 import { connect } from 'react-redux';
