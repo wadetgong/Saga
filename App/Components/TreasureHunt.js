@@ -1,6 +1,8 @@
 import React from 'react'
-import { View } from 'react-native'
+import { View, Text } from 'react-native'
 import MapView from 'react-native-maps'
+import { connect } from 'react-redux'
+
 import TreasureHuntCallout from './TreasureHuntCallout'
 import Styles from './Styles/TreasureHuntStyles'
 
@@ -104,15 +106,33 @@ class TreasureHunt extends React.Component {
         }], { latPadding: 0.01, longPadding: 0.01 })
 
     return (
-      <MapView
-        style={this.props.style || Styles.map}
-        region={newRegion}
-        showsUserLocation={this.state.showUserLocation}
-      >
-      </MapView>
+      <View>
+        <Text>Location is: {this.props.latitude}, {this.props.longitude}</Text>
+        <MapView
+          style={this.props.style || Styles.map}
+          region={newRegion}
+          showsUserLocation={this.state.showUserLocation}
+        >
+        </MapView>
+      </View>
     )
   }
 }
 
-export default TreasureHunt
+const mapStateToProps = (state) => {
+  console.log('state in TreasureHunt mstp', state)
+  return {
+    // ...redux state to props here
+    longitude: state.geoLocation.location.longitude,
+    latitude: state.geoLocation.location.latitude,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TreasureHunt)
 

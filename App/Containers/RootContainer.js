@@ -4,11 +4,22 @@ import Navigation from '../Navigation/AppNavigation'
 import { connect } from 'react-redux'
 import StartupActions from '../Redux/StartupRedux'
 import ReduxPersist from '../Config/ReduxPersist'
+import { locationStart, locationStop } from '../Services/GeoLocation'
+
 
 // Styles
 import styles from './Styles/RootContainerStyles'
 
 class RootContainer extends Component {
+
+  componentWillMount() {
+    locationStart()
+  }
+
+  componentWillUnmount() {
+    locationStop()
+  }
+
   componentDidMount () {
     // if redux persist is not active fire startup action
     if (!ReduxPersist.active) {
@@ -17,6 +28,7 @@ class RootContainer extends Component {
   }
 
   render () {
+    console.log('props in rootcontainer', this.props)
     return (
       <View style={styles.applicationView}>
         <StatusBar barStyle='dark-content' />

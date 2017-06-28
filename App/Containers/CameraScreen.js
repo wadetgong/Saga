@@ -51,8 +51,10 @@ let height = Dimensions.get('window').height;
         this.createAr();
     }
     createAr() {
-        let startingPosX = Math.random() * width * (Math.random() > 0.5 ? 1 : 1) + (width * 0.5);
-        let startingPosY = Math.random() * height * .75 * (Math.random() > 0.75 ? 1 : 1) + (height * .8);
+    //     let startingPosX = Math.random() * width * (Math.random() > 0.5 ? 1 : 1) + (width * 0.5);
+        // let startingPosY = Math.random() * height * .75 * (Math.random() > 0.75 ? 1 : 1) + (height * .8);
+        let startingPosX = 100
+        let startingPosY = 100
 
         this.props.addArObject({
             startingPosX: startingPosX,
