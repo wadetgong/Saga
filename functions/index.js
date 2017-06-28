@@ -24,3 +24,32 @@ exports.initUser = functions.auth.user()
     
     return admin.database().ref('/users').child(uid).set(user)
   });
+
+// on create/update/destroy friends
+// undefined - no relationship
+// 
+//
+//
+//
+exports.addFriend = functions.database.ref('/users/{uid}/friends/{fid}')
+  .onWrite(event => {
+    // exit if no data ??
+    if (!event.data.exists()) return;
+
+    // variables
+    const { uid, fid } = event.params;
+    // what was written to db
+    const written = event.data.val();
+
+    // get previous data to update friendship
+    if (event.data.previous.exists()) {
+      
+    } 
+    // else you are sending an invite and must change on the other
+    else {
+      return admin.database().ref('/users' + friends).child(uid).set()
+    }
+  })
+  
+  
+
