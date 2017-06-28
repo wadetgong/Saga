@@ -16,7 +16,11 @@ exports.initUser = functions.auth.user()
     const { displayName, email, photoURL, uid } = event.data; 
     const user = { 
       displayName, email, fb_thumbnail: photoURL, 
-      friends: null,
+      friends: {
+        sent: null,
+        recieved: null,
+        friends: null
+      },
       journeys: null,
       profilePicture: null,
       username: null,
@@ -26,12 +30,8 @@ exports.initUser = functions.auth.user()
   });
 
 // on create/update/destroy friends
-// undefined - no relationship
 // 
-//
-//
-//
-exports.addFriend = functions.database.ref('/users/{uid}/friends/{fid}')
+exports.sendFriendInvite = functions.database.ref('/users/{uid}/friends/{fid}')
   .onWrite(event => {
     // exit if no data ??
     if (!event.data.exists()) return;
@@ -51,5 +51,5 @@ exports.addFriend = functions.database.ref('/users/{uid}/friends/{fid}')
     }
   })
   
-  
+exports.accept
 
