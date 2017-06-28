@@ -26,7 +26,8 @@ class TreasureChest extends Component {
         super(props);
         this.state = {
             offScreenLeft: false,
-            offScreenRight: false
+            offScreenRight: false,
+            timesClicked: 1,
         }
         this.clickedTreasureChest = this.clickedTreasureChest.bind(this);
     }
@@ -49,7 +50,9 @@ class TreasureChest extends Component {
         )
     }
     clickedTreasureChest() {
-        alert('Treasure Chest was clicked')
+        this.setState({ timesClicked: this.state.timesClicked + 1})
+        alert('Treasure Chest was clicked' + this.state.timesClicked);
+
     }
 
     render() {
