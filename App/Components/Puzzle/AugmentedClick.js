@@ -1,13 +1,10 @@
-
-// Left drift is coming from render styling maybe we can fix this top and left maybe we can find other way? 
-//take a look at ../reducers/constants/index to see the threshold to mess with that as well
-
 import React, { Component } from 'react';
 import {
     Image,
     View,
     Dimensions,
-    TouchableHighlight
+    TouchableHighlight,
+    Text
 } from 'react-native';
 import styles from './Styles/TreasureChestStyles';
 import { connect } from 'react-redux';
@@ -21,12 +18,13 @@ import {
 
 let width = Dimensions.get('window').width
 
-class TreasureChest extends Component {
+class BreakOpen extends Component {
     constructor(props) {
         super(props);
         this.state = {
             offScreenLeft: false,
             offScreenRight: false,
+            timesClicked: 1,
         }
         this.clickedTreasureChest = this.clickedTreasureChest.bind(this);
     }
@@ -49,7 +47,9 @@ class TreasureChest extends Component {
         )
     }
     clickedTreasureChest() {
-        alert('Put Logic of clicking it here.. this is the simple just find it version');
+        this.setState({ timesClicked: this.state.timesClicked + 1})
+        alert('Box was clicked' + this.state.timesClicked);
+
     }
 
     render() {
@@ -57,9 +57,10 @@ class TreasureChest extends Component {
         // console.log('left is?????? ', this.props.arObject.startingPosX + this.props.xOffset, this.props.arObject.startingPosX, this.props.xOffset )
         return (
             <View style={styles.container}>
+                <Text> Click the Box until it Breaks! </Text>
                 <TouchableHighlight onPress={this.clickedTreasureChest}>
                     <Image
-                        source={require('../Images/treasureChest.png')}
+                        source={require('../../Images/treasureChest.png')}
                         resizeMode='contain'
                         style={[styles.arObject, styles.row, {
                             top: this.props.arObject.startingPosY + this.props.yOffset,
