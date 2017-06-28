@@ -1,170 +1,84 @@
 import React, { PropTypes } from 'react'
-import {
-  View,
-  ScrollView,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  Image,
-  Keyboard,
-  LayoutAnimation
-} from 'react-native'
 import { connect } from 'react-redux'
+import { View } from 'react-native'
 import styles from './Styles/LoginScreenStyles'
 import {Images, Metrics} from '../Themes'
+import RoundedButton from '../Components/Button/RoundedButton'
 import LoginActions from '../Redux/LoginRedux'
 
+import { 
+  LoginButton, AccessToken, LoginManager, 
+  GraphRequest, GraphRequestManager 
+} from 'react-native-fbsdk';
+import firebaseApp from '../Firebase'
+import * as firebase from 'firebase';
+
 class LoginScreen extends React.Component {
-  static propTypes = {
-    dispatch: PropTypes.func,
-    fetching: PropTypes.bool,
-    attemptLogin: PropTypes.func
+  constructor () {
+    super()
+    
+    this.state = {}
+    
+    this.unsubscribeAuth = null;
+    this.unsubscribeDBUser = null;
   }
-
-  isAttempting = false
-  keyboardDidShowListener = {}
-  keyboardDidHideListener = {}
-
-  constructor (props) {
-    super(props)
-    this.state = {
-      username: 'reactnative@infinite.red',
-      password: 'password',
-      visibleHeight: Metrics.screenHeight,
-      topLogo: { width: Metrics.screenWidth }
-    }
-    this.isAttempting = false
+  
+  componentDidMount () {
+    this.unsubscribeAuth = firebase.auth().onAuthStateChanged(user => {
+      // User is signed in.
+      if (user) {
+        // what do I do here?
+      }
+    });
+    
+    // this.unsubscribeDBUser = firebaseApp.aut.ref()
   }
-
-  componentWillReceiveProps (newProps) {
-    this.forceUpdate()
-    // Did the login attempt complete?
-    if (this.isAttempting && !newProps.fetching) {
-      // don't do this for testing purposes
-      // this.props.navigation.goBack() 
-      this.props.navigation.navigate('StoryScreen')
-    }
-  }
-
-  componentWillMount () {
-    // Using keyboardWillShow/Hide looks 1,000 times better, but doesn't work on Android
-    // TODO: Revisit this if Android begins to support - https://github.com/facebook/react-native/issues/3468
-    this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this.keyboardDidShow)
-    this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this.keyboardDidHide)
-  }
-
+  
   componentWillUnmount () {
-    this.keyboardDidShowListener.remove()
-    this.keyboardDidHideListener.remove()
+    if (this.unsubscribeAuth) this.unsubscribeAuth();
+    if (this.unsubscribeDBUser) this.unsubscribeDBUser()
   }
-
-  keyboardDidShow = (e) => {
-    // Animation types easeInEaseOut/linear/spring
-    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
-    let newSize = Metrics.screenHeight - e.endCoordinates.height
-    this.setState({
-      visibleHeight: newSize,
-      topLogo: {width: 100, height: 70}
-    })
+  
+  login = () => {
+    LoginManager
+      .logInWithReadPermissions(['public_profile', 'email', 'user_friends'])
+      .then(result => {
+        if (result.isCancelled) return Promise.resolve('cancelled'); 
+        console.log(`Login success with permissions: ${result.grantedPermissions.toString()}`);
+        return AccessToken.getCurrentAccessToken(); // get the access token
+      })
+      .then(data => {
+        // create a new firebase credential with the token
+        const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
+        
+        console.log('FB Oauth data!', data)
+        
+        return firebase.auth().signInWithCredential(credential); // login with credential
+      })
+      .then(currentUser => {
+        if (currentUser === 'cancelled') console.log('Login cancelled');
+        else {
+          console.warn(JSON.stringify(currentUser.toJSON())); // signed in!
+          this.props.navigation.navigate('StoryScreen')
+          
+          // firebaseApp
+        }
+      })
+      .catch(error => console.log(`Login fail with error: ${error}`));
   }
-
-  keyboardDidHide = (e) => {
-    // Animation types easeInEaseOut/linear/spring
-    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
-    this.setState({
-      visibleHeight: Metrics.screenHeight,
-      topLogo: {width: Metrics.screenWidth}
-    })
-  }
-
-  handlePressLogin = () => {
-    const { username, password } = this.state
-    this.isAttempting = true
-    // attempt a login - a saga is listening to pick it up from here.
-    this.props.attemptLogin(username, password)
-  }
-
-  handleChangeUsername = (text) => {
-    this.setState({ username: text })
-  }
-
-  handleChangePassword = (text) => {
-    this.setState({ password: text })
-  }
-
+  
+  init
+  
   render () {
-    const { username, password } = this.state
-    const { fetching } = this.props
-    const editable = !fetching
-    const textInputStyle = editable ? styles.textInput : styles.textInputReadonly
+    
     return (
-      <ScrollView contentContainerStyle={{justifyContent: 'center'}} style={[styles.container, {height: this.state.visibleHeight}]} keyboardShouldPersistTaps='always'>
-        <Image source={Images.logo} style={[styles.topLogo, this.state.topLogo]} />
-        <View style={styles.form}>
-          <View style={styles.row}>
-            <Text style={styles.rowLabel}>Username</Text>
-            <TextInput
-              ref='username'
-              style={textInputStyle}
-              value={username}
-              editable={editable}
-              keyboardType='default'
-              returnKeyType='next'
-              autoCapitalize='none'
-              autoCorrect={false}
-              onChangeText={this.handleChangeUsername}
-              underlineColorAndroid='transparent'
-              onSubmitEditing={() => this.refs.password.focus()}
-              placeholder='Username' />
-          </View>
-
-          <View style={styles.row}>
-            <Text style={styles.rowLabel}>Password</Text>
-            <TextInput
-              ref='password'
-              style={textInputStyle}
-              value={password}
-              editable={editable}
-              keyboardType='default'
-              returnKeyType='go'
-              autoCapitalize='none'
-              autoCorrect={false}
-              secureTextEntry
-              onChangeText={this.handleChangePassword}
-              underlineColorAndroid='transparent'
-              onSubmitEditing={this.handlePressLogin}
-              placeholder='Password' />
-          </View>
-
-          <View style={[styles.loginRow]}>
-            <TouchableOpacity style={styles.loginButtonWrapper} onPress={this.handlePressLogin}>
-              <View style={styles.loginButton}>
-                <Text style={styles.loginText}>Sign In</Text>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.loginButtonWrapper} onPress={() => this.props.navigation.goBack()}>
-              <View style={styles.loginButton}>
-                <Text style={styles.loginText}>Cancel</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-        </View>
-
-      </ScrollView>
+      <View>
+      <RoundedButton onPress={() => this.login()}>
+        Login with Facebook
+      </RoundedButton>
+      </View>
     )
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    fetching: state.login.fetching
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    attemptLogin: (username, password) => dispatch(LoginActions.loginRequest(username, password))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen)
+export default LoginScreen

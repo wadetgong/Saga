@@ -1,18 +1,18 @@
 import React from 'react'
-import { View, Text, Image, TouchableOpacity } from 'react-native'
+import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native'
 import { Images, Fonts } from '../Themes'
 
 
 const StoryListItem = ({ item, navigate }) => (
-<View >
-  <View style={{flex: 1, flexDirection: 'row', paddingHorizontal: 5, paddingBottom: 5}}>
+<ScrollView>
+  <View style={{flex: 1, flexDirection: 'row', paddingHorizontal: 10, paddingBottom: 5}}>
     <View style={{padding: 5}}>
       <TouchableOpacity
           onPress={() => navigate('StoryPreview', { navigate, item })}
       >
       <Image
           style={{width: 100, height: 100}}
-          source={Images.storyMain[item.name]}
+          source={Images.storyMain[item._key]}
       />
       </TouchableOpacity>
     </View>
@@ -24,7 +24,7 @@ const StoryListItem = ({ item, navigate }) => (
       <Text>Long: {item.startingLocation.long}</Text>*/}
     </View>
   </View>
-</View>
+</ScrollView>
 )
 
 

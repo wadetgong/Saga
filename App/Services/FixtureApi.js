@@ -29,5 +29,8 @@ export default {
   },
   getFriends: () => ({
       data: require('../Fixtures/Friends.json').list
+  }),
+  getSelf: () => ({
+      data: require('../Fixtures/Friends.json').list[0]
   })
 }

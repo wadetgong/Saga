@@ -18,7 +18,7 @@ const StoryPreview = ({ navigation }) => {
       <View>
       <Image
           style={{ width: '100%', height: 200 }}
-          source={Images.storyMain[item.name]}
+          source={Images.storyMain[item._key]}
       />
       </View>
       <View style={{flex: .5,
@@ -46,7 +46,7 @@ const StoryPreview = ({ navigation }) => {
             justifyContent: 'center',
             alignItems: 'flex-start',
             alignItems: 'center'}}>
-        <RoundedButton onPress={() => navigate('Friends', {story: item})}>Assemble Team</RoundedButton>
+        <RoundedButton onPress={() => navigate('JourneyFriends', {story: item})}>Assemble Team</RoundedButton>
       </View>
     </View>
   )

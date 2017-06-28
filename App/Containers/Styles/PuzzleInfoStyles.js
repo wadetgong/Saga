@@ -22,13 +22,20 @@ export default StyleSheet.create({
     marginBottom: Metrics.smallMargin
   },
   logo: {
-    height: Metrics.images.logo,
-    width: Metrics.images.logo,
-    resizeMode: 'contain',
-    marginTop: Metrics.doubleBaseMargin
+    // height: Metrics.images.logo,
+    // width: Metrics.images.logo,
+    height: 200,
+    width: '100%',
+    // resizeMode: 'contain',
+    alignItems: 'center',
   },
   centered: {
     alignItems: 'center'
   },
-
+  modalClose: {
+    position: 'absolute',
+    paddingTop: 10,
+    paddingHorizontal: 5,
+    zIndex: 10
+  },
 })
