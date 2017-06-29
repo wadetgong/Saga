@@ -1,6 +1,6 @@
 import { SET_STORY, SET_PUZZLE, SET_CHAPTER } from '../constants/actionTypes';
 
-export function setStoryRef(storyName) {
+export function setStory(storyName) {
 
   return dispatch => {
     dispatch({
@@ -10,7 +10,8 @@ export function setStoryRef(storyName) {
   }
 }
 
-export function setChapterRef(chapterId) {
+export function setChapter(chapterId) {
+  console.log('chapter being set to chapter ', chapterId)
   return dispatch => {
     dispatch({
       type: SET_CHAPTER,
@@ -20,9 +21,10 @@ export function setChapterRef(chapterId) {
 }
 
 export function setPuzzle(puzzleId) {
+  console.log('puzzle being set to puzzle ', puzzleId)
   return dispatch => {
     dispatch({
-      SET_PUZZLE,
+      type: SET_PUZZLE,
       puzzleId
     })
   }

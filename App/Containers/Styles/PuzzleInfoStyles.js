@@ -41,4 +41,10 @@ export default StyleSheet.create({
     paddingHorizontal: 5,
     zIndex: 10
   },
+  infoText: {
+    padding: 10,
+    margin: 10,
+    backgroundColor: 'beige',
+    borderRadius: 5
+  }
 })

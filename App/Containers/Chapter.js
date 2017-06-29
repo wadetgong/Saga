@@ -9,6 +9,7 @@ import RoundedButton from '../Components/Button/RoundedButton'
 import { ApplicationStyles, Images} from '../Themes'
 import geolib from 'geolib'
 import firebaseApp from '../Firebase'
+import { setChapter } from '../Redux/actions/currentStory'
 
 // Styles
 import styles from './Styles/ChapterStyles'
@@ -79,7 +80,7 @@ class Chapter extends React.Component {
   }
 
   handleClick(e) {
-    // console.log('chapter button clicked, ', e)
+    this.props.setChapter(e)
     this.setState({
       selectedChap: e
     })
@@ -163,7 +164,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-
+    setChapter: (chapterId) => { dispatch(setChapter(chapterId)) },
   }
 }
 

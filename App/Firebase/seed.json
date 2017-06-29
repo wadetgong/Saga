@@ -134,8 +134,9 @@
                 "id": 1,
                 "title": "",
                 "description": "",
+                "puzzleType": "fillBlank",
                 "type": "",
-                "answer": "",
+                "answer": "pass",
                 "location": {
                   "lat": 41.8714,
                   "long": -87.6224
@@ -154,9 +155,10 @@
               "0": {
                 "id": 1,
                 "title": "",
+                "puzzleType": "fillBlank",
                 "description": "",
                 "type": "",
-                "answer": "",
+                "answer": "pass",
                 "location": {
                   "lat": 41.8514,
                   "long": -87.6624
@@ -175,9 +177,10 @@
               "0": {
                 "id": 1,
                 "title": "",
+                "puzzleType": "fillBlank",
                 "description": "",
                 "type": "",
-                "answer": "",
+                "answer": "pass",
                 "location": {
                   "lat": 41.8724,
                   "long": -87.6234
@@ -197,9 +200,10 @@
               "0": {
                 "id": 1,
                 "title": "",
+                "puzzleType": "fillBlank",
                 "description": "",
                 "type": "",
-                "answer": "",
+                "answer": "pass",
                 "location": {
                   "lat": 41.8713,
                   "long": -87.6221
@@ -234,9 +238,10 @@
             "0": {
               "id": 1,
               "title": "",
+              "puzzleType": "fillBlank",
               "description": "",
               "type": "",
-              "answer": "",
+              "answer": "pass",
               "location": {
                 "lat": 41.8715,
                 "long": -87.6220
@@ -254,9 +259,10 @@
             "0": {
               "id": 1,
               "title": "",
+              "puzzleType": "fillBlank",
               "description": "",
               "type": "",
-              "answer": "",
+              "answer": "pass",
               "location": {
                 "lat": 41.2413,
                 "long": -87.6221
@@ -274,9 +280,10 @@
             "0": {
               "id": 1,
               "title": "",
+              "puzzleType": "fillBlank",
               "description": "",
               "type": "",
-              "answer": "",
+              "answer": "pass",
               "location": {
                 "lat": 41.0113,
                 "long": -87.6221
@@ -310,9 +317,10 @@
               "0": {
                 "id":1,
                 "title": "",
+                "puzzleType": "fillBlank",
                 "description": "",
                 "type": "",
-                "answer": "",
+                "answer": "pass",
                 "location": {
                   "lat": 41.1111,
                   "long": -87.2222
@@ -331,9 +339,10 @@
               "0": {
                 "id": 1,
                 "title": "",
+                "puzzleType": "fillBlank",
                 "description": "",
                 "type": "",
-                "answer": "",
+                "answer": "pass",
                 "location": {
                   "lat": 41.8113,
                   "long": -87.1221
