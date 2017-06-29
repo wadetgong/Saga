@@ -1,12 +1,12 @@
 import React from 'react'
-import { View, Text, Button, ScrollView } from 'react-native'
+import { View, Text, Button, ScrollView, Image } from 'react-native'
 import { connect } from 'react-redux'
 import TreasureHunt from '../Components/TreasureHunt'
 import Tracker from '../Components/Tracker'
 import ChapterDetails from '../Containers/ChapterDetails'
 import ChapterScrollBar from '../Components/ChapterScrollBar'
 import RoundedButton from '../Components/Button/RoundedButton'
-import { ApplicationStyles } from '../Themes'
+import { ApplicationStyles, Images} from '../Themes'
 import geolib from 'geolib'
 import firebaseApp from '../Firebase'
 
@@ -23,12 +23,11 @@ class Chapter extends React.Component {
     }
     // this.onLocation = this.onLocation.bind(this);
     this.handleClick = this.handleClick.bind(this);
-
-    this.storyRef = firebaseApp.database().ref('/story/batman')
+    if(this.props.storyUrl) this.storyRef = firebaseApp.database().ref(this.props.storyUrl)
   }
 
   componentDidMount() {
-    this.listenForChange(this.storyRef)
+    if(this.props.storyUrl) this.listenForChange(this.storyRef)
     // // console.log('componentDidMount in Chapter')
     // let polygon = [
     //   { latitude: 41.89, longitude: -87.66 },
@@ -50,7 +49,7 @@ class Chapter extends React.Component {
   }
 
   componentWillUnmount () {
-    this.storyRef.off('value', this.unsubscribe)
+    if(this.props.storyUrl) this.storyRef.off('value', this.unsubscribe)
   }
 
   listenForChange(ref) {
@@ -101,42 +100,64 @@ class Chapter extends React.Component {
     const storyName = this.state.story && this.state.story.title
 
     return (
-      <View style={styles.container}>
-        <View style={styles.sectionHeader}>
-          <Text style={styles.boldLabel}>{storyName} - Chapter {this.state.selectedChap}</Text>
-        </View>
-        <ScrollView style={styles.container}>
-          <View>
-            <TreasureHunt/>
-            <ChapterScrollBar
-              chapters={chapters}
-              handleClick={this.handleClick}
-              selectedChap={this.state.selectedChap}
-            />
+      this.props.storyUrl
+      ? (
+        <View style={styles.container}>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.boldLabel}>{storyName} - Chapter {this.state.selectedChap}</Text>
           </View>
-          {/*<Tracker />*/}
-         {/* <View>
-            {
-              this.state.insideRange
-              ? <Text>Inside range? Yes</Text>
-              : <Text>Inside range? No</Text>
-            }
-          </View>*/}
-          <ChapterDetails
-            screenProps={{rootNavigation: this.props.navigation}}
-            selectedChap={this.state.selectedChap}
-            chapterInfo={selectedChapInfo}
-            storyKey={'batman'}
+          <ScrollView style={styles.container}>
+            <View>
+              <TreasureHunt/>
+              <ChapterScrollBar
+                chapters={chapters}
+                handleClick={this.handleClick}
+                selectedChap={this.state.selectedChap}
+              />
+            </View>
+           {/* <View>
+              {
+                this.state.insideRange
+                ? <Text>Inside range? Yes</Text>
+                : <Text>Inside range? No</Text>
+              }
+            </View>*/}
+            <ChapterDetails
+              screenProps={{rootNavigation: this.props.navigation}}
+              selectedChap={this.state.selectedChap}
+              chapterInfo={selectedChapInfo}
+              storyKey={this.state.story.id}
+            />
+          </ScrollView>
+        </View>
+      )
+      : (
+        <View style={styles.container}>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.boldLabel}>No Current Story :(</Text>
+          </View>
+          <Image
+            style={{width: '100%', height: 200}}
+            source={Images.emptyStory}
           />
-        </ScrollView>
-      </View>
+          <View style={styles.paddedDiv}>
+            <Text>
+              You are currently not participating in a live story. Find one via the button below, or join one when your friends invite you!
+            </Text>
+          </View>
+          <RoundedButton
+            text="Browse Stories"
+            onPress={() => {this.props.navigation.navigate('Stories')}}
+          />
+        </View>
+      )
     )
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-
+    storyUrl: state.currentStory.storyUrl,
   }
 }
 

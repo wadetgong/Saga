@@ -13,7 +13,7 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
     case UPDATE_LOCATION:
       newState.location = action.location
-      break;
+      break
     default:
       return state;
   }

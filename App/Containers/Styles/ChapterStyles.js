@@ -21,5 +21,8 @@ export default StyleSheet.create({
     textAlign: 'center',
     marginBottom: Metrics.smallMargin
   },
+  paddedDiv: {
+    padding: 15,
+  }
 
 })

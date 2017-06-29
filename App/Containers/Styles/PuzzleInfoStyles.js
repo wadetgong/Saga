@@ -29,8 +29,11 @@ export default StyleSheet.create({
     // resizeMode: 'contain',
     alignItems: 'center',
   },
-  centered: {
-    alignItems: 'center'
+  centeredOverlay: {
+    alignItems: 'center',
+    backgroundColor: 'white',
+    opacity: .5,
+    position: 'absolute'
   },
   modalClose: {
     position: 'absolute',

@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text, Modal } from 'react-native'
+import { connect } from 'react-redux'
 import FullButton from '../Components/Button/FullButton'
 import PuzzleInfo from '../Containers/PuzzleInfo'
 
@@ -66,4 +67,19 @@ class ChapterDetails extends React.Component {
   }
 }
 
-export default ChapterDetails
+// export default ChapterDetails
+
+const mapStateToProps = (state) => {
+  return {
+    chapterRef: state.currentStory.chapterRef,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChapterDetails)
+

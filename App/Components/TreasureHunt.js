@@ -120,7 +120,6 @@ class TreasureHunt extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('state in TreasureHunt mstp', state)
   return {
     // ...redux state to props here
     longitude: state.geoLocation.location.longitude,

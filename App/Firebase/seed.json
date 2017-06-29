@@ -111,6 +111,7 @@
   },
   "story": {
     "artThief": {
+      "id": "artThief",
   		"title": "Art Thief",
   		"startingLocation": {
   			"lat": 41.8796,
@@ -122,78 +123,87 @@
       "allowedHints": 4,
       "nChapters": 4,
       "chapters": {
-          "0": {},
-          "1": {
+          "0": {
+            "id": 1,
+            "enabled": true,
             "title": "art thief chapter 1",
             "description": "waha",
             "locationHint": "sikes",
-            "location": {
-              "lat": 41.8714,
-              "long": -87.6224
-            },
             "puzzles": {
-              "1": {
+              "0": {
+                "id": 1,
                 "title": "",
                 "description": "",
                 "type": "",
-                "answer": ""
+                "answer": "",
+                "location": {
+                  "lat": 41.8714,
+                  "long": -87.6224
+                }
+              }
+            },
+            "locationPuzzle": "location puzzle",
+            "nPuzzles": 1
+          },
+          "1": {
+            "id": 2,
+            "title": "art thief chapter 2",
+            "description": "waha",
+            "locationHint": "sikes",
+            "puzzles": {
+              "0": {
+                "id": 1,
+                "title": "",
+                "description": "",
+                "type": "",
+                "answer": "",
+                "location": {
+                  "lat": 41.8514,
+                  "long": -87.6624
+                }
               }
             },
             "locationPuzzle": "location puzzle",
             "nPuzzles": 1
           },
           "2": {
-            "title": "art thief chapter 2",
-            "description": "waha",
-            "locationHint": "sikes",
-            "location": {
-              "lat": 41.8514,
-              "long": -87.6624
-            },
-            "puzzles": {
-              "1": {
-                "title": "",
-                "description": "",
-                "type": "",
-                "answer": ""
-              }
-            },
-            "locationPuzzle": "location puzzle",
-            "nPuzzles": 1
-          },
-          "3": {
+            "id": 3,
             "title": "art thief chapter 3",
             "description": "waha",
             "locationHint": "sikes",
-            "location": {
-              "lat": 41.8724,
-              "long": -87.6234
-            },
             "puzzles": {
-              "1": {
+              "0": {
+                "id": 1,
                 "title": "",
                 "description": "",
                 "type": "",
-                "answer": ""
+                "answer": "",
+                "location": {
+                  "lat": 41.8724,
+                  "long": -87.6234
+                }
               }
             },
             "locationPuzzle": "location puzzle",
             "nPuzzles": 1
+
           },
-          "4": {
+          "3": {
+            "id": 4,
             "title": "art thief chapter 4",
             "description": "waha",
             "locationHint": "sikes",
-            "location": {
-              "lat": 41.8713,
-              "long": -87.6221
-            },
             "puzzles": {
-              "1": {
+              "0": {
+                "id": 1,
                 "title": "",
                 "description": "",
                 "type": "",
-                "answer": ""
+                "answer": "",
+                "location": {
+                  "lat": 41.8713,
+                  "long": -87.6221
+                }
               }
             },
             "locationPuzzle": "location puzzle",
@@ -202,6 +212,7 @@
       }
     },
     "batman": {
+      "id": "batman",
   		"title": "Batman",
   		"startingLocation": {
   			"lat": 41.8885,
@@ -215,6 +226,7 @@
       "chapters": {
         "0": {
           "id": 1,
+          "enabled": true,
           "title": "batman chapter 1",
           "description": "waha",
           "locationHint": "sikes",
@@ -276,6 +288,7 @@
       }
     },
       "woodElves": {
+        "id": "woodElves",
     		"title": "Woodelves",
     		"startingLocation": {
     			"lat": 41.8972,
@@ -287,40 +300,44 @@
         "allowedHints": 2,
         "nChapters": 2,
         "chapters": {
-          "0": {},
-          "1": {
+          "0": {
+            "id": 1,
+            "enabled": true,
             "title": "wood elves chapter 1",
             "description": "waha",
             "locationHint": "sikes",
-            "location": {
-              "lat": 41.1111,
-              "long": -87.2222
-            },
             "puzzles": {
-              "1": {
+              "0": {
+                "id":1,
                 "title": "",
                 "description": "",
                 "type": "",
-                "answer": ""
+                "answer": "",
+                "location": {
+                  "lat": 41.1111,
+                  "long": -87.2222
+                }
               }
             },
             "locationPuzzle": "location puzzle",
             "nPuzzles": 1
           },
-          "2": {
+          "1": {
+            "id":2,
             "title": "wood elves chapter 2",
             "description": "waha",
             "locationHint": "sikes",
-            "location": {
-              "lat": 41.8113,
-              "long": -87.1221
-            },
             "puzzles": {
-              "1": {
+              "0": {
+                "id": 1,
                 "title": "",
                 "description": "",
                 "type": "",
-                "answer": ""
+                "answer": "",
+                "location": {
+                  "lat": 41.8113,
+                  "long": -87.1221
+                }
               }
             },
             "locationPuzzle": "location puzzle",

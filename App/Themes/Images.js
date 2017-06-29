@@ -26,6 +26,7 @@ const images = {
       batman: require('../Images/Story/batman/riddler.jpg'),
       woodElves: require('../Images/Story/woodElves/Main.jpg'),
   },
+  emptyStory: require('../Images/emptyStory.jpeg'),
 }
 
 export default images

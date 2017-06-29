@@ -32,9 +32,9 @@ class PuzzleInfo extends React.Component {
             <Image source={Images.closeButton} />
           </TouchableOpacity>
         </View>
-        <View style={{backgroundColor: 'blue'}}>
+        <View>
           <Image source={Images.storyMain[this.props.storyKey]} style={styles.logo}/>
-          <View style={[styles.centered, {backgroundColor: 'white',opacity: .5, position: 'absolute'}]}>
+          <View style={styles.centeredOverlay}>
             <Image source={Images.puzzle} style={[styles.logo,{resizeMode: 'contain'}]} />
           </View>
         </View>
