@@ -9,6 +9,7 @@ export default () => {
     github: require('./GithubRedux').reducer,
     login: require('./LoginRedux').reducer,
     search: require('./SearchRedux').reducer,
+    friends: require('./FriendsRedux').reducer,
     augmented
   })
 

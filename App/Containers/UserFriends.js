@@ -2,7 +2,9 @@ import React from 'react'
 import { TabNavigator } from 'react-navigation'
 import { View, Text, Image } from 'react-native'
 import { Images } from '../Themes'
-import API from '../Services/FixtureApi'
+
+import { connect } from 'react-redux'
+import { setMyFriendsAndUsers } from '../Redux/FriendsRedux'
 
 import FindFriends from './FindFriends'
 import PendingFriends from './PendingFriends'
@@ -11,6 +13,10 @@ import styles from './Styles/UserFriendsStyles'
 import { Colors } from '../Themes'
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
 
+import firebaseApp from '../Firebase'
+
+
+// not sure the filtering works yet since there's still no friends
 
 const FriendStack = TabNavigator({
   FindFriends: {
@@ -42,7 +48,7 @@ const FriendStack = TabNavigator({
   //   },
   // },
 }, {
-  initialRouteName: 'PendingFriends',
+  initialRouteName: 'FindFriends',
   tabBarPosition: 'top',
   tabBarOptions: {
     tintColor: Colors.tintColor,
@@ -51,10 +57,53 @@ const FriendStack = TabNavigator({
   },
 })
 
-export default class UserProfile extends React.Component {
-  render() {
-    const user = API.getFriends().data;
 
+// currently hardcoding the uid pretending we are already logged in :D :D
+// tabnavigator renders UserProfile before user is logged in
+// as we have it on all pages
+// when we reorder the tabnavigator undo this hardcode
+
+class UserProfile extends React.Component {
+  constructor() {
+    super()
+    // unsubscribing
+    this.unsubscribeMyFriendsRef = null
+    this.unsubscribeUsers = null
+    
+    this.uid = 'bDvfVQh8YPPrjckTMa0L06uC6N52' // firebaseApp.auth().currentUser.uid
+  }
+
+  componentDidMount () {
+    const uid = this.uid
+    
+    const myFriendsRef = firebaseApp.database().ref('/users/' + uid + '/friends/')
+    const usersRef = firebaseApp.database().ref('/users')
+    this.getMyFriendsAndUsers(myFriendsRef, usersRef)
+  }
+  
+  componentWillUnmount () {
+    if (this.unsubscribeMyFriendsRef) this.unsubscribeMyFriendsRef();
+    if (this.unsubscribeUsers) this.unsubscribeUsers();
+  }
+  
+  // listener on my friends
+  getMyFriendsAndUsers (myFriendsRef, usersRef) {
+    const uid = this.uid
+    
+    // get myFriends
+    this.unsubscribeMyFriendsRef = myFriendsRef
+      .on('value', fsnap => {
+        const myFriends = fsnap.val();
+        // get users
+        usersRef // return
+          .once('value')
+          .then(usnap => usnap.val())
+          .then(users => this.props.setMyFriendsAndUsers(uid, myFriends, users))
+          .catch(err => console.log('ERROR USERFRIENDS.getMyFriendsAndUsers', err))
+      })
+  }
+
+  render() {
     return (
       <View style={styles.container}>
         <View style={styles.sectionHeader}>
@@ -66,4 +115,13 @@ export default class UserProfile extends React.Component {
       </View>
     )
   }
+  
 }
+
+const mapState = state => ({})
+const mapDispatch = {
+  setMyFriendsAndUsers
+}
+
+export default connect(mapState, mapDispatch)(UserProfile)
+
