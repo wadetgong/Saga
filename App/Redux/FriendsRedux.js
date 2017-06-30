@@ -24,7 +24,6 @@ const initialState = {
 }
 
 const friendObjToArr = (obj, friendsList) => {
-  console.log(obj, friendsList)
   if (typeof obj != 'object') return [];
   return Object.keys(obj).map(uid => friendsList[uid])
 }
@@ -53,8 +52,7 @@ export const reducer = (state=initialState, action) => {
       newState.list = friendObjToArr(newState.myFriends.list, fList)
       newState.sent = friendObjToArr(newState.myFriends.sent, fList)
       newState.recieved = friendObjToArr(newState.myFriends.recieved, fList)
-      
-      console.log('NEWSTATE', newState)
+
       break;
     case (SET_MYFRIENDS):      
       const myFriends = action.myFriends
@@ -76,7 +74,6 @@ export const reducer = (state=initialState, action) => {
     default:
       return state
   }
-  console.log('newState', newState)
   return newState
 }
 

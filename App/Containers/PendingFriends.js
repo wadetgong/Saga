@@ -8,21 +8,6 @@ import { Colors } from '../Themes'
 
 
 const PendingFriends = ({ recieved, sent }) => {
-  // let pending = [], approve = [];
-  // if (recieved) {
-  //   for (let key in recieved)
-  //     if (typeof friends[key] == 'object')
-  //       pending.push(Object.assign(friends[key], { uid: key }))
-  // }
-  //
-  // if (sent) {
-  //   for (let key in sent) {
-  //     if (typeof friends[key] == 'object')
-  //       approve.push(Object.assign(friends[key], { uid: key }))
-  //   }
-  // }
-  
-  console.log('PENDING FRIENDS', recieved, sent)
   
   let pendingFriends = new ListView
     .DataSource({rowHasChanged : (r1, r2) => r1 != r2})
