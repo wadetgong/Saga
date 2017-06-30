@@ -6,9 +6,7 @@ import PendingFriendRow from '../Components/PendingFriendRow'
 import styles from './Styles/JourneyFriendsStyles'
 import { Colors } from '../Themes'
 
-
-const PendingFriends = ({ received, sent }) => {
-  
+const PendingFriends = ({ recieved, sent }) => {
   let pendingFriends = new ListView
     .DataSource({rowHasChanged : (r1, r2) => r1 != r2})
     .cloneWithRows(sent)
@@ -28,6 +26,7 @@ const PendingFriends = ({ received, sent }) => {
         <ListView
           dataSource={pendingFriends}
           removeClippedSubviews={false}
+          enableEmptySections={true}
           renderRow={(user) => <PendingFriendRow user={user} />}
         />
         <View style={{borderBottomWidth: 1, borderColor: 'gray', marginHorizontal: '25%', justifyContent: 'center', marginTop: 20, marginBottom: 10}}>
@@ -38,6 +37,7 @@ const PendingFriends = ({ received, sent }) => {
         <ListView
           dataSource={approveFriends}
           removeClippedSubviews={false}
+          enableEmptySections={true}
           renderRow={(user) => <ApproveFriendRow user={user} />}
         />
       </ScrollView>

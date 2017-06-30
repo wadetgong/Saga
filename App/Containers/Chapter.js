@@ -37,10 +37,7 @@ class Chapter extends React.Component {
     //   { latitude: 41.92, longitude:  -87.66},
     //   { latitude: 41.89, longitude: -87.66 } // last point has to be same as first point
     // ]
-
-
     //   // console.log('long lat being set: ', point)
-
       // this.setState({
       //   latitude: crd.latitude,
       //   longitude: crd.longitude,
@@ -62,23 +59,6 @@ class Chapter extends React.Component {
     })
   }
 
-  onLocation(location) {
-    // //My location passing: 41.90, -87.67
-    // //My location failing 41.88, -87.67
-    // let polygon = [
-    //   { latitude: 41.89, longitude: -87.66 },
-    //   { latitude: 41.89, longitude: -87.68},
-    //   { latitude: 41.92, longitude:  -87.68},
-    //   { latitude: 41.92, longitude:  -87.66},
-    //   { latitude: 41.89, longitude: -87.66 } // last point has to be same as first point
-    // ]
-
-    // let point = {
-    //   latitude: location.coords.latitude,
-    //   longitude: location.coords.longitude,
-    // }
-  }
-
   handleClick(e) {
     this.props.setChapter(e)
     this.setState({
@@ -87,15 +67,6 @@ class Chapter extends React.Component {
   }
 
   render () {
-    // const chapters = [
-    //   {id: 1, puzzles: [{id: 1}, {id: 2}]},
-    //   {id: 2, puzzles: [{id: 3}]},
-    //   {id: 3, puzzles: [{id: 4},{id: 5},{id: 6}]},
-    //   {id: 4, puzzles: [{id: 7},{id: 8},{id: 9}, {id: 10}]},
-    //   {id: 5, puzzles: [{id: 11},{id: 12},{id: 13}]},
-    //   {id: 6, puzzles: [{id: 14},{id: 15}]}
-    // ]
-
     const chapters = this.state.story.chapters || []
     const selectedChapInfo = (chapters && chapters[this.state.selectedChap-1]) || 0
     const storyName = this.state.story && this.state.story.title
@@ -123,12 +94,14 @@ class Chapter extends React.Component {
                 : <Text>Inside range? No</Text>
               }
             </View>*/}
-            <ChapterDetails
-              screenProps={{rootNavigation: this.props.navigation}}
-              selectedChap={this.state.selectedChap}
-              chapterInfo={selectedChapInfo}
-              storyKey={this.state.story.id}
-            />
+            <View>
+              <ChapterDetails
+                screenProps={{rootNavigation: this.props.navigation}}
+                selectedChap={this.state.selectedChap}
+                chapterInfo={selectedChapInfo}
+                storyKey={this.state.story.id}
+              />
+            </View>
           </ScrollView>
         </View>
       )

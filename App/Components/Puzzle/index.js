@@ -1,9 +1,10 @@
 import React from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, Modal } from 'react-native'
 import { connect } from 'react-redux'
 import firebaseApp from '../../Firebase'
 import { Images, Fonts } from '../../Themes'
 import FillBlank from './FillBlank'
+import TreasureChest from './TreasureChest'
 // import SimpleFin from './FillBlank'
 
 class Puzzle extends React.Component {
@@ -12,8 +13,11 @@ class Puzzle extends React.Component {
     this.state = {
       status: 'Pending',
       attempts: 0,
+      showModal: false,
     }
+
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.closeCameraModal = this.closeCameraModal.bind(this)
     if(this.props.puzzleUrl) this.puzzleRef = firebaseApp.database().ref(this.props.puzzleUrl)
   }
 
@@ -28,7 +32,7 @@ class Puzzle extends React.Component {
           attempts: newAttempts,
           status: 'Complete',
         })
-        this.props.toggle()
+        // this.props.close()
       } else if (newAttempts === this.props.puzzle.maxAttempts) {
         this.setState({
           attempts: newAttempts,
@@ -59,6 +63,18 @@ class Puzzle extends React.Component {
     })
   }
 
+  openCameraModal() {
+    this.setState({
+      showModal: true,
+    })
+  }
+  closeCameraModal() {
+    console.log('closing the camera modal');
+    this.setState({
+      showModal: false,
+    })
+  }
+
   getPuzzleObj(puzzle) {
     switch(puzzle.puzzleType) {
       case 'fillBlank':
@@ -72,10 +88,24 @@ class Puzzle extends React.Component {
         return (
           <View>
             <TouchableOpacity
-              onPress={() => {}}
+              onPress={() => {
+                this.openCameraModal()
+              }}
               style={{}}>
               <Text>Click to launch camera</Text>
             </TouchableOpacity>
+            <Modal
+              animationType={"slide"}
+              visible={this.state.showModal}
+              onRequestClose={this.closeCameraModal}>
+              <TreasureChest
+                screenProps={{ close: this.closeCameraModal}}
+                // puzzleInfo={this.state.selectedPuzzle}
+                storyKey={this.props.storyKey}
+                handleSubmit={this.handleSubmit}
+              />
+            </Modal>
+
           </View>
         )
         break;
@@ -87,7 +117,7 @@ class Puzzle extends React.Component {
   render() {
     console.log('Puzzle props, ', this.props)
     return (
-      <View style={{backgroundColor: 'green'}}>
+      <View style={{backgroundColor: 'green', flex: 1}}>
         <Text>Status: {this.state.status}</Text>
         <Text>Attempts Allowed: {this.props.puzzle.maxAttempts}</Text>
         <Text>Attempts: {this.state.attempts}</Text>

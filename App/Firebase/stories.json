@@ -133,7 +133,7 @@
             "title": "",
             "description": "",
             "maxAttempts": 4,
-            "puzzleType": "fillBlank",
+            "puzzleType": "simpleFind",
             "type": "",
             "answer": "pass",
             "location": {
