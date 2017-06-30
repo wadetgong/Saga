@@ -10,7 +10,7 @@ class FriendUserRow extends React.Component {
     super()
     
     this.addFriend = this.addFriend.bind(this)
-    this.uid = 'bDvfVQh8YPPrjckTMa0L06uC6N52' // firebaseApp.auth().currentUser.uid
+    this.uid = firebaseApp.auth().currentUser.uid
   }
   
   componentDidMount () {
@@ -18,15 +18,10 @@ class FriendUserRow extends React.Component {
   }
 
   addFriend (fid) {
-    const uid = this.uid
-    
-    console.log('FriendUserRow', fid)
-    const path1 = uid + '/friends/sent/' + fid
-    const path2 = fid + '/friends/recieved/' + uid
-    this.usersRef.update({
-      [path1] : true,
-      [path2] : true
-    })
+    const uid = this.uid,
+          path1 = uid + '/friends/sent/' + fid,
+          path2 = fid + '/friends/received/' + uid;
+    this.usersRef.update({ [path1] : true, [path2] : true })
   }
   
   render() {

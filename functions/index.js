@@ -16,7 +16,7 @@ exports.initUser = functions.auth.user()
         list: false
       },
       journeys: false,
-      profilePicture: photoURL;
+      profilePicture: photoURL,
       username: false,
     }
 

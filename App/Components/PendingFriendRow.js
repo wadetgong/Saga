@@ -4,7 +4,10 @@ import { Images } from '../Themes'
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
 import { Fonts, Colors, Metrics } from '../Themes/'
 
-const PendingFriendRow = ({ user }) => (
+import firebaseApp from '../Firebase'
+
+
+const PendingFriendRow = ({ user, cancel }) => (
     <View style={{flex: 1,
       flexDirection: 'row',
       padding: 5,
@@ -24,15 +27,18 @@ const PendingFriendRow = ({ user }) => (
             paddingHorizontal: 10,}}
         >
           <Text><Text style={{fontWeight: 'bold'}}>{user.name}</Text> ({user.username})</Text>
-          <Text style={{fontStyle: 'italic'}}>Date Requested: 6/22/2017</Text>
-          <TouchableOpacity style={{
-            borderRadius: 5,
-            marginVertical: 5,
-            paddingHorizontal: 10,
-            paddingVertical: 5,
-            backgroundColor: Colors.fire,
-            justifyContent: 'center',
-            alignItems: 'center'}}
+          {/*<Text style={{fontStyle: 'italic'}}>Date Requested: 6/22/2017</Text>*/}
+          <TouchableOpacity 
+            onPress={() => cancel(user.uid)}
+            style={{
+              borderRadius: 5,
+              marginVertical: 5,
+              paddingHorizontal: 10,
+              paddingVertical: 5,
+              backgroundColor: Colors.fire,
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}
           >
             <Text style={{
               color: Colors.snow,
@@ -43,5 +49,30 @@ const PendingFriendRow = ({ user }) => (
     </View>
 )
 
+class PendingFriendClass extends React.Component {
+  constructor () {
+    super()
+    
+    this.uid = firebaseApp.auth().currentUser.uid
+    
+    this.cancel = this.cancel.bind(this)
+  }
+  
+  cancel (fid) {
+    const uid = this.uid,
+          path1 = '/users/' + uid + '/friends/sent/' + fid,
+          path2 = '/users/' + fid + '/friends/received/' + uid;
+    firebaseApp.database().ref(path1).remove();
+    firebaseApp.database().ref(path2).remove();
+  }
+  
+  render () {
+    const { user } = this.props;
+    return <PendingFriendRow 
+      user={user} 
+      cancel={this.cancel}
+    />
+  }
+}
 
-export default PendingFriendRow
+export default PendingFriendClass

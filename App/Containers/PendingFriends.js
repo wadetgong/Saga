@@ -6,16 +6,14 @@ import PendingFriendRow from '../Components/PendingFriendRow'
 import styles from './Styles/JourneyFriendsStyles'
 import { Colors } from '../Themes'
 
-
 const PendingFriends = ({ recieved, sent }) => {
-
   let pendingFriends = new ListView
     .DataSource({rowHasChanged : (r1, r2) => r1 != r2})
-    .cloneWithRows(recieved)
+    .cloneWithRows(sent)
 
   let approveFriends = new ListView
     .DataSource({rowHasChanged : (r1, r2) => r1 != r2})
-    .cloneWithRows(sent)
+    .cloneWithRows(received)
 
   return (
     <View style={[styles.container, {paddingTop: 10}]}>
@@ -49,7 +47,7 @@ const PendingFriends = ({ recieved, sent }) => {
 
 
 const mapState = state => ({
-  recieved : state.friends.recieved,
+  received : state.friends.received,
   sent : state.friends.sent,
 })
 const mapDispatch = {}

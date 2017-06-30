@@ -5,6 +5,8 @@ import styles from './Styles/LoginScreenStyles'
 import {Images, Metrics} from '../Themes'
 import RoundedButton from '../Components/Button/RoundedButton'
 import LoginActions from '../Redux/LoginRedux'
+import RootContainer from './RootContainer'
+
 
 import { 
   LoginButton, AccessToken, LoginManager, 
@@ -44,16 +46,16 @@ class LoginScreen extends React.Component {
       .logInWithReadPermissions(['public_profile', 'email', 'user_friends'])
       .then(result => {
         if (result.isCancelled) return Promise.resolve('cancelled'); 
-        console.log(`Login success with permissions: ${result.grantedPermissions.toString()}`);
+        console.log(`Permissions: ${result.grantedPermissions.toString()}`);
         return AccessToken.getCurrentAccessToken(); // get the access token
       })
       .then(data => {
         // create a new firebase credential with the token
-        const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
-        
+        const credential = firebase.auth
+          .FacebookAuthProvider.credential(data.accessToken);
         console.log('FB Oauth data!', data)
-        
-        return firebase.auth().signInWithCredential(credential); // login with credential
+        // login with credential
+        return firebase.auth().signInWithCredential(credential); 
       })
       .then(currentUser => {
         if (currentUser === 'cancelled') console.log('Login cancelled');
@@ -67,15 +69,12 @@ class LoginScreen extends React.Component {
       .catch(error => console.log(`Login fail with error: ${error}`));
   }
   
-  init
-  
   render () {
-    
     return (
       <View>
-      <RoundedButton onPress={() => this.login()}>
-        Login with Facebook
-      </RoundedButton>
+        <RoundedButton onPress={() => this.login()}>
+          Login with Facebook
+        </RoundedButton>
       </View>
     )
   }

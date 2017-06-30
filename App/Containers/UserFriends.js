@@ -70,10 +70,11 @@ class UserProfile extends React.Component {
     this.unsubscribeMyFriendsRef = null
     this.unsubscribeUsers = null
     
-    this.uid = 'bDvfVQh8YPPrjckTMa0L06uC6N52' // firebaseApp.auth().currentUser.uid
+    this.uid = firebaseApp.auth().currentUser.uid
   }
 
   componentDidMount () {
+    console.log('Component did mount in UserFriends')
     const uid = this.uid
     
     const myFriendsRef = firebaseApp.database().ref('/users/' + uid + '/friends/')

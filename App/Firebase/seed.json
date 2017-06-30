@@ -94,6 +94,378 @@
     }
   },
   "story" : {
+    "artThief" : {
+      "allowedFails" : 6,
+      "allowedHints" : 4,
+      "chapters" : [ {
+        "description" : "waha",
+        "enabled" : true,
+        "id" : 1,
+        "locationHint" : "sikes",
+        "locationPuzzle" : "location puzzle",
+        "nPuzzles" : 1,
+        "puzzles" : [ {
+          "answer" : "pass",
+          "description" : "",
+          "id" : 1,
+          "location" : {
+            "lat" : 41.8714,
+            "long" : -87.6224
+          },
+          "maxAttempts" : 4,
+          "puzzleType" : "fillBlank",
+          "title" : "",
+          "type" : ""
+        } ],
+        "title" : "art thief chapter 1"
+      }, {
+        "description" : "waha",
+        "id" : 2,
+        "locationHint" : "sikes",
+        "locationPuzzle" : "location puzzle",
+        "nPuzzles" : 1,
+        "puzzles" : [ {
+          "answer" : "pass",
+          "description" : "",
+          "id" : 1,
+          "location" : {
+            "lat" : 41.8514,
+            "long" : -87.6624
+          },
+          "maxAttempts" : 4,
+          "puzzleType" : "fillBlank",
+          "title" : "",
+          "type" : ""
+        } ],
+        "title" : "art thief chapter 2"
+      }, {
+        "description" : "waha",
+        "id" : 3,
+        "locationHint" : "sikes",
+        "locationPuzzle" : "location puzzle",
+        "nPuzzles" : 1,
+        "puzzles" : [ {
+          "answer" : "pass",
+          "description" : "",
+          "id" : 1,
+          "location" : {
+            "lat" : 41.8724,
+            "long" : -87.6234
+          },
+          "maxAttempts" : 4,
+          "puzzleType" : "fillBlank",
+          "title" : "",
+          "type" : ""
+        } ],
+        "title" : "art thief chapter 3"
+      }, {
+        "description" : "waha",
+        "id" : 4,
+        "locationHint" : "sikes",
+        "locationPuzzle" : "location puzzle",
+        "nPuzzles" : 1,
+        "puzzles" : [ {
+          "answer" : "pass",
+          "description" : "",
+          "id" : 1,
+          "location" : {
+            "lat" : 41.8713,
+            "long" : -87.6221
+          },
+          "maxAttempts" : 4,
+          "puzzleType" : "fillBlank",
+          "title" : "",
+          "type" : ""
+        } ],
+        "title" : "art thief chapter 4"
+      } ],
+      "description" : "Steal stuff from museums. Steal stuff from museums. Steal stuff from museums.",
+      "estimatedTime" : 3.5,
+      "id" : "artThief",
+      "nChapters" : 4,
+      "startingLocation" : {
+        "lat" : 41.8796,
+        "long" : -87.6237
+      },
+      "title" : "Art Thief"
+    },
+    "batman" : {
+      "allowedFails" : 2,
+      "allowedHints" : 10,
+      "chapters" : [ {
+        "description" : "waha",
+        "enabled" : true,
+        "id" : 1,
+        "locationHint" : "sikes",
+        "nPuzzles" : 1,
+        "puzzles" : [ {
+          "answer" : "pass",
+          "description" : "",
+          "id" : 1,
+          "location" : {
+            "lat" : 41.8715,
+            "long" : -87.622
+          },
+          "maxAttempts" : 4,
+          "puzzleType" : "fillBlank",
+          "title" : "",
+          "type" : ""
+        } ],
+        "title" : "batman chapter 1"
+      }, {
+        "description" : "waha",
+        "id" : 2,
+        "locationHint" : "sikes",
+        "nPuzzles" : 1,
+        "puzzles" : [ {
+          "answer" : "pass",
+          "description" : "",
+          "id" : 1,
+          "location" : {
+            "lat" : 41.2413,
+            "long" : -87.6221
+          },
+          "maxAttempts" : 4,
+          "puzzleType" : "fillBlank",
+          "title" : "",
+          "type" : ""
+        } ],
+        "title" : "batman chapter 2"
+      }, {
+        "description" : "waha",
+        "id" : 3,
+        "locationHint" : "sikes",
+        "nPuzzles" : 1,
+        "puzzles" : [ {
+          "answer" : "pass",
+          "description" : "",
+          "id" : 1,
+          "location" : {
+            "lat" : 41.0113,
+            "long" : -87.6221
+          },
+          "maxAttempts" : 4,
+          "puzzleType" : "fillBlank",
+          "title" : "",
+          "type" : ""
+        } ],
+        "title" : "batman chapter 3"
+      } ],
+      "description" : "Catch bad guys",
+      "estimatedTime" : 5.5,
+      "id" : "batman",
+      "nChapters" : 3,
+      "startingLocation" : {
+        "lat" : 41.8885,
+        "long" : -87.6354
+      },
+      "title" : "Batman"
+    },
+    "woodElves" : {
+      "allowedFails" : 7,
+      "allowedHints" : 2,
+      "chapters" : [ {
+        "description" : "waha",
+        "enabled" : true,
+        "id" : 1,
+        "locationHint" : "sikes",
+        "locationPuzzle" : "location puzzle",
+        "nPuzzles" : 1,
+        "puzzles" : [ {
+          "answer" : "pass",
+          "description" : "",
+          "id" : 1,
+          "location" : {
+            "lat" : 41.1111,
+            "long" : -87.2222
+          },
+          "maxAttempts" : 4,
+          "puzzleType" : "fillBlank",
+          "title" : "",
+          "type" : ""
+        } ],
+        "title" : "wood elves chapter 1"
+      }, {
+        "description" : "waha",
+        "id" : 2,
+        "locationHint" : "sikes",
+        "locationPuzzle" : "location puzzle",
+        "nPuzzles" : 1,
+        "puzzles" : [ {
+          "answer" : "pass",
+          "description" : "",
+          "id" : 1,
+          "location" : {
+            "lat" : 41.8113,
+            "long" : -87.1221
+          },
+          "maxAttempts" : 4,
+          "puzzleType" : "fillBlank",
+          "title" : "",
+          "type" : ""
+        } ],
+        "title" : "wood elves chapter 2"
+      } ],
+      "description" : "Fairies are everywhere",
+      "estimatedTime" : 1.5,
+      "id" : "woodElves",
+      "nChapters" : 2,
+      "startingLocation" : {
+        "lat" : 41.8972,
+        "long" : -87.6612
+      },
+      "title" : "Woodelves"
+    }
+  },
+  "users" : {
+    "RJoEvQ0UutTEM3zQ3n2b2ppNFDx2" : {
+      "displayName" : "Wade Gong",
+      "email" : "wadetgong@gmail.com",
+      "fb_thumbnail" : "https://scontent.xx.fbcdn.net/v/t1.0-1/s100x100/1916513_3036695367700_7204003449187997100_n.jpg?oh=658679fa0522f6a3401ab544fbff40cd&oe=59D5CAFE",
+      "friends" : {
+        "list" : false,
+        "received" : false,
+        "sent" : false
+      },
+      "journeys" : false,
+      "profilePicture" : "default.jpg",
+      "username" : false
+    },
+    "bDvfVQh8YPPrjckTMa0L06uC6N52" : {
+      "displayName" : "Monica He",
+      "email" : "mhhe@caltech.edu",
+      "fb_thumbnail" : "https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/11210392_10155381783731632_799712498863928008_n.jpg?oh=22b6b9cca81aaadd10c94f947ec82562&oe=59D02930",
+      "friends" : {
+        "list" : false,
+        "received" : false,
+        "sent" : {
+          "ehacinom" : true,
+          "gehrj" : true,
+          "hurlabob" : true,
+          "jacobss" : true
+        }
+      },
+      "journeys" : false,
+      "profilePicture" : "default.jpg",
+      "username" : false
+    },
+    "ehacinom" : {
+      "email" : "monica@gmail.com",
+      "friends" : {
+        "list" : {
+          "gehrj" : true,
+          "wadetgong" : true
+        },
+        "received" : {
+          "bDvfVQh8YPPrjckTMa0L06uC6N52" : true
+        },
+        "sent" : false
+      },
+      "journeys" : [ true, true, null, true ],
+      "name" : "Monica He",
+      "profilePicture" : "https://avatars2.githubusercontent.com/u/8092859?v=3&s=400",
+      "username" : "ehacinom"
+    },
+    "gehrj" : {
+      "email" : "justin@gmail.com",
+      "friends" : {
+        "list" : {
+          "ehacinom" : true,
+          "wadetgong" : true
+        },
+        "received" : {
+          "bDvfVQh8YPPrjckTMa0L06uC6N52" : true
+        },
+        "sent" : false
+      },
+      "journeys" : [ true, null, null, true ],
+      "name" : "Justin Gehr",
+      "profilePicture" : "https://avatars1.githubusercontent.com/u/26335236?v=3&s=400",
+      "username" : "gehrj"
+    },
+    "hurlabob" : {
+      "email" : "bob@gmail.com",
+      "friends" : {
+        "list" : {
+          "jacobss" : true,
+          "snowwhite" : true
+        },
+        "received" : {
+          "bDvfVQh8YPPrjckTMa0L06uC6N52" : true
+        },
+        "sent" : false
+      },
+      "journeys" : [ null, true, true ],
+      "name" : "Bob Smith",
+      "profilePicture" : "https://avatars3.githubusercontent.com/u/7991556?v=3&s=400",
+      "username" : "hurlabob"
+    },
+    "jacobss" : {
+      "email" : "sarah@gmail.com",
+      "friends" : {
+        "list" : {
+          "hurlabob" : true,
+          "snowwhite" : true
+        },
+        "received" : {
+          "bDvfVQh8YPPrjckTMa0L06uC6N52" : true
+        },
+        "sent" : false
+      },
+      "journeys" : [ null, true, true ],
+      "name" : "Sarah Jacobs",
+      "profilePicture" : "https://avatars3.githubusercontent.com/u/7991556?v=3&s=400",
+      "username" : "jacobss"
+    },
+    "snowwhite" : {
+      "email" : "steve@gmail.com",
+      "friends" : {
+        "list" : {
+          "hurlabob" : true,
+          "jacobss" : true,
+          "wadetgong" : true
+        },
+        "received" : false,
+        "sent" : false
+      },
+      "journeys" : [ true, true ],
+      "name" : "Steve White",
+      "profilePicture" : "https://avatars3.githubusercontent.com/u/7991556?v=3&s=400",
+      "username" : "snowwhite"
+    },
+    "wadetgong" : {
+      "email" : "wade@gmail.com",
+      "friends" : {
+        "list" : {
+          "ehacinom" : true,
+          "gehrj" : true,
+          "snowwhite" : true
+        },
+        "received" : false,
+        "sent" : false
+      },
+      "journeys" : [ true, true, null, true ],
+      "name" : "Wade Gong",
+      "profilePicture" : "https://avatars3.githubusercontent.com/u/7991556?v=3&s=400",
+      "username" : "wadetgong"
+    }
+	},
+  "photos": {
+      "users": {
+          "gehrj": "https://avatars1.githubusercontent.com/u/26335236?v=3&s=400",
+          "ehacinom": "https://avatars2.githubusercontent.com/u/8092859?v=3&s=400",
+          "wadetgong": "https://avatars3.githubusercontent.com/u/7991556?v=3&s=400",
+          "hurlabob": "https://avatars3.githubusercontent.com/u/7991556?v=3&s=400",
+          "jacobss": "https://avatars3.githubusercontent.com/u/7991556?v=3&s=400",
+          "snowwhite": "https://avatars3.githubusercontent.com/u/7991556?v=3&s=400"
+      },
+      "story": {
+          "artThief": "https://avatars1.githubusercontent.com/u/26335236?v=3&s=400",
+          "batman": "https://avatars1.githubusercontent.com/u/26335236?v=3&s=400",
+          "woodElves": "https://avatars1.githubusercontent.com/u/26335236?v=3&s=400"
+      }
+  },
+  "story": {
     "artThief": {
       "id": "artThief",
       "title": "Art Thief",
