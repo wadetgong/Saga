@@ -82,7 +82,7 @@ class ApproveFriendClass extends React.Component {
     this.uid = firebaseApp.auth().currentUser.uid
     
     this.confirm = this.confirm.bind(this)
-    this.decline = this.decline.bind(this)
+    this.delete = this.delete.bind(this)
   }
   
   confirm (fid) {
@@ -106,8 +106,6 @@ class ApproveFriendClass extends React.Component {
   
   render () {
     const { user } = this.props;
-    
-    console.log('uid', this.uid)
     return <ApproveFriendRow 
       user={user} 
       confirm={this.confirm} 
