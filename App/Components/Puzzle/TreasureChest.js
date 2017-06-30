@@ -18,6 +18,7 @@ import {
     MOVE_FACTOR_X,
     MOVE_FACTOR_Y
 } from '../../Redux/constants';
+import CameraScreen from '../../Containers/CameraScreen'
 
 let width = Dimensions.get('window').width
 
@@ -49,26 +50,29 @@ class TreasureChest extends Component {
         )
     }
     clickedTreasureChest() {
-        alert('Put Logic of clicking it here.. this is the simple just find it version');
+      this.props.screenProps.close()
+      this.props.handleSubmit('Pass')
     }
 
     render() {
-        // console.log('top is?????? ', this.props.arObject.startingPosY + this.props.yOffset, this.props.arObject.startingPosY, this.props.yOffset )
-        // console.log('left is?????? ', this.props.arObject.startingPosX + this.props.xOffset, this.props.arObject.startingPosX, this.props.xOffset )
-        return (
-            <View style={styles.container}>
-                <TouchableHighlight onPress={this.clickedTreasureChest}>
-                    <Image
-                        source={require('../../Images/treasureChest.png')}
-                        resizeMode='contain'
-                        style={[styles.arObject, styles.row, {
-                            top: this.props.arObject.startingPosY + this.props.yOffset,
-                            left: this.props.arObject.startingPosX + this.props.xOffset
-                        }]}
-                    />
-                </TouchableHighlight>
-            </View>
-        )
+      return (
+        <View style={[styles.container, {flex: 1}]}>
+          <CameraScreen
+            close={this.props.screenProps.close}
+          >
+          <TouchableHighlight onPress={this.clickedTreasureChest}>
+            <Image
+              source={require('../../Images/treasureChest.png')}
+              resizeMode='contain'
+              style={[styles.arObject, styles.row, {
+                top: this.props.arObject.startingPosY + this.props.yOffset,
+                left: this.props.arObject.startingPosX + this.props.xOffset
+              }]}
+            />
+          </TouchableHighlight>
+          </CameraScreen>
+        </View>
+      )
     }
 }
 

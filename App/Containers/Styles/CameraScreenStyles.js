@@ -4,7 +4,8 @@ let cameraStyles = StyleSheet.create({
     camera: {
         backgroundColor: 'transparent',
         height: Dimensions.get('window').height,
-        width: Dimensions.get('window').width
+        width: Dimensions.get('window').width,
+        backgroundColor: 'pink'
     },
     cameraText: {
         color: '#FFF',
@@ -14,6 +15,12 @@ let cameraStyles = StyleSheet.create({
     },
     cameraStream: {
         height: 200
+    },
+    modalClose: {
+      position: 'absolute',
+      paddingTop: 10,
+      paddingHorizontal: 5,
+      zIndex: 20
     }
 })
 

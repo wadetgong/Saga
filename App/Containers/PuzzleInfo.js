@@ -37,17 +37,6 @@ class PuzzleInfo extends React.Component {
   }
 
   render() {
-
-    // const puzzle = {
-    //   id: this.props.puzzleInfo,
-    //   question: 'What goes up when rain comes down?',
-    //   answer: 'An umbrella',
-    //   puzzleType: 'simpleFind',
-    //   maxAttempts: 3
-    // }
-
-    console.log('currentpuzzle', this.state.puzzle)
-    console.log('puzzle url', this.props.puzzleUrl)
     return (
         this.props.puzzleUrl
         ? (
@@ -55,17 +44,27 @@ class PuzzleInfo extends React.Component {
             <View style={styles.sectionHeader}>
               <Text style={styles.boldLabel}>Puzzle #{this.state.puzzle.id}</Text>
               <TouchableOpacity
-                onPress={this.props.screenProps.toggle}
+                onPress={this.props.screenProps.close}
                 style={styles.modalClose}>
                 <Image source={Images.closeButton} />
               </TouchableOpacity>
             </View>
             <View>
               <Image source={Images.storyMain[this.props.storyKey]} style={styles.logo}/>
-              <View style={styles.centeredOverlay}>
+              {/*<View style={styles.centeredOverlay}>
                 <Image source={Images.puzzle} style={[styles.logo,{resizeMode: 'contain'}]} />
-              </View>
+              </View>*/}
             </View>
+            {
+              this.state.puzzle.status === 'Complete'
+              ? (
+                <View style={styles.completeText}>
+                  <Text style={{fontStyle: 'italic'}}>Congratulations, you have passed this puzzle!</Text>
+                </View>
+              )
+              : null
+            }
+
             <View style={styles.infoText}>
               <Text>
                 (Puzzle Information Here)
@@ -77,7 +76,7 @@ class PuzzleInfo extends React.Component {
               </Text>
               {/*<Text>Puzzle ID: {this.state.puzzle.id}</Text>*/}
             </View>
-            <Puzzle puzzle={this.state.puzzle} toggle={this.props.screenProps.toggle}/>
+            <Puzzle puzzle={this.state.puzzle} close={this.props.screenProps.close}/>
           </View>
         )
         : <View></View>
