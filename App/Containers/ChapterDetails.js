@@ -49,7 +49,7 @@ class ChapterDetails extends React.Component {
   // }
 
   getButtonStyle(puzzle) {
-    if(puzzle.complete) {
+    if(puzzle.status === 'Complete') {
       return {
         backgroundColor: 'lightgreen',
         borderTopColor: 'green',

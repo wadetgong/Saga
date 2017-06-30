@@ -23,6 +23,7 @@ class Puzzle extends React.Component {
       let newAttempts = this.state.attempts + 1;
       console.log('newAttempts', newAttempts)
       if(answer.toLowerCase() === this.props.puzzle.answer.toLowerCase()) {
+        this.puzzleRef.child('status').set('Complete')
         this.setState({
           attempts: newAttempts,
           status: 'Complete',
