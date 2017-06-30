@@ -28,6 +28,7 @@ class Puzzle extends React.Component {
           attempts: newAttempts,
           status: 'Complete',
         })
+        this.props.toggle()
       } else if (newAttempts === this.props.puzzle.maxAttempts) {
         this.setState({
           attempts: newAttempts,

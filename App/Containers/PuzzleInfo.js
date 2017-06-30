@@ -77,7 +77,7 @@ class PuzzleInfo extends React.Component {
               </Text>
               {/*<Text>Puzzle ID: {this.state.puzzle.id}</Text>*/}
             </View>
-            <Puzzle puzzle={this.state.puzzle}/>
+            <Puzzle puzzle={this.state.puzzle} toggle={this.props.screenProps.toggle}/>
           </View>
         )
         : <View></View>
