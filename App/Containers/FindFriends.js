@@ -8,7 +8,6 @@ import styles from './Styles/FindFriendsStyles'
 
 /// search/checkMatch must deal with new user objects
 
-
 class FindFriends extends React.Component {
   constructor() {
     super()

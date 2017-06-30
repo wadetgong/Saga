@@ -18,7 +18,7 @@ const initialState = {
   myFriends: {},
   list: [], 
   sent: [], 
-  recieved: [],
+  received: [],
   myFriendsList: {}, // has user objects of friends
   uid: ''
 }
@@ -40,18 +40,18 @@ export const reducer = (state=initialState, action) => {
       for (let uid in users) {
         if (uid == state.uid) continue;
         if (state.myFriendsList[uid])
-          newState.myFriendsList[uid] = users[uid]; // Object.assign?
+          newState.myFriendsList[uid] = Object.assign({uid: uid}, users[uid]);
         else
           newUsers.push( Object.assign(users[uid], { uid: uid }) );
       }
       newState.users = newUsers
       
       // get user objects
-      // list/sent/recieved
+      // list/sent/received
       const fList = newState.myFriendsList
       newState.list = friendObjToArr(newState.myFriends.list, fList)
       newState.sent = friendObjToArr(newState.myFriends.sent, fList)
-      newState.recieved = friendObjToArr(newState.myFriends.recieved, fList)
+      newState.received = friendObjToArr(newState.myFriends.received, fList)
 
       break;
     case (SET_MYFRIENDS):      

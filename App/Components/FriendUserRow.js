@@ -18,15 +18,10 @@ class FriendUserRow extends React.Component {
   }
 
   addFriend (fid) {
-    const uid = this.uid
-    
-    console.log('FriendUserRow', fid)
-    const path1 = uid + '/friends/sent/' + fid
-    const path2 = fid + '/friends/recieved/' + uid
-    this.usersRef.update({
-      [path1] : true,
-      [path2] : true
-    })
+    const uid = this.uid,
+          path1 = uid + '/friends/sent/' + fid,
+          path2 = fid + '/friends/received/' + uid;
+    this.usersRef.update({ [path1] : true, [path2] : true })
   }
   
   render() {
