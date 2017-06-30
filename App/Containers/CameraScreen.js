@@ -22,70 +22,71 @@ let width = Dimensions.get('window').width;
 let height = Dimensions.get('window').height;
 
  class CameraScreen extends Component {
-    static navigationOptions = {
-        title: 'Camera'
-    }
+  static navigationOptions = {
+      title: 'Camera'
+  }
 
-    constructor(props) {
-        super(props);
-        this.state = {}
-        this.handleArStart = this.handleArStart.bind(this);
-        this.createAr = this.createAr.bind(this);
-    }
-    componentWillMount() {
-        this.handleArStart();
-    }
-    componentDidMount() {
-        Gyroscope.setGyroUpdateInterval(0.04);
-        DeviceEventEmitter.addListener('GyroData', (data) => {
-            if(data.rotationRate.y && data.rotationRate.x){
-                data.rotationRate.y += 0.06;
-                data.rotationRate.x -= 0.02;
-                this.props.updateGyroData(data);
+  constructor(props) {
+      super(props);
+      this.state = {}
+      this.handleArStart = this.handleArStart.bind(this);
+      this.createAr = this.createAr.bind(this);
+  }
+  componentWillMount() {
+      this.handleArStart();
+  }
+  componentDidMount() {
+      Gyroscope.setGyroUpdateInterval(0.04);
+      DeviceEventEmitter.addListener('GyroData', (data) => {
+          if(data.rotationRate.y && data.rotationRate.x){
+              data.rotationRate.y += 0.06;
+              data.rotationRate.x -= 0.02;
+              this.props.updateGyroData(data);
+          }
+      });
+      Gyroscope.startGyroUpdates();
+  }
+  componentWillUnmount() {
+      Gyroscope.stopGyroUpdates();
+  }
+  handleArStart() {
+      this.createAr();
+  }
+  createAr() {
+  //     let startingPosX = Math.random() * width * (Math.random() > 0.5 ? 1 : 1) + (width * 0.5);
+      // let startingPosY = Math.random() * height * .75 * (Math.random() > 0.75 ? 1 : 1) + (height * .8);
+      let startingPosX = 100
+      let startingPosY = 100
+
+      this.props.addArObject({
+          startingPosX: startingPosX,
+          startingPosY: startingPosY
+      })
+  }
+
+  render() {
+    console.log('dimensions', width, height)
+    let arObj = this.props.arObject
+    return (
+      <View style={styles.camera}>
+        <TouchableOpacity
+          onPress={this.props.close}
+          style={styles.modalClose}>
+          <Image source={Images.closeButton} />
+        </TouchableOpacity>
+        <Camera
+            ref={cam => { this.camera = cam }}
+            style={styles.camera}
+            aspect={Camera.constants.Aspect.fill}
+            type={this.state.cameraType}>
+            <Text style={styles.cameraText}> </Text>
+            {
+              this.props.children
             }
-        });
-        Gyroscope.startGyroUpdates();
-    }
-    componentWillUnmount() {
-        Gyroscope.stopGyroUpdates();
-    }
-    handleArStart() {
-        this.createAr();
-    }
-    createAr() {
-    //     let startingPosX = Math.random() * width * (Math.random() > 0.5 ? 1 : 1) + (width * 0.5);
-        // let startingPosY = Math.random() * height * .75 * (Math.random() > 0.75 ? 1 : 1) + (height * .8);
-        let startingPosX = 100
-        let startingPosY = 100
-
-        this.props.addArObject({
-            startingPosX: startingPosX,
-            startingPosY: startingPosY
-        })
-    }
-
-    render() {
-        let arObj = this.props.arObject
-        return (
-          <View style={[ styles.camera, {backgroundColor: 'blue', borderColor: 'black'}]}>
-            <TouchableOpacity
-              onPress={this.props.close}
-              style={styles.modalClose}>
-              <Image source={Images.closeButton} />
-            </TouchableOpacity>
-            <Camera
-                ref={cam => { this.camera = cam }}
-                style={[styles.camera, {backgroundColor: 'pink'}]}
-                aspect={Camera.constants.Aspect.fill}
-                type={this.state.cameraType}>
-                <Text style={styles.cameraText}> </Text>
-                {
-                  this.props.children
-                }
-            </Camera>
-          </View>
-        )
-    }
+        </Camera>
+      </View>
+    )
+  }
 }
 
 function mapStateToProps({ augmented }) {

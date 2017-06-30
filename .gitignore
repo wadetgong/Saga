@@ -54,3 +54,7 @@ buck-out/
 fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
+
+Podfile.lock
+Pods/
+TestIgniteApp.xcworkspace/

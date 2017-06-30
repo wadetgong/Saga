@@ -7,7 +7,8 @@ import {
     Image,
     View,
     Dimensions,
-    TouchableHighlight
+    TouchableHighlight,
+    Text
 } from 'react-native';
 import styles from './Styles/TreasureChestStyles';
 import { connect } from 'react-redux';
@@ -56,10 +57,11 @@ class TreasureChest extends Component {
 
     render() {
       return (
-        <View style={[styles.container, {flex: 1}]}>
+        <View style={styles.container}>
           <CameraScreen
             close={this.props.screenProps.close}
           >
+          <Text>Print off text</Text>
           <TouchableHighlight onPress={this.clickedTreasureChest}>
             <Image
               source={require('../../Images/treasureChest.png')}
