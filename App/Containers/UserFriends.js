@@ -69,28 +69,28 @@ class UserProfile extends React.Component {
     // unsubscribing
     this.unsubscribeMyFriendsRef = null
     this.unsubscribeUsers = null
-    
+
     this.uid = firebaseApp.auth().currentUser.uid
   }
 
   componentDidMount () {
     console.log('Component did mount in UserFriends')
     const uid = this.uid
-    
+
     const myFriendsRef = firebaseApp.database().ref('/users/' + uid + '/friends/')
     const usersRef = firebaseApp.database().ref('/users')
     this.getMyFriendsAndUsers(myFriendsRef, usersRef)
   }
-  
+
   componentWillUnmount () {
     if (this.unsubscribeMyFriendsRef) this.unsubscribeMyFriendsRef();
     if (this.unsubscribeUsers) this.unsubscribeUsers();
   }
-  
+
   // listener on my friends
   getMyFriendsAndUsers (myFriendsRef, usersRef) {
     const uid = this.uid
-    
+
     // get myFriends
     this.unsubscribeMyFriendsRef = myFriendsRef
       .on('value', fsnap => {
@@ -116,7 +116,7 @@ class UserProfile extends React.Component {
       </View>
     )
   }
-  
+
 }
 
 const mapState = state => ({})

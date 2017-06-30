@@ -5,7 +5,6 @@ let cameraStyles = StyleSheet.create({
         backgroundColor: 'transparent',
         height: Dimensions.get('window').height,
         width: Dimensions.get('window').width,
-        backgroundColor: 'pink'
     },
     cameraText: {
         color: '#FFF',

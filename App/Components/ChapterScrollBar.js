@@ -49,9 +49,18 @@ const getBackgroundStyle = (chapter, selectedChap) => {
       borderColor: 'lightgray'
     }
   }
-  return {
-    borderColor: Colors.fire,
-    backgroundColor: 'white'
+  else {
+    let background = chapter.status === 'Complete'
+    ? {
+      borderColor: 'green',
+      backgroundColor: 'lightgreen'
+    }
+    : {
+      borderColor: Colors.fire,
+      backgroundColor: 'white'
+    }
+    return background
+
   }
 }
 

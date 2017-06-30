@@ -5,11 +5,11 @@ admin.initializeApp(functions.config().firebase);
 exports.initUser = functions.auth.user()
   .onCreate(event => {
     // The Firebase user.
-    const { displayName, email, photoURL, uid } = event.data; 
-    const user = { 
-      email, 
-      name: displayName, 
-      fb_thumbnail: photoURL, 
+    const { displayName, email, photoURL, uid } = event.data;
+    const user = {
+      email,
+      name: displayName,
+      fb_thumbnail: photoURL,
       friends: {
         sent: false,
         received: false,
@@ -22,7 +22,7 @@ exports.initUser = functions.auth.user()
 
     return admin.database().ref('/users').child(uid).set(user)
   });
-  
+
 exports.deleteUser = functions.auth.user().onDelete(event => {
   const { uid } = event.data.previous
   return admin.database().ref('/users/' + uid).remove()
@@ -46,10 +46,14 @@ exports.onPuzzleComplete = functions.database.ref('/story/{storyId}/chapters/{ch
 
       if(chapterComplete) {
         if(snapshot.hasChild(nextChap)) {
-          return admin.database().ref(`/story/${storyId}/chapters/${nextChap}`).child('enabled').set(true)
+          return Promise.all([
+            admin.database().ref(`/story/${storyId}/chapters/${nextChap}`).child('enabled').set(true),
+            admin.database().ref(`/story/${storyId}/chapters/${chapterId}`).child('status').set('Complete')])
         }
         else {
-          return admin.database().ref(`/story/${storyId}`).child('status').set('Complete')
+          return Promise.all([
+            admin.database().ref(`/story/${storyId}`).child('status').set('Complete'),
+            admin.database().ref(`/story/${storyId}/chapters/${chapterId}`).child('status').set('Complete')])
         }
       }
     // return admin.database().ref('/story/batman/chapters/1').child('enabled').set(true)
