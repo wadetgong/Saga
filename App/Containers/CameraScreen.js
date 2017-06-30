@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, Switch, Image, Dimensions, DeviceEventEmitter } from 'react-native';
 import cameraStyles from './Styles/CameraScreenStyles.js';
 import Camera from 'react-native-camera';
-import TreasureChest from '../Components/TreasureChest';
+import TreasureChest from '../Components/Puzzle/TreasureChest';
 import { Gyroscope } from 'NativeModules';
 import { addArObject, updateGyroData } from '../Redux/actions/augmented';
 import { connect } from 'react-redux';
@@ -37,8 +37,8 @@ let height = Dimensions.get('window').height;
         Gyroscope.setGyroUpdateInterval(0.04);
         DeviceEventEmitter.addListener('GyroData', (data) => {
             if(data.rotationRate.y && data.rotationRate.x){
-                data.rotationRate.y;
-                data.rotationRate.x;
+                data.rotationRate.y += 0.06;
+                data.rotationRate.x -= 0.02;
                 this.props.updateGyroData(data);
             }
         });
@@ -51,8 +51,10 @@ let height = Dimensions.get('window').height;
         this.createAr();
     }
     createAr() {
-        let startingPosX = Math.random() * width * (Math.random() > 0.5 ? 1 : 1) + (width * 0.5);
-        let startingPosY = Math.random() * height * .75 * (Math.random() > 0.75 ? 1 : 1) + (height * .8);
+    //     let startingPosX = Math.random() * width * (Math.random() > 0.5 ? 1 : 1) + (width * 0.5);
+        // let startingPosY = Math.random() * height * .75 * (Math.random() > 0.75 ? 1 : 1) + (height * .8);
+        let startingPosX = 100
+        let startingPosY = 100
 
         this.props.addArObject({
             startingPosX: startingPosX,

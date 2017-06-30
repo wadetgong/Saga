@@ -29,8 +29,11 @@ export default StyleSheet.create({
     // resizeMode: 'contain',
     alignItems: 'center',
   },
-  centered: {
-    alignItems: 'center'
+  centeredOverlay: {
+    alignItems: 'center',
+    backgroundColor: 'white',
+    opacity: .5,
+    position: 'absolute'
   },
   modalClose: {
     position: 'absolute',
@@ -38,4 +41,10 @@ export default StyleSheet.create({
     paddingHorizontal: 5,
     zIndex: 10
   },
+  infoText: {
+    padding: 10,
+    margin: 10,
+    backgroundColor: 'beige',
+    borderRadius: 5
+  }
 })

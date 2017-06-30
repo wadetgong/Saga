@@ -1,7 +1,3 @@
-
-// Left drift is coming from render styling maybe we can fix this top and left maybe we can find other way? 
-//take a look at ../reducers/constants/index to see the threshold to mess with that as well
-
 import React, { Component } from 'react';
 import {
     Image,
@@ -26,7 +22,7 @@ class TreasureChest extends Component {
         super(props);
         this.state = {
             offScreenLeft: false,
-            offScreenRight: false
+            offScreenRight: false,
         }
         this.clickedTreasureChest = this.clickedTreasureChest.bind(this);
     }
@@ -49,7 +45,7 @@ class TreasureChest extends Component {
         )
     }
     clickedTreasureChest() {
-        alert('Treasure Chest was clicked')
+        alert('The Treasure Chest is locked! Find the key to open it');
     }
 
     render() {
