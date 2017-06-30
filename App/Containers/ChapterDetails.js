@@ -15,7 +15,8 @@ class ChapterDetails extends React.Component {
       selectedPuzzle: null,
       chapter: {}
     }
-    this.toggleModal = this.toggleModal.bind(this)
+    this.openPuzzle = this.openPuzzle.bind(this)
+    this.closePuzzle = this.closePuzzle.bind(this)
     if(this.props.chapterUrl) this.chapterRef = firebaseApp.database().ref(this.props.chapterUrl)
   }
 
@@ -36,17 +37,18 @@ class ChapterDetails extends React.Component {
     })
   }
 
-  toggleModal(puzzleId) {
-    // console.log('New puzzle selected: ', puzzleId)
+  openPuzzle() {
     this.setState({
-      showModal: !this.state.showModal,
-      selectedPuzzle: puzzleId
+      showModal: true,
     })
   }
 
-  // openComponents = () => {
-  //   this.props.screenProps.rootNavigation.navigate('PuzzleInfo', {test: 'testing'})
-  // }
+  closePuzzle() {
+    console.log('closing the puzzle modal')
+    this.setState({
+      showModal: false,
+    })
+  }
 
   getButtonStyle(puzzle) {
     if(puzzle.status === 'Complete') {
@@ -83,7 +85,7 @@ class ChapterDetails extends React.Component {
             }
           </Text>
         </View>
-        <View >
+        <View>
           {
             this.props.chapterInfo
             ? this.props.chapterInfo.puzzles.map((puzzle,i) => (
@@ -91,7 +93,7 @@ class ChapterDetails extends React.Component {
                   styles={this.getButtonStyle(puzzle)}
                   key={i}
                   onPress={() => {
-                    this.toggleModal(puzzle.id)
+                    this.openPuzzle()
                     this.props.setPuzzle(puzzle.id)
                   }}
                   text={`Chapter ${this.props.selectedChap} - Puzzle ${puzzle.id}`}
@@ -102,9 +104,9 @@ class ChapterDetails extends React.Component {
           <Modal
             animationType={"slide"}
             visible={this.state.showModal}
-            onRequestClose={this.toggleModal}>
+            onRequestClose={this.closePuzzle}>
             <PuzzleInfo
-              screenProps={{ toggle: this.toggleModal}}
+              screenProps={{ close: this.closePuzzle}}
               puzzleInfo={this.state.selectedPuzzle}
               storyKey={this.props.storyKey}
             />

@@ -8,7 +8,7 @@ import { Colors } from '../Themes'
 
 
 const PendingFriends = ({ recieved, sent }) => {
-  
+
   let pendingFriends = new ListView
     .DataSource({rowHasChanged : (r1, r2) => r1 != r2})
     .cloneWithRows(recieved)
@@ -28,6 +28,7 @@ const PendingFriends = ({ recieved, sent }) => {
         <ListView
           dataSource={pendingFriends}
           removeClippedSubviews={false}
+          enableEmptySections={true}
           renderRow={(user) => <PendingFriendRow user={user} />}
         />
         <View style={{borderBottomWidth: 1, borderColor: 'gray', marginHorizontal: '25%', justifyContent: 'center', marginTop: 20, marginBottom: 10}}>
@@ -38,6 +39,7 @@ const PendingFriends = ({ recieved, sent }) => {
         <ListView
           dataSource={approveFriends}
           removeClippedSubviews={false}
+          enableEmptySections={true}
           renderRow={(user) => <ApproveFriendRow user={user} />}
         />
       </ScrollView>

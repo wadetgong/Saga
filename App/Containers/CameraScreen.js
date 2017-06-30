@@ -1,13 +1,15 @@
 'use strict'
 
 import React, { Component } from 'react';
+import { TouchableOpacity } from 'react-native'
 import { StyleSheet, Text, View, Switch, Image, Dimensions, DeviceEventEmitter } from 'react-native';
-import cameraStyles from './Styles/CameraScreenStyles.js';
+import styles from './Styles/CameraScreenStyles.js';
 import Camera from 'react-native-camera';
 import TreasureChest from '../Components/Puzzle/TreasureChest';
 import { Gyroscope } from 'NativeModules';
 import { addArObject, updateGyroData } from '../Redux/actions/augmented';
 import { connect } from 'react-redux';
+import { Images } from '../Themes'
 
 import {
     GYRO_MOVE_THRESHOLD_X,
@@ -65,15 +67,23 @@ let height = Dimensions.get('window').height;
     render() {
         let arObj = this.props.arObject
         return (
+          <View style={[ styles.camera, {backgroundColor: 'blue', borderColor: 'black'}]}>
+            <TouchableOpacity
+              onPress={this.props.close}
+              style={styles.modalClose}>
+              <Image source={Images.closeButton} />
+            </TouchableOpacity>
             <Camera
                 ref={cam => { this.camera = cam }}
-                style={cameraStyles.camera}
+                style={[styles.camera, {backgroundColor: 'pink'}]}
                 aspect={Camera.constants.Aspect.fill}
                 type={this.state.cameraType}>
-                <Text style={cameraStyles.cameraText}> </Text>
-                <TreasureChest
-                />
+                <Text style={styles.cameraText}> </Text>
+                {
+                  this.props.children
+                }
             </Camera>
+          </View>
         )
     }
 }
