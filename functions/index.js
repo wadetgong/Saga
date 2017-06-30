@@ -2,32 +2,31 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp(functions.config().firebase);
 
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
-
-
 exports.initUser = functions.auth.user()
   .onCreate(event => {
     // The Firebase user.
-    const { displayName, email, photoURL, uid } = event.data;
-    const user = {
-      displayName, email, fb_thumbnail: photoURL,
+    const { displayName, email, photoURL, uid } = event.data; 
+    const user = { 
+      email, 
+      name: displayName, 
+      fb_thumbnail: photoURL, 
       friends: {
-        sent: null,
-        recieved: null,
-        friends: null
+        sent: false,
+        received: false,
+        list: false
       },
-      journeys: null,
-      profilePicture: null,
-      username: null,
+      journeys: false,
+      profilePicture: photoURL;
+      username: false,
     }
 
     return admin.database().ref('/users').child(uid).set(user)
   });
+  
+exports.deleteUser = functions.auth.user().onDelete(event => {
+  const { uid } = event.data.previous
+  return admin.database().ref('/users/' + uid).remove()
+});
 
 exports.onPuzzleComplete = functions.database.ref('/story/{storyId}/chapters/{chapterId}/puzzles/{puzzleId}/status').onWrite(event => {
   // console.log('something happened in the cloud hook function. ', event, event.data)
@@ -80,4 +79,3 @@ exports.sendFriendInvite = functions.database.ref('/users/{uid}/friends/{fid}')
   })
 
 // exports.accept
-

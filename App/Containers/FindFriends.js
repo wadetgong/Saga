@@ -3,28 +3,24 @@ import { View, Text, Image, ListView, ScrollView } from 'react-native'
 import SearchBar from '../Components/SearchBar'
 import FriendUserRow from '../Components/FriendUserRow'
 import firebaseApp from '../Firebase'
-
+import { connect } from 'react-redux'
 import styles from './Styles/FindFriendsStyles'
 
-export default class FindFriends extends React.Component {
+/// search/checkMatch must deal with new user objects
+
+
+class FindFriends extends React.Component {
   constructor() {
     super()
     this.state = {
       ds: new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 }),
-      friends: [],
       text: '',
     }
-    this.friendsRef = firebaseApp.database().ref('/users')
+    
     this.onSearch = this.onSearch.bind(this)
   }
 
-  onSearch (searchTerm) {
-      console.log('searching in Friends Searchbar', searchTerm)
-
-      this.setState({
-        text: searchTerm
-      })
-  }
+  onSearch (searchTerm) { this.setState({ text: searchTerm }) }
 
   checkMatch(searchTerm, friend) {
     let searchVal = searchTerm.toLowerCase()
@@ -34,28 +30,12 @@ export default class FindFriends extends React.Component {
     return false
   }
 
-  componentDidMount () {
-    this.listenForItems(this.friendsRef)
-  }
-
-  listenForItems(ref) {
-    this.unsubscribe = ref.on('value', (snap) => {
-      const items = []
-      snap.forEach((child) => {
-        items.push({ _key: child.key, ...child.val() })
-        this.setState({ friends: items })
-      })
-    })
-  }
-
-  componentWillUnmount () {
-    this.friendsRef.off('value', this.unsubscribe)
-  }
-
   render() {
+    const { users } = this.props
     const filteredFriends = this.state.text.length
-      ? this.state.friends.filter(friend => this.checkMatch(this.state.text, friend))
-      : this.state.friends;
+      ? users.filter(friend => this.checkMatch(this.state.text, friend))
+      : users;
+
     const friendList = this.state.ds.cloneWithRows(filteredFriends)
     return (
       <View style={styles.container}>
@@ -77,3 +57,9 @@ export default class FindFriends extends React.Component {
     )
   }
 }
+
+const mapState = state => ({
+  users : state.friends.users,
+})
+const mapDispatch = {}
+export default connect(mapState, mapDispatch)(FindFriends)

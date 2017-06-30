@@ -59,7 +59,7 @@ class LoginScreen extends React.Component {
         if (currentUser === 'cancelled') console.log('Login cancelled');
         else {
           console.warn(JSON.stringify(currentUser.toJSON())); // signed in!
-          this.props.navigation.navigate('StoryScreen')
+          this.props.navigation.navigate('UserFriends')
           
           // firebaseApp
         }
