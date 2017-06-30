@@ -5,14 +5,13 @@ export default StyleSheet.create({
   scrollContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderColor: Colors.borderGray,
+    borderColor: 'lightgrey',
     borderTopWidth: 1,
     borderBottomWidth: 1,
     backgroundColor: 'white',
     height: 50
   },
   chapterButton: {
-    borderColor: Colors.fire,
     borderWidth: 1,
     alignItems:'center',
     justifyContent:'center',

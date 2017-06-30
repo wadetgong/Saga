@@ -1,5 +1,8 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, Image } from 'react-native'
+import { connect } from 'react-redux'
+import firebaseApp from '../Firebase'
+
 import RoundedButton from '../Components/Button/RoundedButton'
 import Puzzle from '../Components/Puzzle'
 import { ApplicationStyles, Images } from '../Themes'
@@ -8,47 +11,91 @@ import { ApplicationStyles, Images } from '../Themes'
 import styles from './Styles/PuzzleInfoStyles'
 
 class PuzzleInfo extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
+    this.state = {
+      puzzle: {},
+    }
+    if(this.props.puzzleUrl) this.puzzleRef = firebaseApp.database().ref(this.props.puzzleUrl)
+  }
+
+  componentDidMount() {
+    if(this.props.puzzleUrl) this.listenForChange(this.puzzleRef)
+  }
+
+  componentWillUnmount () {
+    if(this.props.puzzleUrl) this.puzzleRef.off('value', this.unsubscribe)
+  }
+
+  listenForChange(ref) {
+    this.unsubscribe = ref.on('value', puzzle => {
+      console.log('new info', puzzle.val())
+      this.setState({
+        puzzle: puzzle.val()
+      })
+    })
   }
 
   render() {
 
-    const puzzle = {
-      id: this.props.puzzleInfo,
-      question: 'What goes up when rain comes down?',
-      answer: 'An umbrella',
-      puzzleType: 'fillBlank',
-      maxAttempts: 3
-    }
-    console.log('props in PuzzleInfo', this.props)
+    // const puzzle = {
+    //   id: this.props.puzzleInfo,
+    //   question: 'What goes up when rain comes down?',
+    //   answer: 'An umbrella',
+    //   puzzleType: 'simpleFind',
+    //   maxAttempts: 3
+    // }
+
+    console.log('currentpuzzle', this.state.puzzle)
+    console.log('puzzle url', this.props.puzzleUrl)
     return (
-      <View style={styles.container}>
-        <View style={styles.sectionHeader}>
-          <Text style={styles.boldLabel}>Puzzle #{this.props.puzzleInfo}</Text>
-          <TouchableOpacity
-            onPress={this.props.screenProps.toggle}
-            style={styles.modalClose}>
-            <Image source={Images.closeButton} />
-          </TouchableOpacity>
-        </View>
-        <View style={{backgroundColor: 'blue'}}>
-          <Image source={Images.storyMain[this.props.storyKey]} style={styles.logo}/>
-          <View style={[styles.centered, {backgroundColor: 'white',opacity: .5, position: 'absolute'}]}>
-            <Image source={Images.puzzle} style={[styles.logo,{resizeMode: 'contain'}]} />
+        this.props.puzzleUrl
+        ? (
+          <View style={styles.container}>
+            <View style={styles.sectionHeader}>
+              <Text style={styles.boldLabel}>Puzzle #{this.state.puzzle.id}</Text>
+              <TouchableOpacity
+                onPress={this.props.screenProps.toggle}
+                style={styles.modalClose}>
+                <Image source={Images.closeButton} />
+              </TouchableOpacity>
+            </View>
+            <View>
+              <Image source={Images.storyMain[this.props.storyKey]} style={styles.logo}/>
+              <View style={styles.centeredOverlay}>
+                <Image source={Images.puzzle} style={[styles.logo,{resizeMode: 'contain'}]} />
+              </View>
+            </View>
+            <View style={styles.infoText}>
+              <Text>
+                (Puzzle Information Here)
+                {
+                  this.state.puzzle.description
+                  ? this.state.puzzle.description
+                  : 'Description is empty in Firebase.'
+                }
+              </Text>
+              {/*<Text>Puzzle ID: {this.state.puzzle.id}</Text>*/}
+            </View>
+            <Puzzle puzzle={this.state.puzzle} toggle={this.props.screenProps.toggle}/>
           </View>
-        </View>
-        <View style={{padding: 10, margin: 10, backgroundColor: 'beige', borderRadius: 5}}>
-          <Text>
-            (Puzzle Information Here) Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum sem eget fringilla commodo. Etiam condimentum nibh vel est ullamcorper, sit amet aliquet leo fermentum.
-          </Text>
-          <Text>Props from Chapter: {this.props.chapterInfo.id}</Text>
-          <Text>Puzzle ID: {this.props.puzzleInfo}</Text>
-        </View>
-        <Puzzle puzzle={puzzle}/>
-      </View>
+        )
+        : <View></View>
     )
   }
 }
 
-export default PuzzleInfo
+const mapStateToProps = (state) => {
+  return {
+    puzzleUrl: state.currentStory.puzzleUrl,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PuzzleInfo)
+
