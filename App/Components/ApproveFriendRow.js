@@ -1,8 +1,7 @@
 import React from 'react'
 import { View, Text, Image, TouchableOpacity } from 'react-native'
-import { Images } from '../Themes'
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
-import { Fonts, Colors, Metrics } from '../Themes/'
+import { Images, Fonts, Colors, Metrics } from '../Themes/'
 
 const ApproveFriendRow = ({ user }) => (
     <View style={{flex: 1,

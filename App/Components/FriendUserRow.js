@@ -32,9 +32,7 @@ class FriendUserRow extends React.Component {
   render() {
     const { user } = this.props
     const addFriend = this.addFriend
-    
-    console.log('user in FriendUserRow.render', user)
-    
+        
     return (
       <View style={{flex: 1,
         flexDirection: 'row',

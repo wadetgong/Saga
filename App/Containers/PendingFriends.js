@@ -7,17 +7,30 @@ import styles from './Styles/JourneyFriendsStyles'
 import { Colors } from '../Themes'
 
 
-const ApproveFriends = ({ pending, approve }) => {
-  if (!pending) pending = []
-  if (!approve) approve = []
-    
+const PendingFriends = ({ recieved, sent }) => {
+  // let pending = [], approve = [];
+  // if (recieved) {
+  //   for (let key in recieved)
+  //     if (typeof friends[key] == 'object')
+  //       pending.push(Object.assign(friends[key], { uid: key }))
+  // }
+  //
+  // if (sent) {
+  //   for (let key in sent) {
+  //     if (typeof friends[key] == 'object')
+  //       approve.push(Object.assign(friends[key], { uid: key }))
+  //   }
+  // }
+  
+  console.log('PENDING FRIENDS', recieved, sent)
+  
   let pendingFriends = new ListView
     .DataSource({rowHasChanged : (r1, r2) => r1 != r2})
-    .cloneWithRows(pending)
+    .cloneWithRows(recieved)
 
   let approveFriends = new ListView
     .DataSource({rowHasChanged : (r1, r2) => r1 != r2})
-    .cloneWithRows(approve)
+    .cloneWithRows(sent)
 
   return (
     <View style={[styles.container, {paddingTop: 10}]}>
@@ -49,9 +62,9 @@ const ApproveFriends = ({ pending, approve }) => {
 
 
 const mapState = state => ({
-  pending : state.friends.myFriends.recieved,
-  approve : state.friends.myFriends.sent
+  recieved : state.friends.recieved,
+  sent : state.friends.sent,
 })
 const mapDispatch = {}
 
-export default connect(mapState, mapDispatch)(ApproveFriends)
+export default connect(mapState, mapDispatch)(PendingFriends)

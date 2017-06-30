@@ -22,9 +22,9 @@ const images = {
   closeButton: require('../Images/Icons/close-button.png'),
   puzzle: require('../Images/puzzle.png'),
   storyMain: {
-      artThief: require('../Images/Story/artThief/Main.gif'),
-      batman: require('../Images/Story/batman/riddler.jpg'),
-      woodElves: require('../Images/Story/woodElves/Main.jpg'),
+    artThief: require('../Images/Story/artThief/Main.gif'),
+    batman: require('../Images/Story/batman/riddler.jpg'),
+    woodElves: require('../Images/Story/woodElves/Main.jpg'),
   },
 }
 

@@ -112,7 +112,7 @@ const TabNav = TabNavigator({
   }
 
 }, {
-  initialRouteName: 'LaunchScreen',
+  initialRouteName: 'UserFriends',
   tabBarOptions: {
     tintColor: Colors.tintColor,
     showLabel: false
