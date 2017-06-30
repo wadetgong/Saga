@@ -10,7 +10,7 @@ class FriendUserRow extends React.Component {
     super()
     
     this.addFriend = this.addFriend.bind(this)
-    this.uid = 'bDvfVQh8YPPrjckTMa0L06uC6N52' // firebaseApp.auth().currentUser.uid
+    this.uid = firebaseApp.auth().currentUser.uid
   }
   
   componentDidMount () {

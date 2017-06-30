@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { View, StatusBar } from 'react-native'
 import Navigation from '../Navigation/AppNavigation'
-import { connect } from 'react-redux'
 import StartupActions from '../Redux/StartupRedux'
 import ReduxPersist from '../Config/ReduxPersist'
 import { locationStart, locationStop } from '../Services/GeoLocation'
-
 
 // Styles
 import styles from './Styles/RootContainerStyles'
@@ -33,7 +32,7 @@ class RootContainer extends Component {
         <StatusBar barStyle='dark-content' />
         <Navigation />
       </View>
-    )
+    ) 
   }
 }
 

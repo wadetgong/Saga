@@ -119,6 +119,14 @@ const TabNav = TabNavigator({
   },
 });
 
+const HomeStack = StackNavigator({
+    LoginScreen: { screen: LoginScreen },
+    TabNav: { screen: TabNav }
+  }, {
+    headerMode: 'none',
+    initialRouteName: 'LoginScreen'
+  })
+
 // Manifest of possible screens
 // const PrimaryNav = StackNavigator({
 //   TextablesScreen: { screen: TextablesScreen },
@@ -145,4 +153,4 @@ const TabNav = TabNavigator({
 //   }
 // })
 
-export default TabNav
+export default HomeStack

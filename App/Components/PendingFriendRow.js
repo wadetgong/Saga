@@ -53,7 +53,7 @@ class PendingFriendClass extends React.Component {
   constructor () {
     super()
     
-    this.uid = 'bDvfVQh8YPPrjckTMa0L06uC6N52' // firebaseApp.auth().currentUser.uid
+    this.uid = firebaseApp.auth().currentUser.uid
     
     this.cancel = this.cancel.bind(this)
   }
