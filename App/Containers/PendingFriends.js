@@ -6,7 +6,7 @@ import PendingFriendRow from '../Components/PendingFriendRow'
 import styles from './Styles/JourneyFriendsStyles'
 import { Colors } from '../Themes'
 
-const PendingFriends = ({ recieved, sent }) => {
+const PendingFriends = ({ received, sent }) => {
   let pendingFriends = new ListView
     .DataSource({rowHasChanged : (r1, r2) => r1 != r2})
     .cloneWithRows(sent)
