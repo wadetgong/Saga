@@ -31,7 +31,7 @@ const ApproveFriendRow = ({ user, confirm, decline }) => (
               justifyContent: 'center',
               alignItems: 'center',}}
             >
-              <TouchableOpacity 
+              <TouchableOpacity
               onPress={() => confirm(user.uid)}
                 style={{
                   borderRadius: 5,
@@ -53,7 +53,7 @@ const ApproveFriendRow = ({ user, confirm, decline }) => (
               justifyContent: 'center',
               alignItems: 'center',}}
             >
-              <TouchableOpacity 
+              <TouchableOpacity
                 onPress={() => decline(user.uid)}
                 style={{
                   borderRadius: 5,
@@ -78,20 +78,19 @@ const ApproveFriendRow = ({ user, confirm, decline }) => (
 class ApproveFriendClass extends React.Component {
   constructor () {
     super()
-    
+
     this.uid = firebaseApp.auth().currentUser.uid
-    
+
     this.confirm = this.confirm.bind(this)
     this.decline = this.decline.bind(this)
   }
-  
+
   confirm (fid) {
     const uid = this.uid,
           path1 = uid + '/friends/received/' + fid,
           path2 = uid + '/friends/list/' + fid,
           path3 = fid + '/friends/sent/' + uid,
           path4 = fid + '/friends/list/' + uid;
-
     firebaseApp.database().ref('/users').update({
       [path1] : null, 
       [path2] : true, 
@@ -99,7 +98,7 @@ class ApproveFriendClass extends React.Component {
       [path4] : true, 
     });
   }
-  
+
   decline (fid) {
     const uid = this.uid,
           path1 = '/users/' + uid + '/friends/received/' + fid,
@@ -107,12 +106,12 @@ class ApproveFriendClass extends React.Component {
     firebaseApp.database().ref(path1).remove();
     firebaseApp.database().ref(path2).remove();
   }
-  
+
   render () {
     const { user } = this.props;
-    return <ApproveFriendRow 
-      user={user} 
-      confirm={this.confirm} 
+    return <ApproveFriendRow
+      user={user}
+      confirm={this.confirm}
       decline={this.decline}
     />
   }

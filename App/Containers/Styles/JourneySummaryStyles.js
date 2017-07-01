@@ -25,16 +25,14 @@ export default StyleSheet.create({
     padding: 15,
   },
   completeText: {
-    marginTop: 25,
-    marginHorizontal: 10,
-    marginBottom: -10,
     padding: 10,
-    backgroundColor: '#dff0d8',
-    borderColor: '#d0e9c6',
+    // margin: 10,
+    // backgroundColor: 'lightgray',
+    borderColor: 'gray',
     borderTopWidth: 1,
     borderBottomWidth: 1,
-    borderWidth: 1,
-    borderRadius: 5
+    // borderWidth: 1,
+    // borderRadius: 5
   }
 
 })

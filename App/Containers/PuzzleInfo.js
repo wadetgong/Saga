@@ -49,22 +49,18 @@ class PuzzleInfo extends React.Component {
                 <Image source={Images.closeButton} />
               </TouchableOpacity>
             </View>
-            <View>
-              <Image source={Images.storyMain[this.props.storyKey]} style={styles.logo}/>
-              {/*<View style={styles.centeredOverlay}>
-                <Image source={Images.puzzle} style={[styles.logo,{resizeMode: 'contain'}]} />
-              </View>*/}
-            </View>
             {
               this.state.puzzle.status === 'Complete'
               ? (
                 <View style={styles.completeText}>
-                  <Text style={{fontStyle: 'italic'}}>Congratulations, you have passed this puzzle!</Text>
+                  <Text style={{fontStyle: 'italic', color: '#3c763d'}}>Congratulations, you completed this puzzle!</Text>
                 </View>
               )
               : null
             }
-
+            <View>
+              <Image source={Images.storyMain[this.props.storyKey]} style={styles.logo}/>
+            </View>
             <View style={styles.infoText}>
               <Text>
                 (Puzzle Information Here)
@@ -74,7 +70,6 @@ class PuzzleInfo extends React.Component {
                   : 'Description is empty in Firebase.'
                 }
               </Text>
-              {/*<Text>Puzzle ID: {this.state.puzzle.id}</Text>*/}
             </View>
             <Puzzle puzzle={this.state.puzzle} close={this.props.screenProps.close}/>
           </View>
