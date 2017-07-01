@@ -74,7 +74,6 @@ class UserProfile extends React.Component {
   }
 
   componentDidMount () {
-    console.log('Component did mount in UserFriends')
     const uid = this.uid
 
     const myFriendsRef = firebaseApp.database().ref('/users/' + uid + '/friends/')
@@ -90,11 +89,12 @@ class UserProfile extends React.Component {
   // listener on my friends
   getMyFriendsAndUsers (myFriendsRef, usersRef) {
     const uid = this.uid
-
+    
     // get myFriends
     this.unsubscribeMyFriendsRef = myFriendsRef
       .on('value', fsnap => {
         const myFriends = fsnap.val();
+        if (!myFriends) console.log('fsnap', fsnap, fsnap.val())
         // get users
         usersRef // return
           .once('value')

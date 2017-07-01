@@ -87,13 +87,16 @@ class ApproveFriendClass extends React.Component {
 
   confirm (fid) {
     const uid = this.uid,
-          path1 = '/users/' + uid + '/friends/received/' + fid,
+          path1 = uid + '/friends/received/' + fid,
           path2 = uid + '/friends/list/' + fid,
-          path3 = '/users/' + fid + '/friends/sent/' + uid,
+          path3 = fid + '/friends/sent/' + uid,
           path4 = fid + '/friends/list/' + uid;
-    firebaseApp.database().ref('/users').update({ [path2] : true, [path4] : true });
-    firebaseApp.database().ref(path1).remove();
-    firebaseApp.database().ref(path3).remove();
+    firebaseApp.database().ref('/users').update({
+      [path1] : null, 
+      [path2] : true, 
+      [path3] : null,
+      [path4] : true, 
+    });
   }
 
   decline (fid) {
