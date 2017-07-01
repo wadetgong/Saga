@@ -64,23 +64,6 @@ export default class UserProfile extends React.Component {
           <View style={{padding: 10, flexDirection: 'column', borderColor: Colors.border, borderWidth: 1, flex: 1, borderBottomRightRadius: 3, borderTopRightRadius: 3}}>
             <Text><Text style={{fontWeight: 'bold',}}>{user.name}</Text> ({user.username})</Text>
             <Text>Email: {user.email}</Text>
-            <TouchableOpacity style={{
-              borderRadius: 4,
-              paddingHorizontal: 10,
-              paddingVertical: 5,
-              width: '75%',
-              marginVertical: 5,
-              backgroundColor: 'lightgray',
-              justifyContent: 'center',
-              alignItems: 'center'}}
-            >
-              <Text style={{
-                color: Colors.text,
-                textAlign: 'center',
-              }}>
-                Edit Profile
-              </Text>
-            </TouchableOpacity>
           </View>
         </View>
         <UserProfileStack />

@@ -36,8 +36,9 @@ let height = Dimensions.get('window').height;
       this.handleArStart();
   }
   componentDidMount() {
+      console.log('initialize gyro')
       Gyroscope.setGyroUpdateInterval(0.04);
-      DeviceEventEmitter.addListener('GyroData', (data) => {
+      this.unsubscribe = DeviceEventEmitter.addListener('GyroData', (data) => {
           if(data.rotationRate.y && data.rotationRate.x){
               data.rotationRate.y += 0.06;
               data.rotationRate.x -= 0.02;
@@ -47,13 +48,15 @@ let height = Dimensions.get('window').height;
       Gyroscope.startGyroUpdates();
   }
   componentWillUnmount() {
-      Gyroscope.stopGyroUpdates();
+    console.log('stopping gryo updates')
+    Gyroscope.stopGyroUpdates();
+    this.unsubscribe.remove();
   }
   handleArStart() {
       this.createAr();
   }
   createAr() {
-  //     let startingPosX = Math.random() * width * (Math.random() > 0.5 ? 1 : 1) + (width * 0.5);
+      // let startingPosX = Math.random() * width * (Math.random() > 0.5 ? 1 : 1) + (width * 0.5);
       // let startingPosY = Math.random() * height * .75 * (Math.random() > 0.75 ? 1 : 1) + (height * .8);
       let startingPosX = 100
       let startingPosY = 100
