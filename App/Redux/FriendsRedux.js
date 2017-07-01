@@ -1,8 +1,8 @@
 
 
 // actions
-const SET_USERS = 'GET_USERS';
-const SET_MYFRIENDS = 'GET_MYFRIENDS';
+const SET_USERS = 'SET_USERS';
+const SET_MYFRIENDS = 'SET_MYFRIENDS';
 const SET_ME = 'SET_ME'
 // const FILTER_USERS = 'FILTER_USERS'
 
@@ -40,7 +40,7 @@ export const reducer = (state=initialState, action) => {
       for (let uid in users) {
         if (uid == state.uid) continue;
         if (state.myFriendsList[uid])
-          newState.myFriendsList[uid] = Object.assign({uid: uid}, users[uid]);
+          newState.myFriendsList[uid] = Object.assign({ uid: uid }, users[uid]);
         else
           newUsers.push( Object.assign(users[uid], { uid: uid }) );
       }
@@ -54,11 +54,12 @@ export const reducer = (state=initialState, action) => {
       newState.received = friendObjToArr(newState.myFriends.received, fList)
 
       break;
-    case (SET_MYFRIENDS):      
+    case (SET_MYFRIENDS):
       const myFriends = action.myFriends
       
       // myFriends
-      newState.myFriends = Object.assign({}, myFriends)
+      // this line takes null myFriends and makes it {}
+      newState.myFriends = Object.assign({}, myFriends) 
       
       // myFriendsList
       let myFriendsList = {}
@@ -78,8 +79,9 @@ export const reducer = (state=initialState, action) => {
 }
 
 // action-dispatcher
+// on first run everything must be done before setUsers()
+
 export const setMyFriendsAndUsers = (uid, myFriends, users) => dispatch => {
-  // everything must be done before setUsers()
   dispatch(setMe(uid))
   dispatch(setMyFriends(myFriends))
   dispatch(setUsers(users))
