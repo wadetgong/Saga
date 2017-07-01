@@ -5,6 +5,7 @@
 # use this file for future development on app
 # include analytics by default
 pod 'Firebase/Core'
+pod 'Firebase/Messaging'
 # https://firebase.google.com/docs/ios/setup#available_pods
 
 
@@ -14,25 +15,7 @@ target 'TestIgniteApp' do
 
   # Pods for TestIgniteApp
 
-  target 'TestIgniteApp-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
   target 'TestIgniteAppTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-end
-
-target 'TestIgniteApp-tvOS' do
-  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
-  # use_frameworks!
-
-  # Pods for TestIgniteApp-tvOS
-
-  target 'TestIgniteApp-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end
