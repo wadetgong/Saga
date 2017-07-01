@@ -49,9 +49,10 @@ export default StyleSheet.create({
   },
   completeText: {
     padding: 10,
-    margin: 10,
-    backgroundColor: 'lightgreen',
-    borderColor: 'green',
+    marginHorizontal: 10,
+    marginBottom: 10,
+    backgroundColor: '#dff0d8',
+    borderColor: '#d0e9c6',
     borderWidth: 1,
     borderRadius: 5
   }

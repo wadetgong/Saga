@@ -46,7 +46,7 @@ export default class StoryScreen extends React.Component {
   }
 
   componentWillUnmount () {
-    this.storyRef.off('value'. this.unsubscribe)
+    this.storyRef.off('value', this.unsubscribe)
   }
 
   render () {

@@ -1,12 +1,12 @@
 import React from 'react'
-import { View, Text, Button, ScrollView, Image } from 'react-native'
+import { View, Text, Button, ScrollView, Image, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import TreasureHunt from '../Components/TreasureHunt'
 import Tracker from '../Components/Tracker'
 import ChapterDetails from '../Containers/ChapterDetails'
 import ChapterScrollBar from '../Components/ChapterScrollBar'
 import RoundedButton from '../Components/Button/RoundedButton'
-import { ApplicationStyles, Images} from '../Themes'
+import { ApplicationStyles, Images, Colors} from '../Themes'
 import geolib from 'geolib'
 import firebaseApp from '../Firebase'
 import { setChapter } from '../Redux/actions/currentStory'
@@ -18,7 +18,6 @@ class Chapter extends React.Component {
   constructor (props) {
     super (props)
     this.state = {
-      // insideRange: false,
       selectedChap: 1,
       story: {},
     }
@@ -66,6 +65,23 @@ class Chapter extends React.Component {
     })
   }
 
+  showWinMessage() {
+    if(this.state.story.status === 'Complete') {
+      return (
+        <View style={styles.completeText}>
+          <Text style={{color: '#3c763d'}}>Congratulations, you have completed the story {this.state.story.title}!{' '}
+              <Text
+                onPress={() => this.props.navigation.navigate('JourneySummary')}
+                style={{color: '#3c763d', fontWeight: 'bold', fontStyle: 'italic'
+              }}>
+                Click here to see conclusion.
+              </Text>
+          </Text>
+        </View>
+      )
+    }
+  }
+
   render () {
     const chapters = this.state.story.chapters || []
     const selectedChapInfo = (chapters && chapters[this.state.selectedChap-1]) || 0
@@ -75,6 +91,9 @@ class Chapter extends React.Component {
       this.props.storyUrl
       ? (
         <View style={styles.container}>
+          {
+            this.showWinMessage()
+          }
           <View style={styles.sectionHeader}>
             <Text style={styles.boldLabel}>{storyName} - Chapter {this.state.selectedChap}</Text>
           </View>
@@ -87,13 +106,6 @@ class Chapter extends React.Component {
                 selectedChap={this.state.selectedChap}
               />
             </View>
-           {/* <View>
-              {
-                this.state.insideRange
-                ? <Text>Inside range? Yes</Text>
-                : <Text>Inside range? No</Text>
-              }
-            </View>*/}
             <View>
               <ChapterDetails
                 screenProps={{rootNavigation: this.props.navigation}}

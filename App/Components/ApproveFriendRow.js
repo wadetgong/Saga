@@ -31,7 +31,7 @@ const ApproveFriendRow = ({ user, confirm, decline }) => (
               justifyContent: 'center',
               alignItems: 'center',}}
             >
-              <TouchableOpacity 
+              <TouchableOpacity
               onPress={() => confirm(user.uid)}
                 style={{
                   borderRadius: 5,
@@ -53,7 +53,7 @@ const ApproveFriendRow = ({ user, confirm, decline }) => (
               justifyContent: 'center',
               alignItems: 'center',}}
             >
-              <TouchableOpacity 
+              <TouchableOpacity
                 onPress={() => decline(user.uid)}
                 style={{
                   borderRadius: 5,
@@ -78,37 +78,37 @@ const ApproveFriendRow = ({ user, confirm, decline }) => (
 class ApproveFriendClass extends React.Component {
   constructor () {
     super()
-    
+
     this.uid = firebaseApp.auth().currentUser.uid
-    
+
     this.confirm = this.confirm.bind(this)
-    this.delete = this.delete.bind(this)
+    this.decline = this.decline.bind(this)
   }
-  
+
   confirm (fid) {
     const uid = this.uid,
           path1 = '/users/' + uid + '/friends/received/' + fid,
           path2 = uid + '/friends/list/' + fid,
           path3 = '/users/' + fid + '/friends/sent/' + uid,
           path4 = fid + '/friends/list/' + uid;
+    firebaseApp.database().ref('/users').update({ [path2] : true, [path4] : true });
     firebaseApp.database().ref(path1).remove();
     firebaseApp.database().ref(path3).remove();
-    firebaseApp.database().ref('/users').update({ [path2] : true, [path4] : true });
   }
-  
-  delete (fid) {
+
+  decline (fid) {
     const uid = this.uid,
           path1 = '/users/' + uid + '/friends/received/' + fid,
           path2 = '/users/' + fid + '/friends/sent/' + uid;
     firebaseApp.database().ref(path1).remove();
     firebaseApp.database().ref(path2).remove();
   }
-  
+
   render () {
     const { user } = this.props;
-    return <ApproveFriendRow 
-      user={user} 
-      confirm={this.confirm} 
+    return <ApproveFriendRow
+      user={user}
+      confirm={this.confirm}
       decline={this.decline}
     />
   }
