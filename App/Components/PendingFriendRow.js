@@ -6,44 +6,21 @@ import { Fonts, Colors, Metrics } from '../Themes/'
 
 import firebaseApp from '../Firebase'
 
+import styles from './Styles/PendingFriendRowStyles'
 
 const PendingFriendRow = ({ user, cancel }) => (
-    <View style={{flex: 1,
-      flexDirection: 'row',
-      padding: 5,
-    }}>
-        <TouchableOpacity
-            onPress={() => {}}
-        >
+    <View style={styles.rowSection}>
+        <TouchableOpacity onPress={() => {}}>
         <Image
-            style={{width: 80, height: 80}}
-            source={{uri: user.profilePicture}}
+          style={{width: 75, height: 75}}
+          source={{uri: user.profilePicture}}
         />
         </TouchableOpacity>
-        <View style={{flex: 1,
-            flexDirection: 'column',
-            justifyContent: 'flex-start',
-            alignItems: 'flex-start',
-            paddingHorizontal: 10,}}
-        >
-          <Text><Text style={{fontWeight: 'bold'}}>{user.name}</Text> ({user.username})</Text>
-          {/*<Text style={{fontStyle: 'italic'}}>Date Requested: 6/22/2017</Text>*/}
-          <TouchableOpacity 
-            onPress={() => cancel(user.uid)}
-            style={{
-              borderRadius: 5,
-              marginVertical: 5,
-              paddingHorizontal: 10,
-              paddingVertical: 5,
-              backgroundColor: Colors.fire,
-              justifyContent: 'center',
-              alignItems: 'center'
-            }}
-          >
-            <Text style={{
-              color: Colors.snow,
-              textAlign: 'center',
-            }}>Cancel Request</Text>
+        <View style={styles.cancelSection}>
+          <Text style={{fontWeight: 'bold'}}><Icon name='user' style={styles.icon}/> {user.name}</Text>
+          <Text style={{fontSize: 12}}><Icon name='envelope' style={styles.icon}/> {user.email}</Text>
+          <TouchableOpacity onPress={() => cancel(user.uid)} style={styles.cancelButton}>
+            <Text style={styles.cancelText}>Cancel Request</Text>
           </TouchableOpacity>
         </View>
     </View>
@@ -52,12 +29,11 @@ const PendingFriendRow = ({ user, cancel }) => (
 class PendingFriendClass extends React.Component {
   constructor () {
     super()
-    
+
     this.uid = firebaseApp.auth().currentUser.uid
-    
     this.cancel = this.cancel.bind(this)
   }
-  
+
   cancel (fid) {
     const uid = this.uid,
           path1 = '/users/' + uid + '/friends/sent/' + fid,
@@ -65,11 +41,11 @@ class PendingFriendClass extends React.Component {
     firebaseApp.database().ref(path1).remove();
     firebaseApp.database().ref(path2).remove();
   }
-  
+
   render () {
     const { user } = this.props;
-    return <PendingFriendRow 
-      user={user} 
+    return <PendingFriendRow
+      user={user}
       cancel={this.cancel}
     />
   }

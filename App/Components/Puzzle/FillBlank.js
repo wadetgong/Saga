@@ -12,12 +12,21 @@ class FillBlank extends React.Component {
   render() {
     console.log('fill in blank state is ', this.state)
     return (
-      <View style={{padding: 5, margin: 5, backgroundColor: 'lightblue'}}>
-        <Text>{this.props.puzzle.question}</Text>
+      <View style={{padding: 5, margin: 5, /*backgroundColor: 'lightblue'*/}}>
+        <View>
+          <Text>{this.props.puzzle.question} fdsafdsafsa</Text>
+        </View>
         <TextInput
-          style={{height: 40, borderColor: 'gray', borderWidth: 1, borderRadius: 5, paddingHorizontal: 10,}}
+          style={{
+            height: 40,
+            borderColor: 'gray',
+            borderWidth: 1,
+            borderRadius: 5,
+            paddingHorizontal: 10,
+          }}
           onChangeText={(text) => this.setState({text})}
           value={this.state.text}
+          placeholder="Answer"
         />
         <RoundedButton
           text="Submit Answer"

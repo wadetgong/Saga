@@ -61,7 +61,6 @@ class TreasureChest extends Component {
           <CameraScreen
             close={this.props.screenProps.close}
           >
-          <Text>Print off text</Text>
           <TouchableHighlight onPress={this.clickedTreasureChest}>
             <Image
               source={require('../../Images/treasureChest.png')}

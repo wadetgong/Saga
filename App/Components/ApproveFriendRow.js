@@ -4,70 +4,29 @@ import Icon from 'react-native-vector-icons/SimpleLineIcons'
 import { Images, Fonts, Colors, Metrics } from '../Themes/'
 import firebaseApp from '../Firebase'
 
+import styles from './Styles/ApproveFriendRowStyles'
+
 const ApproveFriendRow = ({ user, confirm, decline }) => (
-    <View style={{flex: 1,
-      flexDirection: 'row',
-      padding: 5,
-    }}>
-        <TouchableOpacity
-          onPress={() => {}}
-        >
+    <View style={styles.rowSection}>
+        <TouchableOpacity onPress={() => {}}>
         <Image
-          style={{width: 80, height: 80}}
+          style={{width: 75, height: 75}}
           source={{uri: user.profilePicture}}
         />
         </TouchableOpacity>
-        <View style={{flex: 1,
-          flexDirection: 'column',
-          justifyContent: 'flex-start',
-          alignItems: 'flex-start',
-          paddingHorizontal: 10,}}
-        >
-          <Text><Text style={{fontWeight: 'bold'}}>{user.name}</Text> ({user.username})</Text>
-          <Text style={{fontStyle: 'italic'}}>Date Requested: 6/22/2017</Text>
-          <View style={{flex: 1, flexDirection: 'row'}}>
-            <View style={{flex: 1,
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',}}
-            >
-              <TouchableOpacity
-              onPress={() => confirm(user.uid)}
-                style={{
-                  borderRadius: 5,
-                  paddingHorizontal: 20,
-                  paddingVertical: 5,
-                  backgroundColor: Colors.buttonStandard,
-                  justifyContent: 'center',
-                  alignItems: 'center'
-                }}
-              >
-                <Text style={{
-                  color: Colors.snow,
-                  textAlign: 'center',
-                }}>Confirm</Text>
+        <View style={styles.userDescription}>
+          <Text style={{fontWeight: 'bold'}}><Icon name='user' style={styles.icon}/> {user.name}</Text>
+          <Text style={{fontSize: 12}}><Icon name='envelope' style={styles.icon}/> {user.email}</Text>
+
+          <View style={styles.approveSection}>
+            <View style={styles.confirmSection}>
+              <TouchableOpacity onPress={() => confirm(user.uid)} style={styles.confirmButton}>
+                <Text style={styles.confirmText}>Confirm</Text>
               </TouchableOpacity>
             </View>
-            <View style={{flex: 1,
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',}}
-            >
-              <TouchableOpacity
-                onPress={() => decline(user.uid)}
-                style={{
-                  borderRadius: 5,
-                  paddingHorizontal: 20,
-                  paddingVertical: 5,
-                  backgroundColor: Colors.charcoal,
-                  justifyContent: 'center',
-                  alignItems: 'center'
-                }}
-              >
-                <Text style={{
-                  color: Colors.snow,
-                  textAlign: 'center',
-                }}>Decline</Text>
+            <View style={styles.declineSection}>
+              <TouchableOpacity onPress={() => decline(user.uid)} style={styles.declineButton}>
+                <Text style={styles.declineText}>Decline</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -92,10 +51,10 @@ class ApproveFriendClass extends React.Component {
           path3 = fid + '/friends/sent/' + uid,
           path4 = fid + '/friends/list/' + uid;
     firebaseApp.database().ref('/users').update({
-      [path1] : null, 
-      [path2] : true, 
+      [path1] : null,
+      [path2] : true,
       [path3] : null,
-      [path4] : true, 
+      [path4] : true,
     });
   }
 

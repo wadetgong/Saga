@@ -43,9 +43,10 @@ export default StyleSheet.create({
   },
   infoText: {
     padding: 10,
-    margin: 10,
+    marginHorizontal: 10,
+    marginTop: 10,
     backgroundColor: 'beige',
-    borderRadius: 5
+    // borderRadius: 5
   },
   completeText: {
     padding: 10,

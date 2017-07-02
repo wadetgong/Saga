@@ -104,11 +104,16 @@ const TabNav = TabNavigator({
 });
 
 const HomeStack = StackNavigator({
-    LoginScreen: { screen: LoginScreen },
+    Login: {
+      screen: LoginScreen,
+      navigationOptions: {
+        tabBarVisible: false
+      }
+    },
     TabNav: { screen: TabNav }
   }, {
     headerMode: 'none',
-    initialRouteName: 'LoginScreen'
+    initialRouteName: 'Login'
   })
 
 // Manifest of possible screens

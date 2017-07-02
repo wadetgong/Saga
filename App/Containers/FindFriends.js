@@ -15,7 +15,7 @@ class FindFriends extends React.Component {
       ds: new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 }),
       text: '',
     }
-    
+
     this.onSearch = this.onSearch.bind(this)
   }
 
@@ -61,4 +61,5 @@ class FindFriends extends React.Component {
 const mapState = state => ({
   users : state.friends.users,
 })
+
 export default connect(mapState)(FindFriends)

@@ -21,5 +21,38 @@ export default StyleSheet.create({
     textAlign: 'center',
     marginBottom: Metrics.smallMargin
   },
-
+  profileSection: {
+    flexDirection: 'row',
+    paddingHorizontal: 15,
+    paddingBottom: 10
+  },
+  pictureContainer: {
+    borderBottomLeftRadius: 3,
+    borderTopLeftRadius: 3,
+    overflow: 'hidden',
+    borderColor: 'lightgray'
+  },
+  userDetailsSection: {
+    padding: 10,
+    flexDirection: 'column',
+    borderColor: Colors.border,
+    borderWidth: 1,
+    flex: 1,
+    borderBottomRightRadius: 3,
+    borderTopRightRadius: 3,
+    borderColor: 'lightgray'
+  },
+  logoutButton: {
+    margin: 5,
+    width: 100,
+    borderRadius: 3,
+    paddingHorizontal: 20,
+    paddingVertical: 5,
+    backgroundColor: 'gray',
+  },
+  logoutText: {
+    color: Colors.snow,
+    textAlign: 'center',
+    fontSize: 12
+  }
 })
