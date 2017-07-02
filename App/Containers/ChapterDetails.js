@@ -79,11 +79,11 @@ class ChapterDetails extends React.Component {
           shadowRadius: 1,
           shadowOpacity: 0.5*/
         }}>
-          <Text>Showing the chapter details for Chapter {this.state.chapter.id}</Text>
+          <Text>Showing the chapter details for Chapter {this.props.chapterInfo.id}</Text>
           <Text style={{fontStyle: 'italic'}}>(Chapter Narrrative):
             {
-              this.state.chapter.description
-              ? this.state.chapter.description
+              this.props.chapterInfo.description
+              ? this.props.chapterInfo.description
               : 'Description is empty in Firebase.'
             }
           </Text>

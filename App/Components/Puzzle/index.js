@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import firebaseApp from '../../Firebase'
 import { Images, Fonts } from '../../Themes'
 import FillBlank from './FillBlank'
+import EnterZone from './EnterZone'
 import TreasureChest from './TreasureChest'
 import RoundedButton from '../Button/RoundedButton'
 
@@ -64,59 +65,37 @@ class Puzzle extends React.Component {
     })
   }
 
-  openCameraModal() {
-    this.setState({
-      showModal: true,
-    })
-  }
-  closeCameraModal() {
-    console.log('closing the camera modal');
-    this.setState({
-      showModal: false,
-    })
-  }
+  openCameraModal() { this.setState({ showModal: true, }) }
+  closeCameraModal() { this.setState({ showModal: false, }) }
 
   getPuzzleObj(puzzle) {
     switch(puzzle.puzzleType) {
       case 'fillBlank':
-        return <FillBlank
-          puzzle={puzzle}
-          handleSubmit={this.handleSubmit}
-          disabled={ !(this.state.attempts < this.props.puzzle.maxAttempts) }
-        />
+        return <FillBlank puzzle={puzzle} handleSubmit={this.handleSubmit} />
         break;
       case 'simpleFind':
         return (
           <View>
-            <RoundedButton
-              onPress={() => this.openCameraModal()}
-              style={{}}
-              text={"Search"}
-            />
-            <Modal
-              animationType={"slide"}
-              visible={this.state.showModal}
-              onRequestClose={this.closeCameraModal}>
-              <TreasureChest
-                screenProps={{ close: this.closeCameraModal}}
-                // puzzleInfo={this.state.selectedPuzzle}
-                storyKey={this.props.storyKey}
-                handleSubmit={this.handleSubmit}
-              />
+            <RoundedButton onPress={() => this.openCameraModal()} text={"Search"} />
+            <Modal animationType={"slide"} visible={this.state.showModal} onRequestClose={this.closeCameraModal}>
+              <TreasureChest screenProps={{ close: this.closeCameraModal}} storyKey={this.props.storyKey} handleSubmit={this.handleSubmit} findObj={puzzle.findImage}/>
             </Modal>
-
           </View>
         )
+        break;
+      case 'enterZone':
+        return <EnterZone puzzle={puzzle} handleSubmit={this.handleSubmit} />
         break;
       default:
       return (<View></View>)
         // throw new Error('Puzzle type not recognized.')
     }
   }
+
   render() {
     console.log('Puzzle props, ', this.props)
     return (
-      <View style={{flex: 1/*,backgroundColor: 'green'*/}}>
+      <View style={{flex: 1,backgroundColor: 'green'}}>
         {/*<Text>Status: {this.state.status}</Text>
         <Text>Attempts Allowed: {this.props.puzzle.maxAttempts}</Text>
         <Text>Attempts: {this.state.attempts}</Text>*/}
@@ -125,16 +104,11 @@ class Puzzle extends React.Component {
     )
   }
 }
+
 const mapStateToProps = (state) => {
   return {
     puzzleUrl: state.currentStory.puzzleUrl,
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Puzzle)
+export default connect(mapStateToProps, null)(Puzzle)

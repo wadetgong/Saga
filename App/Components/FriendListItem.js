@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Image, TouchableOpacity, Switch } from 'react-native'
+import { View, Text, Image, TouchableOpacity} from 'react-native'
 import { Images } from '../Themes'
 import styles from './Styles/FriendListItemStyles'
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
