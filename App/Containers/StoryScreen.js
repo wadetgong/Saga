@@ -1,6 +1,7 @@
 import React from 'react'
 import { ListView, View, Text } from 'react-native'
 import firebaseApp from '../Firebase'
+import * as firebase from 'firebase'
 import { connect } from 'react-redux'
 import StoryListItem from '../Components/StoryListItem'
 import SearchBar from '../Components/SearchBar'
@@ -28,7 +29,7 @@ class StoryScreen extends React.Component {
     return story.title.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1;
   }
 
-  createJourney () {    
+  createJourney (story) {    
     const uid = this.uid;
     const { navigate } = this.props.navigation
     
@@ -37,19 +38,28 @@ class StoryScreen extends React.Component {
     // I definitely don't know why BUT
     // transactions get called twice, once with i = null
     const indexRef = firebaseApp.database().ref('/indexes/journey')
+    const currentTime = firebase.database.ServerValue.TIMESTAMP
     indexRef.transaction(i => {
       if (i) {
-        const jid = '/journey/' + uid + i
+        const jid = uid + i
         
         // new journey
-        const newJourneyRef = firebaseApp.database().ref(jid)
+        const newJourneyRef = firebaseApp.database().ref('/journey/' + jid)
+        // no points {}, solved {}
         newJourneyRef.set({
-          "what": "we're making a new journey somehow",
-          "team": { [uid] : true }
+          "hintsLeft": 10,
+          "failedAttempts": 0,
+          "status": { 
+            "text": "Started", 
+            "timestamp" : currentTime
+          },
+          "team": { [uid] : true },
+          "story": story,
+          "times": { "start": currentTime }
         })
         
         // user
-        // const myJourneysRef = firebaseApp.database().ref('/users/' + uid + '/')
+        const myJourneysRef = firebaseApp.database().ref('/users/' + uid + '/journeys/' + jid).set(story.name)
       }
       return i+1
     })
