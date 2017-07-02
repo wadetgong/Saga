@@ -1,6 +1,6 @@
 import React from 'react'
 import { ListView, View, Text } from 'react-native'
-// import firebaseApp from '../Firebase'
+import firebaseApp from '../Firebase'
 import { connect } from 'react-redux'
 import StoryListItem from '../Components/StoryListItem'
 import SearchBar from '../Components/SearchBar'
@@ -15,35 +15,47 @@ class StoryScreen extends React.Component {
       // stories: [],
       text: '',
     }
-    // this.storyRef = firebaseApp.database().ref('/story')
+    
+    this.uid = firebaseApp.auth().currentUser.uid
+    
     this.onSearch = this.onSearch.bind(this)
+    this.createJourney = this.createJourney.bind(this)
   }
 
-
-  // componentDidMount () {
-  //   this.listenForItems(this.storyRef)
-  // }
-
   onSearch (searchTerm) { this.setState({ text: searchTerm }) }
-
-  // listenForItems(ref) {
-  //   // get stories
-  //   this.unsubscribe = ref.on('value', (snap) => {
-  //     const items = []
-  //     snap.forEach((child) => {
-  //       items.push({ _key: child.key, ...child.val() })
-  //       this.setState({ stories: items})
-  //     })
-  //   })
-  // }
 
   checkMatch (searchTerm, story) {
     return story.title.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1;
   }
 
-  // componentWillUnmount () {
-  //   this.storyRef.off('value', this.unsubscribe)
-  // }
+  createJourney () {    
+    const uid = this.uid;
+    const { navigate } = this.props.navigation
+    
+    // increment index
+    // NOTE: transactions are really weird
+    // I definitely don't know why BUT
+    // transactions get called twice, once with i = null
+    const indexRef = firebaseApp.database().ref('/indexes/journey')
+    indexRef.transaction(i => {
+      if (i) {
+        const jid = '/journey/' + uid + i
+        
+        // new journey
+        const newJourneyRef = firebaseApp.database().ref(jid)
+        newJourneyRef.set({
+          "what": "we're making a new journey somehow",
+          "team": { [uid] : true }
+        })
+        
+        // user
+        // const myJourneysRef = firebaseApp.database().ref('/users/' + uid + '/')
+      }
+      return i+1
+    })
+    
+    navigate('JourneyFriends')
+  }
 
   render () {
     const { text } = this.state
@@ -77,6 +89,7 @@ class StoryScreen extends React.Component {
             StoryListItem
             item={item}
             navigate={navigate}
+            createJourney={this.createJourney}
           />}
         />
       </View>
