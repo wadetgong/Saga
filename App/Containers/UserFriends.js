@@ -63,7 +63,7 @@ const FriendStack = TabNavigator({
 // as we have it on all pages
 // when we reorder the tabnavigator undo this hardcode
 
-class UserProfile extends React.Component {
+class UserFriends extends React.Component {
   constructor() {
     super()
     // unsubscribing
@@ -94,7 +94,7 @@ class UserProfile extends React.Component {
     this.unsubscribeMyFriendsRef = myFriendsRef
       .on('value', fsnap => {
         const myFriends = fsnap.val();
-        if (!myFriends) console.log('fsnap', fsnap, fsnap.val())
+
         // get users
         usersRef // return
           .once('value')
@@ -124,5 +124,5 @@ const mapDispatch = {
   setMyFriendsAndUsers
 }
 
-export default connect(mapState, mapDispatch)(UserProfile)
+export default connect(mapState, mapDispatch)(UserFriends)
 

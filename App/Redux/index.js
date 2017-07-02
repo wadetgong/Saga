@@ -12,6 +12,7 @@ export default () => {
     login: require('./LoginRedux').reducer,
     search: require('./SearchRedux').reducer,
     friends: require('./FriendsRedux').reducer,
+    stories: require('./StoriesRedux').reducer,
     augmented,
     geoLocation,
     currentStory

@@ -2,12 +2,9 @@ import { StackNavigator, TabNavigator } from 'react-navigation'
 import TextablesScreen from '../Containers/TextablesScreen'
 import LaunchScreen from '../Containers/LaunchScreen'
 import LoginScreen from '../Containers/LoginScreen'
-import StoryScreen from '../Containers/StoryScreen'
-import StoryPreview from '../Containers/StoryPreview'
-import JourneyFriends from '../Containers/JourneyFriends'
+import Stories from '../Containers/Stories'
 import UserProfile from '../Containers/UserProfile'
 import UserFriends from '../Containers/UserFriends'
-import TeamScreen from '../Containers/TeamScreen'
 import Chapter from '../Containers/Chapter'
 import ChapterDetails from '../Containers/ChapterDetails'
 import PuzzleInfo from '../Containers/PuzzleInfo'
@@ -17,22 +14,6 @@ import styles from './Styles/NavigationStyles'
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
 import React from 'react'
 import { Colors } from '../Themes'
-
-const ChooseStoryStack = StackNavigator({
-    StoryScreen: { screen: StoryScreen },
-    StoryPreview: { screen: StoryPreview },
-    JourneyFriends: { screen: JourneyFriends },
-    TeamScreen: { screen: TeamScreen },
-    // TeamScreen: { screen: ({ navigation }) => <TeamScreen screenProps={{ rootNavigation: navigation }} /> }
-
-  }, {
-    // Default config for all screens
-    headerMode: 'none',
-    initialRouteName: 'StoryScreen',
-    navigationOptions: {
-      headerStyle: styles.header
-    }
-  });
 
 const StoryGameStack = StackNavigator({
     Chapter: {screen: Chapter},
@@ -82,7 +63,7 @@ const TabNav = TabNavigator({
     },
   },
   Stories: {
-    screen: ChooseStoryStack,
+    screen: Stories,
     navigationOptions: {
       tabBarLabel: 'Search',
       tabBarIcon: ({ tintColor }) => (
@@ -115,7 +96,7 @@ const TabNav = TabNavigator({
   }
 
 }, {
-  initialRouteName: 'UserFriends',
+  initialRouteName: 'Stories',
   tabBarOptions: {
     tintColor: Colors.tintColor,
     showLabel: false
