@@ -8,6 +8,7 @@ class TeamScreen extends React.Component {
     super()
     this.generateStory = this.generateStory.bind(this)
   }
+  
   generateStory() {
     const resetAction = NavigationActions.reset({
       index: 0,
@@ -16,8 +17,6 @@ class TeamScreen extends React.Component {
       ]
     })
     this.props.navigation.dispatch(resetAction)
-
-    // this.props.navigation.navigate('Chapter')
   }
 
   render() {

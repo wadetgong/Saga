@@ -23,7 +23,8 @@ const initialState = {
   jid: '',
   name: '',
   journey: {},
-  team: {},
+  team: {},       // mapped to /journey/jid/team
+  teamList: {},   // uid : {user}
 }
 
 export const reducer = (state=initialState, action) => {
@@ -32,9 +33,10 @@ export const reducer = (state=initialState, action) => {
     case SET_JOURNEYS:
       const journeys = Object.assign({}, action.journeys)
       const myStories = {}
-      for (let jid in journeys)
+      for (let jid in journeys) {
+        if (jid == "pending")
         myStories[journeys[jid]] = true
-      
+      }
       newState.myStories = myStories
       newState.myJourneys = journeys
       break;
@@ -55,7 +57,19 @@ export const reducer = (state=initialState, action) => {
     case SET_JOURNEY:
       newState.jid = action.jid
       newState.name = action.journey.story.name
-      newState.journey = action.journey
+      newState.journey = Object.assign({}, action.journey)
+      newState.team = Object.assign({}, action.journey.team)
+      
+      let teamList = {}
+      for (let uid in newState.team) {
+        if (uid == "pending") {
+          for (let pid in newState.team.pending)
+            teamList[pid] = "pending";
+        } else {
+          teamList[uid] = true
+        }
+      }
+      newState.teamList = teamList;
       break;
     default:
       return state

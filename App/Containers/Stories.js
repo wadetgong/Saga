@@ -6,7 +6,7 @@ import StoryPreview from '../Containers/StoryPreview'
 import JourneyFriends from '../Containers/JourneyFriends'
 import TeamScreen from '../Containers/TeamScreen'
 import firebaseApp from '../Firebase'
-import { fetchStories } from '../Redux/StoriesRedux'
+import { fetchStories, fetchJourney } from '../Redux/StoriesRedux'
 
 const ChooseStoryStack = StackNavigator({
     StoryScreen: { screen: StoryScreen },
@@ -27,8 +27,9 @@ class Stories extends React.Component {
   constructor() {
     super()
     this.uid = firebaseApp.auth().currentUser.uid
-    
     this.unsubscribePrevStoriesRef = null;
+    this.unsubscribeJourneyRef = null;
+    this.unsubscribeCurrentJourneyRef = null;
   }
   
   componentDidMount () {
@@ -39,10 +40,20 @@ class Stories extends React.Component {
     const prevStories = firebaseApp.database().ref('/users/' + uid + '/journeys')    
     const storyRef = firebaseApp.database().ref('/story')
     this.getJourneysAndStories(prevStories, storyRef)
+    
+    // listen to journey to see if new one is added by yourself
+    // possible listen to journey
+    const journeyRef = firebaseApp.database().ref('/journey')
+    this.getCurrentJourney(journeyRef)
   }
   
   componentWillUnmount () {
-    if (this.unsubscribePrevStoriesRef) this.unsubscribePrevStoriesRef()
+    if (this.unsubscribePrevStoriesRef) 
+      this.unsubscribePrevStoriesRef();
+    if (this.unsubscribeJourneyRef) 
+      this.unsubscribeJourneyRef();
+    // if (this.unsubscribeCurrentJourneyRef) 
+      // this.unsubscribeCurrentJourneyRef();
   }
   
   getJourneysAndStories (journeyRef, storyRef) {
@@ -58,16 +69,43 @@ class Stories extends React.Component {
     })
   }
   
-  render () {
-    return (
-      <ChooseStoryStack />
-    )
+  getCurrentJourney (journeyRef) {
+    const uid = this.uid
+    
+    this.unsubscribeJourneyRef = journeyRef.on('child_added', (snap, _) => {
+      const journey = snap.val(), 
+            jid = snap.key;
+      
+      //
+      // CODEREVIEW TODO: what is best way to unsubscribe 
+      // this next listener when done?
+      // I don't understand when componentWillUnmount happens
+      //
+
+      // if you added the newest journey to /journey send to redux
+      // this listener runs TWICE
+      // is it because of the transaction? 
+      // How do I fix the transaction running twice in StoryScreen?
+      if (jid && !jid.indexOf(uid)) {
+        console.log('STORIES STORIES STORIES listening to current journey', jid)
+        const curRef = firebaseApp.database().ref('/journey/' + jid)
+        this.unsubscribeCurrentJourneyRef = curRef
+          .on('value', csnap => {
+            const cur = csnap.val()
+            
+            console.log('STORIES STORIES STORIES listener ran', jid, cur)
+            this.props.fetchJourney(jid, cur)
+          })
+      }
+    })
   }
+  
+  render () { return ( <ChooseStoryStack /> ) }
 }
 
 const mapState = state => ({})
 const mapDispatch = {
-  fetchStories
+  fetchStories,
+  fetchJourney
 }
-
 export default connect(mapState, mapDispatch)(Stories)

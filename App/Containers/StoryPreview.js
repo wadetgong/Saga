@@ -25,7 +25,7 @@ const StoryPreview = ({ navigation }) => {
         <View style={styles.detailSection}>
           <Text style={{fontFamily: Fonts.type.bold, alignSelf: 'center'}}>Story Details</Text>
           <View style={styles.descriptionView}>
-            <Text>Story Description: {item.description} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi dolor magna, blandit a est vel, rhoncus volutpat ex. Cras cursus blandit tortor, sit amet viverra augue facilisis vitae. Donec sit amet posuere nulla, vel scelerisque dui. Donec feugiat ipsum in eros maximus, a varius eros pharetra.</Text>
+            <Text>{item.description}</Text>
           </View>
           <View style={styles.descriptionView}>
             <Text style={{fontStyle: 'italic'}}>Est. Completion Time: {item.estimatedTime} hours</Text>

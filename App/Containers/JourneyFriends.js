@@ -26,13 +26,15 @@ class JourneyFriends extends React.Component {
   checkMatch (searched, friend) {
     const check = text => (text.toLowerCase().indexOf(searched.toLowerCase()) !== -1)
     const { email, name, username } = friend
-    return check(email) || check(name) || check(username)
+    return (check(email) || check(name) || check(username))
   }
 
   addFriendToTeam (fid) {
     const { jid, name } = this.props,
-          path1 = '/users/' + fid + '/journeys/' + jid,
-          path2 = '/journey/' + jid + '/team/' + fid;
+          path1 = '/users/' + fid + '/journeys/pending/' + jid,
+          path2 = '/journey/' + jid + '/team/pending/' + fid;
+    
+    console.log('\n\nAdding frined to team', jid, name, fid)
     firebaseApp.database().ref('/').update({
       [path1] : name, [path2] : true
     })
@@ -50,8 +52,7 @@ class JourneyFriends extends React.Component {
     
     console.log('FRIENDS IN JOURNEYFRIENDS RENDER', filteredFriends, team)
     const friendsNotTeam = filteredFriends.filter(friend => !team[friend.uid])
-    const friendList = ds.cloneWithRows(filteredFriends)
-    console.log('FRIENDS LIST', friendsNotTeam)
+    const friendList = ds.cloneWithRows(friendsNotTeam)
 
     return (
       <View style={styles.container}>
@@ -91,7 +92,7 @@ class JourneyFriends extends React.Component {
 
 const mapState = state => ({
   friends : state.friends.list,
-  team : state.stories.team,
+  team : state.stories.teamList,
   jid : state.stories.jid,
   name : state.stories.name,
 })

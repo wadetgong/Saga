@@ -13,12 +13,11 @@ class StoryScreen extends React.Component {
     super()
     this.state = {
       ds: new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 }),
-      // stories: [],
       text: '',
     }
     
     this.uid = firebaseApp.auth().currentUser.uid
-    
+    this.unsubscribeJourneyRef = null;
     this.onSearch = this.onSearch.bind(this)
     this.createJourney = this.createJourney.bind(this)
   }
@@ -61,17 +60,21 @@ class StoryScreen extends React.Component {
         newJourneyRef.set(newJourney)
         
         // user
-        const myJourneysRef = firebaseApp.database()
+        firebaseApp.database()
           .ref('/users/' + uid + '/journeys/' + jid)
           .set(story.name)
         
         // redux
-        fetchJourney(jid, newJourney)
+        // fetchJourney(jid, newJourney)
       }
       return i+1
     })
     
     navigate('JourneyFriends')
+  }
+  
+  componentWillUnmount () {
+    if (this.unsubscribeJourneyRef) this.unsubscribeJourneyRef()
   }
 
   render () {
