@@ -12,6 +12,8 @@ import styles from './Styles/UserProfileStyles'
 import { Colors } from '../Themes'
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
 
+import firebaseApp from '../Firebase'
+
 
 const UserProfileStack = TabNavigator({
   UserJourneys: {
@@ -46,26 +48,63 @@ const UserProfileStack = TabNavigator({
 
 
 export default class UserProfile extends React.Component {
-  render() {
-    const user = API.getSelf().data;
+  constructor() {
+    super()
+    this.state = {
+      user: null
+    }
+    this.uid = firebaseApp.auth().currentUser.uid
+    this.userRef = firebaseApp.database().ref('/users/' + this.uid)
+  }
 
+  componentDidMount () {
+    this.listenForItems(this.userRef)
+  }
+
+  componentWillUnmount () {
+    this.this.userRef.off('value', this.unsubscribe)
+  }
+
+  listenForItems(ref) {
+    // get stories
+    this.unsubscribe = ref.on('value', (snap) => {
+      this.setState({ user: snap.val()})
+    })
+  }
+
+  render() {
+    // const user = API.getSelf().data;
+    console.log('uid', this.uid)
+    console.log('statein UserProfile', this.state)
     return (
       <View style={styles.container}>
         <View style={styles.sectionHeader}>
           <Text style={styles.boldLabel}>My Account</Text>
         </View>
-        <View style={{flexDirection: 'row', paddingHorizontal: 15, paddingBottom: 10}}>
-          <View style={{borderBottomLeftRadius: 3, borderTopLeftRadius: 3, overflow: 'hidden'}}>
-            <Image
-              source={{uri: user.profilePicture}}
-              style={{width: 120, height: 120}}
-            />
-          </View>
-          <View style={{padding: 10, flexDirection: 'column', borderColor: Colors.border, borderWidth: 1, flex: 1, borderBottomRightRadius: 3, borderTopRightRadius: 3}}>
-            <Text><Text style={{fontWeight: 'bold',}}>{user.name}</Text> ({user.username})</Text>
-            <Text>Email: {user.email}</Text>
-          </View>
-        </View>
+        {
+          this.state.user
+          ? (
+              <View style={styles.profileSection}>
+                <View style={styles.pictureContainer}>
+                  <Image
+                    source={{uri: this.state.user.profilePicture}}
+                    style={{width: 100, height: 100}}
+                  />
+                </View>
+                <View style={styles.userDetailsSection}>
+                  <Text style={{fontWeight: 'bold'}}><Icon name='user' style={styles.icon}/> {this.state.user.name}</Text>
+                  <Text style={{fontSize: 12}}><Icon name='envelope' style={styles.icon}/> {this.state.user.email}</Text>
+                    <TouchableOpacity
+                      onPress={() => {this.props.navigation.navigate('Login')}}
+                      style={styles.logoutButton}
+                    >
+                      <Text style={styles.logoutText}>Logout</Text>
+                    </TouchableOpacity>
+                </View>
+              </View>
+          )
+          : null
+        }
         <UserProfileStack />
       </View>
     )

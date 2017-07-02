@@ -39,14 +39,6 @@ const FriendStack = TabNavigator({
       </View>),
     },
   },
-  // ViewFriends: {
-  //   screen: ViewFriends,
-  //   navigationOptions: {
-  //     tabBarLabel: 'My Friends',
-  //     tabBarIcon: ({ tintColor }) => (
-  //     <Icon name='people' size={20} color={tintColor} />),
-  //   },
-  // },
 }, {
   initialRouteName: 'FindFriends',
   tabBarPosition: 'top',
@@ -89,7 +81,7 @@ class UserProfile extends React.Component {
   // listener on my friends
   getMyFriendsAndUsers (myFriendsRef, usersRef) {
     const uid = this.uid
-    
+
     // get myFriends
     this.unsubscribeMyFriendsRef = myFriendsRef
       .on('value', fsnap => {

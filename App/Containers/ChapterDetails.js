@@ -70,7 +70,10 @@ class ChapterDetails extends React.Component {
     // console.log('props in ChapterDetails', this.props)
     return (
       <View>
-        <View style={{padding: 10, margin: 10, backgroundColor: 'beige', borderRadius: 5,
+        <View style={{padding: 10, margin: 10, backgroundColor: 'beige',
+          borderWidth: 1,
+          borderColor: 'lightgray',
+          /*borderRadius: 5,*/
           /*shadowColor: 'black',
           hadowOffset: {width: 1, height: 1},
           shadowRadius: 1,

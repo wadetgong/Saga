@@ -5,14 +5,16 @@ import Icon from 'react-native-vector-icons/SimpleLineIcons'
 import { Fonts, Colors, Metrics } from '../Themes/'
 import firebaseApp from '../Firebase'
 
+import styles from './Styles/FriendUserRowStyles'
+
 class FriendUserRow extends React.Component {
   constructor () {
     super()
-    
+
     this.addFriend = this.addFriend.bind(this)
     this.uid = firebaseApp.auth().currentUser.uid
   }
-  
+
   componentDidMount () {
     this.usersRef = firebaseApp.database().ref('/users')
   }
@@ -23,54 +25,30 @@ class FriendUserRow extends React.Component {
           path2 = fid + '/friends/received/' + uid;
     this.usersRef.update({ [path1] : true, [path2] : true })
   }
-  
+
   render() {
     const { user } = this.props
     const addFriend = this.addFriend
-        
+
     return (
-      <View style={{flex: 1,
-        flexDirection: 'row',
-        padding: 5,
-      }}>
-          <TouchableOpacity
-              onPress={() => {}}
-          >
+      <View style={styles.rowSection}>
+          <TouchableOpacity onPress={() => {}}>
           <Image
-              style={{width: 80, height: 80}}
-              source={{uri: user.profilePicture}}
+            style={{width: 64, height: 64}}
+            source={{uri: user.profilePicture}}
           />
           </TouchableOpacity>
-          <View style={{flex: 1,
-              flexDirection: 'column',
-              justifyContent: 'flex-start',
-              alignItems: 'flex-start',
-              paddingHorizontal: 10,}}
+          <View style={styles.nameSection}
           >
-            <Text style={{fontWeight: 'bold'}}>{user.name}</Text>
-            <Text><Icon name='user' style={{paddingHorizontal: 5, justifyContent: 'center'}}/> : {user.username}</Text>
-            <Text><Icon name='envelope' style={{paddingHorizontal: 5, justifyContent: 'center'}}/> : {user.email}</Text>
+            <Text style={{fontWeight: 'bold'}}><Icon name='user' style={styles.icon}/> {user.name}</Text>
+            <Text style={{fontSize: 12}}><Icon name='envelope' style={styles.icon}/> {user.email}</Text>
           </View>
-          <View style={{flex: .6,
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'flex-start',}}
-          >
-            <TouchableOpacity 
+          <View style={styles.addFriendSection}>
+            <TouchableOpacity
               onPress={() => addFriend(user.uid)}
-              style={{
-                borderRadius: 5,
-                paddingHorizontal: 10,
-                paddingVertical: 5,
-                backgroundColor: Colors.buttonActive,
-                justifyContent: 'center',
-                alignItems: 'center'
-              }}
+              style={styles.addFriend}
             >
-              <Text style={{
-                color: Colors.snow,
-                textAlign: 'center',
-              }}>Add Friend</Text>
+              <Text style={styles.buttonText}>Add Friend</Text>
             </TouchableOpacity>
           </View>
       </View>

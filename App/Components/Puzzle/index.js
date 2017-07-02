@@ -5,6 +5,8 @@ import firebaseApp from '../../Firebase'
 import { Images, Fonts } from '../../Themes'
 import FillBlank from './FillBlank'
 import TreasureChest from './TreasureChest'
+import RoundedButton from '../Button/RoundedButton'
+
 // import SimpleFin from './FillBlank'
 
 class Puzzle extends React.Component {
@@ -23,26 +25,25 @@ class Puzzle extends React.Component {
 
   handleSubmit(answer) {
     console.log('handleSubmit called', answer, this.state.attempts)
-    if(this.state.status === 'Pending') {
-      let newAttempts = this.state.attempts + 1;
-      console.log('newAttempts', newAttempts)
+    // if(this.state.status === 'Pending') {
+    //   let newAttempts = this.state.attempts + 1;
+    //   console.log('newAttempts', newAttempts)
       if(answer.toLowerCase() === this.props.puzzle.answer.toLowerCase()) {
         this.puzzleRef.child('status').set('Complete')
         this.setState({
-          attempts: newAttempts,
+          // attempts: newAttempts,
           status: 'Complete',
         })
-        // this.props.close()
-      } else if (newAttempts === this.props.puzzle.maxAttempts) {
-        this.setState({
-          attempts: newAttempts,
-          status: 'Failure',
-        })
-      } else {
-        this.setState({
-          attempts: newAttempts,
-        })
-      }
+    //   } else if (newAttempts === this.props.puzzle.maxAttempts) {
+    //     this.setState({
+    //       attempts: newAttempts,
+    //       status: 'Failure',
+    //     })
+    //   } else {
+    //     this.setState({
+    //       attempts: newAttempts,
+    //     })
+    //   }
     }
   }
 
@@ -87,13 +88,11 @@ class Puzzle extends React.Component {
       case 'simpleFind':
         return (
           <View>
-            <TouchableOpacity
-              onPress={() => {
-                this.openCameraModal()
-              }}
-              style={{}}>
-              <Text>Click to launch camera</Text>
-            </TouchableOpacity>
+            <RoundedButton
+              onPress={() => this.openCameraModal()}
+              style={{}}
+              text={"Search"}
+            />
             <Modal
               animationType={"slide"}
               visible={this.state.showModal}
@@ -117,10 +116,10 @@ class Puzzle extends React.Component {
   render() {
     console.log('Puzzle props, ', this.props)
     return (
-      <View style={{backgroundColor: 'green', flex: 1}}>
-        <Text>Status: {this.state.status}</Text>
+      <View style={{flex: 1/*,backgroundColor: 'green'*/}}>
+        {/*<Text>Status: {this.state.status}</Text>
         <Text>Attempts Allowed: {this.props.puzzle.maxAttempts}</Text>
-        <Text>Attempts: {this.state.attempts}</Text>
+        <Text>Attempts: {this.state.attempts}</Text>*/}
         {this.getPuzzleObj(this.props.puzzle)}
       </View>
     )
