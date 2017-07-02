@@ -12,6 +12,8 @@ import styles from './Styles/UserProfileStyles'
 import { Colors } from '../Themes'
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
 
+import { connect } from 'react-redux'
+import { setSelf } from '../Redux/FriendsRedux'
 import firebaseApp from '../Firebase'
 
 
@@ -47,12 +49,9 @@ const UserProfileStack = TabNavigator({
 })
 
 
-export default class UserProfile extends React.Component {
+class UserProfile extends React.Component {
   constructor() {
     super()
-    this.state = {
-      user: null
-    }
     this.uid = firebaseApp.auth().currentUser.uid
     this.userRef = firebaseApp.database().ref('/users/' + this.uid)
   }
@@ -68,32 +67,29 @@ export default class UserProfile extends React.Component {
   listenForItems(ref) {
     // get stories
     this.unsubscribe = ref.on('value', (snap) => {
-      this.setState({ user: snap.val()})
+      this.props.setUser(snap.val())
     })
   }
 
   render() {
-    // const user = API.getSelf().data;
-    console.log('uid', this.uid)
-    console.log('statein UserProfile', this.state)
     return (
       <View style={styles.container}>
         <View style={styles.sectionHeader}>
           <Text style={styles.boldLabel}>My Account</Text>
         </View>
         {
-          this.state.user
+          this.props.user
           ? (
               <View style={styles.profileSection}>
                 <View style={styles.pictureContainer}>
                   <Image
-                    source={{uri: this.state.user.profilePicture}}
+                    source={{uri: this.props.user.profilePicture}}
                     style={{width: 100, height: 100}}
                   />
                 </View>
                 <View style={styles.userDetailsSection}>
-                  <Text style={{fontWeight: 'bold'}}><Icon name='user' style={styles.icon}/> {this.state.user.name}</Text>
-                  <Text style={{fontSize: 12}}><Icon name='envelope' style={styles.icon}/> {this.state.user.email}</Text>
+                  <Text style={{fontWeight: 'bold'}}><Icon name='user' style={styles.icon}/> {this.props.user.name}</Text>
+                  <Text style={{fontSize: 12}}><Icon name='envelope' style={styles.icon}/> {this.props.user.email}</Text>
                     <TouchableOpacity
                       onPress={() => {this.props.navigation.navigate('Login')}}
                       style={styles.logoutButton}
@@ -110,3 +106,12 @@ export default class UserProfile extends React.Component {
     )
   }
 }
+
+const mapState = state => ({
+  user: state.friends.user
+})
+const mapDispatch = dispatch => ({
+  setUser: (user) => dispatch(setSelf(user))
+})
+
+export default connect(mapState, mapDispatch)(UserProfile)

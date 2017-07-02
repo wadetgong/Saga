@@ -6,6 +6,7 @@ import styles from './Styles/UserProfileStyles'
 export default class UserJourneys extends React.Component {
 
   render() {
+    console.log('props in UserJourneys', this.props)
     return (
       <View style={{flex: 1}}>
         <View style={{flex: 1, flexDirection: 'row', padding: 10, backgroundColor: 'pink'}}>

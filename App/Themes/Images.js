@@ -20,13 +20,14 @@ const images = {
   hamburger: require('../Images/Icons/hamburger.png'),
   backButton: require('../Images/Icons/back-button.png'),
   closeButton: require('../Images/Icons/close-button.png'),
-  puzzle: require('../Images/puzzle.png'),
   storyMain: {
     artThief: require('../Images/Story/artThief/Main.gif'),
     batman: require('../Images/Story/batman/riddler.jpg'),
     woodElves: require('../Images/Story/woodElves/Main.jpg'),
   },
   emptyStory: require('../Images/emptyStory.jpeg'),
+  treasureChest: require('../Images/treasureChest.png'),
+  transponder: require('../Images/transponder.png'),
 }
 
 export default images

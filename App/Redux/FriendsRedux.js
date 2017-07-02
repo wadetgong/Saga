@@ -4,22 +4,25 @@
 const SET_USERS = 'SET_USERS';
 const SET_MYFRIENDS = 'SET_MYFRIENDS';
 const SET_ME = 'SET_ME'
+const SET_USER = 'SET_USER'
 // const FILTER_USERS = 'FILTER_USERS'
 
 // action-creators
 const setUsers = users => ({ type: SET_USERS, users });
 const setMyFriends = myFriends => ({ type: SET_MYFRIENDS, myFriends });
 const setMe = uid => ({ type: SET_ME, uid });
+const setUser = user => ({ type: SET_USER, user });
 // const filterUsers = { type: FILTER_USERS }
 
 // reducer
 const initialState = {
   users: [], // filtered users
   myFriends: {},
-  list: [], 
-  sent: [], 
+  list: [],
+  sent: [],
   received: [],
   myFriendsList: {}, // has user objects of friends
+  user: {}, //current user object
   uid: ''
 }
 
@@ -31,10 +34,10 @@ const friendObjToArr = (obj, friendsList) => {
 export const reducer = (state=initialState, action) => {
   const newState = Object.assign({}, state)
   switch (action.type) {
-    case (SET_USERS):      
+    case (SET_USERS):
       let newUsers = []
       const users = action.users
-      
+
       // get user objects
       // myFriendsList, users
       for (let uid in users) {
@@ -44,7 +47,7 @@ export const reducer = (state=initialState, action) => {
         else newUsers.push(newUser);
       }
       newState.users = newUsers
-      
+
       // get user objects
       // list/sent/received
       const fList = newState.myFriendsList
@@ -55,11 +58,11 @@ export const reducer = (state=initialState, action) => {
       break;
     case (SET_MYFRIENDS):
       const myFriends = action.myFriends
-      
+
       // myFriends
       // this line takes null myFriends and makes it {}
-      newState.myFriends = Object.assign({}, myFriends) 
-      
+      newState.myFriends = Object.assign({}, myFriends)
+
       // myFriendsList
       let myFriendsList = {}
       for (let key in myFriends) {
@@ -67,6 +70,9 @@ export const reducer = (state=initialState, action) => {
         if (friends) Object.assign(myFriendsList, friends)
       }
       newState.myFriendsList = myFriendsList
+      break;
+    case (SET_USER):
+      newState.user = action.user
       break;
     case (SET_ME):
       newState.uid = action.uid
@@ -84,4 +90,9 @@ export const setMyFriendsAndUsers = (uid, myFriends, users) => dispatch => {
   dispatch(setMe(uid))
   dispatch(setMyFriends(myFriends))
   dispatch(setUsers(users))
+}
+
+export const setSelf = (user) => dispatch => {
+  dispatch(setUser(user))
+  dispatch(setMyFriends(user.friends))
 }

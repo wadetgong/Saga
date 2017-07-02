@@ -7,7 +7,6 @@ import ChapterDetails from '../Containers/ChapterDetails'
 import ChapterScrollBar from '../Components/ChapterScrollBar'
 import RoundedButton from '../Components/Button/RoundedButton'
 import { ApplicationStyles, Images, Colors} from '../Themes'
-import geolib from 'geolib'
 import firebaseApp from '../Firebase'
 import { setChapter } from '../Redux/actions/currentStory'
 
@@ -28,7 +27,6 @@ class Chapter extends React.Component {
 
   componentDidMount() {
     if(this.props.storyUrl) this.listenForChange(this.storyRef)
-    // // console.log('componentDidMount in Chapter')
     // let polygon = [
     //   { latitude: 41.89, longitude: -87.66 },
     //   { latitude: 41.89, longitude: -87.68},
@@ -86,6 +84,7 @@ class Chapter extends React.Component {
     const chapters = this.state.story.chapters || []
     const selectedChapInfo = (chapters && chapters[this.state.selectedChap-1]) || 0
     const storyName = this.state.story && this.state.story.title
+    console.log('state in chapter', this.state)
 
     return (
       this.props.storyUrl

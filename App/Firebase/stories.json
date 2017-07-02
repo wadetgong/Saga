@@ -15,13 +15,10 @@
         "0": {
           "id": 1,
           "enabled": true,
-          "title": "art thief chapter 1",
           "description": "waha",
-          "locationHint": "sikes",
           "puzzles": {
             "0": {
               "id": 1,
-              "title": "",
               "description": "",
               "maxAttempts": 4,
               "puzzleType": "fillBlank",
@@ -33,18 +30,14 @@
               }
             }
           },
-          "locationPuzzle": "location puzzle",
           "nPuzzles": 1
         },
         "1": {
           "id": 2,
-          "title": "art thief chapter 2",
           "description": "waha",
-          "locationHint": "sikes",
           "puzzles": {
             "0": {
               "id": 1,
-              "title": "",
               "description": "",
               "maxAttempts": 4,
               "puzzleType": "fillBlank",
@@ -56,18 +49,14 @@
               }
             }
           },
-          "locationPuzzle": "location puzzle",
           "nPuzzles": 1
         },
         "2": {
           "id": 3,
-          "title": "art thief chapter 3",
           "description": "waha",
-          "locationHint": "sikes",
           "puzzles": {
             "0": {
               "id": 1,
-              "title": "",
               "description": "",
               "maxAttempts": 4,
               "puzzleType": "fillBlank",
@@ -79,19 +68,15 @@
               }
             }
           },
-          "locationPuzzle": "location puzzle",
           "nPuzzles": 1
 
         },
         "3": {
           "id": 4,
-          "title": "art thief chapter 4",
           "description": "waha",
-          "locationHint": "sikes",
           "puzzles": {
             "0": {
               "id": 1,
-              "title": "",
               "description": "",
               "maxAttempts": 4,
               "puzzleType": "fillBlank",
@@ -103,20 +88,19 @@
               }
             }
           },
-          "locationPuzzle": "location puzzle",
           "nPuzzles": 1
         }
     }
   },
   "batman": {
     "id": "batman",
-    "title": "Batman",
+    "title": "Riddle Me This",
     "startingLocation": {
       "lat": 41.8885,
       "long": -87.6354
     },
-    "description": "Catch bad guys",
-    "estimatedTime": 5.5,
+    "description": "The Riddler is loose on Gotham City! A toxin has been planted in the city's water supply, and the Dark Knight needs your help. He's enlisted you and your team to scour the city for clues and identify the source of the toxin. Stay vigilant - one missed clue can spell your demise. But don't linger - the clock is ticking!",
+    "estimatedTime": 3.5,
     "allowedFails": 2,
     "allowedHints": 10,
     "nChapters": 3,
@@ -124,21 +108,18 @@
       "0": {
         "id": 1,
         "enabled": true,
-        "title": "batman chapter 1",
-        "description": "waha",
-        "locationHint": "sikes",
+        "description": "Your mission begins with a rendezvous at a secure location where your team and Batman can communicate. Your current line of communication is not secure, so Batman directs you to the secure waypoint via the following encrypted message.",
         "puzzles": {
           "0": {
             "id": 1,
-            "title": "",
-            "description": "",
+            "description": "Where water wacks land is where I'm near; meet me when the lake crosses the well - you'll find me here.",
             "maxAttempts": 4,
-            "puzzleType": "simpleFind",
+            "puzzleType": "enterZone",
             "type": "",
             "answer": "pass",
             "location": {
-              "lat": 41.8715,
-              "long": -87.6220
+              "lat": 41.885730,
+              "long": -87.633939
             }
           }
         },
@@ -146,16 +127,14 @@
       },
       "1": {
         "id": 2,
-        "title": "batman chapter 2",
-        "description": "waha",
-        "locationHint": "sikes",
+        "description": "After making initial contact, the Dark Knight hands you a secure transponder to communicate securely.",
         "puzzles": {
           "0": {
             "id": 1,
-            "title": "",
             "description": "",
             "maxAttempts": 4,
-            "puzzleType": "fillBlank",
+            "puzzleType": "simpleFind",
+            "findImage": "transponder",
             "type": "",
             "answer": "pass",
             "location": {
@@ -168,13 +147,10 @@
       },
       "2": {
         "id": 3,
-        "title": "batman chapter 3",
         "description": "waha",
-        "locationHint": "sikes",
         "puzzles": {
           "0": {
             "id": 1,
-            "title": "",
             "description": "",
             "maxAttempts": 4,
             "puzzleType": "fillBlank",
@@ -206,13 +182,10 @@
       "0": {
         "id": 1,
         "enabled": true,
-        "title": "wood elves chapter 1",
         "description": "waha",
-        "locationHint": "sikes",
         "puzzles": {
           "0": {
             "id":1,
-            "title": "",
             "description": "",
             "maxAttempts": 4,
             "puzzleType": "fillBlank",
@@ -224,18 +197,14 @@
             }
           }
         },
-        "locationPuzzle": "location puzzle",
         "nPuzzles": 1
       },
       "1": {
         "id":2,
-        "title": "wood elves chapter 2",
         "description": "waha",
-        "locationHint": "sikes",
         "puzzles": {
           "0": {
             "id": 1,
-            "title": "",
             "description": "",
             "maxAttempts": 4,
             "puzzleType": "fillBlank",
@@ -247,7 +216,6 @@
             }
           }
         },
-        "locationPuzzle": "location puzzle",
         "nPuzzles": 1
       }
     }

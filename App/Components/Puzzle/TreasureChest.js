@@ -21,6 +21,8 @@ import {
 } from '../../Redux/constants';
 import CameraScreen from '../../Containers/CameraScreen'
 
+import { Images } from '../../Themes'
+
 let width = Dimensions.get('window').width
 
 class TreasureChest extends Component {
@@ -63,7 +65,7 @@ class TreasureChest extends Component {
           >
           <TouchableHighlight onPress={this.clickedTreasureChest}>
             <Image
-              source={require('../../Images/treasureChest.png')}
+              source={Images[this.props.findObj]}
               resizeMode='contain'
               style={[styles.arObject, styles.row, {
                 top: this.props.arObject.startingPosY + this.props.yOffset,

@@ -46,6 +46,8 @@ export default StyleSheet.create({
     marginHorizontal: 10,
     marginTop: 10,
     backgroundColor: 'beige',
+    borderWidth: 1,
+    borderColor: 'lightgray',
     // borderRadius: 5
   },
   completeText: {
