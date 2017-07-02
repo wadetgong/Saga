@@ -39,10 +39,9 @@ export const reducer = (state=initialState, action) => {
       // myFriendsList, users
       for (let uid in users) {
         if (uid == state.uid) continue;
-        if (state.myFriendsList[uid])
-          newState.myFriendsList[uid] = Object.assign({ uid: uid }, users[uid]);
-        else
-          newUsers.push( Object.assign(users[uid], { uid: uid }) );
+        let newUser = Object.assign({ uid: uid }, users[uid])
+        if (state.myFriendsList[uid]) newState.myFriendsList[uid] = newUser;
+        else newUsers.push(newUser);
       }
       newState.users = newUsers
       

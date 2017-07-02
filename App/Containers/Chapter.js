@@ -51,7 +51,7 @@ class Chapter extends React.Component {
 
   listenForChange(ref) {
     this.unsubscribe = ref.on('value', story => {
-      console.log('new info', story.val())
+      // console.log('new info', story.val())
       this.setState({
         story: story.val()
       })

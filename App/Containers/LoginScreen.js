@@ -68,11 +68,6 @@ class LoginScreen extends React.Component {
             ]
           })
           this.props.navigation.dispatch(resetAction)
-
-          // console.warn(JSON.stringify(currentUser.toJSON())); // signed in!
-          // this.props.navigation.navigate('UserFriends')
-
-          // firebaseApp
         }
       })
       .catch(error => console.log(`Login fail with error: ${error}`));

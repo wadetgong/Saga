@@ -30,16 +30,17 @@ class FindFriends extends React.Component {
   }
 
   render() {
+    const { text, ds } = this.state
     const { users } = this.props
-    const filteredFriends = this.state.text.length
-      ? users.filter(friend => this.checkMatch(this.state.text, friend))
+    const filteredFriends = text.length
+      ? users.filter(friend => this.checkMatch(text, friend))
       : users;
 
-    const friendList = this.state.ds.cloneWithRows(filteredFriends)
+    const friendList = ds.cloneWithRows(filteredFriends)
     return (
       <View style={styles.container}>
         <View style={styles.searchContainer}>
-          <SearchBar onSearch={this.onSearch} value={this.state.text}/>
+          <SearchBar onSearch={this.onSearch} value={text}/>
         </View>
         <ScrollView style={{paddingHorizontal: 10}}>
           <ListView
@@ -60,5 +61,5 @@ class FindFriends extends React.Component {
 const mapState = state => ({
   users : state.friends.users,
 })
-const mapDispatch = {}
-export default connect(mapState, mapDispatch)(FindFriends)
+
+export default connect(mapState)(FindFriends)
