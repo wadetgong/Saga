@@ -5,7 +5,7 @@ import * as firebase from 'firebase'
 import { connect } from 'react-redux'
 import StoryListItem from '../Components/StoryListItem'
 import SearchBar from '../Components/SearchBar'
-
+import { fetchJourney } from '../Redux/StoriesRedux'
 import styles from './Styles/StoryScreenStyles'
 
 class StoryScreen extends React.Component {
@@ -32,6 +32,7 @@ class StoryScreen extends React.Component {
   createJourney (story) {    
     const uid = this.uid;
     const { navigate } = this.props.navigation
+    const { fetchJourney } = this.props
     
     // increment index
     // NOTE: transactions are really weird
@@ -46,7 +47,7 @@ class StoryScreen extends React.Component {
         // new journey
         const newJourneyRef = firebaseApp.database().ref('/journey/' + jid)
         // no points {}, solved {}
-        newJourneyRef.set({
+        const newJourney = {
           "hintsLeft": 10,
           "failedAttempts": 0,
           "status": { 
@@ -56,10 +57,16 @@ class StoryScreen extends React.Component {
           "team": { [uid] : true },
           "story": story,
           "times": { "start": currentTime }
-        })
+        }
+        newJourneyRef.set(newJourney)
         
         // user
-        const myJourneysRef = firebaseApp.database().ref('/users/' + uid + '/journeys/' + jid).set(story.name)
+        const myJourneysRef = firebaseApp.database()
+          .ref('/users/' + uid + '/journeys/' + jid)
+          .set(story.name)
+        
+        // redux
+        fetchJourney(jid, newJourney)
       }
       return i+1
     })
@@ -111,4 +118,7 @@ class StoryScreen extends React.Component {
 const mapState = state => ({
   stories : state.stories.stories
 })
-export default connect(mapState)(StoryScreen)
+const mapDispatch = {
+  fetchJourney
+}
+export default connect(mapState, mapDispatch)(StoryScreen)

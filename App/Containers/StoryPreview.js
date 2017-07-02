@@ -10,7 +10,6 @@ import styles from './Styles/StoryPreviewStyles'
 const StoryPreview = ({ navigation }) => {
   const { item, createJourney } = navigation.state.params
 
-  console.log('story preview item', item, createJourney)
   return (
     <View style={styles.container}>
       <View style={styles.sectionHeader}>

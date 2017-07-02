@@ -1,84 +1,57 @@
 import React from 'react'
 import { Text, View, ListView, TouchableOpacity } from 'react-native'
-import API from '../Services/FixtureApi'
+import { connect } from 'react-redux'
+// import API from '../Services/FixtureApi'
 import FriendListItem from '../Components/FriendListItem'
 import SearchBar from '../Components/SearchBar'
 import RoundedButton from '../Components/Button/RoundedButton'
 import firebaseApp from '../Firebase'
-
 import { Colors } from '../Themes'
-
-// Styles
 import styles from './Styles/JourneyFriendsStyles'
 
-//there is a search bar at top but it's hard to see and also it doesn't work
-// WARNING DATEPICKER is IOS only oh noes
-// need logic for search
-// need logic for not showing current user in this list
-// need logic to disable switch if friend in different journey
-// need logic for sending notifications to friends lol
-//there is next button but not currently in scroller (ListView)
-
-// import styles from './Styles/Friends' // not there
-export default class JourneyFriends extends React.Component {
+class JourneyFriends extends React.Component {
   constructor() {
     super()
     this.state = {
       ds: new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 }),
-      friends: [],
       text: '',
     }
-    this.friendsRef = firebaseApp.database().ref('/users')
+    
     this.onSearch = this.onSearch.bind(this)
-    // this.addFriendToTeam = this.addFriendToTeam.bind(this)
+    this.addFriendToTeam = this.addFriendToTeam.bind(this)
   }
 
-  onSearch (searchTerm) {
-    console.log('searching in Friends Searchbar')
-    this.setState({
-      text: searchTerm
-    })
+  onSearch (searchTerm) { this.setState({ text: searchTerm }) }
+
+  checkMatch (searched, friend) {
+    const check = text => (text.toLowerCase().indexOf(searched.toLowerCase()) !== -1)
+    const { email, name, username } = friend
+    return check(email) || check(name) || check(username)
   }
 
-  checkMatch(searchTerm, friend) {
-    let searchVal = searchTerm.toLowerCase()
-    if(friend.email.toLowerCase().indexOf(searchVal) !== -1) return true
-    if(friend.name.toLowerCase().indexOf(searchVal) !== -1) return true
-    if(friend.username.toLowerCase().indexOf(searchVal) !== -1) return true
-    return false
-  }
-
-  addFriendToTeam (id, value) {
-    console.log('addfriendtoteam in Friends container', id, value, typeof id)
-    this.setState({[id] : value})
-    console.log(this.state)
-  }
-
-  componentDidMount () {
-    this.listenForItems(this.friendsRef)
-  }
-
-  componentWillUnmount () {
-    this.friendsRef.off('value', this.unsubscribe)
-  }
-
-  listenForItems(ref) {
-    this.unsubscribe = ref.on('value', (snap) => {
-      const items = []
-      snap.forEach((child) => {
-        items.push({ _key: child.key, ...child.val() })
-        this.setState({ friends: items })
-      })
+  addFriendToTeam (fid) {
+    const { jid, name } = this.props,
+          path1 = '/users/' + fid + '/journeys/' + jid,
+          path2 = '/journey/' + jid + '/team/' + fid;
+    firebaseApp.database().ref('/').update({
+      [path1] : name, [path2] : true
     })
   }
 
   render() {
-    const filteredFriends = this.state.text.length
-      ? this.state.friends.filter(friend => this.checkMatch(this.state.text, friend))
-      : this.state.friends;
-    const friendList = this.state.ds.cloneWithRows(filteredFriends)
+    const { text, ds } = this.state
+    const { friends, team, navigation } = this.props
 
-    const { navigate } = this.props.navigation
+    // filter by search
+    // filter by teammembers
+    const filteredFriends = text.length
+      ? friends.filter(friend => this.checkMatch(text, friend))
+      : friends;
+    
+    console.log('FRIENDS IN JOURNEYFRIENDS RENDER', filteredFriends, team)
+    const friendsNotTeam = filteredFriends.filter(friend => !team[friend.uid])
+    const friendList = ds.cloneWithRows(filteredFriends)
+    console.log('FRIENDS LIST', friendsNotTeam)
 
     return (
       <View style={styles.container}>
@@ -87,7 +60,7 @@ export default class JourneyFriends extends React.Component {
             <Text style={styles.boldLabel}>Add Friends to Story</Text>
           </View>
           <View style={{flex:0.5, flexDirection: 'row', justifyContent: 'space-around'}}>
-            <TouchableOpacity onPress={() => navigate('TeamScreen')}>
+            <TouchableOpacity onPress={() => navigation.navigate('TeamScreen')}>
               <Text style={{color: Colors.active}}>Next</Text>
             </TouchableOpacity>
           </View>
@@ -106,8 +79,8 @@ export default class JourneyFriends extends React.Component {
             renderRow={(friend) => <
                 FriendListItem
                 friend={friend}
-                navigate={navigate}
-                addFriendToTeam={this.addFriendToTeam.bind(this)}
+                navigate={navigation.navigate}
+                addFriendToTeam={this.addFriendToTeam}
             />}
           />
         </View>
@@ -116,3 +89,10 @@ export default class JourneyFriends extends React.Component {
   }
 }
 
+const mapState = state => ({
+  friends : state.friends.list,
+  team : state.stories.team,
+  jid : state.stories.jid,
+  name : state.stories.name,
+})
+export default connect(mapState)(JourneyFriends)
