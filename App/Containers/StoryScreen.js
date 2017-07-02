@@ -1,10 +1,11 @@
 import React from 'react'
 import { ListView, View, Text } from 'react-native'
 import firebaseApp from '../Firebase'
+import * as firebase from 'firebase'
 import { connect } from 'react-redux'
 import StoryListItem from '../Components/StoryListItem'
 import SearchBar from '../Components/SearchBar'
-
+import { fetchJourney } from '../Redux/StoriesRedux'
 import styles from './Styles/StoryScreenStyles'
 
 class StoryScreen extends React.Component {
@@ -12,12 +13,11 @@ class StoryScreen extends React.Component {
     super()
     this.state = {
       ds: new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 }),
-      // stories: [],
       text: '',
     }
     
     this.uid = firebaseApp.auth().currentUser.uid
-    
+    this.unsubscribeJourneyRef = null;
     this.onSearch = this.onSearch.bind(this)
     this.createJourney = this.createJourney.bind(this)
   }
@@ -28,33 +28,53 @@ class StoryScreen extends React.Component {
     return story.title.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1;
   }
 
-  createJourney () {    
+  createJourney (story) {    
     const uid = this.uid;
     const { navigate } = this.props.navigation
+    const { fetchJourney } = this.props
     
     // increment index
     // NOTE: transactions are really weird
     // I definitely don't know why BUT
     // transactions get called twice, once with i = null
     const indexRef = firebaseApp.database().ref('/indexes/journey')
+    const currentTime = firebase.database.ServerValue.TIMESTAMP
     indexRef.transaction(i => {
       if (i) {
-        const jid = '/journey/' + uid + i
+        const jid = uid + i
         
         // new journey
-        const newJourneyRef = firebaseApp.database().ref(jid)
-        newJourneyRef.set({
-          "what": "we're making a new journey somehow",
-          "team": { [uid] : true }
-        })
+        const newJourneyRef = firebaseApp.database().ref('/journey/' + jid)
+        // no points {}, solved {}
+        const newJourney = {
+          "hintsLeft": 10,
+          "failedAttempts": 0,
+          "status": { 
+            "text": "Started", 
+            "timestamp" : currentTime
+          },
+          "team": { [uid] : true },
+          "story": story,
+          "times": { "start": currentTime }
+        }
+        newJourneyRef.set(newJourney)
         
         // user
-        // const myJourneysRef = firebaseApp.database().ref('/users/' + uid + '/')
+        firebaseApp.database()
+          .ref('/users/' + uid + '/journeys/' + jid)
+          .set(story.name)
+        
+        // redux
+        // fetchJourney(jid, newJourney)
       }
       return i+1
     })
     
     navigate('JourneyFriends')
+  }
+  
+  componentWillUnmount () {
+    if (this.unsubscribeJourneyRef) this.unsubscribeJourneyRef()
   }
 
   render () {
@@ -101,4 +121,7 @@ class StoryScreen extends React.Component {
 const mapState = state => ({
   stories : state.stories.stories
 })
-export default connect(mapState)(StoryScreen)
+const mapDispatch = {
+  fetchJourney
+}
+export default connect(mapState, mapDispatch)(StoryScreen)
