@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text, Image, ScrollView } from 'react-native'
+import { connect } from 'react-redux'
 import RoundedButton from '../Components/Button/RoundedButton'
 import { Images, Fonts } from '../Themes'
 import TreasureHunt from '../Components/TreasureHunt'
@@ -47,4 +48,6 @@ const StoryPreview = ({ navigation }) => {
   )
 }
 
-export default StoryPreview
+const mapState = state => ({})
+const mapDispatch = {}
+export default connect(mapState, mapDispatch)(StoryPreview)

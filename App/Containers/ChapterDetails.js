@@ -30,7 +30,7 @@ class ChapterDetails extends React.Component {
 
   listenForChange(ref) {
     this.unsubscribe = ref.on('value', chapter => {
-      console.log('new info', chapter.val())
+      // console.log('new info', chapter.val())
       this.setState({
         chapter: chapter.val()
       })
@@ -44,7 +44,7 @@ class ChapterDetails extends React.Component {
   }
 
   closePuzzle() {
-    console.log('closing the puzzle modal')
+    // console.log('closing the puzzle modal')
     this.setState({
       showModal: false,
     })

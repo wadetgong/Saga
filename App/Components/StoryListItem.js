@@ -17,11 +17,16 @@ const StoryListItem = ({ item, navigate }) => (
       </TouchableOpacity>
     </View>
     <View style={{padding: 5, flex: 1}}>
+      <TouchableOpacity
+          onPress={() => navigate('StoryPreview', { navigate, item })}
+      >
       <Text style={{fontFamily: Fonts.type.bold}}>Story: {item.title}</Text>
       <Text>Description: {item.description}</Text>
       <Text style={{fontStyle: 'italic'}}>Est. Time: {item.estimatedTime} hrs.</Text>
       {/*<Text>Lat: {item.startingLocation.lat}</Text>
       <Text>Long: {item.startingLocation.long}</Text>*/}
+      </TouchableOpacity>
+
     </View>
   </View>
 </ScrollView>

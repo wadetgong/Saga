@@ -18,7 +18,13 @@ const PendingFriends = ({ received, sent }) => {
   return (
     <View style={[styles.container, {paddingTop: 10}]}>
       <ScrollView style={{paddingHorizontal: 10}}>
-        <View style={{borderBottomWidth: 1, borderColor: 'gray', marginHorizontal: '25%', justifyContent: 'center', marginBottom: 10}}>
+        <View style={{
+          borderBottomWidth: 1, 
+          borderColor: 'gray', 
+          marginHorizontal: '25%', 
+          justifyContent: 'center', 
+          marginBottom: 10
+        }}>
           <Text style={[styles.boldLabel, {color: 'gray'}]}>
             Your Requests
           </Text>
@@ -29,7 +35,14 @@ const PendingFriends = ({ received, sent }) => {
           enableEmptySections={true}
           renderRow={(user) => <PendingFriendRow user={user} />}
         />
-        <View style={{borderBottomWidth: 1, borderColor: 'gray', marginHorizontal: '25%', justifyContent: 'center', marginTop: 20, marginBottom: 10}}>
+        <View style={{
+          borderBottomWidth: 1, 
+          borderColor: 'gray', 
+          marginHorizontal: '25%', 
+          justifyContent: 'center', 
+          marginTop: 20, 
+          marginBottom: 10
+        }}>
           <Text style={[styles.boldLabel, {color: 'gray'}]}>
             Pending Friend Requests
           </Text>
