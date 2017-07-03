@@ -6,6 +6,12 @@ import PendingFriendRow from '../Components/PendingFriendRow'
 import styles from './Styles/PendingFriendsStyles'
 import { Colors } from '../Themes'
 
+const noRequests = () => (
+  <View style={{alignItems: 'center'}}>
+    <Text style={{fontStyle: 'italic'}}>No requests at the moment.</Text>
+  </View>
+)
+
 const PendingFriends = ({ received, sent }) => {
   let pendingFriends = new ListView
     .DataSource({rowHasChanged : (r1, r2) => r1 != r2})
@@ -52,12 +58,6 @@ const PendingFriends = ({ received, sent }) => {
     </View>
   )
 }
-
-const noRequests = () => (
-  <View style={{alignItems: 'center'}}>
-    <Text style={{fontStyle: 'italic'}}>No requests at the moment.</Text>
-  </View>
-)
 
 const mapState = state => ({
   received : state.friends.received,

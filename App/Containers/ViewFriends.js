@@ -47,8 +47,4 @@ const mapState = state => ({
   user: state.friends.user,
   friends: state.friends.list
 })
-const mapDispatch = dispatch => ({
-  setUser: (user) => dispatch(setSelf(user))
-})
-
-export default connect(mapState, mapDispatch)(ViewFriends)
+export default connect(mapState)(ViewFriends)

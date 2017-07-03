@@ -19,11 +19,8 @@ import * as firebase from 'firebase';
 class LoginScreen extends React.Component {
   constructor () {
     super()
-
     this.state = {}
-
     this.unsubscribeAuth = null;
-    this.unsubscribeDBUser = null;
   }
 
   componentDidMount () {
@@ -33,13 +30,10 @@ class LoginScreen extends React.Component {
         // what do I do here?
       }
     });
-
-    // this.unsubscribeDBUser = firebaseApp.aut.ref()
   }
 
   componentWillUnmount () {
     if (this.unsubscribeAuth) this.unsubscribeAuth();
-    if (this.unsubscribeDBUser) this.unsubscribeDBUser()
   }
 
   login = () => {
