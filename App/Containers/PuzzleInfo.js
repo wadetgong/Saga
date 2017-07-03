@@ -49,14 +49,14 @@ class PuzzleInfo extends React.Component {
   getHelperText(puzzle) {
     if(puzzle) {
       let iconName = iconMap[puzzle.puzzleType];
-      let puzzleDesc = puzzleDesc[puzzle.puzzleType]
+      let iconDesc = puzzleDesc[puzzle.puzzleType]
       return (
         <View style={styles.helperText}>
-          <Text><Icon name={iconName} style={styles.icon} size={16}/> - {puzzleDesc}</Text>
+          <Text><Icon name={iconName} style={styles.icon} size={16}/> - {iconDesc}</Text>
           {
             puzzle.location
             ? (
-              <Text><Icon name='geoLoc' style={styles.icon} size={16}/> - {puzzleDesc}</Text>
+              <Text><Icon name='location-pin' style={styles.icon} size={16}/> - {puzzleDesc.geoLoc}</Text>
 
             )
             : null
