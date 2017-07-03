@@ -61,7 +61,7 @@ class UserProfile extends React.Component {
   }
 
   componentWillUnmount () {
-    this.this.userRef.off('value', this.unsubscribe)
+    this.userRef.off('value', this.unsubscribe)
   }
 
   listenForItems(ref) {
@@ -72,24 +72,26 @@ class UserProfile extends React.Component {
   }
 
   render() {
+    const { user } = this.props
+    
     return (
       <View style={styles.container}>
         <View style={styles.sectionHeader}>
           <Text style={styles.boldLabel}>My Account</Text>
         </View>
         {
-          this.props.user
+          user
           ? (
               <View style={styles.profileSection}>
                 <View style={styles.pictureContainer}>
                   <Image
-                    source={{uri: this.props.user.profilePicture}}
+                    source={{uri: user.profilePicture}}
                     style={{width: 100, height: 100}}
                   />
                 </View>
                 <View style={styles.userDetailsSection}>
-                  <Text style={{fontWeight: 'bold'}}><Icon name='user' style={styles.icon}/> {this.props.user.name}</Text>
-                  <Text style={{fontSize: 12}}><Icon name='envelope' style={styles.icon}/> {this.props.user.email}</Text>
+                  <Text style={{fontWeight: 'bold'}}><Icon name='user' style={styles.icon}/> {user.name}</Text>
+                  <Text style={{fontSize: 12}}><Icon name='envelope' style={styles.icon}/> {user.email}</Text>
                     <TouchableOpacity
                       onPress={() => {this.props.navigation.navigate('Login')}}
                       style={styles.logoutButton}

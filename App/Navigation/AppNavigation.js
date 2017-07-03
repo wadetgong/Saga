@@ -96,7 +96,7 @@ const TabNav = TabNavigator({
   }
 
 }, {
-  initialRouteName: 'Stories',
+  initialRouteName: 'UserProfile',
   tabBarOptions: {
     tintColor: Colors.tintColor,
     showLabel: false
