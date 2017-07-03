@@ -95,7 +95,7 @@ class Puzzle extends React.Component {
   render() {
     console.log('Puzzle props, ', this.props)
     return (
-      <View style={{flex: 1,backgroundColor: 'green'}}>
+      <View style={{flex: 1,}}>
         {/*<Text>Status: {this.state.status}</Text>
         <Text>Attempts Allowed: {this.props.puzzle.maxAttempts}</Text>
         <Text>Attempts: {this.state.attempts}</Text>*/}
@@ -112,3 +112,17 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, null)(Puzzle)
+
+export const iconMap = {
+  'fillBlank': 'note',
+  'simpleFind': 'magnifier',
+  'enterZone': 'directions',
+  'geoLoc': 'location-pin',
+}
+
+export const puzzleDesc = {
+  'fillBlank': 'This puzzle requires you to submit the correct answer via the text input below.',
+  'simpleFind': 'This puzzle requires you to find an item via the AR experience.',
+  'enterZone': 'This puzzle requires you to go to a specific location.',
+  'geoLoc': 'You need to be within a geo-fence in order to pass.',
+}

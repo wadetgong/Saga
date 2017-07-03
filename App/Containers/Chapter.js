@@ -20,27 +20,12 @@ class Chapter extends React.Component {
       selectedChap: 1,
       story: {},
     }
-    // this.onLocation = this.onLocation.bind(this);
     this.handleClick = this.handleClick.bind(this);
     if(this.props.storyUrl) this.storyRef = firebaseApp.database().ref(this.props.storyUrl)
   }
 
   componentDidMount() {
     if(this.props.storyUrl) this.listenForChange(this.storyRef)
-    // let polygon = [
-    //   { latitude: 41.89, longitude: -87.66 },
-    //   { latitude: 41.89, longitude: -87.68},
-    //   { latitude: 41.92, longitude:  -87.68},
-    //   { latitude: 41.92, longitude:  -87.66},
-    //   { latitude: 41.89, longitude: -87.66 } // last point has to be same as first point
-    // ]
-    //   // console.log('long lat being set: ', point)
-      // this.setState({
-      //   latitude: crd.latitude,
-      //   longitude: crd.longitude,
-      //   insideRange: geolib.isPointInside(point, polygon),
-      // })
-    // })
   }
 
   componentWillUnmount () {
@@ -49,7 +34,6 @@ class Chapter extends React.Component {
 
   listenForChange(ref) {
     this.unsubscribe = ref.on('value', story => {
-      // console.log('new info', story.val())
       this.setState({
         story: story.val()
       })

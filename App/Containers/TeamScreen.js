@@ -8,7 +8,7 @@ class TeamScreen extends React.Component {
     super()
     this.generateStory = this.generateStory.bind(this)
   }
-  
+
   generateStory() {
     const resetAction = NavigationActions.reset({
       index: 0,

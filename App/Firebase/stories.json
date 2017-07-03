@@ -43,10 +43,7 @@
               "puzzleType": "fillBlank",
               "type": "",
               "answer": "pass",
-              "location": {
-                "lat": 41.8514,
-                "long": -87.6624
-              }
+              "location": false
             }
           },
           "nPuzzles": 1
@@ -62,10 +59,7 @@
               "puzzleType": "fillBlank",
               "type": "",
               "answer": "pass",
-              "location": {
-                "lat": 41.8724,
-                "long": -87.6234
-              }
+              "location": false
             }
           },
           "nPuzzles": 1
@@ -137,10 +131,7 @@
             "findImage": "transponder",
             "type": "",
             "answer": "pass",
-            "location": {
-              "lat": 41.2413,
-              "long": -87.6221
-            }
+            "location": false
           }
         },
         "nPuzzles": 1
@@ -156,10 +147,7 @@
             "puzzleType": "fillBlank",
             "type": "",
             "answer": "pass",
-            "location": {
-              "lat": 41.0113,
-              "long": -87.6221
-            }
+            "location": false
           }
         },
         "nPuzzles": 1

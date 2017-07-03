@@ -7,6 +7,7 @@ const initialState = {
   // chapterUrl: null,
   chapterUrl: '/story/batman/chapters/0',
   puzzleURL: null,
+  story: {}
 }
 
 export default function reducer(state = initialState, action) {
