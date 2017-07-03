@@ -31,35 +31,35 @@ class Stories extends React.Component {
     this.unsubscribeJourneyRef = null;
     this.unsubscribeCurrentJourneyRef = null;
   }
-  
+
   componentDidMount () {
     const uid = this.uid
-    
+
     // get list of previous journeys -> stories
     // and filter to stories you can play
-    const prevStories = firebaseApp.database().ref('/users/' + uid + '/journeys')    
+    const prevStories = firebaseApp.database().ref('/users/' + uid + '/journeys')
     const storyRef = firebaseApp.database().ref('/story')
     this.getJourneysAndStories(prevStories, storyRef)
-    
+
     // listen to journey to see if new one is added by yourself
     // possible listen to journey
     const journeyRef = firebaseApp.database().ref('/journey')
     this.getCurrentJourney(journeyRef)
   }
-  
+
   componentWillUnmount () {
-    if (this.unsubscribePrevStoriesRef) 
+    if (this.unsubscribePrevStoriesRef)
       this.unsubscribePrevStoriesRef();
-    if (this.unsubscribeJourneyRef) 
+    if (this.unsubscribeJourneyRef)
       this.unsubscribeJourneyRef();
-    // if (this.unsubscribeCurrentJourneyRef) 
+    // if (this.unsubscribeCurrentJourneyRef)
       // this.unsubscribeCurrentJourneyRef();
   }
-  
+
   getJourneysAndStories (journeyRef, storyRef) {
     this.unsubscribePrevStoriesRef = journeyRef.on('value', snap => {
       const journeys = snap.val() || {} // can be null or false
-      
+
       // get list of all stories
       storyRef
         .once('value')
@@ -68,23 +68,23 @@ class Stories extends React.Component {
         .catch(err => console.log('ERROR IN STORIES.getJourneysAndStories', err))
     })
   }
-  
+
   getCurrentJourney (journeyRef) {
     const uid = this.uid
-    
+
     this.unsubscribeJourneyRef = journeyRef.on('child_added', (snap, _) => {
-      const journey = snap.val(), 
+      const journey = snap.val(),
             jid = snap.key;
-      
+
       //
-      // CODEREVIEW TODO: what is best way to unsubscribe 
+      // CODEREVIEW TODO: what is best way to unsubscribe
       // this next listener when done?
       // I don't understand when componentWillUnmount happens
       //
 
       // if you added the newest journey to /journey send to redux
       // this listener runs TWICE
-      // is it because of the transaction? 
+      // is it because of the transaction?
       // How do I fix the transaction running twice in StoryScreen?
       if (jid && !jid.indexOf(uid)) {
         console.log('STORIES STORIES STORIES listening to current journey', jid)
@@ -92,14 +92,14 @@ class Stories extends React.Component {
         this.unsubscribeCurrentJourneyRef = curRef
           .on('value', csnap => {
             const cur = csnap.val()
-            
+
             console.log('STORIES STORIES STORIES listener ran', jid, cur)
             this.props.fetchJourney(jid, cur)
           })
       }
     })
   }
-  
+
   render () { return ( <ChooseStoryStack /> ) }
 }
 

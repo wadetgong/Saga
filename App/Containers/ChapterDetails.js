@@ -7,6 +7,8 @@ import { setPuzzle } from '../Redux/actions/currentStory'
 import firebaseApp from '../Firebase'
 import { Colors } from '../Themes'
 
+import styles from './Styles/ChapterDetailsStyles'
+
 class ChapterDetails extends React.Component {
   constructor(props) {
     super(props)
@@ -23,32 +25,18 @@ class ChapterDetails extends React.Component {
   componentDidMount() {
     if(this.props.chapterUrl) this.listenForChange(this.chapterRef)
   }
-
   componentWillUnmount () {
     if(this.props.chapterUrl) this.chapterRef.off('value', this.unsubscribe)
   }
 
   listenForChange(ref) {
     this.unsubscribe = ref.on('value', chapter => {
-      // console.log('new info', chapter.val())
-      this.setState({
-        chapter: chapter.val()
-      })
+      this.setState({ chapter: chapter.val() })
     })
   }
 
-  openPuzzle() {
-    this.setState({
-      showModal: true,
-    })
-  }
-
-  closePuzzle() {
-    // console.log('closing the puzzle modal')
-    this.setState({
-      showModal: false,
-    })
-  }
+  openPuzzle() { this.setState({ showModal: true }) }
+  closePuzzle() { this.setState({ showModal: false }) }
 
   getButtonStyle(puzzle) {
     if(puzzle.status === 'Complete') {
@@ -63,24 +51,13 @@ class ChapterDetails extends React.Component {
       borderTopColor: Colors.fire,
       borderBottomColor: Colors.bloodOrange,
     }
-
   }
 
   render() {
-    // console.log('props in ChapterDetails', this.props)
     return (
       <View>
-        <View style={{padding: 10, margin: 10, backgroundColor: 'beige',
-          borderWidth: 1,
-          borderColor: 'lightgray',
-          /*borderRadius: 5,*/
-          /*shadowColor: 'black',
-          hadowOffset: {width: 1, height: 1},
-          shadowRadius: 1,
-          shadowOpacity: 0.5*/
-        }}>
-          <Text>Showing the chapter details for Chapter {this.props.chapterInfo.id}</Text>
-          <Text style={{fontStyle: 'italic'}}>(Chapter Narrrative):
+        <View style={styles.chapterDesc}>
+          <Text style={{fontStyle: 'italic'}}>
             {
               this.props.chapterInfo.description
               ? this.props.chapterInfo.description

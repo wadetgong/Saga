@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import RoundedButton from '../Components/Button/RoundedButton'
 import { NavigationActions } from 'react-navigation'
 
+
 const TeamScreen = ({ teamList, friends, uid, navigation }) => {  
   
   const pending = [], joined = []
