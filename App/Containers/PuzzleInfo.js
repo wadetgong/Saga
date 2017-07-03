@@ -47,13 +47,15 @@ class PuzzleInfo extends React.Component {
   }
 
   getHelperText(puzzle) {
+    let iconName = iconMap[puzzle.puzzleType];
+    let puzzleDesc = puzzleDesc[puzzle.puzzleType]
     return (
       <View style={styles.helperText}>
-        <Text><Icon name={iconMap[puzzle.puzzleType]} style={styles.icon} size={16}/> - {puzzleDesc[puzzle.puzzleType]}</Text>
+        <Text><Icon name={iconName} style={styles.icon} size={16}/> - {puzzleDesc}</Text>
         {
           puzzle.location
           ? (
-            <Text><Icon name={iconMap.geoLoc} style={styles.icon} size={16}/> - {puzzleDesc.geoLoc}</Text>
+            <Text><Icon name='geoLoc' style={styles.icon} size={16}/> - {puzzleDesc.geoLoc}</Text>
 
           )
           : null
@@ -63,9 +65,10 @@ class PuzzleInfo extends React.Component {
   }
 
   getIconList(puzzle) {
+    let iconName = iconMap[puzzle.puzzleType];
     return (
       <View style={{flexDirection: 'row'}}>
-        <Icon name={iconMap[puzzle.puzzleType]} style={styles.icon} size={16}/>
+        <Icon name={iconName} style={styles.icon} size={16}/>
         {
           puzzle.location
           ? (
