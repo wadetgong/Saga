@@ -108,7 +108,7 @@
             "id": 1,
             "description": "Where water wacks land is where I'm near; meet me when the lake crosses the well - you'll find me here.",
             "maxAttempts": 4,
-            "puzzleType": "enterZone",
+            "puzzleType": "simpleFind",
             "type": "",
             "answer": "pass",
             "location": {

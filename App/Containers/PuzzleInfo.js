@@ -47,37 +47,43 @@ class PuzzleInfo extends React.Component {
   }
 
   getHelperText(puzzle) {
-    let iconName = iconMap[puzzle.puzzleType];
-    let puzzleDesc = puzzleDesc[puzzle.puzzleType]
-    return (
-      <View style={styles.helperText}>
-        <Text><Icon name={iconName} style={styles.icon} size={16}/> - {puzzleDesc}</Text>
-        {
-          puzzle.location
-          ? (
-            <Text><Icon name='geoLoc' style={styles.icon} size={16}/> - {puzzleDesc.geoLoc}</Text>
+    if(puzzle) {
+      let iconName = iconMap[puzzle.puzzleType];
+      let puzzleDesc = puzzleDesc[puzzle.puzzleType]
+      return (
+        <View style={styles.helperText}>
+          <Text><Icon name={iconName} style={styles.icon} size={16}/> - {puzzleDesc}</Text>
+          {
+            puzzle.location
+            ? (
+              <Text><Icon name='geoLoc' style={styles.icon} size={16}/> - {puzzleDesc}</Text>
 
-          )
-          : null
-        }
-      </View>
-    )
+            )
+            : null
+          }
+        </View>
+      )
+    }
+    return <View></View>
   }
 
   getIconList(puzzle) {
-    let iconName = iconMap[puzzle.puzzleType];
-    return (
-      <View style={{flexDirection: 'row'}}>
-        <Icon name={iconName} style={styles.icon} size={16}/>
-        {
-          puzzle.location
-          ? (
-            <Icon name='location-pin' style={styles.icon} size={16}/>
-          )
-          : null
-        }
-      </View>
-    )
+    if(puzzle){
+      let iconName = iconMap[puzzle.puzzleType];
+      return (
+        <View style={{flexDirection: 'row'}}>
+          <Icon name={iconName} style={styles.icon} size={16}/>
+          {
+            puzzle.location
+            ? (
+              <Icon name='location-pin' style={styles.icon} size={16}/>
+            )
+            : null
+          }
+        </View>
+      )
+    }
+    return <View></View>
   }
 
   render() {
