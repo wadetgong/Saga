@@ -18,10 +18,10 @@ const setUser = user => ({ type: SET_USER, user });
 const initialState = {
   users: [], // filtered users
   myFriends: {}, // mapped to users/uid/friends
-  list: [], // list of {user}
+  list: [],      // list of {user}
   sent: [],
   received: [],
-  myFriendsList: {},  // has {user}?
+  myFriendsList: {},  // has {user}
   user: {}, //current user object
   uid: ''
 }

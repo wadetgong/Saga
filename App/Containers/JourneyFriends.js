@@ -30,11 +30,10 @@ class JourneyFriends extends React.Component {
   }
 
   addFriendToTeam (fid) {
+    // adding frined to team
     const { jid, name } = this.props,
           path1 = '/users/' + fid + '/journeys/pending/' + jid,
           path2 = '/journey/' + jid + '/team/pending/' + fid;
-    
-    // console.log('\n\nAdding frined to team', jid, name, fid)
     firebaseApp.database().ref('/').update({
       [path1] : name, [path2] : true
     })
@@ -42,17 +41,27 @@ class JourneyFriends extends React.Component {
 
   render() {
     const { text, ds } = this.state
-    const { friends, team, navigation } = this.props
+    const { friends, team, navigation, name } = this.props
 
     // filter by search
     // filter by teammembers
-    const filteredFriends = text.length
-      ? friends.filter(friend => this.checkMatch(text, friend))
-      : friends;
-    
-    // console.log('FRIENDS IN JOURNEYFRIENDS RENDER', filteredFriends, team)
-    const friendsNotTeam = filteredFriends.filter(friend => !team[friend.uid])
-    const friendList = ds.cloneWithRows(friendsNotTeam)
+    // filter by friends who do not have a journey/pending journey of this type
+    const friendsFiltered = friends.filter(friend => {
+      if (text.length && !this.checkMatch(text, friend)) return false;
+      if (team[friend.uid]) return false;
+      console.log('friend', friend)
+      if (friend.journeys) {
+        for (let key in friend.journeys) {
+          if (key == "pending") {
+            for (sid of Object.values(friend.journeys.pending))
+              if (sid == name) return false
+          }
+          else if (friend.journeys[key] == name) return false
+        }
+      }
+      return true 
+    })
+    const friendList = ds.cloneWithRows(friendsFiltered);
 
     return (
       <View style={styles.container}>
