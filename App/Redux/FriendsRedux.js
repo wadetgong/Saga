@@ -17,11 +17,11 @@ const setUser = user => ({ type: SET_USER, user });
 // reducer
 const initialState = {
   users: [], // filtered users
-  myFriends: {},
-  list: [],
+  myFriends: {}, // mapped to users/uid/friends
+  list: [], // list of {user}
   sent: [],
   received: [],
-  myFriendsList: {}, // has user objects of friends
+  myFriendsList: {},  // has {user}?
   user: {}, //current user object
   uid: ''
 }
@@ -43,7 +43,7 @@ export const reducer = (state=initialState, action) => {
       for (let uid in users) {
         if (uid == state.uid) continue;
         let newUser = Object.assign({ uid: uid }, users[uid])
-        if (state.myFriendsList[uid]) newState.myFriendsList[uid] = newUser;
+        if (state.myFriendsList[uid]) newState.myFriendsList[uid] = newUser; //adds user obj to myFriendsList[uid]
         else newUsers.push(newUser);
       }
       newState.users = newUsers
@@ -94,5 +94,4 @@ export const setMyFriendsAndUsers = (uid, myFriends, users) => dispatch => {
 
 export const setSelf = (user) => dispatch => {
   dispatch(setUser(user))
-  dispatch(setMyFriends(user.friends))
 }

@@ -7,8 +7,9 @@ import TreasureHunt from '../Components/TreasureHunt'
 
 import styles from './Styles/StoryPreviewStyles'
 
-const StoryPreview = ({ navigation }) => {
+const StoryPreview = ({ navigation, name }) => {
   const { item, createJourney } = navigation.state.params
+  const { navigate } = navigation
 
   return (
     <View style={styles.container}>
@@ -40,13 +41,17 @@ const StoryPreview = ({ navigation }) => {
           />
         </View>
         <View style={styles.buttonSection}>
-          <RoundedButton onPress={() => createJourney(item)}>Assemble Team</RoundedButton>
+          {(name && name == item._key)
+          ? <RoundedButton onPress={() => navigate('JourneyFriends')}>Assemble again!</RoundedButton>
+          : <RoundedButton onPress={() => createJourney(item)}>Assemble Team</RoundedButton>}
         </View>
       </ScrollView>
     </View>
   )
 }
 
-const mapState = state => ({})
+const mapState = state => ({
+  name : state.stories.name
+})
 const mapDispatch = {}
 export default connect(mapState, mapDispatch)(StoryPreview)

@@ -34,7 +34,7 @@ class JourneyFriends extends React.Component {
           path1 = '/users/' + fid + '/journeys/pending/' + jid,
           path2 = '/journey/' + jid + '/team/pending/' + fid;
     
-    console.log('\n\nAdding frined to team', jid, name, fid)
+    // console.log('\n\nAdding frined to team', jid, name, fid)
     firebaseApp.database().ref('/').update({
       [path1] : name, [path2] : true
     })
@@ -50,7 +50,7 @@ class JourneyFriends extends React.Component {
       ? friends.filter(friend => this.checkMatch(text, friend))
       : friends;
     
-    console.log('FRIENDS IN JOURNEYFRIENDS RENDER', filteredFriends, team)
+    // console.log('FRIENDS IN JOURNEYFRIENDS RENDER', filteredFriends, team)
     const friendsNotTeam = filteredFriends.filter(friend => !team[friend.uid])
     const friendList = ds.cloneWithRows(friendsNotTeam)
 

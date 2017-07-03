@@ -1,4 +1,6 @@
 
+const PENDING = "pending"
+
 // actions
 const SET_STORIES = 'SET_STORIES'
 const SET_JOURNEYS = 'SET_JOURNEYS'
@@ -18,7 +20,7 @@ const setJourney = (jid, journey) => ({
 // reducer
 const initialState = {
   myJourneys: {}, // mapped to /users/uid/journeys
-  myStories: {},  // mapped to myJourneys' values/ie stories, with story obj
+  myStories: {},  // mapped to myJourneys' values=>ie stories, with story obj
   stories: [],    // mapped to /stories, filtered by journeys, with story obj
   jid: '',
   name: '',
@@ -34,8 +36,11 @@ export const reducer = (state=initialState, action) => {
       const journeys = Object.assign({}, action.journeys)
       const myStories = {}
       for (let jid in journeys) {
-        if (jid == "pending")
-        myStories[journeys[jid]] = true
+        if (jid == PENDING) {
+          for (let id in journeys.pending)
+            myStories[journeys.pending[id]] = PENDING;
+        }
+        else myStories[journeys[jid]] = true
       }
       newState.myStories = myStories
       newState.myJourneys = journeys
@@ -48,6 +53,7 @@ export const reducer = (state=initialState, action) => {
       // myStories, stories
       for (let name in stories) {
         let newStory = Object.assign({ name: name }, stories[name])
+        
         if (state.myStories[name]) newState.myStories[name] = newStory;
         else filteredStories.push(newStory);
       }
@@ -62,9 +68,9 @@ export const reducer = (state=initialState, action) => {
       
       let teamList = {}
       for (let uid in newState.team) {
-        if (uid == "pending") {
+        if (uid == PENDING) {
           for (let pid in newState.team.pending)
-            teamList[pid] = "pending";
+            teamList[pid] = PENDING;
         } else {
           teamList[uid] = true
         }
@@ -75,7 +81,7 @@ export const reducer = (state=initialState, action) => {
       return state
   }
   
-  console.log(action.type, state, newState)
+  // console.log(action.type, state, newState)
   return newState
 }
 
