@@ -16,7 +16,7 @@ class ViewFriends extends React.Component {
       .DataSource({rowHasChanged : (r1, r2) => r1 != r2})
       .cloneWithRows(friendsList)
 
-    console.log('props in ViewFriends', this.props)
+    // console.log('props in ViewFriends', this.props)
     return (
       <View style={{paddingHorizontal: 10, paddingVertical: 10, flex: 1}}>
         <View style={styles.friendLabel}>

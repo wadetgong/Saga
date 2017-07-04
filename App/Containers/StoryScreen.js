@@ -5,7 +5,6 @@ import * as firebase from 'firebase'
 import { connect } from 'react-redux'
 import StoryListItem from '../Components/StoryListItem'
 import SearchBar from '../Components/SearchBar'
-import { fetchJourney } from '../Redux/StoriesRedux'
 import styles from './Styles/StoryScreenStyles'
 
 class StoryScreen extends React.Component {
@@ -37,6 +36,9 @@ class StoryScreen extends React.Component {
     // NOTE: transactions are really weird
     // I definitely don't know why BUT
     // transactions get called twice, once with i = null
+    // CODEREVIEW TODO: should I call off()?
+    //
+    
     const indexRef = firebaseApp.database().ref('/indexes/journey')
     const currentTime = firebase.database.ServerValue.TIMESTAMP
     indexRef.transaction(i => {
@@ -50,10 +52,10 @@ class StoryScreen extends React.Component {
           "hintsLeft": 10,
           "failedAttempts": 0,
           "status": { 
-            "text": "Started", 
+            "text": "current", 
             "timestamp" : currentTime
           },
-          "team": { [uid] : true },
+          "team": { "list": {[uid] : true} },
           "story": story,
           "times": { "start": currentTime }
         }
@@ -61,11 +63,8 @@ class StoryScreen extends React.Component {
         
         // user
         firebaseApp.database()
-          .ref('/users/' + uid + '/journeys/' + jid)
+          .ref('/users/' + uid + '/journeys/current/' + jid)
           .set(story.name)
-        
-        // redux
-        // fetchJourney(jid, newJourney)
       }
       return i+1
     })
@@ -121,7 +120,4 @@ class StoryScreen extends React.Component {
 const mapState = state => ({
   stories : state.stories.stories
 })
-const mapDispatch = {
-  fetchJourney
-}
-export default connect(mapState, mapDispatch)(StoryScreen)
+export default connect(mapState)(StoryScreen)

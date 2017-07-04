@@ -4,24 +4,32 @@ import { connect } from 'react-redux'
 import RoundedButton from '../Components/Button/RoundedButton'
 import { NavigationActions } from 'react-navigation'
 
-const TeamScreen = ({ teamList, friends, uid, navigation }) => {  
-  
-  const pending = [], joined = []
+const TeamScreen = ({ teamList, friends, uid, navigation }) => {
+  const pending = [], list = []
   for (let key in teamList) {
-    if (key == uid) continue;  // yourself, should you be on list?
-    if (teamList[key] == 'pending') pending.push(friends[key]);
-    else joined.push(friends[key])
+    switch (teamList[key]) {
+      case 'pending':
+        // if (key == uid) continue;  // yourself, should you be on list?
+        pending.push(friends[key])
+        break;
+      case 'list':
+        // if (key == uid) continue;  // yourself, should you be on list?
+        list.push(friends[key])
+        break;
+      default:
+        console.error('TEAMSCREEN ERROR - teamList not cool. Possible error in StoriesRedux or in firebase')
+    }
   }
   
   let joinedFriends = new ListView
     .DataSource({rowHasChanged : (r1, r2) => r1 != r2})
-    .cloneWithRows(joined)
+    .cloneWithRows(list)
   
   let pendingFriends = new ListView
     .DataSource({rowHasChanged : (r1, r2) => r1 != r2})
     .cloneWithRows(pending)
   
-  console.log('TEAM SCREEN', joined, pending)
+  // console.log('TEAM SCREEN', list, pending)
   
   return (
     <View>

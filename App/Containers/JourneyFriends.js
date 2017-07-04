@@ -30,7 +30,7 @@ class JourneyFriends extends React.Component {
   }
 
   addFriendToTeam (fid) {
-    // adding frined to team
+    // adding friend to team
     const { jid, name } = this.props,
           path1 = '/users/' + fid + '/journeys/pending/' + jid,
           path2 = '/journey/' + jid + '/team/pending/' + fid;
@@ -49,14 +49,14 @@ class JourneyFriends extends React.Component {
     const friendsFiltered = friends.filter(friend => {
       if (text.length && !this.checkMatch(text, friend)) return false;
       if (team[friend.uid]) return false;
-      console.log('friend', friend)
+      // console.log('friend', friend)
       if (friend.journeys) {
-        for (let key in friend.journeys) {
-          if (key == "pending") {
-            for (sid of Object.values(friend.journeys.pending))
-              if (sid == name) return false
-          }
-          else if (friend.journeys[key] == name) return false
+        for (let status in friend.journeys) {
+          // false if in completed, failed, current
+          // okay if in pending
+          if (status == "pending") continue
+          for (sid of Object.values(friend.journeys[status]))
+            if (sid == name) return false
         }
       }
       return true 
