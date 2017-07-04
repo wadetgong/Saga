@@ -9,14 +9,27 @@ class StoryListItem extends React.Component {
     this.state = {
       picUrl: 'https://firebasestorage.googleapis.com/v0/b/breach-5ea6b.appspot.com/o/no-image-avail.png?alt=media&token=2cb55c5a-1676-4400-8e1c-00960387de64' //No image image
     }
+    this.picRef = firebaseApp.database().ref('/photos/story/' + this.props.item.name)
   }
 
-  componentDidMount () {
-    firebaseApp.database().ref('/photos/story/' + this.props.item.name).once('value')
-      .then(snap => { this.setState({ picUrl: snap.val() }) })
+  componentDidMount() {
+    if(this.props.item.name) this.listenForChange(this.picRef)
+  }
+
+  componentWillUnmount () {
+    if(this.props.item.name) this.picRef.off('value', this.unsubscribe)
+  }
+
+  listenForChange(ref) {
+    this.unsubscribe = ref.on('value', pic => {
+      this.setState({
+        picUrl : pic.val()
+      })
+    })
   }
 
   render () {
+    console.log('props in StoryListItem', this.props, this.state)
     const { item, navigate, createJourney } = this.props
     return (
         <View style={{flex: 1, flexDirection: 'row', paddingHorizontal: 10, paddingBottom: 5}}>
@@ -25,8 +38,8 @@ class StoryListItem extends React.Component {
                 onPress={() => navigate('StoryPreview', { item, createJourney, picUrl: this.state.picUrl })}
             >
            <Image
-                style={{width: 100, height: 100}}
-                source={{uri: this.state.picUrl}}
+              style={{width: 100, height: 100}}
+              source={{uri: this.state.picUrl}}
             />
             </TouchableOpacity>
           </View>

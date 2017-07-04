@@ -1,10 +1,11 @@
 {
+  "indexes": {
+    "journey": 1
+  },
   "journey" : {
     "Justin0" : {
       "failedAttempts" : 0,
       "hintsLeft" : 1,
-      "points" : [ null, 5, 15 ],
-      "solved" : [ null, [ null, true ], [ null, true ], [ null, false ], [ null, false ] ],
       "status" : {
         "text" : "Completed",
         "timestamp" : ""
@@ -24,8 +25,6 @@
     "Bob1" : {
       "failedAttempts" : 0,
       "hintsLeft" : 1,
-      "points" : [ null, 5, 15 ],
-      "solved" : [ null, [ null, true ], [ null, true ], [ null, true ] ],
       "status" : {
         "text" : "Completed",
         "timestamp" : ""
@@ -46,8 +45,6 @@
     "Sarah2": {
       "failedAttempts" : 0,
       "hintsLeft" : 1,
-      "points" : [ null, 5, 15 ],
-      "solved" : [ null, [ null, true ], [ null, true ] ],
       "status" : {
         "text" : "Completed",
         "timestamp" : ""
@@ -88,7 +85,7 @@
       "artThief" : "https://firebasestorage.googleapis.com/v0/b/breach-5ea6b.appspot.com/o/Main.gif?alt=media&token=4e215536-c169-4db1-b29a-23bb177bac43",
       "batman" : "https://firebasestorage.googleapis.com/v0/b/breach-5ea6b.appspot.com/o/riddler.jpg?alt=media&token=09c266f8-7f89-4fed-80be-d0572dc2f400",
       "woodElves" : "https://firebasestorage.googleapis.com/v0/b/breach-5ea6b.appspot.com/o/Main.jpg?alt=media&token=c9d0a3d3-c03a-437a-916c-1cdc322acdf2",
-      "noImage" "https://firebasestorage.googleapis.com/v0/b/breach-5ea6b.appspot.com/o/no-image-avail.png?alt=media&token=2cb55c5a-1676-4400-8e1c-00960387de64"
+      "noImage" : "https://firebasestorage.googleapis.com/v0/b/breach-5ea6b.appspot.com/o/no-image-avail.png?alt=media&token=2cb55c5a-1676-4400-8e1c-00960387de64"
     },
     "users" : {
       "ehacinom" : "https://avatars2.githubusercontent.com/u/8092859?v=3&s=400",
@@ -99,7 +96,7 @@
       "wadetgong" : "https://avatars3.githubusercontent.com/u/7991556?v=3&s=400"
     }
   },
-  "stories": {
+  "story": {
     "artThief": {
       "id": "artThief",
       "title": "Art Thief",
@@ -332,11 +329,17 @@
       "email" : "wadetgong@gmail.com",
       "fb_thumbnail" : "https://scontent.xx.fbcdn.net/v/t1.0-1/s100x100/1916513_3036695367700_7204003449187997100_n.jpg?oh=658679fa0522f6a3401ab544fbff40cd&oe=59D5CAFE",
       "friends" : {
+        "list" : {
+          "gehrj" : true,
+          "hurlabob": true,
+          "snowwhite":true,
+          "ehacinom" : true
+        },
         "received" : {
           "ZHEIptD0pXhkTxXJDojup0mxXNk2" : true
         },
         "sent" : {
-          "ehacinom" : true
+          "wadetgong":true
         }
       },
       "journeys" : false,
@@ -350,11 +353,10 @@
         "list" : {
           "ZHEIptD0pXhkTxXJDojup0mxXNk2" : true,
           "gehrj" : true,
-          "received" : false,
-          "wadetgong" : true
+          "dqG6qVu1ArO4HzRJF0ym2ErlM9d2" : true
         },
         "received" : {
-          "dqG6qVu1ArO4HzRJF0ym2ErlM9d2" : true
+          "wadetgong" : true
         }
       },
       "journeys" : {"Justin0": "artThief", "Bob1" : "batman", "Monica3": "woodElves"},
@@ -368,7 +370,8 @@
       "friends" : {
         "list" : {
           "ehacinom" : true,
-          "wadetgong" : true
+          "wadetgong" : true,
+          "dqG6qVu1ArO4HzRJF0ym2ErlM9d2":true
         },
         "sent" : false
       },
@@ -382,7 +385,8 @@
       "friends" : {
         "list" : {
           "jacobss" : true,
-          "snowwhite" : true
+          "snowwhite" : true,
+          "dqG6qVu1ArO4HzRJF0ym2ErlM9d2":true
         },
         "sent" : false
       },
@@ -412,7 +416,8 @@
         "list" : {
           "hurlabob" : true,
           "jacobss" : true,
-          "wadetgong" : true
+          "wadetgong" : true,
+          "dqG6qVu1ArO4HzRJF0ym2ErlM9d2": true
         },
         "received" : false,
         "sent" : false
@@ -426,12 +431,15 @@
       "email" : "wade@gmail.com",
       "friends" : {
         "list" : {
-          "ehacinom" : true,
           "gehrj" : true,
           "snowwhite" : true
         },
-        "received" : false,
-        "sent" : false
+        "received" : {
+          "dqG6qVu1ArO4HzRJF0ym2ErlM9d2": true
+        },
+        "sent" : {
+          "ehacinom" : true
+        }
       },
       "journeys" : {"Justin0": "artThief", "Bob1" : "batman", "Monica3": "woodElves"},
       "name" : "Wade Gong",

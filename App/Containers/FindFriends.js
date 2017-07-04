@@ -24,7 +24,6 @@ class FindFriends extends React.Component {
     let searchVal = searchTerm.toLowerCase()
     if(friend.email.toLowerCase().indexOf(searchVal) !== -1) return true
     if(friend.name.toLowerCase().indexOf(searchVal) !== -1) return true
-    if(friend.username.toLowerCase().indexOf(searchVal) !== -1) return true
     return false
   }
 

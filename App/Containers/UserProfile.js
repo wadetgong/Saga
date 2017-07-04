@@ -19,7 +19,7 @@ import firebaseApp from '../Firebase'
 
 const UserProfileStack = TabNavigator({
   UserJourneys: {
-    screen: UserJourneys,
+    screen: ({ screenProps }) => <UserJourneys screenProps={screenProps} />,
     navigationOptions: {
       tabBarLabel: 'My Stories',
       tabBarIcon: ({ tintColor }) => (
@@ -72,8 +72,9 @@ class UserProfile extends React.Component {
   }
 
   render() {
+    console.log('props in userprofile', this.props)
     const { user } = this.props
-    
+
     return (
       <View style={styles.container}>
         <View style={styles.sectionHeader}>
@@ -103,7 +104,7 @@ class UserProfile extends React.Component {
           )
           : null
         }
-        <UserProfileStack />
+        <UserProfileStack screenProps={this.props.screenProps}/>
       </View>
     )
   }

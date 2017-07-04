@@ -1,11 +1,11 @@
 import { SET_STORY, SET_PUZZLE, SET_CHAPTER } from '../constants/actionTypes';
 
 const initialState = {
-  storyUrl: '/story/batman',
-  // storyUrl: '',
+  // storyUrl: '/story/batman',
+  storyUrl: '',
   selectedChap: 1,
-  // chapterUrl: null,
-  chapterUrl: '/story/batman/chapters/0',
+  chapterUrl: null,
+  // chapterUrl: '/story/batman/chapters/0',
   puzzleURL: null,
   story: {}
 }

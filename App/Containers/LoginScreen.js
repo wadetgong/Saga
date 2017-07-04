@@ -95,7 +95,7 @@ class LoginScreen extends React.Component {
             }}
           />
         </View>
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', flexDirection: 'row'}}>
+        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', backgroundColor: Colors.background}}>
           <View>
             <TouchableOpacity onPress={() => this.login()}>
               <Image

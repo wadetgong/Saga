@@ -103,7 +103,7 @@ class Chapter extends React.Component {
       : (
         <View style={styles.container}>
           <View style={styles.sectionHeader}>
-            <Text style={styles.boldLabel}>No Current Story :(</Text>
+            <Text style={styles.boldLabel}>No Current Story</Text>
           </View>
           <Image
             style={{width: '100%', height: 200}}

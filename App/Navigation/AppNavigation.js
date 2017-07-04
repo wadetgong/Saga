@@ -71,7 +71,7 @@ const TabNav = TabNavigator({
     },
   },
   UserProfile: {
-    screen: UserProfile,
+    screen: ({ navigation }) => <UserProfile screenProps={{ rootNavigation: navigation }} />,
     navigationOptions: {
       tabBarLabel: 'My Profile',
       tabBarIcon: ({ tintColor }) => (
