@@ -38,7 +38,7 @@ export default StyleSheet.create({
     zIndex: 10
   },
   puzzleCard: {
-    marginTop: 110,
+    marginTop: 140,
     marginHorizontal: 15,
     marginBottom: 10,
     borderWidth: 1,

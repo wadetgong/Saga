@@ -109,6 +109,7 @@
             "description": "Where water wacks land is where I'm near; meet me when the lake crosses the well - you'll find me here.",
             "maxAttempts": 4,
             "puzzleType": "simpleFind",
+            "findImage": "transponder",
             "type": "",
             "answer": "pass",
             "location": {
