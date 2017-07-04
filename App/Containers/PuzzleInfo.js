@@ -21,34 +21,22 @@ class PuzzleInfo extends React.Component {
     if(this.props.puzzleUrl) this.puzzleRef = firebaseApp.database().ref(this.props.puzzleUrl)
   }
 
-  componentDidMount() {
-    if(this.props.puzzleUrl) this.listenForChange(this.puzzleRef)
-  }
-
-  componentWillUnmount () {
-    if(this.props.puzzleUrl) this.puzzleRef.off('value', this.unsubscribe)
-  }
+  componentDidMount() { if(this.props.puzzleUrl) this.listenForChange(this.puzzleRef) }
+  componentWillUnmount () { if(this.props.puzzleUrl) this.puzzleRef.off('value', this.unsubscribe) }
 
   listenForChange(ref) {
     this.unsubscribe = ref.on('value', puzzle => {
-      console.log('new info', puzzle.val())
-      this.setState({
-        puzzle: puzzle.val()
-      })
+      this.setState({ puzzle: puzzle.val() })
     })
   }
 
-  toggleInfoModal() {
-    this.setState({showInfoModal: !this.state.showInfoModal})
-  }
+  toggleInfoModal() { this.setState({showInfoModal: !this.state.showInfoModal}) }
 
-  componentWillUpdate() {
-    LayoutAnimation.easeInEaseOut();
-  }
+  componentWillUpdate() { LayoutAnimation.easeInEaseOut() }
 
   getHelperText(puzzle) {
     if(puzzle) {
-      let iconName = iconMap[puzzle.puzzleType];
+      let iconName = iconMap[puzzle.puzzleType] || 'game-controller';
       let iconDesc = puzzleDesc[puzzle.puzzleType]
       return (
         <View style={styles.helperText}>
@@ -57,7 +45,6 @@ class PuzzleInfo extends React.Component {
             puzzle.location
             ? (
               <Text><Icon name='location-pin' style={styles.icon} size={16}/> - {puzzleDesc.geoLoc}</Text>
-
             )
             : null
           }
@@ -69,7 +56,7 @@ class PuzzleInfo extends React.Component {
 
   getIconList(puzzle) {
     if(puzzle){
-      let iconName = iconMap[puzzle.puzzleType];
+      let iconName = iconMap[puzzle.puzzleType] || 'game-controller';
       return (
         <View style={{flexDirection: 'row'}}>
           <Icon name={iconName} style={styles.icon} size={16}/>
