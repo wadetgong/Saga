@@ -3,6 +3,9 @@ package com.testigniteapp;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.brentvatne.react.ReactVideoPackage;
+import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
+import com.transistorsoft.rnbackgroundgeolocation.RNBackgroundGeolocation;
 import com.evollu.react.fcm.FIRMessagingPackage;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.lwansbrough.RCTCamera.RCTCameraPackage;
@@ -30,6 +33,9 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new ReactVideoPackage(),
+            new ReactNativeConfigPackage(),
+            new RNBackgroundGeolocation(),
             new FIRMessagingPackage(),
             new FBSDKPackage(),
             new RCTCameraPackage(),
