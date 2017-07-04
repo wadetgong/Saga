@@ -53,5 +53,4 @@ const StoryPreview = ({ navigation, name }) => {
 const mapState = state => ({
   name : state.stories.name
 })
-const mapDispatch = {}
-export default connect(mapState, mapDispatch)(StoryPreview)
+export default connect(mapState)(StoryPreview)

@@ -113,7 +113,7 @@ const mapState = state => ({
   user: state.friends.user
 })
 const mapDispatch = dispatch => ({
-  setUser: (user) => dispatch(setSelf(user))
+  setUser: (user) => dispatch(setSelf(user))  // definitely should try do elsewhere
 })
 
 export default connect(mapState, mapDispatch)(UserProfile)

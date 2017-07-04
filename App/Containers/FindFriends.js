@@ -2,7 +2,6 @@ import React from 'react'
 import { View, Text, Image, ListView, ScrollView } from 'react-native'
 import SearchBar from '../Components/SearchBar'
 import FriendUserRow from '../Components/FriendUserRow'
-import firebaseApp from '../Firebase'
 import { connect } from 'react-redux'
 import styles from './Styles/FindFriendsStyles'
 

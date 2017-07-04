@@ -3,9 +3,9 @@ import { ListView, View, Text } from 'react-native'
 import firebaseApp from '../Firebase'
 import * as firebase from 'firebase'
 import { connect } from 'react-redux'
+import { fetchJourney } from '../Redux/StoriesRedux'
 import StoryListItem from '../Components/StoryListItem'
 import SearchBar from '../Components/SearchBar'
-import { fetchJourney } from '../Redux/StoriesRedux'
 import styles from './Styles/StoryScreenStyles'
 
 class StoryScreen extends React.Component {
@@ -37,6 +37,9 @@ class StoryScreen extends React.Component {
     // NOTE: transactions are really weird
     // I definitely don't know why BUT
     // transactions get called twice, once with i = null
+    // CODEREVIEW TODO: should I call off()?
+    //
+    
     const indexRef = firebaseApp.database().ref('/indexes/journey')
     const currentTime = firebase.database.ServerValue.TIMESTAMP
     indexRef.transaction(i => {
@@ -50,10 +53,10 @@ class StoryScreen extends React.Component {
           "hintsLeft": 10,
           "failedAttempts": 0,
           "status": { 
-            "text": "Started", 
+            "text": "current", 
             "timestamp" : currentTime
           },
-          "team": { [uid] : true },
+          "team": { "list": {[uid] : true} },
           "story": story,
           "times": { "start": currentTime }
         }
@@ -61,11 +64,11 @@ class StoryScreen extends React.Component {
         
         // user
         firebaseApp.database()
-          .ref('/users/' + uid + '/journeys/' + jid)
-          .set(story.name)
+          .ref('/users/' + uid + '/journeys/current/')
+          .set({ [jid] : story.name})
         
-        // redux
-        // fetchJourney(jid, newJourney)
+        // set current journey
+        fetchJourney(jid, newJourney)
       }
       return i+1
     })

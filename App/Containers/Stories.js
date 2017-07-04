@@ -27,8 +27,8 @@ class Stories extends React.Component {
   constructor() {
     super()
     this.uid = firebaseApp.auth().currentUser.uid
-    this.unsubscribePrevStoriesRef = null;
-    this.unsubscribeJourneyRef = null;
+    this.unsubscribeMyJourneysRef = null;
+    this.unsubscribeMyCurrentJourneyRef = null;
     this.unsubscribeCurrentJourneyRef = null;
   }
 
@@ -37,27 +37,29 @@ class Stories extends React.Component {
 
     // get list of previous journeys -> stories
     // and filter to stories you can play
-    const prevStories = firebaseApp.database().ref('/users/' + uid + '/journeys')
+    const myJourneysRef = firebaseApp.database().ref('/users/' + uid + '/journeys')    
     const storyRef = firebaseApp.database().ref('/story')
-    this.getJourneysAndStories(prevStories, storyRef)
-
-    // listen to journey to see if new one is added by yourself
-    // possible listen to journey
-    const journeyRef = firebaseApp.database().ref('/journey')
-    this.getCurrentJourney(journeyRef)
+    this.getJourneysAndStories(myJourneysRef, storyRef)
+    
+    // // listen to journey to see if new one is added by yourself
+    // // possible listen to journey
+    // const journeyRef = firebaseApp.database().ref('/journey')
+    // this.getCurrentJourney(journeyRef)
+    const myCurrentJourneyRef = firebaseApp.database().ref('/users/' + uid + '/journeys/current')
+    this.getCurrentJourney(myCurrentJourneyRef)
   }
 
   componentWillUnmount () {
-    if (this.unsubscribePrevStoriesRef)
-      this.unsubscribePrevStoriesRef();
-    if (this.unsubscribeJourneyRef)
-      this.unsubscribeJourneyRef();
-    // if (this.unsubscribeCurrentJourneyRef)
-      // this.unsubscribeCurrentJourneyRef();
+    if (this.unsubscribeMyJourneysRef) 
+      this.unsubscribeMyJourneysRef();
+    if (this.unsubscribeMyCurrentJourneyRef) 
+      this.unsubscribeMyCurrentJourneyRef();
+    if (this.unsubscribeCurrentJourneyRef)
+      this.unsubscribeCurrentJourneyRef();
   }
 
   getJourneysAndStories (journeyRef, storyRef) {
-    this.unsubscribePrevStoriesRef = journeyRef.on('value', snap => {
+    this.unsubscribeMyJourneysRef = journeyRef.on('value', snap => {
       const journeys = snap.val() || {} // can be null or false
 
       // get list of all stories
@@ -68,33 +70,33 @@ class Stories extends React.Component {
         .catch(err => console.log('ERROR IN STORIES.getJourneysAndStories', err))
     })
   }
-
-  getCurrentJourney (journeyRef) {
+  
+  getCurrentJourney (myCurrentJourneyRef) {
     const uid = this.uid
+    const fetchJourney = this.props.fetchJourney
+    
+    this.unsubscribeMyCurrentJourneyRef = myCurrentJourneyRef.on('value', snap => {
+      const value = snap.val() // {jid : storyname}
+      if (value) {
+        //
+        // CODEREVIEW TODO: what is best way to unsubscribe
+        // this next listener when done?
+        // I don't understand when componentWillUnmount happens
+        // Also should I do this here? Or in
+        // ./RootContainer.js
 
-    this.unsubscribeJourneyRef = journeyRef.on('child_added', (snap, _) => {
-      const journey = snap.val(),
-            jid = snap.key;
-
-      //
-      // CODEREVIEW TODO: what is best way to unsubscribe
-      // this next listener when done?
-      // I don't understand when componentWillUnmount happens
-      //
-
-      // if you added the newest journey to /journey send to redux
-      // this listener runs TWICE
-      // is it because of the transaction?
-      // How do I fix the transaction running twice in StoryScreen?
-      if (jid && !jid.indexOf(uid)) {
-        console.log('STORIES STORIES STORIES listening to current journey', jid)
-        const curRef = firebaseApp.database().ref('/journey/' + jid)
-        this.unsubscribeCurrentJourneyRef = curRef
+        // if you added the newest journey to /journey send to redux
+        // this listener runs TWICE
+        // is it because of the transaction?
+        // How do I fix the transaction running twice in StoryScreen?
+        
+        const jid = Object.keys(value)[0], name = value[jid]
+        const currentJourneyRef = firebaseApp.database().ref('/journey/' + jid)
+        this.unsubscribeCurrentJourneyRef = currentJourneyRef
           .on('value', csnap => {
             const cur = csnap.val()
-
             console.log('STORIES STORIES STORIES listener ran', jid, cur)
-            this.props.fetchJourney(jid, cur)
+            fetchJourney(jid, cur)
           })
       }
     })
