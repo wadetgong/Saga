@@ -31,10 +31,10 @@ class Stories extends React.Component {
     this.unsubscribeMyCurrentJourneyRef = null;
     this.unsubscribeCurrentJourneyRef = null;
   }
-  
+
   componentDidMount () {
     const uid = this.uid
-    
+
     // get list of previous journeys -> stories
     // and filter to stories you can play
     const myJourneysRef = firebaseApp.database().ref('/users/' + uid + '/journeys')    
@@ -48,7 +48,7 @@ class Stories extends React.Component {
     const myCurrentJourneyRef = firebaseApp.database().ref('/users/' + uid + '/journeys/current')
     this.getCurrentJourney(myCurrentJourneyRef)
   }
-  
+
   componentWillUnmount () {
     if (this.unsubscribeMyJourneysRef) 
       this.unsubscribeMyJourneysRef();
@@ -57,11 +57,11 @@ class Stories extends React.Component {
     if (this.unsubscribeCurrentJourneyRef)
       this.unsubscribeCurrentJourneyRef();
   }
-  
+
   getJourneysAndStories (journeyRef, storyRef) {
     this.unsubscribeMyJourneysRef = journeyRef.on('value', snap => {
       const journeys = snap.val() || {} // can be null or false
-      
+
       // get list of all stories
       storyRef
         .once('value')
@@ -101,7 +101,7 @@ class Stories extends React.Component {
       }
     })
   }
-  
+
   render () { return ( <ChooseStoryStack /> ) }
 }
 

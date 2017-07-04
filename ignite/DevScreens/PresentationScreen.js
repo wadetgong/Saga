@@ -49,7 +49,7 @@ class PresentationScreen extends React.Component {
           paddingHorizontal: 10,
           zIndex: 10
         }}>
-          <Image source={Images.closeButton} />
+          <Image source={Images.closeButton} style={{height: 12, width: 12}}/>
         </TouchableOpacity>
         <ScrollView showsVerticalScrollIndicator={false} bounces={false} style={styles.container}>
           <View style={styles.centered}>

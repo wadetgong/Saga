@@ -14,7 +14,7 @@ class FillBlank extends React.Component {
     return (
       <View style={{padding: 5, margin: 5, /*backgroundColor: 'lightblue'*/}}>
         <View>
-          <Text>{this.props.puzzle.question} fdsafdsafsa</Text>
+          <Text>{this.props.puzzle.question}</Text>
         </View>
         <TextInput
           style={{
@@ -45,3 +45,7 @@ class FillBlank extends React.Component {
 }
 
 export default FillBlank
+
+export const icon = 1;
+
+export const description = 1;

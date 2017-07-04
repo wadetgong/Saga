@@ -75,7 +75,7 @@ let height = Dimensions.get('window').height;
         <TouchableOpacity
           onPress={this.props.close}
           style={styles.modalClose}>
-          <Image source={Images.closeButton} />
+          <Image source={Images.closeButton} style={{height: 12, width: 12}}/>
         </TouchableOpacity>
         <Camera
             ref={cam => { this.camera = cam }}

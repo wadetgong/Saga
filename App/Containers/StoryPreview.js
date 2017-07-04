@@ -8,7 +8,7 @@ import TreasureHunt from '../Components/TreasureHunt'
 import styles from './Styles/StoryPreviewStyles'
 
 const StoryPreview = ({ navigation, name }) => {
-  const { item, createJourney } = navigation.state.params
+  const { item, createJourney, picUrl } = navigation.state.params
   const { navigate } = navigation
 
   return (
@@ -20,7 +20,7 @@ const StoryPreview = ({ navigation, name }) => {
         <View>
         <Image
             style={{ width: '100%', height: 200 }}
-            source={Images.storyMain[item._key]}
+            source={{uri: picUrl}}
         />
         </View>
         <View style={styles.detailSection}>
