@@ -3,6 +3,7 @@ import { ListView, View, Text } from 'react-native'
 import firebaseApp from '../Firebase'
 import * as firebase from 'firebase'
 import { connect } from 'react-redux'
+import { fetchJourney } from '../Redux/StoriesRedux'
 import StoryListItem from '../Components/StoryListItem'
 import SearchBar from '../Components/SearchBar'
 import styles from './Styles/StoryScreenStyles'
@@ -63,8 +64,11 @@ class StoryScreen extends React.Component {
         
         // user
         firebaseApp.database()
-          .ref('/users/' + uid + '/journeys/current/' + jid)
-          .set(story.name)
+          .ref('/users/' + uid + '/journeys/current/')
+          .set({ [jid] : story.name})
+        
+        // set current journey
+        fetchJourney(jid, newJourney)
       }
       return i+1
     })
@@ -120,4 +124,7 @@ class StoryScreen extends React.Component {
 const mapState = state => ({
   stories : state.stories.stories
 })
-export default connect(mapState)(StoryScreen)
+const mapDispatch = {
+  fetchJourney
+}
+export default connect(mapState, mapDispatch)(StoryScreen)

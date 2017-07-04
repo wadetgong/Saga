@@ -39,7 +39,7 @@ const UserJourneys = ({ myJourneys, myStoriesList, jid, name, current }) => {
 
 const mapState = state => ({
   myJourneys: state.stories.myJourneys,
-  myStories: state.stories.myStories,
+  myStoriesList: state.stories.myStoriesList,
   jid: state.stories.jid,
   name: state.stories.name,
   current: state.stories.current, 

@@ -37,6 +37,8 @@ class JourneyFriends extends React.Component {
     firebaseApp.database().ref('/').update({
       [path1] : name, [path2] : true
     })
+    
+    console.log('JourneyFriends.addFriendToTeam', path1, path2, name, true)
   }
 
   render() {

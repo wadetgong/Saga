@@ -37,7 +37,7 @@ const initialState = {
   
   // myStoriesList = { storyname : story obj }
   // SET_STORIES
-  myStoriesList: {}
+  myStoriesList: {},
   
   // stories : { storyname : story obj }
   // mapped to /stories
@@ -105,14 +105,14 @@ export const reducer = (state=initialState, action) => {
       return state
   }
   
-  // console.log(action.type, state, newState)
+  console.log(action.type, state, newState)
   return newState
 }
 
 // action-dispatchers
 // journeys can be null
 export const fetchStories = (stories, journeys) => dispatch => {
-  // console.log(stories, journeys)
+  console.log('REDUX stoires journeys',stories, journeys)
   dispatch(setJourneys(journeys))
   dispatch(setStories(stories))
 }

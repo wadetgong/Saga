@@ -23,10 +23,11 @@ exports.initUser = functions.auth.user()
     return admin.database().ref('/users').child(uid).set(user)
   });
 
-exports.deleteUser = functions.auth.user().onDelete(event => {
-  const { uid } = event.data.previous
-  return admin.database().ref('/users/' + uid).remove()
-});
+// needs work
+// exports.deleteUser = functions.auth.user().onDelete(event => {
+//   const { uid } = event.data.previous
+//   return admin.database().ref('/users/' + uid).remove()
+// });
 
 exports.onPuzzleComplete = functions.database.ref('/story/{storyId}/chapters/{chapterId}/puzzles/{puzzleId}/status').onWrite(event => {
   // console.log('something happened in the cloud hook function. ', event, event.data)
@@ -60,26 +61,25 @@ exports.onPuzzleComplete = functions.database.ref('/story/{storyId}/chapters/{ch
   })
 })
 
-// on create/update/destroy friends
+// on create/update/destroy current journey
+// needs work
+// exports.updateCurrentJourney = functions.database.ref('/users/{uid}/journeys/current')
+//   .onWrite(event => {
+//     // exit if no data ??
+//     if (!event.data.exists()) return;
 //
-exports.sendFriendInvite = functions.database.ref('/users/{uid}/friends/{fid}')
-  .onWrite(event => {
-    // exit if no data ??
-    if (!event.data.exists()) return;
+//     // variables
+//     const { uid } = event.params;
+//     // what was written to db
+//     const written = event.data.val();
+//
+//     // get previous data
+//     if (event.data.previous.exists()) {
+//       console.log('Function', '\nwritten', written, '\nprevious', event.data.previous.val())
+//     }
+//     //
+//     // else {
+//     //   return admin.database().ref('/users' + friends)
+//     // }
+//   })
 
-    // variables
-    const { uid, fid } = event.params;
-    // what was written to db
-    const written = event.data.val();
-
-    // get previous data to update friendship
-    if (event.data.previous.exists()) {
-
-    }
-    // else you are sending an invite and must change on the other
-    else {
-      return admin.database().ref('/users' + friends).child(uid).set()
-    }
-  })
-
-// exports.accept
