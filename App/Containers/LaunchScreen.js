@@ -25,6 +25,9 @@ export default class LaunchScreen extends React.Component {
           </View>
 
           <DevscreensButton />
+          <RoundedButton onPress={() => navigate('PhotoRecognition')}>
+            PhotoRecognition
+          </RoundedButton>
           <RoundedButton onPress={() => navigate('LoginScreen')}>
             Login
           </RoundedButton>
