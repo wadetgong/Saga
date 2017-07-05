@@ -70,10 +70,6 @@ class TeamScreen extends React.Component {
     const joinList = this.joinedFriends.cloneWithRows(list)
     const pendList = this.pendingFriends.cloneWithRows(pending)
 
-    console.log('TEAM SCREEN list', list)
-    console.log('TEAM SCREEN pending', pending)
-    console.log('TEAM SCREEN teamlist', teamList)
-
     const resetAction = NavigationActions.reset({
       index: 0,
       actions: [

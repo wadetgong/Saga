@@ -3,50 +3,46 @@ import { Colors, Metrics } from '../../Themes'
 
 export default StyleSheet.create({
   container: {
-    paddingTop: 70,
-    backgroundColor: Colors.background
-  },
-  form: {
-    backgroundColor: Colors.snow,
-    margin: Metrics.baseMargin,
-    borderRadius: 4
-  },
-  row: {
-    paddingVertical: Metrics.doubleBaseMargin,
-    paddingHorizontal: Metrics.doubleBaseMargin
-  },
-  rowLabel: {
-    color: Colors.charcoal
-  },
-  textInput: {
-    height: 40,
-    color: Colors.coal
-  },
-  textInputReadonly: {
-    height: 40,
-    color: Colors.steel
-  },
-  loginRow: {
-    paddingBottom: Metrics.doubleBaseMargin,
-    paddingHorizontal: Metrics.doubleBaseMargin,
-    flexDirection: 'row'
-  },
-  loginButtonWrapper: {
-    flex: 1
-  },
-  loginButton: {
     flex: 1,
-    borderWidth: 1,
-    borderColor: Colors.charcoal,
-    backgroundColor: Colors.panther,
-    padding: 6
+    flexDirection: 'column'
   },
-  loginText: {
-    textAlign: 'center',
-    color: Colors.silver
+  videoContainer: {
+    flexDirection: 'column',
+    height: '80%',
+    alignItems: 'center'
   },
-  topLogo: {
-    alignSelf: 'center',
-    resizeMode: 'contain'
+  titleSection: {
+    marginTop: 100,
+    alignItems: 'center',
+    flexDirection: 'column',
+    padding: 15,
+    width: '100%',
+    zIndex: 10,
+    backgroundColor: Colors.transparent,
+    position: 'absolute'
+  },
+  video: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    opacity: 0.5
+  },
+  loginSection: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    backgroundColor:
+    Colors.background
+  },
+  footer: {
+    height: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    borderTopWidth: 1,
+    borderColor: 'lightgray'
   }
 })

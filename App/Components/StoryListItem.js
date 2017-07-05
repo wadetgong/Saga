@@ -29,7 +29,6 @@ class StoryListItem extends React.Component {
   }
 
   render () {
-    console.log('props in StoryListItem', this.props, this.state)
     const { item, navigate, createJourney } = this.props
     return (
         <View style={{flex: 1, flexDirection: 'row', paddingHorizontal: 10, paddingBottom: 5}}>
@@ -60,6 +59,4 @@ class StoryListItem extends React.Component {
   }
 
 }
-
-
 export default StoryListItem

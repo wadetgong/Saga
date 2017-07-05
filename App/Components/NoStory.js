@@ -19,7 +19,6 @@ const NoStory = ({ navigation }) => (
     </View>
       <View style={{
         padding: 10,
-        height: 200,
       }}>
 
         <Text style={styles.cardBody}>

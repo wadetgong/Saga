@@ -53,12 +53,13 @@ class StoryScreen extends React.Component {
           "hintsLeft": 10,
           "failedAttempts": 0,
           "status": {
-            "text": "current",
+            "text": "inactive",
             "timestamp" : currentTime
           },
           "team": { "list": {[uid] : true} },
           "story": story,
-          "times": { "start": currentTime }
+          "times": { "start": currentTime },
+          "creator": {"id": uid, "name": this.props.user.name}
         }
         newJourneyRef.set(newJourney)
 
@@ -122,7 +123,8 @@ class StoryScreen extends React.Component {
 
 
 const mapState = state => ({
-  stories : state.stories.stories
+  stories : state.stories.stories,
+  user: state.friends.user
 })
 const mapDispatch = {
   fetchJourney

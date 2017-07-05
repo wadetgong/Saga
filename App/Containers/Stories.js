@@ -96,7 +96,9 @@ class Stories extends React.Component {
           .on('value', csnap => {
             const cur = csnap.val()
             console.log('STORIES STORIES STORIES listener ran', jid, cur)
-            fetchJourney(jid, cur)
+            if(cur){
+              fetchJourney(jid, cur)
+            }
           })
       }
     })

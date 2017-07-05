@@ -72,7 +72,6 @@ class UserProfile extends React.Component {
   }
 
   render() {
-    console.log('props in userprofile', this.props)
     const { user } = this.props
 
     return (

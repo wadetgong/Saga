@@ -13,15 +13,16 @@ const StoryPreview = ({ navigation, name }) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.sectionHeader}>
-        <Text style={styles.boldLabel}>{item.title}</Text>
-      </View>
       <ScrollView>
         <View>
-        <Image
-            style={{ width: '100%', height: 200 }}
-            source={{uri: picUrl}}
-        />
+          <Image
+            style={styles.bgImage}
+            source={{uri: picUrl}}>
+            <View style={styles.sectionHeader}>
+              <Text style={styles.boldLabel}>{item.title}</Text>
+            </View>
+
+          </Image>
         </View>
         <View style={styles.detailSection}>
           <Text style={{fontFamily: Fonts.type.bold, alignSelf: 'center'}}>Story Details</Text>
