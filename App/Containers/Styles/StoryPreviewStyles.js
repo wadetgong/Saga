@@ -8,18 +8,21 @@ export default StyleSheet.create({
     backgroundColor: Colors.background
   },
   sectionHeader: {
-    paddingTop: Metrics.doubleBaseMargin,
+    padding: Metrics.baseMargin,
     width: Metrics.screenWidth,
     alignSelf: 'center',
     margin: Metrics.baseMargin,
-    backgroundColor: Colors.background
+    backgroundColor: Colors.background,
+    position: 'absolute',
+    bottom: 0,
+    opacity: 0.9
   },
   boldLabel: {
     fontWeight: 'bold',
     alignSelf: 'center',
     color: Colors.text,
     textAlign: 'center',
-    marginBottom: Metrics.smallMargin
+    fontSize: 20,
   },
   descriptionView: {
     paddingHorizontal: 10,
@@ -47,6 +50,12 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'flex-start',
     alignItems: 'center'
-  }
+  },
+  bgImage: {
+    marginTop: 20,
+    height: 240,
+    width: '100%',
+    top: 0,
+  },
 
 })

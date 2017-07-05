@@ -1,0 +1,78 @@
+{
+  "Justin0" : {
+    "failedAttempts" : 0,
+    "hintsLeft" : 1,
+    "status" : {
+      "text" : "Completed",
+      "timestamp" : ""
+    },
+    "story" : "artThief",
+    "team" : {
+      "Justin" : true,
+      "Monica" : true,
+      "Steve" : true,
+      "Wade" : true
+    },
+    "times" : {
+      "end" : "",
+      "start" : ""
+    }
+  },
+  "Bob1" : {
+    "failedAttempts" : 0,
+    "hintsLeft" : 1,
+    "status" : {
+      "text" : "Completed",
+      "timestamp" : ""
+    },
+    "story" : "batman",
+    "team" : {
+      "Bob" : true,
+      "Monica" : true,
+      "Sarah" : true,
+      "Steve" : true,
+      "Wade" : true
+    },
+    "times" : {
+      "end" : "",
+      "start" : ""
+    }
+  },
+  "Sarah2": {
+    "failedAttempts" : 0,
+    "hintsLeft" : 1,
+    "status" : {
+      "text" : "Completed",
+      "timestamp" : ""
+    },
+    "story" : "woodElves",
+    "team" : {
+      "Bob" : true,
+      "Sarah" : true
+    },
+    "times" : {
+      "end" : "",
+      "start" : ""
+    }
+  },
+  "Monica3": {
+    "failedAttempts" : 0,
+    "hintsLeft" : 1,
+    "points" : [ null, 5, 15 ],
+    "solved" : [ null, [ null, true ], [ null, false ] ],
+    "status" : {
+      "text" : "Current",
+      "timestamp" : ""
+    },
+    "story" : "woodElves",
+    "team" : {
+      "Justin" : true,
+      "Monica" : true,
+      "Wade" : true
+    },
+    "times" : {
+      "end" : "",
+      "start" : ""
+    }
+  }
+}

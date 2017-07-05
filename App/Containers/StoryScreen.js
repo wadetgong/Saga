@@ -15,7 +15,7 @@ class StoryScreen extends React.Component {
       ds: new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 }),
       text: '',
     }
-    
+
     this.uid = firebaseApp.auth().currentUser.uid
     this.unsubscribeJourneyRef = null;
     this.onSearch = this.onSearch.bind(this)
@@ -28,59 +28,62 @@ class StoryScreen extends React.Component {
     return story.title.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1;
   }
 
-  createJourney (story) {    
+  createJourney (story) {
     const uid = this.uid;
     const { navigate } = this.props.navigation
     const { fetchJourney } = this.props
-    
+
     // increment index
     // NOTE: transactions are really weird
     // I definitely don't know why BUT
     // transactions get called twice, once with i = null
     // CODEREVIEW TODO: should I call off()?
     //
-    
+
     const indexRef = firebaseApp.database().ref('/indexes/journey')
     const currentTime = firebase.database.ServerValue.TIMESTAMP
     indexRef.transaction(i => {
       if (i) {
         const jid = uid + i
-        
+
         // new journey
         const newJourneyRef = firebaseApp.database().ref('/journey/' + jid)
         // no points {}, solved {}
         const newJourney = {
+          "id": jid,
           "hintsLeft": 10,
           "failedAttempts": 0,
-          "status": { 
-            "text": "current", 
+          "status": {
+            "text": "inactive",
             "timestamp" : currentTime
           },
           "team": { "list": {[uid] : true} },
           "story": story,
-          "times": { "start": currentTime }
+          "times": { "start": currentTime },
+          "creator": {"id": uid, "name": this.props.user.name}
         }
         newJourneyRef.set(newJourney)
-        
+
         // user
         firebaseApp.database()
           .ref('/users/' + uid + '/journeys/current/')
           .set({ [jid] : story.name})
-        
+
         // set current journey
         fetchJourney(jid, newJourney)
       }
       return i+1
     })
-    
+
     navigate('JourneyFriends')
   }
-  
+
   componentWillUnmount () {
     if (this.unsubscribeJourneyRef) this.unsubscribeJourneyRef()
   }
 
   render () {
+    console.log('props in storyscreen', this.props, this.state)
     const { text } = this.state
     const { stories } = this.props
     const { navigate } = this.props.navigation
@@ -101,18 +104,17 @@ class StoryScreen extends React.Component {
         }}>
           <SearchBar
             onSearch={this.onSearch} value={text}
-            /*onCancel={this.onCancelSearchBar}*/
           />
         </View>
         <ListView
           dataSource={storyList}
           removeClippedSubviews={false}
           enableEmptySections={true}
-          renderRow={(item) => <
-            StoryListItem
+          renderRow={(item) => <StoryListItem
             item={item}
             navigate={navigate}
             createJourney={this.createJourney}
+            key={item.id}
           />}
         />
       </View>
@@ -122,7 +124,8 @@ class StoryScreen extends React.Component {
 
 
 const mapState = state => ({
-  stories : state.stories.stories
+  stories : state.stories.stories,
+  user: state.friends.user
 })
 const mapDispatch = {
   fetchJourney

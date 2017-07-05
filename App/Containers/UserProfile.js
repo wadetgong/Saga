@@ -14,12 +14,13 @@ import Icon from 'react-native-vector-icons/SimpleLineIcons'
 
 import { connect } from 'react-redux'
 import { setSelf } from '../Redux/FriendsRedux'
+import { setStory } from '../Redux/actions/currentStory'
 import firebaseApp from '../Firebase'
 
 
 const UserProfileStack = TabNavigator({
   UserJourneys: {
-    screen: UserJourneys,
+    screen: ({ screenProps }) => <UserJourneys screenProps={screenProps} />,
     navigationOptions: {
       tabBarLabel: 'My Stories',
       tabBarIcon: ({ tintColor }) => (
@@ -67,13 +68,23 @@ class UserProfile extends React.Component {
   listenForItems(ref) {
     // get stories
     this.unsubscribe = ref.on('value', (snap) => {
-      this.props.setUser(snap.val())
+      let user = snap.val()
+      this.props.setUser(user)
+      if(user.journeys && user.journeys.current) {
+        firebaseApp.database().ref(`/journey/${Object.keys(user.journeys.current)[0]}`)
+          .once('value', journey => {
+            let journeyData = journey.val()
+            if(journeyData.status && journeyData.status.text === 'active') {
+              this.props.setStory(journeyData.id)
+            }
+        })
+      }
     })
   }
 
   render() {
     const { user } = this.props
-    
+
     return (
       <View style={styles.container}>
         <View style={styles.sectionHeader}>
@@ -103,7 +114,7 @@ class UserProfile extends React.Component {
           )
           : null
         }
-        <UserProfileStack />
+        <UserProfileStack screenProps={this.props.screenProps}/>
       </View>
     )
   }
@@ -113,7 +124,8 @@ const mapState = state => ({
   user: state.friends.user
 })
 const mapDispatch = dispatch => ({
-  setUser: (user) => dispatch(setSelf(user))  // definitely should try do elsewhere
+  setUser: (user) => dispatch(setSelf(user)),  // definitely should try do elsewhere
+  setStory: (journeyId) => dispatch(setStory(journeyId))
 })
 
 export default connect(mapState, mapDispatch)(UserProfile)

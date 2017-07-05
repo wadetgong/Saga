@@ -1,31 +1,11 @@
 {
+  "indexes" : {
+    "journey" : 2
+  },
   "journey" : {
-    "Justin0" : {
-      "failedAttempts" : 0,
-      "hintsLeft" : 1,
-      "points" : [ null, 5, 15 ],
-      "solved" : [ null, [ null, true ], [ null, true ], [ null, false ], [ null, false ] ],
-      "status" : {
-        "text" : "Completed",
-        "timestamp" : ""
-      },
-      "story" : "artThief",
-      "team" : {
-        "Justin" : true,
-        "Monica" : true,
-        "Steve" : true,
-        "Wade" : true
-      },
-      "times" : {
-        "end" : "",
-        "start" : ""
-      }
-    },
     "Bob1" : {
       "failedAttempts" : 0,
       "hintsLeft" : 1,
-      "points" : [ null, 5, 15 ],
-      "solved" : [ null, [ null, true ], [ null, true ], [ null, true ] ],
       "status" : {
         "text" : "Completed",
         "timestamp" : ""
@@ -43,26 +23,26 @@
         "start" : ""
       }
     },
-    "Sarah2": {
+    "Justin0" : {
       "failedAttempts" : 0,
       "hintsLeft" : 1,
-      "points" : [ null, 5, 15 ],
-      "solved" : [ null, [ null, true ], [ null, true ] ],
       "status" : {
         "text" : "Completed",
         "timestamp" : ""
       },
-      "story" : "woodElves",
+      "story" : "artThief",
       "team" : {
-        "Bob" : true,
-        "Sarah" : true
+        "Justin" : true,
+        "Monica" : true,
+        "Steve" : true,
+        "Wade" : true
       },
       "times" : {
         "end" : "",
         "start" : ""
       }
     },
-    "Monica3": {
+    "Monica3" : {
       "failedAttempts" : 0,
       "hintsLeft" : 1,
       "points" : [ null, 5, 15 ],
@@ -81,14 +61,115 @@
         "end" : "",
         "start" : ""
       }
+    },
+    "Sarah2" : {
+      "failedAttempts" : 0,
+      "hintsLeft" : 1,
+      "status" : {
+        "text" : "Completed",
+        "timestamp" : ""
+      },
+      "story" : "woodElves",
+      "team" : {
+        "Bob" : true,
+        "Sarah" : true
+      },
+      "times" : {
+        "end" : "",
+        "start" : ""
+      }
+    },
+    "dqG6qVu1ArO4HzRJF0ym2ErlM9d21" : {
+      "id": "dqG6qVu1ArO4HzRJF0ym2ErlM9d21",
+      "creator" : {
+        "id" : "ehacinom",
+        "name" : "Monica He"
+      },
+      "failedAttempts" : 0,
+      "hintsLeft" : 10,
+      "status" : {
+        "text" : "inactive",
+        "timestamp" : 1499231556711
+      },
+      "story" : {
+        "allowedFails" : 2,
+        "allowedHints" : 10,
+        "chapters" : [ {
+          "description" : "Your mission begins with a rendezvous at a secure location where your team and Batman can communicate. Your current line of communication is not secure, so Batman directs you to the secure waypoint via the following encrypted message.",
+          "enabled" : true,
+          "id" : 1,
+          "nPuzzles" : 1,
+          "puzzles" : [ {
+            "answer" : "pass",
+            "description" : "Where water wacks land is where I'm near; meet me when the lake crosses the well - you'll find me here.",
+            "findImage" : "transponder",
+            "id" : 1,
+            "location" : {
+              "lat" : 41.88573,
+              "long" : -87.633939
+            },
+            "maxAttempts" : 4,
+            "puzzleType" : "simpleFind",
+            "type" : ""
+          } ]
+        }, {
+          "description" : "After making initial contact, the Dark Knight hands you a secure transponder to communicate securely.",
+          "id" : 2,
+          "nPuzzles" : 1,
+          "puzzles" : [ {
+            "answer" : "pass",
+            "description" : "",
+            "findImage" : "transponder",
+            "id" : 1,
+            "location" : false,
+            "maxAttempts" : 4,
+            "puzzleType" : "simpleFind",
+            "type" : ""
+          } ]
+        }, {
+          "description" : "waha",
+          "id" : 3,
+          "nPuzzles" : 1,
+          "puzzles" : [ {
+            "answer" : "pass",
+            "description" : "",
+            "id" : 1,
+            "location" : false,
+            "maxAttempts" : 4,
+            "puzzleType" : "fillBlank",
+            "type" : ""
+          } ]
+        } ],
+        "description" : "The Riddler is loose on Gotham City! A toxin has been planted in the city's water supply, and the Dark Knight needs your help. He's enlisted you and your team to scour the city for clues and identify the source of the toxin. Stay vigilant - one missed clue can spell your demise. But don't linger - the clock is ticking!",
+        "estimatedTime" : 3.5,
+        "id" : "batman",
+        "nChapters" : 3,
+        "name" : "batman",
+        "startingLocation" : {
+          "lat" : 41.8885,
+          "long" : -87.6354
+        },
+        "title" : "Riddle Me This"
+      },
+      "team" : {
+        "list" : {
+          "ehacinom" : true
+        },
+        "pending":{
+          "dqG6qVu1ArO4HzRJF0ym2ErlM9d2" : true
+        }
+      },
+      "times" : {
+        "start" : 1499231556711
+      }
     }
   },
   "photos" : {
     "story" : {
       "artThief" : "https://firebasestorage.googleapis.com/v0/b/breach-5ea6b.appspot.com/o/Main.gif?alt=media&token=4e215536-c169-4db1-b29a-23bb177bac43",
       "batman" : "https://firebasestorage.googleapis.com/v0/b/breach-5ea6b.appspot.com/o/riddler.jpg?alt=media&token=09c266f8-7f89-4fed-80be-d0572dc2f400",
-      "woodElves" : "https://firebasestorage.googleapis.com/v0/b/breach-5ea6b.appspot.com/o/Main.jpg?alt=media&token=c9d0a3d3-c03a-437a-916c-1cdc322acdf2",
-      "noImage" "https://firebasestorage.googleapis.com/v0/b/breach-5ea6b.appspot.com/o/no-image-avail.png?alt=media&token=2cb55c5a-1676-4400-8e1c-00960387de64"
+      "noImage" : "https://firebasestorage.googleapis.com/v0/b/breach-5ea6b.appspot.com/o/no-image-avail.png?alt=media&token=2cb55c5a-1676-4400-8e1c-00960387de64",
+      "woodElves" : "https://firebasestorage.googleapis.com/v0/b/breach-5ea6b.appspot.com/o/Main.jpg?alt=media&token=c9d0a3d3-c03a-437a-916c-1cdc322acdf2"
     },
     "users" : {
       "ehacinom" : "https://avatars2.githubusercontent.com/u/8092859?v=3&s=400",
@@ -99,216 +180,185 @@
       "wadetgong" : "https://avatars3.githubusercontent.com/u/7991556?v=3&s=400"
     }
   },
-  "stories": {
-    "artThief": {
-      "id": "artThief",
-      "title": "Art Thief",
-      "startingLocation": {
-        "lat": 41.8796,
-        "long": -87.6237
+  "story" : {
+    "artThief" : {
+      "allowedFails" : 6,
+      "allowedHints" : 4,
+      "chapters" : [ {
+        "description" : "waha",
+        "enabled" : true,
+        "id" : 1,
+        "nPuzzles" : 1,
+        "puzzles" : [ {
+          "answer" : "pass",
+          "description" : "",
+          "id" : 1,
+          "location" : {
+            "lat" : 41.8714,
+            "long" : -87.6224
+          },
+          "maxAttempts" : 4,
+          "puzzleType" : "fillBlank",
+          "type" : ""
+        } ]
+      }, {
+        "description" : "waha",
+        "id" : 2,
+        "nPuzzles" : 1,
+        "puzzles" : [ {
+          "answer" : "pass",
+          "description" : "",
+          "id" : 1,
+          "location" : false,
+          "maxAttempts" : 4,
+          "puzzleType" : "fillBlank",
+          "type" : ""
+        } ]
+      }, {
+        "description" : "waha",
+        "id" : 3,
+        "nPuzzles" : 1,
+        "puzzles" : [ {
+          "answer" : "pass",
+          "description" : "",
+          "id" : 1,
+          "location" : false,
+          "maxAttempts" : 4,
+          "puzzleType" : "fillBlank",
+          "type" : ""
+        } ]
+      }, {
+        "description" : "waha",
+        "id" : 4,
+        "nPuzzles" : 1,
+        "puzzles" : [ {
+          "answer" : "pass",
+          "description" : "",
+          "id" : 1,
+          "location" : {
+            "lat" : 41.8713,
+            "long" : -87.6221
+          },
+          "maxAttempts" : 4,
+          "puzzleType" : "fillBlank",
+          "type" : ""
+        } ]
+      } ],
+      "description" : "Steal stuff from museums. Steal stuff from museums. Steal stuff from museums.",
+      "estimatedTime" : 3.5,
+      "id" : "artThief",
+      "nChapters" : 4,
+      "startingLocation" : {
+        "lat" : 41.8796,
+        "long" : -87.6237
       },
-      "description": "Steal stuff from museums. Steal stuff from museums. Steal stuff from museums.",
-      "estimatedTime": 3.5,
-      "allowedFails": 6,
-      "allowedHints": 4,
-      "nChapters": 4,
-      "chapters": {
-          "0": {
-            "id": 1,
-            "enabled": true,
-            "description": "waha",
-            "puzzles": {
-              "0": {
-                "id": 1,
-                "description": "",
-                "maxAttempts": 4,
-                "puzzleType": "fillBlank",
-                "type": "",
-                "answer": "pass",
-                "location": {
-                  "lat": 41.8714,
-                  "long": -87.6224
-                }
-              }
-            },
-            "nPuzzles": 1
-          },
-          "1": {
-            "id": 2,
-            "description": "waha",
-            "puzzles": {
-              "0": {
-                "id": 1,
-                "description": "",
-                "maxAttempts": 4,
-                "puzzleType": "fillBlank",
-                "type": "",
-                "answer": "pass",
-                "location": false
-              }
-            },
-            "nPuzzles": 1
-          },
-          "2": {
-            "id": 3,
-            "description": "waha",
-            "puzzles": {
-              "0": {
-                "id": 1,
-                "description": "",
-                "maxAttempts": 4,
-                "puzzleType": "fillBlank",
-                "type": "",
-                "answer": "pass",
-                "location": false
-              }
-            },
-            "nPuzzles": 1
-
-          },
-          "3": {
-            "id": 4,
-            "description": "waha",
-            "puzzles": {
-              "0": {
-                "id": 1,
-                "description": "",
-                "maxAttempts": 4,
-                "puzzleType": "fillBlank",
-                "type": "",
-                "answer": "pass",
-                "location": {
-                  "lat": 41.8713,
-                  "long": -87.6221
-                }
-              }
-            },
-            "nPuzzles": 1
-          }
-      }
+      "title" : "Art Thief"
     },
-    "batman": {
-      "id": "batman",
-      "title": "Riddle Me This",
-      "startingLocation": {
-        "lat": 41.8885,
-        "long": -87.6354
+    "batman" : {
+      "allowedFails" : 2,
+      "allowedHints" : 10,
+      "chapters" : [ {
+        "description" : "Your mission begins with a rendezvous at a secure location where your team and Batman can communicate. Your current line of communication is not secure, so Batman directs you to the secure waypoint via the following encrypted message.",
+        "enabled" : true,
+        "id" : 1,
+        "nPuzzles" : 1,
+        "puzzles" : [ {
+          "answer" : "pass",
+          "description" : "Where water wacks land is where I'm near; meet me when the lake crosses the well - you'll find me here.",
+          "findImage" : "transponder",
+          "id" : 1,
+          "location" : {
+            "lat" : 41.88573,
+            "long" : -87.633939
+          },
+          "maxAttempts" : 4,
+          "puzzleType" : "simpleFind",
+          "type" : ""
+        } ]
+      }, {
+        "description" : "After making initial contact, the Dark Knight hands you a secure transponder to communicate securely.",
+        "id" : 2,
+        "nPuzzles" : 1,
+        "puzzles" : [ {
+          "answer" : "pass",
+          "description" : "",
+          "findImage" : "transponder",
+          "id" : 1,
+          "location" : false,
+          "maxAttempts" : 4,
+          "puzzleType" : "simpleFind",
+          "type" : ""
+        } ]
+      }, {
+        "description" : "waha",
+        "id" : 3,
+        "nPuzzles" : 1,
+        "puzzles" : [ {
+          "answer" : "pass",
+          "description" : "",
+          "id" : 1,
+          "location" : false,
+          "maxAttempts" : 4,
+          "puzzleType" : "fillBlank",
+          "type" : ""
+        } ]
+      } ],
+      "description" : "The Riddler is loose on Gotham City! A toxin has been planted in the city's water supply, and the Dark Knight needs your help. He's enlisted you and your team to scour the city for clues and identify the source of the toxin. Stay vigilant - one missed clue can spell your demise. But don't linger - the clock is ticking!",
+      "estimatedTime" : 3.5,
+      "id" : "batman",
+      "nChapters" : 3,
+      "startingLocation" : {
+        "lat" : 41.8885,
+        "long" : -87.6354
       },
-      "description": "The Riddler is loose on Gotham City! A toxin has been planted in the city's water supply, and the Dark Knight needs your help. He's enlisted you and your team to scour the city for clues and identify the source of the toxin. Stay vigilant - one missed clue can spell your demise. But don't linger - the clock is ticking!",
-      "estimatedTime": 3.5,
-      "allowedFails": 2,
-      "allowedHints": 10,
-      "nChapters": 3,
-      "chapters": {
-        "0": {
-          "id": 1,
-          "enabled": true,
-          "description": "Your mission begins with a rendezvous at a secure location where your team and Batman can communicate. Your current line of communication is not secure, so Batman directs you to the secure waypoint via the following encrypted message.",
-          "puzzles": {
-            "0": {
-              "id": 1,
-              "description": "Where water wacks land is where I'm near; meet me when the lake crosses the well - you'll find me here.",
-              "maxAttempts": 4,
-              "puzzleType": "simpleFind",
-              "findImage": "transponder",
-              "type": "",
-              "answer": "pass",
-              "location": {
-                "lat": 41.885730,
-                "long": -87.633939
-              }
-            }
-          },
-          "nPuzzles": 1
-        },
-        "1": {
-          "id": 2,
-          "description": "After making initial contact, the Dark Knight hands you a secure transponder to communicate securely.",
-          "puzzles": {
-            "0": {
-              "id": 1,
-              "description": "",
-              "maxAttempts": 4,
-              "puzzleType": "simpleFind",
-              "findImage": "transponder",
-              "type": "",
-              "answer": "pass",
-              "location": false
-            }
-          },
-          "nPuzzles": 1
-        },
-        "2": {
-          "id": 3,
-          "description": "waha",
-          "puzzles": {
-            "0": {
-              "id": 1,
-              "description": "",
-              "maxAttempts": 4,
-              "puzzleType": "fillBlank",
-              "type": "",
-              "answer": "pass",
-              "location": false
-            }
-          },
-          "nPuzzles": 1
-        }
-      }
+      "title" : "Riddle Me This"
     },
-    "woodElves": {
-      "id": "woodElves",
-      "title": "Woodelves",
-      "startingLocation": {
-        "lat": 41.8972,
-        "long": -87.6612
+    "woodElves" : {
+      "allowedFails" : 7,
+      "allowedHints" : 2,
+      "chapters" : [ {
+        "description" : "waha",
+        "enabled" : true,
+        "id" : 1,
+        "nPuzzles" : 1,
+        "puzzles" : [ {
+          "answer" : "pass",
+          "description" : "",
+          "id" : 1,
+          "location" : {
+            "lat" : 41.1111,
+            "long" : -87.2222
+          },
+          "maxAttempts" : 4,
+          "puzzleType" : "fillBlank",
+          "type" : ""
+        } ]
+      }, {
+        "description" : "waha",
+        "id" : 2,
+        "nPuzzles" : 1,
+        "puzzles" : [ {
+          "answer" : "pass",
+          "description" : "",
+          "id" : 1,
+          "location" : {
+            "lat" : 41.8113,
+            "long" : -87.1221
+          },
+          "maxAttempts" : 4,
+          "puzzleType" : "fillBlank",
+          "type" : ""
+        } ]
+      } ],
+      "description" : "Fairies are everywhere",
+      "estimatedTime" : 1.5,
+      "id" : "woodElves",
+      "nChapters" : 2,
+      "startingLocation" : {
+        "lat" : 41.8972,
+        "long" : -87.6612
       },
-      "description": "Fairies are everywhere",
-      "estimatedTime": 1.5,
-      "allowedFails": 7,
-      "allowedHints": 2,
-      "nChapters": 2,
-      "chapters": {
-        "0": {
-          "id": 1,
-          "enabled": true,
-          "description": "waha",
-          "puzzles": {
-            "0": {
-              "id":1,
-              "description": "",
-              "maxAttempts": 4,
-              "puzzleType": "fillBlank",
-              "type": "",
-              "answer": "pass",
-              "location": {
-                "lat": 41.1111,
-                "long": -87.2222
-              }
-            }
-          },
-          "nPuzzles": 1
-        },
-        "1": {
-          "id":2,
-          "description": "waha",
-          "puzzles": {
-            "0": {
-              "id": 1,
-              "description": "",
-              "maxAttempts": 4,
-              "puzzleType": "fillBlank",
-              "type": "",
-              "answer": "pass",
-              "location": {
-                "lat": 41.8113,
-                "long": -87.1221
-              }
-            }
-          },
-          "nPuzzles": 1
-        }
-      }
+      "title" : "Woodelves"
     }
   },
   "users" : {
@@ -323,6 +373,7 @@
           "dqG6qVu1ArO4HzRJF0ym2ErlM9d2" : true
         }
       },
+      "id" : "ZHEIptD0pXhkTxXJDojup0mxXNk2",
       "journeys" : false,
       "name" : "Monica He",
       "profilePicture" : "https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/11210392_10155381783731632_799712498863928008_n.jpg?oh=22b6b9cca81aaadd10c94f947ec82562&oe=59D02930",
@@ -332,14 +383,25 @@
       "email" : "wadetgong@gmail.com",
       "fb_thumbnail" : "https://scontent.xx.fbcdn.net/v/t1.0-1/s100x100/1916513_3036695367700_7204003449187997100_n.jpg?oh=658679fa0522f6a3401ab544fbff40cd&oe=59D5CAFE",
       "friends" : {
+        "list" : {
+          "ehacinom" : true,
+          "gehrj" : true,
+          "hurlabob" : true,
+          "snowwhite" : true
+        },
         "received" : {
           "ZHEIptD0pXhkTxXJDojup0mxXNk2" : true
         },
         "sent" : {
-          "ehacinom" : true
+          "wadetgong" : true
         }
       },
-      "journeys" : false,
+      "id" : "dqG6qVu1ArO4HzRJF0ym2ErlM9d2",
+      "journeys" : {
+        "pending" : {
+          "dqG6qVu1ArO4HzRJF0ym2ErlM9d21" : "batman"
+        }
+      },
       "name" : "Wade Gong",
       "profilePicture" : "https://scontent.xx.fbcdn.net/v/t1.0-1/s100x100/1916513_3036695367700_7204003449187997100_n.jpg?oh=658679fa0522f6a3401ab544fbff40cd&oe=59D5CAFE",
       "username" : ""
@@ -349,15 +411,22 @@
       "friends" : {
         "list" : {
           "ZHEIptD0pXhkTxXJDojup0mxXNk2" : true,
-          "gehrj" : true,
-          "received" : false,
-          "wadetgong" : true
+          "dqG6qVu1ArO4HzRJF0ym2ErlM9d2" : true,
+          "gehrj" : true
         },
         "received" : {
-          "dqG6qVu1ArO4HzRJF0ym2ErlM9d2" : true
+          "wadetgong" : true
         }
       },
-      "journeys" : {"Justin0": "artThief", "Bob1" : "batman", "Monica3": "woodElves"},
+      "id" : "ehacinom",
+      "journeys" : {
+        "Bob1" : "batman",
+        "Justin0" : "artThief",
+        "Monica3" : "woodElves",
+        "current": {
+          "dqG6qVu1ArO4HzRJF0ym2ErlM9d21" : "batman"
+        }
+      },
       "name" : "Monica He",
       "profilePicture" : "https://avatars2.githubusercontent.com/u/8092859?v=3&s=400",
       "received" : false,
@@ -367,12 +436,17 @@
       "email" : "justin@gmail.com",
       "friends" : {
         "list" : {
+          "dqG6qVu1ArO4HzRJF0ym2ErlM9d2" : true,
           "ehacinom" : true,
           "wadetgong" : true
         },
         "sent" : false
       },
-      "journeys" : {"Justin0": "artThief", "Monica3": "woodElves"},
+      "id" : "gehrj",
+      "journeys" : {
+        "Justin0" : "artThief",
+        "Monica3" : "woodElves"
+      },
       "name" : "Justin Gehr",
       "profilePicture" : "https://avatars1.githubusercontent.com/u/26335236?v=3&s=400",
       "username" : "gehrj"
@@ -381,12 +455,17 @@
       "email" : "bob@gmail.com",
       "friends" : {
         "list" : {
+          "dqG6qVu1ArO4HzRJF0ym2ErlM9d2" : true,
           "jacobss" : true,
           "snowwhite" : true
         },
         "sent" : false
       },
-      "journeys" : {"Bob1" : "batman", "Sarah2": "woodElves"},
+      "id" : "hurlabob",
+      "journeys" : {
+        "Bob1" : "batman",
+        "Sarah2" : "woodElves"
+      },
       "name" : "Bob Smith",
       "profilePicture" : "https://avatars3.githubusercontent.com/u/7991556?v=3&s=400",
       "username" : "hurlabob"
@@ -401,7 +480,11 @@
         "received" : false,
         "sent" : false
       },
-      "journeys" : {"Bob1" : "batman", "Sarah2": "woodElves"},
+      "id" : "jacobss",
+      "journeys" : {
+        "Bob1" : "batman",
+        "Sarah2" : "woodElves"
+      },
       "name" : "Sarah Jacobs",
       "profilePicture" : "https://avatars3.githubusercontent.com/u/7991556?v=3&s=400",
       "username" : "jacobss"
@@ -410,6 +493,7 @@
       "email" : "steve@gmail.com",
       "friends" : {
         "list" : {
+          "dqG6qVu1ArO4HzRJF0ym2ErlM9d2" : true,
           "hurlabob" : true,
           "jacobss" : true,
           "wadetgong" : true
@@ -417,7 +501,11 @@
         "received" : false,
         "sent" : false
       },
-      "journeys" : {"Justin0": "artThief", "Bob1" : "batman"},
+      "id" : "snowwhite",
+      "journeys" : {
+        "Bob1" : "batman",
+        "Justin0" : "artThief"
+      },
       "name" : "Steve White",
       "profilePicture" : "https://avatars3.githubusercontent.com/u/7991556?v=3&s=400",
       "username" : "snowwhite"
@@ -426,14 +514,22 @@
       "email" : "wade@gmail.com",
       "friends" : {
         "list" : {
-          "ehacinom" : true,
           "gehrj" : true,
           "snowwhite" : true
         },
-        "received" : false,
-        "sent" : false
+        "received" : {
+          "dqG6qVu1ArO4HzRJF0ym2ErlM9d2" : true
+        },
+        "sent" : {
+          "ehacinom" : true
+        }
       },
-      "journeys" : {"Justin0": "artThief", "Bob1" : "batman", "Monica3": "woodElves"},
+      "id" : "wadetgong",
+      "journeys" : {
+        "Bob1" : "batman",
+        "Justin0" : "artThief",
+        "Monica3" : "woodElves"
+      },
       "name" : "Wade Gong",
       "profilePicture" : "https://avatars3.githubusercontent.com/u/7991556?v=3&s=400",
       "username" : "wadetgong"

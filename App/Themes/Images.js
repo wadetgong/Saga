@@ -29,6 +29,7 @@ const images = {
   emptyStory: require('../Images/emptyStory.jpeg'),
   treasureChest: require('../Images/treasureChest.png'),
   transponder: require('../Images/transponder.png'),
+  passStamp: require('../Images/pass-stamp.png')
 }
 
 export default images

@@ -26,13 +26,13 @@ class ViewFriends extends React.Component {
         {
           friendsList && friendsList.length
           ?
-              <ListView
-                  contentContainerStyle={styles.list}
-                  dataSource={friendsSource}
-                  removeClippedSubviews={false}
-                  enableEmptySections={true}
-                  renderRow={(user) => <FriendTile user={user} />}
-                />
+            <ListView
+              contentContainerStyle={styles.list}
+              dataSource={friendsSource}
+              removeClippedSubviews={false}
+              enableEmptySections={true}
+              renderRow={(user) => <FriendTile user={user} />}
+              />
           : (
             <View style={{alignItems: 'center'}}>
               <Text style={{fontStyle: 'italic'}}>No friends yet!</Text>

@@ -1,11 +1,11 @@
 import { SET_STORY, SET_PUZZLE, SET_CHAPTER } from '../constants/actionTypes';
 
-export function setStory(storyName) {
+export function setStory(journeyId) {
 
   return dispatch => {
     dispatch({
       type: SET_STORY,
-      storyName
+      journeyId
     })
   }
 }

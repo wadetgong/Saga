@@ -20,7 +20,7 @@ export default StyleSheet.create({
     paddingHorizontal: 10,
   },
   inviteSection: {
-    flex: .75,
+    flex: 1,
     paddingTop: 5,
     flexDirection: 'column',
     justifyContent: 'flex-start',
@@ -35,8 +35,7 @@ export default StyleSheet.create({
     borderRadius: 3,
     paddingHorizontal: 15,
     paddingVertical: 5,
-    // backgroundColor: Colors.buttonActive,
-    backgroundColor: Colors.buttonStandard,
+    backgroundColor: Colors.charcoal,
     justifyContent: 'center',
     alignItems: 'center'
   },

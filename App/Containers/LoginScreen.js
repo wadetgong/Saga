@@ -71,9 +71,9 @@ class LoginScreen extends React.Component {
 
   render () {
     return (
-      <View style={{flex: 1, flexDirection: 'column'}}>
-        <View style={{height: 550, alignItems: 'center'}}>
-          <View style={{marginTop: 100, alignItems: 'center', flexDirection: 'column', padding: 15, width: '100%', zIndex: 10, backgroundColor: Colors.transparent}}>
+      <View style={styles.container}>
+        <View style={styles.videoContainer}>
+          <View style={styles.titleSection}>
             <Text style={{fontSize: 44, fontWeight: 'bold'}}>SAGA</Text>
             <Text style={{fontSize: 16, fontStyle: 'italic'}}>Explore your city - save the day.</Text>
           </View>
@@ -84,30 +84,24 @@ class LoginScreen extends React.Component {
             muted={true}
             resizeMode={"cover"}
             repeat
-            style={{
-              position: 'absolute',
-              height: 550,
-              top: 0,
-              left: 0,
-              bottom: 0,
-              right: 0,
-              opacity: 0.5
-            }}
+            style={styles.video}
           />
         </View>
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', flexDirection: 'row'}}>
-          <View>
-            <TouchableOpacity onPress={() => this.login()}>
-              <Image
-                style={{width: 300}}
-                resizeMode={'contain'}
-                source={require('../Images/FB-login.png')}
-              />
-            </TouchableOpacity>
+        <View style={{height: '20%'}}>
+          <View style={styles.loginSection}>
+            <View>
+              <TouchableOpacity onPress={() => this.login()}>
+                <Image
+                  style={{width: 300}}
+                  resizeMode={'contain'}
+                  source={require('../Images/FB-login.png')}
+                />
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
-        <View style={{flex: .2, alignItems: 'center', justifyContent: 'center', flexDirection: 'row',borderTopWidth: 1, borderColor: 'lightgray',}}>
-          <Text style={{fontSize: 12}}>Made with ♡ at Fullstack Academy</Text>
+          <View style={styles.footer}>
+            <Text style={{fontSize: 12}}>Made with ♡ at Fullstack Academy</Text>
+          </View>
         </View>
       </View>
     )

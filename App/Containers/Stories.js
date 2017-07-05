@@ -12,7 +12,7 @@ const ChooseStoryStack = StackNavigator({
     StoryScreen: { screen: StoryScreen },
     StoryPreview: { screen: StoryPreview },
     JourneyFriends: { screen: JourneyFriends },
-    TeamScreen: { screen: TeamScreen },
+    TeamScreen: { screen: ({ screenProps }) => <TeamScreen screenProps={screenProps} /> },
     // TeamScreen: { screen: ({ navigation }) => <TeamScreen screenProps={{ rootNavigation: navigation }} /> }
   }, {
     // Default config for all screens
@@ -37,10 +37,10 @@ class Stories extends React.Component {
 
     // get list of previous journeys -> stories
     // and filter to stories you can play
-    const myJourneysRef = firebaseApp.database().ref('/users/' + uid + '/journeys')    
+    const myJourneysRef = firebaseApp.database().ref('/users/' + uid + '/journeys')
     const storyRef = firebaseApp.database().ref('/story')
     this.getJourneysAndStories(myJourneysRef, storyRef)
-    
+
     // // listen to journey to see if new one is added by yourself
     // // possible listen to journey
     // const journeyRef = firebaseApp.database().ref('/journey')
@@ -50,9 +50,9 @@ class Stories extends React.Component {
   }
 
   componentWillUnmount () {
-    if (this.unsubscribeMyJourneysRef) 
+    if (this.unsubscribeMyJourneysRef)
       this.unsubscribeMyJourneysRef();
-    if (this.unsubscribeMyCurrentJourneyRef) 
+    if (this.unsubscribeMyCurrentJourneyRef)
       this.unsubscribeMyCurrentJourneyRef();
     if (this.unsubscribeCurrentJourneyRef)
       this.unsubscribeCurrentJourneyRef();
@@ -70,11 +70,11 @@ class Stories extends React.Component {
         .catch(err => console.log('ERROR IN STORIES.getJourneysAndStories', err))
     })
   }
-  
+
   getCurrentJourney (myCurrentJourneyRef) {
     const uid = this.uid
     const fetchJourney = this.props.fetchJourney
-    
+
     this.unsubscribeMyCurrentJourneyRef = myCurrentJourneyRef.on('value', snap => {
       const value = snap.val() // {jid : storyname}
       if (value) {
@@ -89,20 +89,22 @@ class Stories extends React.Component {
         // this listener runs TWICE
         // is it because of the transaction?
         // How do I fix the transaction running twice in StoryScreen?
-        
+
         const jid = Object.keys(value)[0], name = value[jid]
         const currentJourneyRef = firebaseApp.database().ref('/journey/' + jid)
         this.unsubscribeCurrentJourneyRef = currentJourneyRef
           .on('value', csnap => {
             const cur = csnap.val()
             console.log('STORIES STORIES STORIES listener ran', jid, cur)
-            fetchJourney(jid, cur)
+            if(cur){ //check to see if currentjourney exists - built removal for current story elsewhere
+              fetchJourney(jid, cur)
+            }
           })
       }
     })
   }
 
-  render () { return ( <ChooseStoryStack /> ) }
+  render () { return ( <ChooseStoryStack screenProps={this.props.screenProps}/> ) }
 }
 
 const mapState = state => ({})

@@ -21,17 +21,32 @@ export default StyleSheet.create({
     textAlign: 'center',
     marginBottom: Metrics.smallMargin
   },
-  completeText: {
-    marginTop: 25,
-    marginHorizontal: 10,
-    marginBottom: -10,
-    padding: 10,
-    backgroundColor: '#dff0d8',
-    borderColor: '#d0e9c6',
-    borderTopWidth: 1,
+  groupLabel: {
+    alignSelf: 'center',
+    color: Colors.text,
+    textAlign: 'center',
+    marginBottom: Metrics.smallMargin,
+    color: 'gray'
+  },
+  joinedSection: {
     borderBottomWidth: 1,
-    borderWidth: 1,
-    borderRadius: 5
-  }
+    borderColor: 'gray',
+    marginHorizontal: '25%',
+    justifyContent: 'center',
+    marginBottom: 10
+  },
+  invitedSection: {
+    borderBottomWidth: 1,
+    borderColor: 'gray',
+    marginHorizontal: '25%',
+    justifyContent: 'center',
+    marginTop: 20,
+    marginBottom: 10
+  },
+  list: {
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap'
+  },
 
 })
