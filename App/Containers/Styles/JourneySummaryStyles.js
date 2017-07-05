@@ -25,7 +25,7 @@ export default StyleSheet.create({
     textAlign: 'center',
     marginBottom: Metrics.smallMargin
   },
-  chapterDesc: {
+  conclusionDesc: {
     padding: 10,
     margin: 10,
     backgroundColor: 'beige',

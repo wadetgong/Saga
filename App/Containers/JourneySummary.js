@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import firebaseApp from '../Firebase'
 import { Images } from '../Themes'
 import RoundedButton from '../Components/Button/RoundedButton'
+import FriendTeamTile from '../Components/FriendTeamTile'
 
 import styles from './Styles/JourneySummaryStyles'
 
@@ -68,24 +69,30 @@ class JourneySummary extends React.Component {
               source={Images.passStamp}
             />
           </View>
-          <View style={styles.chapterDesc}>
+          <View>
+            <Text style={{fontSize: 20, marginTop: 10, marginBottom: 5, marginHorizontal: 10, textAlign: 'center'}}>Your final time: 2:37:24</Text>
+          </View>
+          <View style={styles.conclusionDesc}>
             <Text style={{fontStyle: 'italic'}}>
               Story conclusion text here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque urna arcu, fermentum id elementum quis, blandit sit amet nisi. Donec mi odio, vestibulum in nunc sed, scelerisque tristique turpis. Integer a ante lobortis, porttitor mauris sit amet, pulvinar ligula. Sed convallis ut ante sit amet lacinia.
             </Text>
           </View>
-          <View>
-            <Text style={{fontSize: 20, margin: 10, textAlign: 'center'}}>Your final time: 2:37:24</Text>
+          <View style={{marginHorizontal: 15, marginTop: 5, marginBottom: 10, borderColor: 'gray', borderBottomWidth: 1}}>
+            <Text style={{paddingHorizontal: 10, paddingVertical: 5, color: 'gray', fontSize: 16}}>Teammates:</Text>
           </View>
-          <View style={{marginHorizontal: 15, marginVertical: 10, borderColor: 'gray', borderBottomWidth: 1}}>
-            <Text style={{paddingHorizontal: 10, paddingVertical: 5, color: 'gray', fontSize: 16}}>Team:</Text>
-          </View>
+          <View style={{marginHorizontal: 15}}>
             <ListView
-              // contentContainerStyle={styles.list}
+              contentContainerStyle={{
+                flex: 1,
+                flexDirection: 'row',
+                flexWrap: 'wrap'
+              }}
               dataSource={friendsSource}
               removeClippedSubviews={false}
               enableEmptySections={true}
-              renderRow={(user) => <Text>person</Text>}
+              renderRow={(user) => <FriendTeamTile user={user}/>}
               />
+          </View>
           <RoundedButton
             text="View Stories"
             onPress={() => {}}
