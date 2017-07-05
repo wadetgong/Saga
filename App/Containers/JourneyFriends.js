@@ -1,7 +1,6 @@
 import React from 'react'
 import { Text, View, ListView, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
-// import API from '../Services/FixtureApi'
 import FriendListItem from '../Components/FriendListItem'
 import SearchBar from '../Components/SearchBar'
 import RoundedButton from '../Components/Button/RoundedButton'
@@ -16,7 +15,7 @@ class JourneyFriends extends React.Component {
       ds: new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 }),
       text: '',
     }
-    
+
     this.onSearch = this.onSearch.bind(this)
     this.addFriendToTeam = this.addFriendToTeam.bind(this)
   }
@@ -37,7 +36,7 @@ class JourneyFriends extends React.Component {
     firebaseApp.database().ref('/').update({
       [path1] : name, [path2] : true
     })
-    
+
     console.log('JourneyFriends.addFriendToTeam', path1, path2, name, true)
   }
 
@@ -61,7 +60,7 @@ class JourneyFriends extends React.Component {
             if (sid == name) return false
         }
       }
-      return true 
+      return true
     })
     const friendList = ds.cloneWithRows(friendsFiltered);
 

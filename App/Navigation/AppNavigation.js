@@ -63,7 +63,7 @@ const TabNav = TabNavigator({
     },
   },
   Stories: {
-    screen: Stories,
+    screen: ({ navigation }) => <Stories screenProps={{ rootNavigation: navigation }} />,
     navigationOptions: {
       tabBarLabel: 'Search',
       tabBarIcon: ({ tintColor }) => (

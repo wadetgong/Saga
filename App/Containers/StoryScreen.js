@@ -102,15 +102,13 @@ class StoryScreen extends React.Component {
         }}>
           <SearchBar
             onSearch={this.onSearch} value={text}
-            /*onCancel={this.onCancelSearchBar}*/
           />
         </View>
         <ListView
           dataSource={storyList}
           removeClippedSubviews={false}
           enableEmptySections={true}
-          renderRow={(item) => <
-            StoryListItem
+          renderRow={(item) => <StoryListItem
             item={item}
             navigate={navigate}
             createJourney={this.createJourney}

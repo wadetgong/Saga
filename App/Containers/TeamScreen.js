@@ -9,84 +9,123 @@ import CancelJourneyFriend from '../Components/CancelJourneyFriend'
 
 import { Colors, Metrics } from '../Themes'
 
+import firebaseApp from '../Firebase'
 import styles from './Styles/TeamScreenStyles'
 
-const TeamScreen = ({ teamList, friends, uid, navigation, user }) => {
-  const pending = []
-  const list = []
-  for (let key in teamList) {
-    switch (teamList[key]) {
-      case 'pending':
-        if(key === uid) pending.push(user)
-        else pending.push(friends[key])
-        break;
-      case 'list':
-        if(key === uid) list.push(user)
-        else list.push(friends[key])
-        break;
-      default:
-        console.error('TEAMSCREEN ERROR - teamList not cool. Possible error in StoriesRedux or in firebase')
+// const TeamScreen = ({ teamList, friends, uid, navigation, user, screenProps }) => {
+
+class TeamScreen extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      journey: {},
     }
+    this.journeyRef = firebaseApp.database().ref('/journey/' + this.props.jid + '/team/')
+    this.joinedFriends = new ListView.DataSource({rowHasChanged : (r1, r2) => r1 != r2}),
+    this.pendingFriends = new ListView.DataSource({rowHasChanged : (r1, r2) => r1 != r2})
+    this.removeFriendFromTeam = this.removeFriendFromTeam.bind(this)
+  }
+  componentDidMount() {this.listenForChange(this.journeyRef) }
+  componentWillUnmount () {this.journeyRef.off('value', this.unsubscribe) }
+
+  listenForChange(ref) {
+    this.unsubscribe = ref.on('value', journey => {
+      this.setState({ journey: journey.val() })
+    })
   }
 
-  let joinedFriends = new ListView
-    .DataSource({rowHasChanged : (r1, r2) => r1 != r2})
-    .cloneWithRows(list)
+  removeFriendFromTeam (fid) {
+    console.log('fid in removeFriendFromTeam', fid)
+    // remove friend from team
+    const { jid } = this.props,
+          path1 = '/users/' + fid + '/journeys/pending/' + jid,
+          path2 = '/journey/' + jid + '/team/pending/' + fid;
+    firebaseApp.database().ref('/').update({
+      [path1] : null, [path2] : null
+    })
 
-  let pendingFriends = new ListView
-    .DataSource({rowHasChanged : (r1, r2) => r1 != r2})
-    .cloneWithRows(pending)
+    console.log('JourneyFriends.addFriendToTeam', path1, path2, true)
+  }
 
-  console.log('TEAM SCREEN', list, pending, teamList)
+  render() {
 
-  const resetAction = NavigationActions.reset({
-    index: 0,
-    actions: [
-      NavigationActions.navigate({ routeName: 'StoryScreen'})
-    ]
-  })
+    const { teamList, friends, uid, navigation, user, screenProps } = this.props
+    const pending = []
+    const list = []
+    for (let key in teamList) {
+      switch (teamList[key]) {
+        case 'pending':
+          if(key === uid) pending.push(user)
+          else pending.push(friends[key])
+          break;
+        case 'list':
+          if(key === uid) list.push(user)
+          else list.push(friends[key])
+          break;
+        default:
+          console.error('TEAMSCREEN ERROR - teamList not cool. Possible error in StoriesRedux or in firebase')
+      }
+    }
 
-  return (
-    <View style={styles.container}>
-    <View style={styles.sectionHeader}>
-      <Text style={styles.boldLabel}>Your Team:</Text>
-    </View>
-    <ScrollView style={{padding: 10}}>
-      <View style={styles.joinedSection}>
-        <Text style={styles.groupLabel}>
-          <Text style={{fontWeight: 'bold',}}>Joined</Text> ({list.length})
-        </Text>
+    const joinList = this.joinedFriends.cloneWithRows(list)
+    const pendList = this.pendingFriends.cloneWithRows(pending)
+
+    console.log('TEAM SCREEN list', list)
+    console.log('TEAM SCREEN pending', pending)
+    console.log('TEAM SCREEN teamlist', teamList)
+
+    const resetAction = NavigationActions.reset({
+      index: 0,
+      actions: [
+        NavigationActions.navigate({ routeName: 'StoryScreen'})
+      ]
+    })
+
+    return (
+      <View style={styles.container}>
+      <View style={styles.sectionHeader}>
+        <Text style={styles.boldLabel}>Your Team:</Text>
       </View>
-      <ListView
-        contentContainerStyle={styles.list}
-        dataSource={joinedFriends}
-        removeClippedSubviews={false}
-        enableEmptySections={true}
-        renderRow={(user) => <FriendTile user={user} />}
-      />
+      <ScrollView style={{paddingHorizontal: 10}}>
+        <View style={styles.joinedSection}>
+          <Text style={styles.groupLabel}>
+            <Text style={{fontWeight: 'bold',}}>Joined</Text> ({list.length})
+          </Text>
+        </View>
+        <ListView
+          contentContainerStyle={styles.list}
+          dataSource={joinList}
+          removeClippedSubviews={false}
+          enableEmptySections={true}
+          renderRow={(user) => <FriendTile user={user} />}
+        />
 
-      <View style={styles.invitedSection}>
-        <Text style={styles.groupLabel}>
-          <Text style={{fontWeight: 'bold',}}>Invited</Text> ({pending.length})
-        </Text>
+        <View style={styles.invitedSection}>
+          <Text style={styles.groupLabel}>
+            <Text style={{fontWeight: 'bold'}}>Invited</Text> ({pending.length})
+          </Text>
+        </View>
+        <ListView
+          dataSource={pendList}
+          removeClippedSubviews={false}
+          enableEmptySections={true}
+          renderRow={(user) => <CancelJourneyFriend
+            user={user}
+            removeFriendFromTeam = {this.removeFriendFromTeam}
+          />}
+        />
+      </ScrollView>
+      <RoundedButton onPress={() => {
+        //navigation.dispatch(resetAction)
+        screenProps.rootNavigation.navigate('CurrentStory')
+      }}>
+        begin journey
+      </RoundedButton>
       </View>
-      <ListView
-        dataSource={pendingFriends}
-        removeClippedSubviews={false}
-        enableEmptySections={true}
-        renderRow={(user) => <CancelJourneyFriend user={user}/>}
-      />
+    )
 
 
-    </ScrollView>
-    <RoundedButton onPress={() => {
-      //navigation.dispatch(resetAction)
-      navigation.navigate('CurrentStory')
-    }}>
-      begin journey
-    </RoundedButton>
-    </View>
-  )
+  }
 }
 
 const mapState = state => ({
@@ -94,5 +133,6 @@ const mapState = state => ({
   uid : state.friends.uid,
   teamList : state.stories.teamList,
   friends : state.friends.myFriendsList,
+  jid: state.stories.jid,
 })
 export default connect(mapState)(TeamScreen)

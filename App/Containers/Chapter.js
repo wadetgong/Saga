@@ -2,11 +2,10 @@ import React from 'react'
 import { View, Text, Button, ScrollView, Image, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import TreasureHunt from '../Components/TreasureHunt'
-import Tracker from '../Components/Tracker'
+import NoStory from '../Components/NoStory'
 import ChapterDetails from '../Containers/ChapterDetails'
 import ChapterScrollBar from '../Components/ChapterScrollBar'
-import RoundedButton from '../Components/Button/RoundedButton'
-import { ApplicationStyles, Images, Colors} from '../Themes'
+
 import firebaseApp from '../Firebase'
 import { setChapter } from '../Redux/actions/currentStory'
 
@@ -68,7 +67,6 @@ class Chapter extends React.Component {
     const chapters = this.state.story.chapters || []
     const selectedChapInfo = (chapters && chapters[this.state.selectedChap-1]) || 0
     const storyName = this.state.story && this.state.story.title
-    console.log('state in chapter', this.state)
 
     return (
       this.props.storyUrl
@@ -100,26 +98,7 @@ class Chapter extends React.Component {
           </ScrollView>
         </View>
       )
-      : (
-        <View style={styles.container}>
-          <View style={styles.sectionHeader}>
-            <Text style={styles.boldLabel}>No Current Story</Text>
-          </View>
-          <Image
-            style={{width: '100%', height: 200}}
-            source={Images.emptyStory}
-          />
-          <View style={styles.paddedDiv}>
-            <Text>
-              You are currently not participating in a live story. Find one via the button below, or join one when your friends invite you!
-            </Text>
-          </View>
-          <RoundedButton
-            text="Browse Stories"
-            onPress={() => {this.props.navigation.navigate('Stories')}}
-          />
-        </View>
-      )
+      : <NoStory navigation={this.props.navigation}/>
     )
   }
 }

@@ -310,6 +310,7 @@
   },
   "users" : {
     "ZHEIptD0pXhkTxXJDojup0mxXNk2" : {
+      "id": "ZHEIptD0pXhkTxXJDojup0mxXNk2",
       "email" : "mhhe@caltech.edu",
       "fb_thumbnail" : "https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/11210392_10155381783731632_799712498863928008_n.jpg?oh=22b6b9cca81aaadd10c94f947ec82562&oe=59D02930",
       "friends" : {
@@ -326,6 +327,7 @@
       "username" : ""
     },
     "dqG6qVu1ArO4HzRJF0ym2ErlM9d2" : {
+      "id": "dqG6qVu1ArO4HzRJF0ym2ErlM9d2",
       "email" : "wadetgong@gmail.com",
       "fb_thumbnail" : "https://scontent.xx.fbcdn.net/v/t1.0-1/s100x100/1916513_3036695367700_7204003449187997100_n.jpg?oh=658679fa0522f6a3401ab544fbff40cd&oe=59D5CAFE",
       "friends" : {
@@ -348,6 +350,7 @@
       "username" : ""
     },
     "ehacinom" : {
+      "id": "ehacinom",
       "email" : "monica@gmail.com",
       "friends" : {
         "list" : {
@@ -366,6 +369,7 @@
       "username" : "ehacinom"
     },
     "gehrj" : {
+      "id": "gehrj",
       "email" : "justin@gmail.com",
       "friends" : {
         "list" : {
@@ -381,6 +385,7 @@
       "username" : "gehrj"
     },
     "hurlabob" : {
+      "id": "hurlabob",
       "email" : "bob@gmail.com",
       "friends" : {
         "list" : {
@@ -396,6 +401,7 @@
       "username" : "hurlabob"
     },
     "jacobss" : {
+      "id": "jacobss",
       "email" : "sarah@gmail.com",
       "friends" : {
         "list" : {
@@ -411,6 +417,7 @@
       "username" : "jacobss"
     },
     "snowwhite" : {
+      "id": "snowwhite",
       "email" : "steve@gmail.com",
       "friends" : {
         "list" : {
@@ -428,6 +435,7 @@
       "username" : "snowwhite"
     },
     "wadetgong" : {
+      "id": "wadetgong",
       "email" : "wade@gmail.com",
       "friends" : {
         "list" : {

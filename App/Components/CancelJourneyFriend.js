@@ -1,17 +1,15 @@
 import React from 'react'
 import { View, Text, Image, TouchableOpacity} from 'react-native'
-import { Images } from '../Themes'
 import styles from './Styles/CancelJourneyFriendStyles'
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
 
-import { Fonts, Colors, Metrics } from '../Themes/'
 
 // going to need to change up Image source
 // can't navigate to Profile, not in the same stack navigation
 // and also not written / not a real component
 // Should Profile be a modal? should it be it's own stack?
 
-const CancelJourneyFriend = ({ user, navigate }) => {
+const CancelJourneyFriend = ({ user, removeFriendFromTeam}) => {
   // calculate number of journeys you have joined
   // in the future make it number of yourneys you have completed
   let numJourneysCompleted = 0
@@ -35,7 +33,7 @@ const CancelJourneyFriend = ({ user, navigate }) => {
         <View style={styles.inviteSection}>
           <TouchableOpacity
             style={styles.invitedButton}
-            onPress={() => {}}
+            onPress={() => removeFriendFromTeam(user.id)}
           >
             <Text style={styles.buttonText}>Cancel Invite</Text>
           </TouchableOpacity>

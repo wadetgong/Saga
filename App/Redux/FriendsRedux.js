@@ -58,7 +58,7 @@ export const reducer = (state=initialState, action) => {
       break;
     case (SET_MYFRIENDS):
       const myFriends = action.myFriends
-
+      console.log('my friends in SET_MYFRIENDS', myFriends)
       // myFriends
       // this line takes null myFriends and makes it {}
       newState.myFriends = Object.assign({}, myFriends)
@@ -70,6 +70,8 @@ export const reducer = (state=initialState, action) => {
         if (friends) Object.assign(myFriendsList, friends)
       }
       newState.myFriendsList = myFriendsList
+      console.log('my friendslist in SET_MYFRIENDS', myFriendsList)
+
       break;
     case (SET_USER):
       newState.user = action.user

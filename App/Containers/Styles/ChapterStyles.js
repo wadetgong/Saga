@@ -21,9 +21,6 @@ export default StyleSheet.create({
     textAlign: 'center',
     marginBottom: Metrics.smallMargin
   },
-  paddedDiv: {
-    padding: 15,
-  },
   completeText: {
     marginTop: 25,
     marginHorizontal: 10,
