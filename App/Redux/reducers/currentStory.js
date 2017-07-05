@@ -2,6 +2,7 @@ import { SET_STORY, SET_PUZZLE, SET_CHAPTER } from '../constants/actionTypes';
 
 const initialState = {
   // storyUrl: '/story/batman',
+  journeyUrl: '',
   storyUrl: '',
   selectedChap: 1,
   chapterUrl: null,
@@ -14,6 +15,7 @@ export default function reducer(state = initialState, action) {
   const newState = Object.assign({}, state)
   switch(action.type) {
     case SET_STORY:
+      newState.journeyUrl = `/journey/${action.journeyId}`
       newState.storyUrl = `/journey/${action.journeyId}/story`
       newState.chapterUrl = `/journey/${action.journeyId}/story/chapters/0`
       break

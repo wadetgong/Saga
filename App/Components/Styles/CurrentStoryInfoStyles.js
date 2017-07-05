@@ -24,7 +24,7 @@ export default StyleSheet.create({
     paddingHorizontal: 25,
     paddingVertical: 5,
     margin: 5,
-    backgroundColor: Colors.charcoal,
+    backgroundColor: Colors.fire,
     justifyContent: 'center',
     alignItems: 'center',
     width: '60%'

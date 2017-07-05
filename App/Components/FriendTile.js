@@ -4,7 +4,7 @@ import styles from './Styles/FriendTileStyles'
 
 import firebaseApp from '../Firebase'
 
-const FriendTile = ({user, style}) => {
+const FriendTile = ({user}) => {
   let names = user.name.split(" ")
   let firstName = names[0]
   let lastInitial = names[1].slice(0,1)

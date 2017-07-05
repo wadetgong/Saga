@@ -8,11 +8,15 @@ export default StyleSheet.create({
     backgroundColor: Colors.background
   },
   sectionHeader: {
-    paddingTop: Metrics.doubleBaseMargin,
+    padding: Metrics.baseMargin,
     width: Metrics.screenWidth,
     alignSelf: 'center',
     margin: Metrics.baseMargin,
-    backgroundColor: Colors.background
+    backgroundColor: Colors.background,
+    position: 'absolute',
+    bottom: 0,
+    opacity: 0.9,
+    zIndex: 10
   },
   boldLabel: {
     fontWeight: 'bold',
@@ -21,18 +25,12 @@ export default StyleSheet.create({
     textAlign: 'center',
     marginBottom: Metrics.smallMargin
   },
-  paddedDiv: {
-    padding: 15,
-  },
-  completeText: {
+  chapterDesc: {
     padding: 10,
-    // margin: 10,
-    // backgroundColor: 'lightgray',
-    borderColor: 'gray',
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    // borderWidth: 1,
-    // borderRadius: 5
+    margin: 10,
+    backgroundColor: 'beige',
+    borderWidth: 1,
+    borderColor: 'lightgray',
   }
 
 })

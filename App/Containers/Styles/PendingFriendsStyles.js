@@ -33,7 +33,6 @@ export default StyleSheet.create({
   friendSectionLabel: {
     fontWeight: 'bold',
     alignSelf: 'center',
-    color: Colors.text,
     textAlign: 'center',
     marginBottom: Metrics.smallMargin,
     color: 'gray'
