@@ -6,6 +6,7 @@ import { NavigationActions } from 'react-navigation'
 import FriendTile from '../Components/FriendTile'
 import CancelJourneyFriend from '../Components/CancelJourneyFriend'
 
+import { setStory } from '../Redux/actions/currentStory'
 
 import { Colors, Metrics } from '../Themes'
 
@@ -47,6 +48,9 @@ class TeamScreen extends React.Component {
     console.log('JourneyFriends.addFriendToTeam', path1, path2, true)
   }
 
+  removePendingInvites() {
+
+  }
   render() {
 
     const { teamList, friends, uid, navigation, user, screenProps } = this.props
@@ -76,6 +80,7 @@ class TeamScreen extends React.Component {
         NavigationActions.navigate({ routeName: 'StoryScreen'})
       ]
     })
+
 
     return (
       <View style={styles.container}>
@@ -113,6 +118,10 @@ class TeamScreen extends React.Component {
       </ScrollView>
       <RoundedButton onPress={() => {
         //navigation.dispatch(resetAction)
+        firebaseApp.database().ref('/journey/' + this.props.jid).update({
+          ['status/text']: 'active',
+        })
+        this.props.setStory(this.props.jid)
         screenProps.rootNavigation.navigate('CurrentStory')
       }}>
         begin journey
@@ -131,4 +140,8 @@ const mapState = state => ({
   friends : state.friends.myFriendsList,
   jid: state.stories.jid,
 })
-export default connect(mapState)(TeamScreen)
+
+const mapDispatch = dispatch => ({
+  setStory: (journeyId) => {dispatch(setStory(journeyId))}
+})
+export default connect(mapState, mapDispatch)(TeamScreen)

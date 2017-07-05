@@ -50,6 +50,7 @@ class StoryScreen extends React.Component {
         const newJourneyRef = firebaseApp.database().ref('/journey/' + jid)
         // no points {}, solved {}
         const newJourney = {
+          "id": jid,
           "hintsLeft": 10,
           "failedAttempts": 0,
           "status": {

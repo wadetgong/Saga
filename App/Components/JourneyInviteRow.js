@@ -9,6 +9,7 @@ class JourneyInviteRow extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      errorMessage: '',
       picUrl: 'https://firebasestorage.googleapis.com/v0/b/breach-5ea6b.appspot.com/o/no-image-avail.png?alt=media&token=2cb55c5a-1676-4400-8e1c-00960387de64' //No image image
     }
     this.uid = firebaseApp.auth().currentUser.uid
@@ -41,12 +42,24 @@ class JourneyInviteRow extends React.Component {
           path2 = `/journey/${journeyId}/team/pending/${uid}`
           path3 = `/users/${uid}/journeys/current/${journeyId}`
           path4 = `/users/${uid}/journeys/pending/${journeyId}`
-    firebaseApp.database().ref('/').update({
-      [path1] : true,
-      [path2] : null,
-      [path3] : this.state.journey.story.id,
-      [path4] : null,
-    });
+
+
+
+    firebaseApp.database().ref(`/users/${uid}/journeys/current`).once('value', current => {
+      if(current.val()){
+        // this.setState({
+        //   errorMessage: "You cannot join a story when you have a current story already."
+        // })
+        alert("You cannot join a story when you have a current story already.")
+      }else {
+        firebaseApp.database().ref('/').update({
+          [path1] : true,
+          [path2] : null,
+          [path3] : this.state.journey.story.id,
+          [path4] : null,
+        });
+      }
+    })
   }
 
   declineTeam(journeyId) {

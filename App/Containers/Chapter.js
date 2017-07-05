@@ -31,8 +31,17 @@ class Chapter extends React.Component {
     if(this.props.storyUrl) this.storyRef.off('value', this.unsubscribe)
   }
 
+componentWillReceiveProps(newProps) {
+  console.log(newProps, 'newProps in chapter')
+  if(newProps.storyUrl !== this.props.storyUrl) {
+    this.storyRef = firebaseApp.database().ref(newProps.storyUrl)
+    this.listenForChange(this.storyRef)
+  }
+}
+
   listenForChange(ref) {
     this.unsubscribe = ref.on('value', story => {
+      console.log('state updated in chapter', story.val())
       this.setState({
         story: story.val()
       })
@@ -64,6 +73,9 @@ class Chapter extends React.Component {
   }
 
   render () {
+    console.log('this.props in chapter.js', this.props)
+    console.log('this.state in chapter.js', this.state)
+    console.log('this.props.storyUrl', this.props.storyUrl)
     const chapters = this.state.story.chapters || []
     const selectedChapInfo = (chapters && chapters[this.state.selectedChap-1]) || 0
     const storyName = this.state.story && this.state.story.title
@@ -104,6 +116,7 @@ class Chapter extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log('state in redux', state)
   return {
     storyUrl: state.currentStory.storyUrl,
   }

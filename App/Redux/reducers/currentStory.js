@@ -14,8 +14,8 @@ export default function reducer(state = initialState, action) {
   const newState = Object.assign({}, state)
   switch(action.type) {
     case SET_STORY:
-      newState.storyUrl = `/story/${action.storyName}`
-      newState.chapterUrl = `/story/${action.storyName}/chapters/0`
+      newState.storyUrl = `/journey/${action.journeyId}/story`
+      newState.chapterUrl = `/journey/${action.journeyId}/story/chapters/0`
       break
     case SET_CHAPTER:
       newState.chapterUrl = `${state.storyUrl}/chapters/${action.chapterId - 1}` // -1 here because Chapter 1 has an ID of 0

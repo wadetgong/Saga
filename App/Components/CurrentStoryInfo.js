@@ -71,7 +71,7 @@ class CurrentStoryInfo extends React.Component {
   removeAll(journeyId) {
     let journeyTeams = this.state.journey.team;
     let usersList = [...Object.keys(journeyTeams.list)]
-    let usersPending = [...Object.keys(journeyTeams.pending)]
+    let usersPending = (journeyTeams.pending && [...Object.keys(journeyTeams.pending)]) || [] // guard in the event that there is no pending list associated with this journey
     let updateObj = {}
     let journeyPath = `/journey/${journeyId}`
     usersList.forEach(user => updateObj[`/users/${user}/journeys/current/${journeyId}`] = null)

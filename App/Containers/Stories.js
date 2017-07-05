@@ -96,7 +96,7 @@ class Stories extends React.Component {
           .on('value', csnap => {
             const cur = csnap.val()
             console.log('STORIES STORIES STORIES listener ran', jid, cur)
-            if(cur){
+            if(cur){ //check to see if currentjourney exists - built removal for current story elsewhere
               fetchJourney(jid, cur)
             }
           })

@@ -30,6 +30,13 @@ class PuzzleInfo extends React.Component {
     })
   }
 
+  // componentWillReceiveProps(newProps) {
+  //   if(newProps.puzzleUrl !== this.props.puzzleUrl) {
+  //     this.puzzleRef = firebaseApp.database().ref(newProps.puzzleUrl)
+  //     this.listenForChange(this.puzzleRef)
+  //   }
+  // }
+
   toggleInfoModal() { this.setState({showInfoModal: !this.state.showInfoModal}) }
 
   componentWillUpdate() { LayoutAnimation.easeInEaseOut() }
@@ -74,6 +81,7 @@ class PuzzleInfo extends React.Component {
   }
 
   render() {
+    console.log('state in puzzle info', this.state)
     return (
         this.props.puzzleUrl
         ? (
