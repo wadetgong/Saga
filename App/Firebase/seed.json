@@ -78,90 +78,6 @@
         "end" : "",
         "start" : ""
       }
-    },
-    "dqG6qVu1ArO4HzRJF0ym2ErlM9d21" : {
-      "id": "dqG6qVu1ArO4HzRJF0ym2ErlM9d21",
-      "creator" : {
-        "id" : "ehacinom",
-        "name" : "Monica He"
-      },
-      "failedAttempts" : 0,
-      "hintsLeft" : 10,
-      "status" : {
-        "text" : "inactive",
-        "timestamp" : 1499231556711
-      },
-      "story" : {
-        "allowedFails" : 2,
-        "allowedHints" : 10,
-        "chapters" : [ {
-          "description" : "Your mission begins with a rendezvous at a secure location where your team and Batman can communicate. Your current line of communication is not secure, so Batman directs you to the secure waypoint via the following encrypted message.",
-          "enabled" : true,
-          "id" : 1,
-          "nPuzzles" : 1,
-          "puzzles" : [ {
-            "answer" : "pass",
-            "description" : "Where water wacks land is where I'm near; meet me when the lake crosses the well - you'll find me here.",
-            "findImage" : "transponder",
-            "id" : 1,
-            "location" : {
-              "lat" : 41.88573,
-              "long" : -87.633939
-            },
-            "maxAttempts" : 4,
-            "puzzleType" : "simpleFind",
-            "type" : ""
-          } ]
-        }, {
-          "description" : "After making initial contact, the Dark Knight hands you a secure transponder to communicate securely.",
-          "id" : 2,
-          "nPuzzles" : 1,
-          "puzzles" : [ {
-            "answer" : "pass",
-            "description" : "",
-            "findImage" : "transponder",
-            "id" : 1,
-            "location" : false,
-            "maxAttempts" : 4,
-            "puzzleType" : "simpleFind",
-            "type" : ""
-          } ]
-        }, {
-          "description" : "waha",
-          "id" : 3,
-          "nPuzzles" : 1,
-          "puzzles" : [ {
-            "answer" : "pass",
-            "description" : "",
-            "id" : 1,
-            "location" : false,
-            "maxAttempts" : 4,
-            "puzzleType" : "fillBlank",
-            "type" : ""
-          } ]
-        } ],
-        "description" : "The Riddler is loose on Gotham City! A toxin has been planted in the city's water supply, and the Dark Knight needs your help. He's enlisted you and your team to scour the city for clues and identify the source of the toxin. Stay vigilant - one missed clue can spell your demise. But don't linger - the clock is ticking!",
-        "estimatedTime" : 3.5,
-        "id" : "batman",
-        "nChapters" : 3,
-        "name" : "batman",
-        "startingLocation" : {
-          "lat" : 41.8885,
-          "long" : -87.6354
-        },
-        "title" : "Riddle Me This"
-      },
-      "team" : {
-        "list" : {
-          "ehacinom" : true
-        },
-        "pending":{
-          "dqG6qVu1ArO4HzRJF0ym2ErlM9d2" : true
-        }
-      },
-      "times" : {
-        "start" : 1499231556711
-      }
     }
   },
   "photos" : {
@@ -264,34 +180,43 @@
           },
           "maxAttempts" : 4,
           "puzzleType" : "fillBlank"
+        }, {
+          "answer" : "Merchandise Mart",
+          "description" : "When it opened in 1930, it was the largest building in the world.",
+          "id" : 2,
+          "location" : {
+            "lat" : 41.8885,
+            "long" : 87.6354
+          },
+          "maxAttempts" : 5,
+          "puzzleType" : "vision"
         } ]
       }, {
         "description" : "After making initial contact, the Dark Knight hands you a secure transponder to communicate securely.",
         "id" : 2,
-        "puzzles" : [
-          {
-            "answer" : "pass",
-            "description" : "",
-            "findImage" : "transponder",
-            "id" : 1,
-            "location" : false,
-            "maxAttempts" : 4,
-            "puzzleType" : "simpleFind"
-          }, {
-            "answer" : "pass",
-            "description" : "",
-            "id" : 2,
-            "location" : false,
-            "maxAttempts" : 4,
-            "puzzleType" : "clickAR"
-          }, {
-            "answer" : "pass",
-            "description" : "",
-            "id" : 3,
-            "location" : false,
-            "maxAttempts" : 4,
-            "puzzleType" : "unlockAR"
-          } ]
+        "puzzles" : [ {
+          "answer" : "pass",
+          "description" : "",
+          "findImage" : "transponder",
+          "id" : 1,
+          "location" : false,
+          "maxAttempts" : 4,
+          "puzzleType" : "simpleFind"
+        }, {
+          "answer" : "pass",
+          "description" : "",
+          "id" : 2,
+          "location" : false,
+          "maxAttempts" : 4,
+          "puzzleType" : "clickAR"
+        }, {
+          "answer" : "pass",
+          "description" : "",
+          "id" : 3,
+          "location" : false,
+          "maxAttempts" : 4,
+          "puzzleType" : "unlockAR"
+        } ]
       }, {
         "description" : "waha",
         "id" : 3,
@@ -365,9 +290,6 @@
       "friends" : {
         "list" : {
           "ehacinom" : true
-        },
-        "sent" : {
-          "dqG6qVu1ArO4HzRJF0ym2ErlM9d2" : true
         }
       },
       "id" : "ZHEIptD0pXhkTxXJDojup0mxXNk2",
@@ -394,11 +316,6 @@
         }
       },
       "id" : "dqG6qVu1ArO4HzRJF0ym2ErlM9d2",
-      "journeys" : {
-        "pending" : {
-          "dqG6qVu1ArO4HzRJF0ym2ErlM9d21" : "batman"
-        }
-      },
       "name" : "Wade Gong",
       "profilePicture" : "https://scontent.xx.fbcdn.net/v/t1.0-1/s100x100/1916513_3036695367700_7204003449187997100_n.jpg?oh=658679fa0522f6a3401ab544fbff40cd&oe=59D5CAFE",
       "username" : ""
@@ -419,10 +336,7 @@
       "journeys" : {
         "Bob1" : "batman",
         "Justin0" : "artThief",
-        "Monica3" : "woodElves",
-        "current": {
-          "dqG6qVu1ArO4HzRJF0ym2ErlM9d21" : "batman"
-        }
+        "Monica3" : "woodElves"
       },
       "name" : "Monica He",
       "profilePicture" : "https://avatars2.githubusercontent.com/u/8092859?v=3&s=400",

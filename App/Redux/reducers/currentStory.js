@@ -7,7 +7,7 @@ const initialState = {
   selectedChap: 1,
   chapterUrl: null,
   // chapterUrl: '/story/batman/chapters/0',
-  puzzleURL: null,
+  puzzleUrl: null,
   story: {}
 }
 

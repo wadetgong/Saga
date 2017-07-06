@@ -150,6 +150,7 @@ export const iconMap = {
   'geoLoc': 'location-pin',
   'clickAR': 'cursor',
   'unlockAR': 'key',
+  'vision': 'eye'
 }
 
 export const puzzleDesc = {
@@ -159,4 +160,5 @@ export const puzzleDesc = {
   'geoLoc': 'You need to be within a geo-fence in order to pass.',
   'clickAR': 'Locate the code and tap rapidly in order to pass.',
   'unlockAR': 'Find the key and unlock the treasure chest in order to pass.',
+  'vision': 'Find and take a picture of the landmark.'
 }

@@ -113,10 +113,13 @@ exports.imageRecognition = functions.storage.object()
       console.log('This is a deletion event.');
       return;
     }
+    
+    // if in wrong location
+    
 
     return vision.detectLandmarks(file)
       .then(data => {
-        console.log('vision', data[0])
+        console.log('vision', file, object.bucket, data[0])
         console.log(data[1].responses[0])
       })
 //   .catch(err => console.log('error', err))
