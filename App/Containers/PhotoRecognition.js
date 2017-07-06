@@ -38,7 +38,7 @@ class PhotoRecognition extends React.Component {
     this.uploadImage = this.uploadImage.bind(this)
   }
   
-  uploadImage (uri, imageRef, mime = 'image/jpgs') { // application/octet-stream
+  uploadImage (uri, imageRef, mime = 'image/jpeg') { // application/octet-stream
     return new Promise((resolve, reject) => {
       // const uploadUri = Platform.OS === 'ios' ? uri.replace('file://', '') : uri
       const sessionId = new Date().getTime()
