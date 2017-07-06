@@ -60,9 +60,7 @@ class TreasureChest extends Component {
     render() {
       return (
         <View style={styles.container}>
-          <CameraScreen
-            close={this.props.screenProps.close}
-          >
+          <CameraScreen close={this.props.screenProps.close} >
           <TouchableHighlight onPress={this.clickedTreasureChest}>
             <Image
               source={Images[this.props.findObj]}

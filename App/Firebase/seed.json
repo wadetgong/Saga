@@ -188,7 +188,6 @@
         "description" : "waha",
         "enabled" : true,
         "id" : 1,
-        "nPuzzles" : 1,
         "puzzles" : [ {
           "answer" : "pass",
           "description" : "",
@@ -198,39 +197,33 @@
             "long" : -87.6224
           },
           "maxAttempts" : 4,
-          "puzzleType" : "fillBlank",
-          "type" : ""
+          "puzzleType" : "fillBlank"
         } ]
       }, {
         "description" : "waha",
         "id" : 2,
-        "nPuzzles" : 1,
         "puzzles" : [ {
           "answer" : "pass",
           "description" : "",
           "id" : 1,
           "location" : false,
           "maxAttempts" : 4,
-          "puzzleType" : "fillBlank",
-          "type" : ""
+          "puzzleType" : "fillBlank"
         } ]
       }, {
         "description" : "waha",
         "id" : 3,
-        "nPuzzles" : 1,
         "puzzles" : [ {
           "answer" : "pass",
           "description" : "",
           "id" : 1,
           "location" : false,
           "maxAttempts" : 4,
-          "puzzleType" : "fillBlank",
-          "type" : ""
+          "puzzleType" : "fillBlank"
         } ]
       }, {
         "description" : "waha",
         "id" : 4,
-        "nPuzzles" : 1,
         "puzzles" : [ {
           "answer" : "pass",
           "description" : "",
@@ -240,8 +233,7 @@
             "long" : -87.6221
           },
           "maxAttempts" : 4,
-          "puzzleType" : "fillBlank",
-          "type" : ""
+          "puzzleType" : "fillBlank"
         } ]
       } ],
       "description" : "Steal stuff from museums. Steal stuff from museums. Steal stuff from museums.",
@@ -261,7 +253,6 @@
         "description" : "Your mission begins with a rendezvous at a secure location where your team and Batman can communicate. Your current line of communication is not secure, so Batman directs you to the secure waypoint via the following encrypted message.",
         "enabled" : true,
         "id" : 1,
-        "nPuzzles" : 1,
         "puzzles" : [ {
           "answer" : "pass",
           "description" : "Where water wacks land is where I'm near; meet me when the lake crosses the well - you'll find me here.",
@@ -272,35 +263,45 @@
             "long" : -87.633939
           },
           "maxAttempts" : 4,
-          "puzzleType" : "simpleFind",
-          "type" : ""
+          "puzzleType" : "fillBlank"
         } ]
       }, {
         "description" : "After making initial contact, the Dark Knight hands you a secure transponder to communicate securely.",
         "id" : 2,
-        "nPuzzles" : 1,
-        "puzzles" : [ {
-          "answer" : "pass",
-          "description" : "",
-          "findImage" : "transponder",
-          "id" : 1,
-          "location" : false,
-          "maxAttempts" : 4,
-          "puzzleType" : "simpleFind",
-          "type" : ""
-        } ]
+        "puzzles" : [
+          {
+            "answer" : "pass",
+            "description" : "",
+            "findImage" : "transponder",
+            "id" : 1,
+            "location" : false,
+            "maxAttempts" : 4,
+            "puzzleType" : "simpleFind"
+          }, {
+            "answer" : "pass",
+            "description" : "",
+            "id" : 2,
+            "location" : false,
+            "maxAttempts" : 4,
+            "puzzleType" : "clickAR"
+          }, {
+            "answer" : "pass",
+            "description" : "",
+            "id" : 3,
+            "location" : false,
+            "maxAttempts" : 4,
+            "puzzleType" : "unlockAR"
+          } ]
       }, {
         "description" : "waha",
         "id" : 3,
-        "nPuzzles" : 1,
         "puzzles" : [ {
           "answer" : "pass",
           "description" : "",
           "id" : 1,
           "location" : false,
           "maxAttempts" : 4,
-          "puzzleType" : "fillBlank",
-          "type" : ""
+          "puzzleType" : "fillBlank"
         } ]
       } ],
       "description" : "The Riddler is loose on Gotham City! A toxin has been planted in the city's water supply, and the Dark Knight needs your help. He's enlisted you and your team to scour the city for clues and identify the source of the toxin. Stay vigilant - one missed clue can spell your demise. But don't linger - the clock is ticking!",
@@ -320,7 +321,6 @@
         "description" : "waha",
         "enabled" : true,
         "id" : 1,
-        "nPuzzles" : 1,
         "puzzles" : [ {
           "answer" : "pass",
           "description" : "",
@@ -330,13 +330,11 @@
             "long" : -87.2222
           },
           "maxAttempts" : 4,
-          "puzzleType" : "fillBlank",
-          "type" : ""
+          "puzzleType" : "fillBlank"
         } ]
       }, {
         "description" : "waha",
         "id" : 2,
-        "nPuzzles" : 1,
         "puzzles" : [ {
           "answer" : "pass",
           "description" : "",
@@ -346,8 +344,7 @@
             "long" : -87.1221
           },
           "maxAttempts" : 4,
-          "puzzleType" : "fillBlank",
-          "type" : ""
+          "puzzleType" : "fillBlank"
         } ]
       } ],
       "description" : "Fairies are everywhere",

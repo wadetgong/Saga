@@ -83,7 +83,7 @@ class LoginScreen extends React.Component {
             rate={1.0}
             muted={true}
             resizeMode={"cover"}
-            repeat
+            repeat={true}
             style={styles.video}
           />
         </View>

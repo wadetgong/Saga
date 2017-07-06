@@ -67,6 +67,7 @@
 		C8408CB61EFAC07D004FB7F9 /* TSLocationManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8408CB51EFAC07D004FB7F9 /* TSLocationManager.framework */; };
 		C8408CB81EFAC0A1004FB7F9 /* TSBackgroundFetch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8408CB71EFAC0A1004FB7F9 /* TSBackgroundFetch.framework */; };
 		C8408CBC1EFAC165004FB7F9 /* RNBackgroundFetch+AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8408CBB1EFAC165004FB7F9 /* RNBackgroundFetch+AppDelegate.m */; };
+		C877CC511F0D98B800FDFD8B /* libRNDeviceAngles.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C86AE2F01F0D96660031D5A8 /* libRNDeviceAngles.a */; };
 		CA8DFB601134450BA0D37807 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F569E91730BF421799DA04F8 /* FontAwesome.ttf */; };
 		D5008681FAB9474BBF0B2579 /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18272DDC0A3D4CCC92709D99 /* libRNDeviceInfo.a */; };
 		DE4534568276478EB9B7C10A /* libyoga.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F01DA22EEFB146829CF23D77 /* libyoga.a */; };
@@ -433,6 +434,13 @@
 			remoteGlobalIDString = 19D90B351BBFAA7500947169;
 			remoteInfo = "CocoaLumberjackSwift-tvOS";
 		};
+		C86AE2EF1F0D96660031D5A8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C86AE2EB1F0D96660031D5A8 /* RNDeviceAngles.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3C198F081D67CE010048393D;
+			remoteInfo = RNDeviceAngles;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -500,6 +508,7 @@
 		C8408CB51EFAC07D004FB7F9 /* TSLocationManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TSLocationManager.framework; path = "../node_modules/react-native-background-geolocation/ios/RNBackgroundGeolocation/TSLocationManager.framework"; sourceTree = "<group>"; };
 		C8408CB71EFAC0A1004FB7F9 /* TSBackgroundFetch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TSBackgroundFetch.framework; path = "../node_modules/react-native-background-fetch/ios/RNBackgroundFetch/TSBackgroundFetch.framework"; sourceTree = "<group>"; };
 		C8408CBB1EFAC165004FB7F9 /* RNBackgroundFetch+AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "RNBackgroundFetch+AppDelegate.m"; path = "../node_modules/react-native-background-fetch/ios/RNBackgroundFetch/RNBackgroundFetch+AppDelegate.m"; sourceTree = "<group>"; };
+		C86AE2EB1F0D96660031D5A8 /* RNDeviceAngles.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNDeviceAngles.xcodeproj; path = "../node_modules/react-native-device-angles/RNDeviceAngles.xcodeproj"; sourceTree = "<group>"; };
 		D105A1FC61D5406CA57C5FD4 /* libReact.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libReact.a; sourceTree = "<group>"; };
 		D1DE00D84FBC4E9EA4DBC419 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		D89A5665176F6456709B2C12 /* Pods-TestIgniteApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestIgniteApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestIgniteApp/Pods-TestIgniteApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -526,6 +535,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C877CC511F0D98B800FDFD8B /* libRNDeviceAngles.a in Frameworks */,
 				82CCE71D1EFDB77D00AB0DE7 /* libRNMotionManager.a in Frameworks */,
 				C8408CB81EFAC0A1004FB7F9 /* TSBackgroundFetch.framework in Frameworks */,
 				C8408CB61EFAC07D004FB7F9 /* TSLocationManager.framework in Frameworks */,
@@ -735,6 +745,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				C86AE2EB1F0D96660031D5A8 /* RNDeviceAngles.xcodeproj */,
 				82CCE6E71EFDB76000AB0DE7 /* RNMotionManager.xcodeproj */,
 				C8408C901EFABFE7004FB7F9 /* Lumberjack.xcodeproj */,
 				C8408C891EFABFCB004FB7F9 /* RNBackgroundFetch.xcodeproj */,
@@ -927,6 +938,14 @@
 				8DFAA104E13F5C9B235B362A /* libPods-TestIgniteAppTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C86AE2EC1F0D96660031D5A8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C86AE2F01F0D96660031D5A8 /* libRNDeviceAngles.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		FEC482D2B4713A74FB6E834A /* Pods */ = {
@@ -1142,6 +1161,10 @@
 				{
 					ProductGroup = C8408C811EFABFA2004FB7F9 /* Products */;
 					ProjectRef = C8408C801EFABFA2004FB7F9 /* RNBackgroundGeolocation.xcodeproj */;
+				},
+				{
+					ProductGroup = C86AE2EC1F0D96660031D5A8 /* Products */;
+					ProjectRef = C86AE2EB1F0D96660031D5A8 /* RNDeviceAngles.xcodeproj */;
 				},
 				{
 					ProductGroup = C8408C141EFA055F004FB7F9 /* Products */;
@@ -1518,6 +1541,13 @@
 			remoteRef = C8408CAD1EFABFE7004FB7F9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		C86AE2F01F0D96660031D5A8 /* libRNDeviceAngles.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNDeviceAngles.a;
+			remoteRef = C86AE2EF1F0D96660031D5A8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -1887,6 +1917,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = TestIgniteApp;
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1931,6 +1962,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = TestIgniteApp;
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
