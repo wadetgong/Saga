@@ -101,9 +101,7 @@ exports.imageRecognition = functions.storage.object()
     console.log(event)
     const object = event.data
     const file = gcs.bucket(object.bucket).file(object.name);
-   
-    console.log('file', file)
-   
+       
     // Exit if this is triggered on a file that is not an image.
     if (!object.contentType.startsWith('image/')) {
       console.log('This is not an image.');
@@ -116,10 +114,10 @@ exports.imageRecognition = functions.storage.object()
       return;
     }
 
-    console.log('we are beforevision')
     return vision.detectLandmarks(file)
       .then(data => {
-        console.log('vision', data)
+        console.log('vision', data[0])
+        console.log(data[1].responses[0])
       })
 //   .catch(err => console.log('error', err))
   })

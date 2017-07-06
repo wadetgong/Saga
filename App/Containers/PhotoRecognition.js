@@ -6,9 +6,6 @@ import Camera from 'react-native-camera'
 // upload image
 import RNFetchBlob from 'react-native-fetch-blob'
 
-// vision
-import vision from '../Vision'
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -38,34 +35,27 @@ class PhotoRecognition extends React.Component {
     this.uploadImage = this.uploadImage.bind(this)
   }
   
-  uploadImage (uri, imageRef, mime = 'image/jpeg') { // application/octet-stream
+  uploadImage (uri, imageRef) {
+    const mime = 'image/jpeg'
+    const sessionId = new Date().getTime()
     return new Promise((resolve, reject) => {
       // const uploadUri = Platform.OS === 'ios' ? uri.replace('file://', '') : uri
-      const sessionId = new Date().getTime()
       let uploadBlob = null
 
-      RNFetchBlob.fs.readFile(uri, 'base64')
-        .then((data) => {
-          console.log('data in readFile 1', data)
-          return Blob.build(data, { type: `${mime};BASE64` })
-        })
-        .then((blob) => {
-          console.log('data in readFile 2', blob)
+      return RNFetchBlob.fs.readFile(uri, 'base64')
+        .then(data => Blob.build(data, { type: `${mime};BASE64` }))
+        .then(blob => {
           uploadBlob = blob
           return imageRef.put(blob, { contentType: mime })
         })
         .then(() => {
-          console.log('data closing in readFile 3')
           uploadBlob.close()
           return imageRef.getDownloadURL()
         })
         .then((url) => {
-          console.log('this guy is readFIle 4', url)
           return url
         })
-        .catch((error) => {
-          reject(error)
-        })
+        .catch(err => reject(error))
     })
   }
 
