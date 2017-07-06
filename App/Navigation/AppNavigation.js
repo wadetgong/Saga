@@ -10,6 +10,7 @@ import ChapterDetails from '../Containers/ChapterDetails'
 import PuzzleInfo from '../Containers/PuzzleInfo'
 import CameraScreen from '../Containers/CameraScreen'
 import JourneySummary from '../Containers/JourneySummary'
+import PhotoRecognition from '../Containers/PhotoRecognition'
 import styles from './Styles/NavigationStyles'
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
 import React from 'react'
@@ -44,6 +45,10 @@ const DevStack = StackNavigator({
       screen: LoginScreen,
       navigationOptions: { title: 'Login' }
     },
+    PhotoRecognition: {
+      screen: PhotoRecognition,
+      navigationOoptions: { title: 'PhotoRecognition' }
+    }
   }, {
       // Default config for all screens
       headerMode: 'none',

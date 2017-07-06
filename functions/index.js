@@ -1,5 +1,8 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
+const vision = require('@google-cloud/vision')();
+const gcs = require('@google-cloud/storage')();
+
 admin.initializeApp(functions.config().firebase);
 
 exports.initUser = functions.auth.user()
@@ -49,13 +52,21 @@ exports.onPuzzleComplete = functions.database.ref('/journey/{journeyId}/story/ch
       if(chapterComplete) {
         if(snapshot.hasChild(nextChap)) {
           return Promise.all([
-            admin.database().ref(`/journey/${journeyId}/story/chapters/${nextChap}`).child('enabled').set(true),
-            admin.database().ref(`/journey/${journeyId}/story/chapters/${chapterId}`).child('status').set('Complete')])
+            admin.database()
+              .ref(`/journey/${journeyId}/story/chapters/${nextChap}`)
+              .child('enabled').set(true),
+            admin.database()
+              .ref(`/journey/${journeyId}/story/chapters/${chapterId}`)
+              .child('status').set('Complete')])
         }
         else {
           return Promise.all([
-            admin.database().ref(`/journey/${journeyId}/story`).child('status').set('Complete'),
-            admin.database().ref(`/journey/${journeyId}/story/chapters/${chapterId}`).child('status').set('Complete')])
+            admin.database()
+              .ref(`/journey/${journeyId}/story`)
+              .child('status').set('Complete'),
+            admin.database()
+              .ref(`/journey/${journeyId}/story/chapters/${chapterId}`)
+              .child('status').set('Complete')])
         }
       }
     // return admin.database().ref('/story/batman/chapters/1').child('enabled').set(true)
@@ -84,3 +95,29 @@ exports.onPuzzleComplete = functions.database.ref('/journey/{journeyId}/story/ch
 //     // }
 //   })
 
+// 
+exports.imageRecognition = functions.storage.object()
+  .onChange(event => {
+    console.log(event)
+    const object = event.data
+    const file = gcs.bucket(object.bucket).file(object.name);
+       
+    // Exit if this is triggered on a file that is not an image.
+    if (!object.contentType.startsWith('image/')) {
+      console.log('This is not an image.');
+      return;
+    }
+   
+    // Exit if this is a move or deletion event.
+    if (object.resourceState === 'not_exists') {
+      console.log('This is a deletion event.');
+      return;
+    }
+
+    return vision.detectLandmarks(file)
+      .then(data => {
+        console.log('vision', data[0])
+        console.log(data[1].responses[0])
+      })
+//   .catch(err => console.log('error', err))
+  })

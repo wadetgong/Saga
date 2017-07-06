@@ -50,7 +50,7 @@ class ApproveFriendClass extends React.Component {
           path2 = uid + '/friends/list/' + fid,
           path3 = fid + '/friends/sent/' + uid,
           path4 = fid + '/friends/list/' + uid;
-    firebaseApp.database().ref('/').update({
+    firebaseApp.database().ref('/users').update({
       [path1] : null,
       [path2] : true,
       [path3] : null,

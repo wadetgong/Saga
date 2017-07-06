@@ -6,6 +6,8 @@
 # include analytics by default
 pod 'Firebase/Core'
 pod 'Firebase/Messaging'
+# pod 'react-native-fetch-blob',
+#     :path => '../node_modules/react-native-fetch-blob'
 # https://firebase.google.com/docs/ios/setup#available_pods
 
 
@@ -15,9 +17,9 @@ target 'TestIgniteApp' do
 
   # Pods for TestIgniteApp
 
-  target 'TestIgniteAppTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
+  # target 'TestIgniteAppTests' do
+  #   inherit! :search_paths
+  #   # Pods for testing
+  # end
 
 end
