@@ -1,213 +1,179 @@
 {
-  "artThief": {
-    "id": "artThief",
-    "title": "Art Thief",
-    "startingLocation": {
-      "lat": 41.8796,
-      "long": -87.6237
+  "artThief" : {
+    "allowedFails" : 6,
+    "allowedHints" : 4,
+    "chapters" : [ {
+      "description" : "waha",
+      "enabled" : true,
+      "id" : 1,
+      "puzzles" : [ {
+        "answer" : "pass",
+        "description" : "",
+        "id" : 1,
+        "location" : {
+          "lat" : 41.8714,
+          "long" : -87.6224
+        },
+        "maxAttempts" : 4,
+        "puzzleType" : "fillBlank"
+      } ]
+    }, {
+      "description" : "waha",
+      "id" : 2,
+      "puzzles" : [ {
+        "answer" : "pass",
+        "description" : "",
+        "id" : 1,
+        "location" : false,
+        "maxAttempts" : 4,
+        "puzzleType" : "fillBlank"
+      } ]
+    }, {
+      "description" : "waha",
+      "id" : 3,
+      "puzzles" : [ {
+        "answer" : "pass",
+        "description" : "",
+        "id" : 1,
+        "location" : false,
+        "maxAttempts" : 4,
+        "puzzleType" : "fillBlank"
+      } ]
+    }, {
+      "description" : "waha",
+      "id" : 4,
+      "puzzles" : [ {
+        "answer" : "pass",
+        "description" : "",
+        "id" : 1,
+        "location" : {
+          "lat" : 41.8713,
+          "long" : -87.6221
+        },
+        "maxAttempts" : 4,
+        "puzzleType" : "fillBlank"
+      } ]
+    } ],
+    "description" : "Steal stuff from museums. Steal stuff from museums. Steal stuff from museums.",
+    "estimatedTime" : 3.5,
+    "id" : "artThief",
+    "nChapters" : 4,
+    "startingLocation" : {
+      "lat" : 41.8796,
+      "long" : -87.6237
     },
-    "description": "Steal stuff from museums. Steal stuff from museums. Steal stuff from museums.",
-    "estimatedTime": 3.5,
-    "allowedFails": 6,
-    "allowedHints": 4,
-    "nChapters": 4,
-    "chapters": {
-        "0": {
-          "id": 1,
-          "enabled": true,
-          "description": "waha",
-          "puzzles": {
-            "0": {
-              "id": 1,
-              "description": "",
-              "maxAttempts": 4,
-              "puzzleType": "fillBlank",
-              "type": "",
-              "answer": "pass",
-              "location": {
-                "lat": 41.8714,
-                "long": -87.6224
-              }
-            }
-          },
-          "nPuzzles": 1
-        },
-        "1": {
-          "id": 2,
-          "description": "waha",
-          "puzzles": {
-            "0": {
-              "id": 1,
-              "description": "",
-              "maxAttempts": 4,
-              "puzzleType": "fillBlank",
-              "type": "",
-              "answer": "pass",
-              "location": false
-            }
-          },
-          "nPuzzles": 1
-        },
-        "2": {
-          "id": 3,
-          "description": "waha",
-          "puzzles": {
-            "0": {
-              "id": 1,
-              "description": "",
-              "maxAttempts": 4,
-              "puzzleType": "fillBlank",
-              "type": "",
-              "answer": "pass",
-              "location": false
-            }
-          },
-          "nPuzzles": 1
-
-        },
-        "3": {
-          "id": 4,
-          "description": "waha",
-          "puzzles": {
-            "0": {
-              "id": 1,
-              "description": "",
-              "maxAttempts": 4,
-              "puzzleType": "fillBlank",
-              "type": "",
-              "answer": "pass",
-              "location": {
-                "lat": 41.8713,
-                "long": -87.6221
-              }
-            }
-          },
-          "nPuzzles": 1
-        }
-    }
+    "title" : "Art Thief"
   },
-  "batman": {
-    "id": "batman",
-    "title": "Riddle Me This",
-    "startingLocation": {
-      "lat": 41.8885,
-      "long": -87.6354
+  "batman" : {
+    "allowedFails" : 2,
+    "allowedHints" : 10,
+    "chapters" : [ {
+      "description" : "Your mission begins with a rendezvous at a secure location where your team and Batman can communicate. Your current line of communication is not secure, so Batman directs you to the secure waypoint via the following encrypted message.",
+      "enabled" : true,
+      "id" : 1,
+      "puzzles" : [ {
+        "answer" : "pass",
+        "description" : "Where water wacks land is where I'm near; meet me when the lake crosses the well - you'll find me here.",
+        "findImage" : "transponder",
+        "id" : 1,
+        "location" : {
+          "lat" : 41.88573,
+          "long" : -87.633939
+        },
+        "maxAttempts" : 4,
+        "puzzleType" : "fillBlank"
+      } ]
+    }, {
+      "description" : "After making initial contact, the Dark Knight hands you a secure transponder to communicate securely.",
+      "id" : 2,
+      "puzzles" : [
+        {
+          "answer" : "pass",
+          "description" : "",
+          "findImage" : "transponder",
+          "id" : 1,
+          "location" : false,
+          "maxAttempts" : 4,
+          "puzzleType" : "simpleFind"
+        }, {
+          "answer" : "pass",
+          "description" : "",
+          "id" : 2,
+          "location" : false,
+          "maxAttempts" : 4,
+          "puzzleType" : "clickAR"
+        }, {
+          "answer" : "pass",
+          "description" : "",
+          "id" : 3,
+          "location" : false,
+          "maxAttempts" : 4,
+          "puzzleType" : "unlockAR"
+        } ]
+    }, {
+      "description" : "waha",
+      "id" : 3,
+      "puzzles" : [ {
+        "answer" : "pass",
+        "description" : "",
+        "id" : 1,
+        "location" : false,
+        "maxAttempts" : 4,
+        "puzzleType" : "fillBlank"
+      } ]
+    } ],
+    "description" : "The Riddler is loose on Gotham City! A toxin has been planted in the city's water supply, and the Dark Knight needs your help. He's enlisted you and your team to scour the city for clues and identify the source of the toxin. Stay vigilant - one missed clue can spell your demise. But don't linger - the clock is ticking!",
+    "estimatedTime" : 3.5,
+    "id" : "batman",
+    "nChapters" : 3,
+    "startingLocation" : {
+      "lat" : 41.8885,
+      "long" : -87.6354
     },
-    "description": "The Riddler is loose on Gotham City! A toxin has been planted in the city's water supply, and the Dark Knight needs your help. He's enlisted you and your team to scour the city for clues and identify the source of the toxin. Stay vigilant - one missed clue can spell your demise. But don't linger - the clock is ticking!",
-    "estimatedTime": 3.5,
-    "allowedFails": 2,
-    "allowedHints": 10,
-    "nChapters": 3,
-    "chapters": {
-      "0": {
-        "id": 1,
-        "enabled": true,
-        "description": "Your mission begins with a rendezvous at a secure location where your team and Batman can communicate. Your current line of communication is not secure, so Batman directs you to the secure waypoint via the following encrypted message.",
-        "puzzles": {
-          "0": {
-            "id": 1,
-            "description": "Where water wacks land is where I'm near; meet me when the lake crosses the well - you'll find me here.",
-            "maxAttempts": 4,
-            "puzzleType": "simpleFind",
-            "findImage": "transponder",
-            "type": "",
-            "answer": "pass",
-            "location": {
-              "lat": 41.885730,
-              "long": -87.633939
-            }
-          }
-        },
-        "nPuzzles": 1
-      },
-      "1": {
-        "id": 2,
-        "description": "After making initial contact, the Dark Knight hands you a secure transponder to communicate securely.",
-        "puzzles": {
-          "0": {
-            "id": 1,
-            "description": "",
-            "maxAttempts": 4,
-            "puzzleType": "simpleFind",
-            "findImage": "transponder",
-            "type": "",
-            "answer": "pass",
-            "location": false
-          }
-        },
-        "nPuzzles": 1
-      },
-      "2": {
-        "id": 3,
-        "description": "waha",
-        "puzzles": {
-          "0": {
-            "id": 1,
-            "description": "",
-            "maxAttempts": 4,
-            "puzzleType": "fillBlank",
-            "type": "",
-            "answer": "pass",
-            "location": false
-          }
-        },
-        "nPuzzles": 1
-      }
-    }
+    "title" : "Riddle Me This"
   },
-  "woodElves": {
-    "id": "woodElves",
-    "title": "Woodelves",
-    "startingLocation": {
-      "lat": 41.8972,
-      "long": -87.6612
+  "woodElves" : {
+    "allowedFails" : 7,
+    "allowedHints" : 2,
+    "chapters" : [ {
+      "description" : "waha",
+      "enabled" : true,
+      "id" : 1,
+      "puzzles" : [ {
+        "answer" : "pass",
+        "description" : "",
+        "id" : 1,
+        "location" : {
+          "lat" : 41.1111,
+          "long" : -87.2222
+        },
+        "maxAttempts" : 4,
+        "puzzleType" : "fillBlank"
+      } ]
+    }, {
+      "description" : "waha",
+      "id" : 2,
+      "puzzles" : [ {
+        "answer" : "pass",
+        "description" : "",
+        "id" : 1,
+        "location" : {
+          "lat" : 41.8113,
+          "long" : -87.1221
+        },
+        "maxAttempts" : 4,
+        "puzzleType" : "fillBlank"
+      } ]
+    } ],
+    "description" : "Fairies are everywhere",
+    "estimatedTime" : 1.5,
+    "id" : "woodElves",
+    "nChapters" : 2,
+    "startingLocation" : {
+      "lat" : 41.8972,
+      "long" : -87.6612
     },
-    "description": "Fairies are everywhere",
-    "estimatedTime": 1.5,
-    "allowedFails": 7,
-    "allowedHints": 2,
-    "nChapters": 2,
-    "chapters": {
-      "0": {
-        "id": 1,
-        "enabled": true,
-        "description": "waha",
-        "puzzles": {
-          "0": {
-            "id":1,
-            "description": "",
-            "maxAttempts": 4,
-            "puzzleType": "fillBlank",
-            "type": "",
-            "answer": "pass",
-            "location": {
-              "lat": 41.1111,
-              "long": -87.2222
-            }
-          }
-        },
-        "nPuzzles": 1
-      },
-      "1": {
-        "id":2,
-        "description": "waha",
-        "puzzles": {
-          "0": {
-            "id": 1,
-            "description": "",
-            "maxAttempts": 4,
-            "puzzleType": "fillBlank",
-            "type": "",
-            "answer": "pass",
-            "location": {
-              "lat": 41.8113,
-              "long": -87.1221
-            }
-          }
-        },
-        "nPuzzles": 1
-      }
-    }
+    "title" : "Woodelves"
   }
 }
 

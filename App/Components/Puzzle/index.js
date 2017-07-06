@@ -6,9 +6,9 @@ import { Images, Fonts } from '../../Themes'
 import FillBlank from './FillBlank'
 import EnterZone from './EnterZone'
 import TreasureChest from './TreasureChest'
+import TreasureChestKey from './TreasureChestKey'
+import AugmentedClick from './AugmentedClick'
 import RoundedButton from '../Button/RoundedButton'
-
-// import SimpleFin from './FillBlank'
 
 class Puzzle extends React.Component {
   constructor(props) {
@@ -78,7 +78,12 @@ class Puzzle extends React.Component {
           <View>
             <RoundedButton onPress={() => this.openCameraModal()} text={"Search"} />
             <Modal animationType={"slide"} visible={this.state.showModal} onRequestClose={this.closeCameraModal}>
-              <TreasureChest screenProps={{ close: this.closeCameraModal}} storyKey={this.props.storyKey} handleSubmit={this.handleSubmit} findObj={puzzle.findImage}/>
+              <TreasureChest
+                screenProps={{ close: this.closeCameraModal}}
+                handleSubmit={this.handleSubmit}
+                findObj={puzzle.findImage}
+                /*storyKey={this.props.storyKey} */
+              />
             </Modal>
           </View>
         )
@@ -86,9 +91,34 @@ class Puzzle extends React.Component {
       case 'enterZone':
         return <EnterZone puzzle={puzzle} handleSubmit={this.handleSubmit} />
         break;
+      case 'clickAR':
+        return (
+          <View>
+            <RoundedButton onPress={() => this.openCameraModal()} text={"Search"} />
+            <Modal animationType={"slide"} visible={this.state.showModal} onRequestClose={this.closeCameraModal}>
+              <AugmentedClick
+                screenProps={{ close: this.closeCameraModal}}
+                handleSubmit={this.handleSubmit}
+              />
+            </Modal>
+          </View>
+        )
+        break;
+      case 'unlockAR':
+        return (
+          <View>
+            <RoundedButton onPress={() => this.openCameraModal()} text={"Search"} />
+            <Modal animationType={"slide"} visible={this.state.showModal} onRequestClose={this.closeCameraModal}>
+              <TreasureChestKey
+                screenProps={{ close: this.closeCameraModal}}
+                handleSubmit={this.handleSubmit}
+              />
+            </Modal>
+          </View>
+        )
+        break;
       default:
       return (<View></View>)
-        // throw new Error('Puzzle type not recognized.')
     }
   }
 
@@ -118,6 +148,8 @@ export const iconMap = {
   'simpleFind': 'magnifier',
   'enterZone': 'directions',
   'geoLoc': 'location-pin',
+  'clickAR': 'cursor',
+  'unlockAR': 'key',
 }
 
 export const puzzleDesc = {
@@ -125,4 +157,6 @@ export const puzzleDesc = {
   'simpleFind': 'This puzzle requires you to find an item via the AR experience.',
   'enterZone': 'This puzzle requires you to go to a specific location.',
   'geoLoc': 'You need to be within a geo-fence in order to pass.',
+  'clickAR': 'Locate the code and tap rapidly in order to pass.',
+  'unlockAR': 'Find the key and unlock the treasure chest in order to pass.',
 }

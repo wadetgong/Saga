@@ -9,7 +9,8 @@ const initialState = {
     gyroX: 0,
     gyroY: 0,
     xOffset: 0,
-    yOffset: 0
+    yOffset: 0,
+    active: true
 };
 
 export default function reducer(state = initialState, action) {
@@ -27,7 +28,7 @@ export default function reducer(state = initialState, action) {
         // console.log('YRotation rate is? ', action.rotationRate.y)
         // console.log('yOffset is? ', state.yOffset + (action.moveY * (MOVE_FACTOR_Y * action.rotationRate.x)) )
         // console.log('moveY is? ', action.moveY * (MOVE_FACTOR_Y * action.rotationRate.x))
-        // console.log('old sate.yoffSet is? ', state.yOffset)        
+        // console.log('old sate.yoffSet is? ', state.yOffset)
         // console.log('xRotation rate is? ', action.rotationRate.x)
 
         return {
