@@ -66,7 +66,11 @@ exports.onPuzzleComplete = functions.database.ref('/journey/{journeyId}/story/ch
               .child('status').set('Complete'),
             admin.database()
               .ref(`/journey/${journeyId}/story/chapters/${chapterId}`)
-              .child('status').set('Complete')])
+              .child('status').set('Complete'),
+            admin.database()
+              .ref(`/journey/${journeyId}/times/`)
+              .child('end').set(admin.database.ServerValue.TIMESTAMP)
+              ])
         }
       }
     // return admin.database().ref('/story/batman/chapters/1').child('enabled').set(true)
@@ -95,19 +99,19 @@ exports.onPuzzleComplete = functions.database.ref('/journey/{journeyId}/story/ch
 //     // }
 //   })
 
-// 
+//
 exports.imageRecognition = functions.storage.object()
   .onChange(event => {
     console.log(event)
     const object = event.data
     const file = gcs.bucket(object.bucket).file(object.name);
-       
+
     // Exit if this is triggered on a file that is not an image.
     if (!object.contentType.startsWith('image/')) {
       console.log('This is not an image.');
       return;
     }
-   
+
     // Exit if this is a move or deletion event.
     if (object.resourceState === 'not_exists') {
       console.log('This is a deletion event.');
