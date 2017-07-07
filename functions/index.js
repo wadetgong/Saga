@@ -114,16 +114,23 @@ exports.imageRecognition = functions.storage.object()
       return;
     }
 
+    // exit if not in /journey
+    // if ()
+
     const puzzleRef = admin.database().ref(file.name);
 
     return vision.detectLandmarks(file)
       .then(data => {
         let landmarkArr = data[0] // array of landmarks
-        let answer = puzzleRef.child('answer').val()
-        const correct = landmarkArr.indexOf(answer) > -1
+        return puzzleRef.child('answer').once('value').then(snap => {
+          const answer = snap.val()
+          const correct = landmarkArr.indexOf(answer) > -1
         
-        if (correct) return puzzleRef.child('status').set('complete');
-        else return true
+          console.log(landmarkArr, correct, file.name)
+        
+          if (correct) return puzzleRef.child('status').set('Complete');
+          else return true
+        })
       })
       .catch(err => console.log('error', err))
   })
