@@ -1,6 +1,6 @@
 {
   "indexes" : {
-    "journey" : 6
+    "journey" : 20
   },
   "journey" : {
     "Bob1" : {
@@ -82,9 +82,12 @@
   },
   "photos" : {
     "story" : {
-      "artThief" : "https://firebasestorage.googleapis.com/v0/b/breach-5ea6b.appspot.com/o/Main.gif?alt=media&token=4e215536-c169-4db1-b29a-23bb177bac43",
+      "artThief" : "https://firebasestorage.googleapis.com/v0/b/breach-5ea6b.appspot.com/o/story%2Fartthief.jpeg?alt=media&token=d119bf21-ca42-479a-852a-355011f0e831",
       "batman" : "https://firebasestorage.googleapis.com/v0/b/breach-5ea6b.appspot.com/o/riddler.jpg?alt=media&token=09c266f8-7f89-4fed-80be-d0572dc2f400",
+      "chilantis" : "https://firebasestorage.googleapis.com/v0/b/breach-5ea6b.appspot.com/o/story%2FAtlantis.png?alt=media&token=18faa2c5-f139-4745-bd71-d3118f594ee4",
+      "dragon" : "https://firebasestorage.googleapis.com/v0/b/breach-5ea6b.appspot.com/o/story%2Fflight-paladin.jpg?alt=media&token=60d5653d-0ef0-46e3-8354-ea09c73d1bc8",
       "noImage" : "https://firebasestorage.googleapis.com/v0/b/breach-5ea6b.appspot.com/o/no-image-avail.png?alt=media&token=2cb55c5a-1676-4400-8e1c-00960387de64",
+      "pirate" : "https://firebasestorage.googleapis.com/v0/b/breach-5ea6b.appspot.com/o/story%2Fpirate_attack_by_pbario.jpeg?alt=media&token=b58249c2-dd5b-4193-a7ec-8946af913d23",
       "woodElves" : "https://firebasestorage.googleapis.com/v0/b/breach-5ea6b.appspot.com/o/Main.jpg?alt=media&token=c9d0a3d3-c03a-437a-916c-1cdc322acdf2"
     },
     "users" : {
@@ -156,6 +159,7 @@
       "estimatedTime" : 3.5,
       "id" : "artThief",
       "nChapters" : 4,
+      "shortDescription" : "A thief in the night has ransacked the Art Institute! Recruit a security team to defend against the next attack.",
       "startingLocation" : {
         "lat" : 41.8796,
         "long" : -87.6237
@@ -166,7 +170,7 @@
       "allowedFails" : 2,
       "allowedHints" : 10,
       "chapters" : [ {
-        "description" : "Your mission begins with a rendezvous at a secure location where your team and Batman can communicate. Your current line of communication is not secure, so Batman directs you to the secure waypoint via the following encrypted message.",
+        "description" : "Your mission begins with a rendezvous at a secure location where your team and Batman can communicate. Your current line of communication is not secure; Batman directs you to a secure waypoint via the following encrypted message.",
         "enabled" : true,
         "id" : 1,
         "puzzles" : [ {
@@ -179,24 +183,14 @@
             "long" : -87.633939
           },
           "maxAttempts" : 4,
-          "puzzleType" : "fillBlank"
-        }, {
-          "answer" : "Merchandise Mart",
-          "description" : "When it opened in 1930, it was the largest building in the world.",
-          "id" : 2,
-          "location" : {
-            "lat" : 41.8885,
-            "long" : 87.6354
-          },
-          "maxAttempts" : 5,
-          "puzzleType" : "vision"
+          "puzzleType" : "enterZone"
         } ]
       }, {
-        "description" : "After making initial contact, the Dark Knight hands you a secure transponder to communicate securely.",
+        "description" : "Upon reaching the designated rendezvous point, Batman instructs you to identify and collect a remote transponder to maintain a secure line of communication with Batman and to intercept radio transmissions from Riddler’s team.",
         "id" : 2,
         "puzzles" : [ {
           "answer" : "pass",
-          "description" : "",
+          "description" : "Locate and collect the remote transponder device.",
           "findImage" : "transponder",
           "id" : 1,
           "location" : false,
@@ -204,23 +198,107 @@
           "puzzleType" : "simpleFind"
         }, {
           "answer" : "pass",
-          "description" : "",
+          "description" : "Upon configuring the transponder, you intercept your first message from one of Riddler's henchman. Unfortunately, the message is encrypted. Hack and decode the message!",
           "id" : 2,
           "location" : false,
           "maxAttempts" : 4,
           "puzzleType" : "clickAR"
         }, {
           "answer" : "pass",
-          "description" : "",
+          "description" : "The decoded message reveals sensitive information about a money transfer to finance Riddler's plot. Intercept riddler's team, seize the cash, and halt Riddler's financing!",
           "id" : 3,
           "location" : false,
-          "maxAttempts" : 4,
+          "maxAttempts" : 3,
           "puzzleType" : "unlockAR"
-
         } ]
       }, {
-        "description" : "waha",
+        "description" : "With financing dried up, Riddler’s team is in disarray! Operations have become sloppy - your team intercepts a message directly from Riddler himself. Identify Riddler’s location and stop his master plan!",
         "id" : 3,
+        "puzzles" : [ {
+          "answer" : "Merchandise Mart",
+          "description" : "When it opened in 1930, it was the largest building in the world. Now it will be the source of Gotham's demise!",
+          "id" : 1,
+          "location" : {
+            "lat" : 41.8885,
+            "long" : 87.6354
+          },
+          "maxAttempts" : 5,
+          "puzzleType" : "vision"
+        } ]
+      } ],
+      "conclusion" : "Your team transmits Riddler’s location to Batman through the remote transponder. Batman instructs you to assemble a secure perimeter around the Merchandise Mart. As your team settles in position, you hear a shattered window pane on the 12th floor. The lights at the Mart go down, followed by a flurry of semi-automatic gunshots married with cries of agony as Riddler’s henchmen go down one by one. Minutes later, you see the dark figure of the Dark Knight propel through the lobby windows of Merchandise Mart’s grand entrance, along with a handcuffed Riddler. As Gotham PD patrol cars arrive at the scene, you hear the distant whip of a grappling hook, as the Dark Knight escapes into the quiet night.",
+      "description" : "The Riddler is loose on Gotham City! A toxin has been planted in the city's water supply, and the Dark Knight needs your help. He's enlisted you and your team to scour the city for clues and identify the source of the toxin. Stay vigilant - one missed clue can spell your demise. But don't linger - the clock is ticking!",
+      "estimatedTime" : 3.5,
+      "id" : "batman",
+      "nChapters" : 3,
+      "shortDescription" : "The Riddler is loose on Gotham City! A toxin has been planted in the city's water supply, and the Dark Knight needs your help.",
+      "startingLocation" : {
+        "lat" : 41.8885,
+        "long" : -87.6354
+      },
+      "title" : "Riddle Me This"
+    },
+    "chilantis" : {
+      "allowedFails" : 8,
+      "allowedHints" : 8,
+      "chapters" : [ {
+        "description" : "something",
+        "enabled" : true,
+        "id" : 1,
+        "puzzles" : [ {
+          "answer" : "pass",
+          "description" : "something",
+          "id" : 1,
+          "location" : false,
+          "maxAttempts" : 5,
+          "puzzleType" : "fillBlank"
+        } ]
+      } ],
+      "description" : "Lake dwelling humanoids have been discovered in Lake Michigan! Assemble your team of ambassadors to navigate initial contact with the nation of Chilantis.",
+      "estimatedTime" : 3,
+      "id" : "chilantis",
+      "nChapters" : 1,
+      "shortDescription" : "Lake dwelling humanoids have been discovered in Lake Michigan! Assemble a team to navigate initial contact with the nation of Chilantis.",
+      "startingLocation" : {
+        "lat" : 41.892,
+        "long" : -87.6157
+      },
+      "title" : "Chilantis"
+    },
+    "dragon" : {
+      "allowedFails" : 10,
+      "allowedHints" : 5,
+      "chapters" : [ {
+        "description" : "something",
+        "enabled" : true,
+        "id" : 1,
+        "puzzles" : [ {
+          "answer" : "pass",
+          "description" : "something",
+          "id" : 1,
+          "location" : false,
+          "maxAttempts" : 5,
+          "puzzleType" : "fillBlank"
+        } ]
+      } ],
+      "description" : "Ragnora's reign of terror heads east towards Chicago! Assemble your team to defend your town from her fiery destruction!",
+      "estimatedTime" : 2.5,
+      "id" : "dragon",
+      "nChapters" : 1,
+      "shortDescription" : "Ragnora's reign of terror heads east towards Chicago! Assemble a team to defend your town from her fiery destruction!",
+      "startingLocation" : {
+        "lat" : 41.8845,
+        "long" : -87.6279
+      },
+      "title" : "Ragnora's Roost"
+    },
+    "pirate" : {
+      "allowedFails" : 10,
+      "allowedHints" : 4,
+      "chapters" : [ {
+        "description" : "something",
+        "enabled" : true,
+        "id" : 1,
         "puzzles" : [ {
           "answer" : "pass",
           "description" : "",
@@ -230,15 +308,16 @@
           "puzzleType" : "fillBlank"
         } ]
       } ],
-      "description" : "The Riddler is loose on Gotham City! A toxin has been planted in the city's water supply, and the Dark Knight needs your help. He's enlisted you and your team to scour the city for clues and identify the source of the toxin. Stay vigilant - one missed clue can spell your demise. But don't linger - the clock is ticking!",
-      "estimatedTime" : 3.5,
-      "id" : "batman",
-      "nChapters" : 3,
+      "description" : "The city port of Chicago is in danger! The devious pirate Captain Dagger has seized control of major parts of the river front. You and your team must devise a way to dismantle Dagger's stronghold on the city!",
+      "estimatedTime" : 2,
+      "id" : "pirate",
+      "nChapters" : 1,
+      "shortDescription" : "\"The devious pirate Captain Dagger has seized Chicago's major river ports! Devise a way to dismantle Dagger's stronghold!",
       "startingLocation" : {
-        "lat" : 41.8885,
-        "long" : -87.6354
+        "lat" : 41.8915,
+        "long" : -87.61275
       },
-      "title" : "Riddle Me This"
+      "title" : "Dagger's Descent"
     },
     "woodElves" : {
       "allowedFails" : 7,
@@ -277,6 +356,7 @@
       "estimatedTime" : 1.5,
       "id" : "woodElves",
       "nChapters" : 2,
+      "shortDescription" : "Fairies are everywhere! Save the kingdom from Oberon's fae maliciousness!",
       "startingLocation" : {
         "lat" : 41.8972,
         "long" : -87.6612
@@ -294,7 +374,6 @@
         "sent" : false
       },
       "id" : "KmlFLDOGvMex7BzKLjp7Xom0OHj1",
-      "journeys" : false,
       "name" : "Justin Gehr",
       "profilePicture" : "https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/18301572_1255980224500833_2431197111270859757_n.jpg?oh=828e3e4e6f596573b1ff09a44bcd362e&oe=5A08A259",
       "username" : ""
@@ -325,7 +404,6 @@
         }
       },
       "id" : "dqG6qVu1ArO4HzRJF0ym2ErlM9d2",
-      "journeys" : false,
       "name" : "Wade Gong",
       "profilePicture" : "https://scontent.xx.fbcdn.net/v/t1.0-1/s100x100/1916513_3036695367700_7204003449187997100_n.jpg?oh=658679fa0522f6a3401ab544fbff40cd&oe=59D5CAFE",
       "username" : ""
@@ -353,7 +431,6 @@
       },
       "name" : "Monica He",
       "profilePicture" : "https://avatars2.githubusercontent.com/u/8092859?v=3&s=400",
-      "received" : false,
       "username" : "ehacinom"
     },
     "gehrj" : {
@@ -401,7 +478,6 @@
           "hurlabob" : true,
           "snowwhite" : true
         },
-        "received" : false,
         "sent" : false
       },
       "id" : "jacobss",

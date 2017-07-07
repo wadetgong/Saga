@@ -127,15 +127,15 @@ exports.imageRecognition = functions.storage.object()
     return vision.detectLandmarks(file)
       .then(data => {
         let landmarkArr = data[0] // array of landmarks
-        
+
         return puzzleRef.child('answer').once('value').then(snap => {
           const answer = snap.val()
           const correct = landmarkArr.indexOf(answer) > -1
-        
+
           console.log(landmarkArr, correct, file.name)
-        
+
           if (correct) return puzzleRef.child('status').set('Complete');
-          else return true
+          else return puzzleRef.child('status').set('Incorrect');
         })
       })
       .catch(err => console.log('error in image recognition cloud function', err))
