@@ -7,6 +7,22 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.background
   },
+  alertSection: {
+    marginTop: 30,
+    marginBottom: -10,
+    marginHorizontal: 10,
+    padding: 10,
+    backgroundColor: '#f2dede',
+    borderColor: '#ebcccc',
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderWidth: 1,
+    borderRadius: 5
+  },
+  alertText: {
+    color: '#a94442',
+    fontStyle: 'italic'
+  },
   sectionHeader: {
     padding: Metrics.baseMargin,
     width: Metrics.screenWidth,
