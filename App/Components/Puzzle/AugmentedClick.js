@@ -18,6 +18,7 @@ class BreakOpen extends Component {
       offScreenLeft: false,
       offScreenRight: false,
       timesClicked: 1,
+      progress: 0,
     }
     this.clickedTreasureChest = this.clickedTreasureChest.bind(this);
   }
@@ -40,11 +41,15 @@ class BreakOpen extends Component {
     )
   }
   clickedTreasureChest() {
-    this.setState({ timesClicked: this.state.timesClicked + 1 })
     if (this.state.timesClicked > 34) {
-      this.forceUpdate();  // can probably remove this when running non-simulator version
       this.props.handleSubmit('Pass')
+      this.forceUpdate();
     }
+    this.setState({
+      timesClicked: this.state.timesClicked + 1,
+      progress: Math.round(this.state.timesClicked / 35 * 100 )
+    })
+    // this.forceUpdate();  // can probably remove this when running non-simulator version
   }
       // cracked the code!!
   render() {
@@ -54,7 +59,8 @@ class BreakOpen extends Component {
       (this.state.timesClicked < 35) ?
         <View style={styles.container}>
           <CameraScreen close={this.props.screenProps.close} >
-            <Text style={{ color: 'white', fontSize: 15, top: 0, left: 50 }}> Keep on Clicking to Break the Code! </Text>
+            {/*<Text style={{ color: 'white', fontSize: 15, top: 0, left: 50 }}> Keep on Clicking to Break the Code! </Text>*/}
+            <Text style={{color: 'green', fontSize: 30, top: 40, left: width * .255 }}> {this.state.progress}% Cracked! </Text>
             <TouchableHighlight onPress={this.clickedTreasureChest}>
               <Image
                 source={require('../../Images/codeBreak.jpg')}
@@ -71,11 +77,11 @@ class BreakOpen extends Component {
         <View>
           <CameraScreen close={this.props.screenProps.close} >
             <Text style={{
-              color: 'purple',
-              fontSize: 40,
-              top: 200,
-              left: 50
-            }}> Code Cracked ! </Text>
+                color: 'green',
+                fontSize: 30,
+                top: 40,
+                left: width * .125
+            }}> Code Cracked xD ! </Text>
           </CameraScreen>
         </View>
     )

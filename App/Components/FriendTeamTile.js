@@ -35,7 +35,6 @@ class FriendTeamTile extends React.Component {
     }
 
   render() {
-    console.log(this.props, 'props in FriendTeamTile')
     // let names = this.state.user && this.state.user.name.split(" ")
     // let firstName = names[0]
     // let lastInitial = names[1].slice(0,1)

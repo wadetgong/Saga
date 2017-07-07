@@ -11,6 +11,7 @@ import { setStory } from '../Redux/actions/currentStory'
 import { Colors, Metrics } from '../Themes'
 
 import firebaseApp from '../Firebase'
+import * as firebase from 'firebase'
 import styles from './Styles/TeamScreenStyles'
 
 // const TeamScreen = ({ teamList, friends, uid, navigation, user, screenProps }) => {
@@ -48,9 +49,6 @@ class TeamScreen extends React.Component {
     console.log('JourneyFriends.addFriendToTeam', path1, path2, true)
   }
 
-  removePendingInvites() {
-
-  }
   render() {
 
     const { teamList, friends, uid, navigation, user, screenProps } = this.props
@@ -81,6 +79,7 @@ class TeamScreen extends React.Component {
       ]
     })
 
+    console.log('pending in teamscreen', pending)
 
     return (
       <View style={styles.container}>
@@ -118,7 +117,15 @@ class TeamScreen extends React.Component {
       </ScrollView>
       <RoundedButton onPress={() => {
         //navigation.dispatch(resetAction)
-        firebaseApp.database().ref('/journey/' + this.props.jid).update({['status/text']: 'active',})
+        pending.forEach(user => {
+          this.removeFriendFromTeam(user.id)
+        })
+
+        const currentTime = firebase.database.ServerValue.TIMESTAMP
+        firebaseApp.database().ref('/journey/' + this.props.jid).update({
+          ['status/text']: 'active',
+          ['times/start']: currentTime,
+        })
         this.props.setStory(this.props.jid)
         screenProps.rootNavigation.navigate('CurrentStory')
       }}>

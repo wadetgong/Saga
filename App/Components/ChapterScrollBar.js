@@ -39,6 +39,7 @@ const ChapterScrollBar = ({chapters, handleClick, selectedChap}) => {
 const getBackgroundStyle = (chapter, selectedChap) => {
   if(chapter.id === selectedChap) {
     return {
+      borderColor: '#16a916',
       borderColor: Colors.fire,
       backgroundColor: Colors.buttonActive
     }

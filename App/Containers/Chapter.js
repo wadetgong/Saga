@@ -7,7 +7,7 @@ import ChapterDetails from '../Containers/ChapterDetails'
 import ChapterScrollBar from '../Components/ChapterScrollBar'
 
 import firebaseApp from '../Firebase'
-import { setChapter } from '../Redux/actions/currentStory'
+import { setChapter, setStory, removeStoryUrl } from '../Redux/actions/currentStory'
 
 // Styles
 import styles from './Styles/ChapterStyles'
@@ -18,8 +18,20 @@ class Chapter extends React.Component {
     this.state = {
       selectedChap: 1,
       story: {},
+      //picUrl: 'https://firebasestorage.googleapis.com/v0/b/breach-5ea6b.appspot.com/o/no-image-avail.png?alt=media&token=2cb55c5a-1676-4400-8e1c-00960387de64' //No image image
     }
     this.handleClick = this.handleClick.bind(this);
+
+    //if the status of my current journey has changed to active, dispatch setstory so that my current story tab will populate with my current journey (sorry is mess)
+    this.uid = firebaseApp.auth().currentUser.uid
+    firebaseApp.database().ref(`/users/${this.uid}/journeys/current`)
+      .once('value', journey => {
+        let journeyObj = journey.val()
+        if(journeyObj && journeyObj.status && journeyObj.status.text === 'active') {
+          this.props.setStory(Object.keys(journey.val())[0])
+        }
+      })
+
     if(this.props.storyUrl) this.storyRef = firebaseApp.database().ref(this.props.storyUrl)
   }
 
@@ -42,9 +54,18 @@ componentWillReceiveProps(newProps) {
   listenForChange(ref) {
     this.unsubscribe = ref.on('value', story => {
       console.log('state updated in chapter', story.val())
+      let storyObj = story.val()
       this.setState({
-        story: story.val()
+        story: storyObj,
       })
+      // if(storyObj) {
+      //   firebaseApp.database().ref('/photos/story/' + storyObj.id).once('value', pic => {
+      //     this.setState({
+      //       story: storyObj,
+      //       picUrl: pic.val()
+      //     })
+      //   })
+      // }
     })
   }
 
@@ -84,6 +105,10 @@ componentWillReceiveProps(newProps) {
       this.props.storyUrl
       ? (
         <View style={styles.container}>
+        {/*<Image
+          source={{uri: this.state.picUrl}}
+          style={{position: 'absolute', zIndex: -10, height: 200, width: '100%', top: 0, opacity: 0.25}}
+        />*/}
           {
             this.showWinMessage()
           }
@@ -125,6 +150,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setChapter: (chapterId) => { dispatch(setChapter(chapterId)) },
+    setStory: (journeyId) => { dispatch(setStory(journeyId)) },
+    removeStoryUrl: () => { dispatch(removeStoryUrl()) },
   }
 }
 

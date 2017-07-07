@@ -66,7 +66,11 @@ exports.onPuzzleComplete = functions.database.ref('/journey/{journeyId}/story/ch
               .child('status').set('Complete'),
             admin.database()
               .ref(`/journey/${journeyId}/story/chapters/${chapterId}`)
-              .child('status').set('Complete')])
+              .child('status').set('Complete'),
+            admin.database()
+              .ref(`/journey/${journeyId}/times/`)
+              .child('end').set(admin.database.ServerValue.TIMESTAMP)
+              ])
         }
       }
     // return admin.database().ref('/story/batman/chapters/1').child('enabled').set(true)
@@ -95,19 +99,19 @@ exports.onPuzzleComplete = functions.database.ref('/journey/{journeyId}/story/ch
 //     // }
 //   })
 
-// 
+//
 exports.imageRecognition = functions.storage.object()
   .onChange(event => {
     console.log(event)
     const object = event.data
     const file = gcs.bucket(object.bucket).file(object.name);
-    
+
     // Exit if this is triggered on a file that is not an image.
     if (!object.contentType.startsWith('image/')) {
       console.log('This is not an image.');
       return;
     }
-   
+
     // Exit if this is a move or deletion event.
     if (object.resourceState === 'not_exists') {
       console.log('This is a deletion event.');
@@ -115,13 +119,15 @@ exports.imageRecognition = functions.storage.object()
     }
 
     // exit if not in /journey
-    // if ()
+    if (file.name.indexOf('journey') < 0) {
+      return
+    }
 
     const puzzleRef = admin.database().ref(file.name);
-
     return vision.detectLandmarks(file)
       .then(data => {
         let landmarkArr = data[0] // array of landmarks
+        
         return puzzleRef.child('answer').once('value').then(snap => {
           const answer = snap.val()
           const correct = landmarkArr.indexOf(answer) > -1
@@ -132,5 +138,5 @@ exports.imageRecognition = functions.storage.object()
           else return true
         })
       })
-      .catch(err => console.log('error', err))
+      .catch(err => console.log('error in image recognition cloud function', err))
   })

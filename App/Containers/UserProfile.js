@@ -74,7 +74,7 @@ class UserProfile extends React.Component {
         firebaseApp.database().ref(`/journey/${Object.keys(user.journeys.current)[0]}`)
           .once('value', journey => {
             let journeyData = journey.val()
-            if(journeyData.status && journeyData.status.text === 'active') {
+            if(journeyData && journeyData.status && journeyData.status.text === 'active') {
               this.props.setStory(journeyData.id)
             }
         })
