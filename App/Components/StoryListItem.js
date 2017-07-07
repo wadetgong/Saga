@@ -2,6 +2,7 @@ import React from 'react'
 import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native'
 import { Images, Fonts } from '../Themes'
 import firebaseApp from '../Firebase'
+import Icon from 'react-native-vector-icons/SimpleLineIcons'
 
 class StoryListItem extends React.Component {
   constructor(props) {
@@ -46,9 +47,13 @@ class StoryListItem extends React.Component {
             <TouchableOpacity
                 onPress={() => navigate('StoryPreview', { item, createJourney })}
             >
-            <Text style={{fontFamily: Fonts.type.bold}}>Story: {item.title}</Text>
-            <Text>Description: {item.description}</Text>
-            <Text style={{fontStyle: 'italic'}}>Est. Time: {item.estimatedTime} hrs.</Text>
+            <Text style={{fontFamily: Fonts.type.bold}}>{item.title}</Text>
+            <Text style={{fontSize: 13}}>{item.shortDescription}</Text>
+            <View style={{marginTop: 2}}>
+              <Text style={{fontStyle: 'italic', fontSize: 13}}>
+                <Icon name='clock' style={{ paddingHorizontal: 5, justifyContent: 'center'}}/> {item.estimatedTime} hrs.
+              </Text>
+            </View>
             {/*<Text>Lat: {item.startingLocation.lat}</Text>
             <Text>Long: {item.startingLocation.long}</Text>*/}
             </TouchableOpacity>
