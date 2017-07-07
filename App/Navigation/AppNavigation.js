@@ -91,14 +91,14 @@ const TabNav = TabNavigator({
       <Icon name='people' size={20} color={tintColor} />),
     },
   },
-  LaunchScreen: {
-    screen: DevStack,
-    navigationOptions: {
-      tabBarLabel: 'Dev Screen',
-      tabBarIcon: ({ tintColor }) => (
-      <Icon name='settings' size={20} color={tintColor}/>),
-    }
-  }
+  // LaunchScreen: {
+  //   screen: DevStack,
+  //   navigationOptions: {
+  //     tabBarLabel: 'Dev Screen',
+  //     tabBarIcon: ({ tintColor }) => (
+  //     <Icon name='settings' size={20} color={tintColor}/>),
+  //   }
+  // }
 
 }, {
   initialRouteName: 'UserProfile',

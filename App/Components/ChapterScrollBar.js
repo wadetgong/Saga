@@ -7,11 +7,9 @@ import styles from './Styles/ChapterScrollBarStyles'
 const ChapterScrollBar = ({chapters, handleClick, selectedChap}) => {
   return (
     <View style={styles.scrollContainer}>
-      <View style={{padding: 5}}>
-        <Text>Chapter:</Text>
-      </View>
       <ScrollView
-        style={{height: 50}}
+        style={{height: 50, }}
+        centerContent={true}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
       >

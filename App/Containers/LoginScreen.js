@@ -95,13 +95,16 @@ class LoginScreen extends React.Component {
             style={styles.video}
           />*/}
           <View style={styles.loginSection}>
-            <View>
+            <View style={{width: '100%', alignItems: 'center'}}>
               <TouchableOpacity onPress={() => this.login()}>
-                <Image
+                <View style={{borderRadius: 100, height: 40, width: '80%', backgroundColor: '#3b5998', alignItems: 'center', justifyContent: 'center', width: '66.6%'}}>
+                  <Text style={{color: 'white', fontFamily: 'Avenir', fontWeight: 'bold'}}>LOGIN WITH FACEBOOK</Text>
+                </View>
+{/*                <Image
                   style={{width: 300}}
                   resizeMode={'contain'}
                   source={require('../Images/facebook-login.png')}
-                />
+                />*/}
               </TouchableOpacity>
             </View>
           </View>

@@ -5,6 +5,7 @@ export default StyleSheet.create({
   scrollContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     borderColor: 'lightgrey',
     borderTopWidth: 1,
     borderBottomWidth: 1,

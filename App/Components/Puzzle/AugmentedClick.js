@@ -43,7 +43,7 @@ class BreakOpen extends Component {
   clickedTreasureChest() {
     if (this.state.timesClicked > 34) {
       this.props.handleSubmit('Pass')
-      this.forceUpdate();
+      // this.forceUpdate();
     }
     this.setState({
       timesClicked: this.state.timesClicked + 1,
@@ -81,7 +81,7 @@ class BreakOpen extends Component {
                 fontSize: 30,
                 top: 40,
                 left: width * .125
-            }}> Code Cracked xD ! </Text>
+            }}> Code Cracked! </Text>
           </CameraScreen>
         </View>
     )
