@@ -9,6 +9,7 @@ import styles from './Styles/UserJourneysStyles'
 import {Colors, Metrics} from '../Themes'
 import firebaseApp from '../Firebase'
 import { setStory } from '../Redux/actions/currentStory'
+import { removeJourney } from '../Redux/StoriesRedux'
 
 // const UserJourneys = ({ myJourneys, myStoriesList, jid, name, current, screenProps}) => {
 class UserJourneys extends React.Component {
@@ -38,6 +39,7 @@ class UserJourneys extends React.Component {
         key={Object.keys(this.state.journeys.current)[0]}
         journey={Object.keys(this.state.journeys.current)[0]}
         screenProps={this.props.screenProps}
+        removeJourney={() => this.props.removeJourney()}
       />
     }
     return (
@@ -130,7 +132,8 @@ const mapState = state => ({
 })
 
 const mapDispatch = dispatch => ({
-  setStory: journeyId => dispatch(setStory(journeyId))
+  setStory: journeyId => dispatch(setStory(journeyId)),
+  removeJourney: () => dispatch(removeJourney())
 })
 
 export default connect(mapState, mapDispatch)(UserJourneys)

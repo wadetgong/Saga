@@ -119,7 +119,11 @@ class TeamScreen extends React.Component {
       </ScrollView>
       <RoundedButton onPress={() => {
         //navigation.dispatch(resetAction)
-        firebaseApp.database().ref('/journey/' + this.props.jid).update({['status/text']: 'active',})
+        const currentTime = firebase.database.ServerValue.TIMESTAMP
+        firebaseApp.database().ref('/journey/' + this.props.jid).update({
+          ['status/text']: 'active',
+          ['times/start']: currentTime,
+        })
         this.props.setStory(this.props.jid)
         screenProps.rootNavigation.navigate('CurrentStory')
       }}>

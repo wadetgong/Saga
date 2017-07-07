@@ -22,7 +22,7 @@ const StoryPreview = ({ navigation, name, current, screenProps }) => {
     <View style={styles.container}>
       <ScrollView>
         {
-          current
+          Object.keys(current).length
           ? (
             <View style={styles.alertSection}>
               <Text style={styles.alertText}>New stories can't be started when you have a current story.{' '}
@@ -65,7 +65,7 @@ const StoryPreview = ({ navigation, name, current, screenProps }) => {
           />
         </View>
         {
-          current
+          Object.keys(current).length
           ? null
           : (
             <View style={styles.buttonSection}>

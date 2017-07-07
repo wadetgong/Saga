@@ -27,7 +27,7 @@ class Chapter extends React.Component {
     firebaseApp.database().ref(`/users/${this.uid}/journeys/current`)
       .once('value', journey => {
         let journeyObj = journey.val()
-        if(journeyObj.status && journeyObj.status.text === 'active') {
+        if(journeyObj && journeyObj.status && journeyObj.status.text === 'active') {
           this.props.setStory(Object.keys(journey.val())[0])
         }
       })
