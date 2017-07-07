@@ -36,9 +36,9 @@ class EnterZone extends React.Component {
     return (
       <View style={{padding: 5, margin: 5, /*backgroundColor: 'lightblue'*/}}>
         <View>
-          <Text>Puzzle Question: {this.props.puzzle.question}</Text>
+          {/*<Text>Puzzle Question: {this.props.puzzle.question}</Text>
           <Text>Target Zone is: long: {locTarget.longitude} lat: {locTarget.latitude}</Text>
-          <Text>Your loc is: long: {this.props.location.longitude} lat: {this.props.location.latitude}</Text>
+          <Text>Your loc is: long: {this.props.location.longitude} lat: {this.props.location.latitude}</Text>*/}
         </View>
         {
           insideGeofence

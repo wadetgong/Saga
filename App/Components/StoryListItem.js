@@ -48,9 +48,9 @@ class StoryListItem extends React.Component {
                 onPress={() => navigate('StoryPreview', { item, createJourney })}
             >
             <Text style={{fontFamily: Fonts.type.bold}}>{item.title}</Text>
-            <Text style={{fontSize: 13}}>{item.shortDescription}</Text>
+            <Text style={{fontSize: 12}}>{item.shortDescription}</Text>
             <View style={{marginTop: 2}}>
-              <Text style={{fontStyle: 'italic', fontSize: 13}}>
+              <Text style={{fontStyle: 'italic', fontSize: 12}}>
                 <Icon name='clock' style={{ paddingHorizontal: 5, justifyContent: 'center'}}/> {item.estimatedTime} hrs.
               </Text>
             </View>

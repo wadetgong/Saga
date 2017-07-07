@@ -13,8 +13,8 @@ import CameraScreen from '../../Containers/CameraScreen'
 
 let width = Dimensions.get('window').width
 let height = Dimensions.get('window').height
-let fiveOFive = 505;
-let oneOneFive = 115;
+let topShift = 605;
+let leftShift = 115;
 let threeOh = 30;
 
 class TreasureChest extends Component {
@@ -91,8 +91,8 @@ class TreasureChest extends Component {
     whichKey() {
       return (
         this.state.hasKey
-        ? <View style={{ position: 'absolute', top: sixOhFive, left: oneOneFive }}>
-            <Text style={{ color: 'white', fontSize: 32, top: threeOh, left: -oneOneFive }}> ITEMS: </Text>
+        ? <View style={{ position: 'absolute', top: topShift, left: leftShift }}>
+            <Text style={{ color: 'white', fontSize: 32, top: threeOh, left: -leftShift }}> ITEMS: </Text>
             <Animated.Image
               source={require('../../Images/key.png')}
               {...this.PanResponder.panHandlers}
