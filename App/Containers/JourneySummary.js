@@ -10,6 +10,7 @@ import styles from './Styles/JourneySummaryStyles'
 
 
 import { removeJourney } from '../Redux/StoriesRedux'
+import { NavigationActions } from 'react-navigation'
 
 class JourneySummary extends React.Component {
   constructor(props) {
@@ -47,10 +48,18 @@ class JourneySummary extends React.Component {
     const friendsList = (this.state.journey && this.state.journey.team && this.state.journey.team.list) || []
     console.log(friendsList, 'friendlist')
 
-    const startTime = this.props.current.times.start
-    const endTime = this.props.current.times.end
+    console.log('this.props in JourneySummary', this.props)
+    const startTime = this.props.current.times ? this.props.current.times.start : 0
+    const endTime = this.props.current.times ? this.props.current.times.end : 0
     const timeDif = new Date(endTime - startTime)
     const timeStr = msToTime(timeDif)
+
+    // const resetAction = NavigationActions.reset({
+    //   index: 0,
+    //   actions: [
+    //     NavigationActions.navigate({ routeName: 'Chapter'})
+    //   ]
+    // })
 
 
     let friendsSource = friendsList && new ListView
@@ -59,43 +68,33 @@ class JourneySummary extends React.Component {
     return (
       <View style={styles.container}>
         <ScrollView>
-          <View style={{alignItems: 'center', justifyContent: 'center',}}>
+          <View style={styles.imageHeaderSection}>
             <Image
-              style={{
-                marginTop: 20,
-                height: 240,
-                width: '100%',
-                opacity: 0.75,
-                top: 0,
-              }}
+              style={styles.storyBG}
               source={{uri: this.state.picUrl}}>
               <View style={styles.sectionHeader}>
                 <Text style={styles.boldLabel}>Journey Conclusion</Text>
               </View>
             </Image>
             <Image
-              style={{position: 'absolute', zIndex: 5}}
+              style={styles.passImage}
               source={Images.passStamp}
             />
           </View>
           <View>
-            <Text style={{fontSize: 20, marginTop: 10, marginBottom: 5, marginHorizontal: 10, textAlign: 'center'}}>Your final time: {timeStr}</Text>
+            <Text style={styles.timeSection}>Your final time: {timeStr}</Text>
           </View>
           <View style={styles.conclusionDesc}>
             <Text style={{fontStyle: 'italic'}}>
               Story conclusion text here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque urna arcu, fermentum id elementum quis, blandit sit amet nisi. Donec mi odio, vestibulum in nunc sed, scelerisque tristique turpis. Integer a ante lobortis, porttitor mauris sit amet, pulvinar ligula. Sed convallis ut ante sit amet lacinia.
             </Text>
           </View>
-          <View style={{marginHorizontal: 15, marginTop: 5, marginBottom: 10, borderColor: 'gray', borderBottomWidth: 1}}>
-            <Text style={{paddingHorizontal: 10, paddingVertical: 5, color: 'gray', fontSize: 16}}>Teammates:</Text>
+          <View style={styles.teammateSection}>
+            <Text style={styles.teammateText}>Teammates:</Text>
           </View>
           <View style={{marginHorizontal: 15}}>
             <ListView
-              contentContainerStyle={{
-                flex: 1,
-                flexDirection: 'row',
-                flexWrap: 'wrap'
-              }}
+              contentContainerStyle={styles.friendList}
               dataSource={friendsSource}
               removeClippedSubviews={false}
               enableEmptySections={true}
@@ -104,7 +103,21 @@ class JourneySummary extends React.Component {
           </View>
           <RoundedButton
             text="View Stories"
-            onPress={() => {}}
+            onPress={() => {
+              let paths = {}
+              let currentStory = this.props.current;
+              console.log(Object.keys(currentStory.team.list))
+              Object.keys(currentStory.team.list).forEach(user => {
+                paths[`/users/${user}/journeys/current`] = null
+                paths[`/users/${user}/journeys/completed/${currentStory.id}`] = currentStory.story.id
+              })
+
+              firebaseApp.database().ref('/').update(paths)
+
+              // this.props.navigation.dispatch(resetAction)
+              this.props.navigation.navigate('UserProfile')
+              this.props.removeJourney()
+            }}
           />
         </ScrollView>
       </View>
@@ -134,6 +147,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    removeJourney: () => dispatch(removeJourney())
   }
 }
 
