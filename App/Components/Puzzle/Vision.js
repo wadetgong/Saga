@@ -4,6 +4,8 @@ import { View, Text, StyleSheet } from 'react-native'
 import Camera from 'react-native-camera'
 import { connect } from 'react-redux'
 
+import RoundedButton from '../Button/RoundedButton'
+
 // upload image
 import RNFetchBlob from 'react-native-fetch-blob'
 
@@ -30,12 +32,12 @@ const styles = StyleSheet.create({
 class Vision extends React.Component {
   constructor () {
     super ()
-    
+
     this.uid = firebaseApp.auth().currentUser.uid
     this.takePictureAndClose = this.takePictureAndClose.bind(this)
     this.uploadImage = this.uploadImage.bind(this)
   }
-  
+
   uploadImage (uri, imageRef) {
     const mime = 'image/jpeg'
     const sessionId = new Date().getTime()
@@ -76,18 +78,18 @@ class Vision extends React.Component {
       .then(data => {
         // path/mediaUri: assets-library://asset/asset.JPG?id=C071D9B5-3410-43AB-9B00-2528C9E57FEF&ext=JPG
         console.log('takePicture, save to google storage, and photorecognition', data)
-        // 
+        //
         const imageRef = firebaseApp.storage().ref(puzzleUrl)
         return this.uploadImage(data.path, imageRef)
       })
       .catch(err => console.error('Taking Picture in PhotoRecog failed', err));
-      
+
     // close modal
     close()
   }
-  
+
   render () {
-    
+
     return (
       <View style={styles.container}>
         <Camera
@@ -96,10 +98,15 @@ class Vision extends React.Component {
           }}
           style={styles.preview}
           aspect={Camera.constants.Aspect.fill}>
-          <Text 
+
+          <RoundedButton
+            text="CAPTURE"
+            onPress={() => this.takePictureAndClose()}
+          />
+          {/*<Text
             style={styles.capture}
             onPress={() => this.takePictureAndClose()}
-          >capture</Text>
+          >capture</Text>*/}
         </Camera>
       </View>
     )
