@@ -7,6 +7,28 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.background
   },
+  imageHeaderSection: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  storyBG: {
+    marginTop: 20,
+    height: 240,
+    width: '100%',
+    opacity: 0.75,
+    top: 0,
+  },
+  passImage: {
+    position: 'absolute',
+    zIndex: 5
+  },
+  timeSection: {
+    fontSize: 20,
+    marginTop: 10,
+    marginBottom: 5,
+    marginHorizontal: 10,
+    textAlign: 'center'
+  },
   sectionHeader: {
     padding: Metrics.baseMargin,
     width: Metrics.screenWidth,
@@ -31,6 +53,24 @@ export default StyleSheet.create({
     backgroundColor: 'beige',
     borderWidth: 1,
     borderColor: 'lightgray',
+  },
+  teammateSection: {
+    marginHorizontal: 15,
+    marginTop: 5,
+    marginBottom: 10,
+    borderColor: 'gray',
+    borderBottomWidth: 1
+  },
+  teammateText: {
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    color: 'gray',
+    fontSize: 16
+  },
+  friendList: {
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap'
   }
 
 })

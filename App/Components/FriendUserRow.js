@@ -2,6 +2,7 @@ import React from 'react'
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import { Images } from '../Themes'
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
+import IconFA from 'react-native-vector-icons/FontAwesome';
 import { Fonts, Colors, Metrics } from '../Themes/'
 import firebaseApp from '../Firebase'
 
@@ -48,7 +49,15 @@ class FriendUserRow extends React.Component {
               onPress={() => addFriend(user.uid)}
               style={styles.addFriend}
             >
-              <Text style={styles.buttonText}>Add Friend</Text>
+              <Text style={styles.buttonText}>
+                <IconFA
+                  name='plus'
+                  size={16}
+                  style={{
+                    justifyContent: 'center'
+                  }}
+                />
+              </Text>
             </TouchableOpacity>
           </View>
       </View>

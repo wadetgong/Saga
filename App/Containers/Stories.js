@@ -10,7 +10,14 @@ import { fetchStories, fetchJourney } from '../Redux/StoriesRedux'
 
 const ChooseStoryStack = StackNavigator({
     StoryScreen: { screen: StoryScreen },
-    StoryPreview: { screen: StoryPreview },
+    StoryPreview: { screen: ({ navigation, name, current, screenProps }) =>
+      <StoryPreview
+        screenProps={screenProps}
+        navigation={navigation}
+        name={name}
+        current={current}
+      />
+    },
     JourneyFriends: { screen: JourneyFriends },
     TeamScreen: { screen: ({ screenProps }) => <TeamScreen screenProps={screenProps} /> },
     // TeamScreen: { screen: ({ navigation }) => <TeamScreen screenProps={{ rootNavigation: navigation }} /> }

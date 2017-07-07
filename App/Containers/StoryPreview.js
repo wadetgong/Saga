@@ -1,19 +1,42 @@
 import React from 'react'
-import { View, Text, Image, ScrollView } from 'react-native'
+import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import RoundedButton from '../Components/Button/RoundedButton'
 import { Images, Fonts } from '../Themes'
-import TreasureHunt from '../Components/TreasureHunt'
+import SimpleMap from '../Components/SimpleMap'
 
 import styles from './Styles/StoryPreviewStyles'
 
-const StoryPreview = ({ navigation, name }) => {
+const StoryPreview = ({ navigation, name, current, screenProps }) => {
   const { item, createJourney, picUrl } = navigation.state.params
-  const { navigate } = navigation
+  const { navigate } = screenProps.rootNavigation
+
+  const getButton = (name, item) => {
+  {/*not sure what the ternary is for*/}
+  return (name && name == item._key)
+  ? <RoundedButton onPress={() => navigate('JourneyFriends')}>Assemble again!</RoundedButton>
+  : <RoundedButton onPress={() => createJourney(item)}>Assemble Team</RoundedButton>
+  }
 
   return (
     <View style={styles.container}>
       <ScrollView>
+        {
+          Object.keys(current).length
+          ? (
+            <View style={styles.alertSection}>
+              <Text style={styles.alertText}>New stories can't be started when you have a current story.{' '}
+                  <Text
+                    style={{fontWeight: 'bold'}}
+                    onPress={() => {navigate('CurrentStory')}}
+                  >
+                     Go to current story
+                  </Text>
+              </Text>
+            </View>
+          )
+          : null
+        }
         <View>
           <Image
             style={styles.bgImage}
@@ -35,23 +58,28 @@ const StoryPreview = ({ navigation, name }) => {
         </View>
         <View style={styles.mapSection}>
           <Text style={styles.mapSectionHeader}>Starting Point</Text>
-          <TreasureHunt
+          <SimpleMap
             longitude={item.startingLocation.long}
             latitude={item.startingLocation.lat}
             style={{height: 150}}
           />
         </View>
-        <View style={styles.buttonSection}>
-          {(name && name == item._key)
-          ? <RoundedButton onPress={() => navigate('JourneyFriends')}>Assemble again!</RoundedButton>
-          : <RoundedButton onPress={() => createJourney(item)}>Assemble Team</RoundedButton>}
-        </View>
+        {
+          Object.keys(current).length
+          ? null
+          : (
+            <View style={styles.buttonSection}>
+              {getButton(name, item)}
+            </View>
+          )
+        }
       </ScrollView>
     </View>
   )
 }
 
 const mapState = state => ({
-  name : state.stories.name
+  name : state.stories.name,
+  current : state.stories.current
 })
 export default connect(mapState)(StoryPreview)

@@ -41,15 +41,18 @@ class ChapterDetails extends React.Component {
   getButtonStyle(puzzle) {
     if(puzzle.status === 'Complete') {
       return {
-        backgroundColor: 'lightgreen',
-        borderTopColor: 'green',
-        borderBottomColor: 'green',
+        backgroundColor: '#16a916',
+        borderTopColor: '#007400',
+        borderBottomColor: '#3ab53a',
       }
     }
     return {
-      backgroundColor: Colors.ember,
-      borderTopColor: Colors.fire,
-      borderBottomColor: Colors.bloodOrange,
+      // backgroundColor: Colors.ember,
+      // borderTopColor: Colors.fire,
+      // borderBottomColor: Colors.bloodOrange,
+      backgroundColor: '#333333',
+      borderTopColor: '#111111',
+      borderBottomColor: '#444444',
     }
   }
 

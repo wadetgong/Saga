@@ -12,7 +12,7 @@ export default StyleSheet.create({
     width: Metrics.screenWidth,
     alignSelf: 'center',
     margin: Metrics.baseMargin,
-    backgroundColor: Colors.background
+    backgroundColor: Colors.transparent
   },
   boldLabel: {
     fontWeight: 'bold',

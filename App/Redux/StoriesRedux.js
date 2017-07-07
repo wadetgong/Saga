@@ -9,6 +9,7 @@ const CURRENT = "current"
 const SET_STORIES = 'SET_STORIES'
 const SET_JOURNEYS = 'SET_JOURNEYS'
 const SET_JOURNEY = 'SET_JOURNEY'   // JourneyFriends uses this
+const DELETE_JOURNEY = 'DELETE_JOURNEY'   // JourneyFriends uses this
 
 // action-creators
 const setStories = (stories) => ({
@@ -17,8 +18,12 @@ const setStories = (stories) => ({
 const setJourneys = (journeys) => ({
   type: SET_JOURNEYS, journeys
 })
-const setJourney = (jid, journey) => ({ 
+const setJourney = (jid, journey) => ({
   type: SET_JOURNEY, journey, jid
+});
+
+const deleteJourney = () => ({
+  type: DELETE_JOURNEY
 });
 
 // reducer
@@ -27,24 +32,24 @@ const initialState = {
   // mapped to /users/uid/journeys
   // SET_JOURNEYS
   myJourneys: {},
-  
+
   // myJourneysList { jid: journey obj }
   // myJourneysList: {},
-  
+
   // myStories = { storyname : true }
   // SET_JOURNEYS
-  myStories: {}, 
-  
+  myStories: {},
+
   // myStoriesList = { storyname : story obj }
   // SET_STORIES
   myStoriesList: {},
-  
+
   // stories : { storyname : story obj }
   // mapped to /stories
   // filtered by journeys
   // SET_STORIES
   stories: [],
-  
+
   // SET_JOURNEY
   jid: '',
   name: '',
@@ -58,11 +63,11 @@ export const reducer = (state=initialState, action) => {
   switch(action.type) {
     case SET_JOURNEYS:
       // myJourneys, myJourneysList, myStories, myStoriesList
-      
+
       // myJourneys = { status : { jid : storyname } }
       const journeys = Object.assign({}, action.journeys)
       newState.myJourneys = journeys
-      
+
       // myStories = { storyname : true }
       const myStories = {}
       for (let status in journeys) {
@@ -70,7 +75,7 @@ export const reducer = (state=initialState, action) => {
           myStories[journeys[status][jid]] = status;
       }
       newState.myStories = myStories
-      
+
       break;
     case SET_STORIES:
       // myStoriesList, stories
@@ -84,16 +89,16 @@ export const reducer = (state=initialState, action) => {
         if (state.myStories[name]) newState.myStoriesList[name] = newStory;
         else filteredStories.push(newStory);
       }
-      
+
       newState.stories = filteredStories
       break;
     case SET_JOURNEY:
-      // 
+      //
       newState.jid = action.jid
       newState.name = action.journey.story.name
       newState.current = Object.assign({}, action.journey)
       newState.team = Object.assign({}, action.journey.team)
-      
+
       let teamList = {}
       for (let status in newState.team) {
         for (let pid in newState.team[status])
@@ -101,10 +106,16 @@ export const reducer = (state=initialState, action) => {
       }
       newState.teamList = teamList;
       break;
+    case DELETE_JOURNEY:
+      newState.jid = ''
+      newState.current = {}
+      newState.team = {}
+      newState.teamList = {}
+      break
     default:
       return state
   }
-  
+
   console.log(action.type, state, newState)
   return newState
 }
@@ -119,4 +130,8 @@ export const fetchStories = (stories, journeys) => dispatch => {
 
 export const fetchJourney = (jid, journey) => dispatch => {
   dispatch(setJourney(jid, journey))
+}
+
+export const removeJourney = () => dispatch => {
+  dispatch(deleteJourney())
 }
