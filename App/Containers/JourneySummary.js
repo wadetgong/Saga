@@ -9,6 +9,8 @@ import FriendTeamTile from '../Components/FriendTeamTile'
 import styles from './Styles/JourneySummaryStyles'
 
 
+import { removeJourney } from '../Redux/StoriesRedux'
+
 class JourneySummary extends React.Component {
   constructor(props) {
     super(props)
@@ -44,6 +46,13 @@ class JourneySummary extends React.Component {
   render() {
     const friendsList = (this.state.journey && this.state.journey.team && this.state.journey.team.list) || []
     console.log(friendsList, 'friendlist')
+
+    const startTime = this.props.current.times.start
+    const endTime = this.props.current.times.end
+    const timeDif = new Date(endTime - startTime)
+    const timeStr = msToTime(timeDif)
+
+
     let friendsSource = friendsList && new ListView
       .DataSource({rowHasChanged : (r1, r2) => r1 != r2})
       .cloneWithRows(Object.keys(friendsList))
@@ -70,7 +79,7 @@ class JourneySummary extends React.Component {
             />
           </View>
           <View>
-            <Text style={{fontSize: 20, marginTop: 10, marginBottom: 5, marginHorizontal: 10, textAlign: 'center'}}>Your final time: 2:37:24</Text>
+            <Text style={{fontSize: 20, marginTop: 10, marginBottom: 5, marginHorizontal: 10, textAlign: 'center'}}>Your final time: {timeStr}</Text>
           </View>
           <View style={styles.conclusionDesc}>
             <Text style={{fontStyle: 'italic'}}>
@@ -103,10 +112,23 @@ class JourneySummary extends React.Component {
   }
 }
 
+const msToTime = (duration) => {
+    var seconds = parseInt((duration/1000)%60)
+      , minutes = parseInt((duration/(1000*60))%60)
+      , hours = parseInt((duration/(1000*60*60))%24);
+
+    hours = (hours < 10) ? '0' + hours : hours;
+    minutes = (minutes < 10) ? '0' + minutes : minutes;
+    seconds = (seconds < 10) ? '0' + seconds : seconds;
+
+    return hours + ':' + minutes + ':' + seconds;
+}
+
 const mapStateToProps = (state) => {
   console.log('state in redux', state)
   return {
     journeyUrl: state.currentStory.journeyUrl,
+    current: state.stories.current
   }
 }
 
