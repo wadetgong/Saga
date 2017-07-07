@@ -18,6 +18,8 @@ class Puzzle extends React.Component {
       status: 'Pending',
       attempts: 0,
       showModal: false,
+      status: 'Incomplete',
+      puzzle: {}
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -109,9 +111,9 @@ class Puzzle extends React.Component {
         return (
           <View>
             <RoundedButton onPress={() => this.openCameraModal()} text={"Search"} />
-            <Modal 
-              animationType={"slide"} 
-              visible={this.state.showModal} 
+            <Modal
+              animationType={"slide"}
+              visible={this.state.showModal}
               onRequestClose={this.closeCameraModal}
             ><TreasureChestKey
                 screenProps={{ close: this.closeCameraModal }}
@@ -125,8 +127,8 @@ class Puzzle extends React.Component {
         return (
           <View>
           <RoundedButton onPress={() => this.openCameraModal()} text={"Snap a Picture"} />
-          <Modal 
-            animationType={'slide'} 
+          <Modal
+            animationType={'slide'}
             visible={this.state.showModal}
             onRequestClose={this.closeCameraModal}
           ><Vision
@@ -149,6 +151,27 @@ class Puzzle extends React.Component {
         {/*<Text>Status: {this.state.status}</Text>
         <Text>Attempts Allowed: {this.props.puzzle.maxAttempts}</Text>
         <Text>Attempts: {this.state.attempts}</Text>*/}
+        {
+          this.state.puzzle.status === 'Incorrect'
+          ? <View style={{
+              margin: 15,
+              padding: 10,
+              backgroundColor: '#f2dede',
+              borderColor: '#ebcccc',
+              borderTopWidth: 1,
+              borderBottomWidth: 1,
+              borderWidth: 1,
+              borderRadius: 5
+            }}>
+              <Text style={{
+                color: '#a94442',
+                fontStyle: 'italic'
+              }}>
+                Your answer is not correct. Please try again.
+              </Text>
+            </View>
+          : null
+        }
         {this.getPuzzleObj(this.props.puzzle)}
       </View>
     )
