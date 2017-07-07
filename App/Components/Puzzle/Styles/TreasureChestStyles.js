@@ -9,11 +9,16 @@ let styles = StyleSheet.create({
   key: {
     position: 'absolute',
     width: Dimensions.get('window').width / 5,
-    height: Dimensions.get('window').height / 8.5,
+    height: Dimensions.get('window').height / 10.5,
   },
   row: flex('row', 'wrap'),
   container: {
     position: 'absolute',
+  },
+  booty: {
+    position: 'absolute',
+    width: Dimensions.get('window').width / 1.5,
+    height: Dimensions.get('window').height / 3
   }
 
 })

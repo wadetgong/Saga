@@ -25,6 +25,7 @@ class TreasureChest extends Component {
       offScreenRight: false,
       pan: new Animated.ValueXY(),
       hasKey: false,
+      foundBooty: false
     }
     this.PanResponder = PanResponder.create({
       onStartShouldSetPanResponder: () => true,
@@ -82,55 +83,70 @@ class TreasureChest extends Component {
       this.setState({ hasKey: true });
     }
     unlockChest() {
-      this.props.screenProps.close()
+      //this.props.screenProps.close()
+      this.setState({ foundBooty: true })
       this.props.handleSubmit('Pass')
     }
+
+    whichKey() {
+      return (
+        this.state.hasKey
+        ? <View style={{ position: 'absolute', top: sixOhFive, left: oneOneFive }}>
+            <Text style={{ color: 'white', fontSize: 32, top: threeOh, left: -oneOneFive }}> ITEMS: </Text>
+            <Animated.Image
+              source={require('../../Images/key.png')}
+              {...this.PanResponder.panHandlers}
+              resizeMode='contain'
+              style={[this.state.pan.getLayout(), styles.key, styles.row,]}
+            />
+          </View>
+        : <View style={styles.container}>
+            <Text style={{ color: 'white', fontSize: 32, top: 635, left: 0 }}> ITEMS: </Text>
+            <TouchableHighlight onPress={this.foundKey}>
+              <Image
+                source={require('../../Images/key.png')}
+                resizeMode='contain'
+                style={[styles.key, styles.row, {
+                    top: 100 + this.props.yOffset,
+                    left: 500 + this.props.xOffset,
+                }]}
+              />
+            </TouchableHighlight>
+          </View>
+      )
+    }
+
     render() {
       return (
         <View style={styles.container}>
           <CameraScreen close={this.props.screenProps.close} >
-          <TouchableHighlight onPress={this.clickedTreasureChest}>
-            <Image
-              source={require('../../Images/treasureChest.png')}
-              resizeMode='contain'
-              style={[styles.arObject, styles.row, {
-                top: this.props.arObject.startingPosY + this.props.yOffset,
-                left: this.props.arObject.startingPosX + this.props.xOffset
-              }]}
-            />
-          </TouchableHighlight>
           {
-            this.state.hasKey
-            ? (
-              <View style={{ position: 'absolute', top: fiveOFive, left: oneOneFive }}>
-                <Text style={{ color: 'white', fontSize: 32, top: threeOh, left: -oneOneFive }}> ITEMS: </Text>
-                <Animated.Image
-                  source={require('../../Images/key.png')}
-                  {...this.PanResponder.panHandlers}
-                  resizeMode='contain'
-                  style={[this.state.pan.getLayout(), styles.key, styles.row,]}
+            (!this.state.foundBooty)
+            ? <View>
+                <TouchableHighlight onPress={this.clickedTreasureChest}>
+                    <Image
+                      source={require('../../Images/treasureChest.png')}
+                      resizeMode='contain'
+                      style={[styles.arObject, styles.row, {
+                        top: this.props.arObject.startingPosY + this.props.yOffset,
+                        left: this.props.arObject.startingPosX + this.props.xOffset
+                      }]}
+                    />
+                </TouchableHighlight>
+                {this.whichKey()}
+              </View>
+            : <View>
+                <Text style={{ color:'black', fontSize: 24, top: 20, left: 95 }}>Treasure Found!</Text>
+                <Image
+                    source={require('../../Images/piratesBooty.png')}
+                    resizeMode='contain'
+                    style={[styles.booty, { top: this.props.arObject.startingPosY + this.props.yOffset, left: this.props.arObject.startingPosX + this.props.xOffset }]}
                 />
               </View>
-            )
-            : (
-              <View style={styles.container}>
-                <Text style={{ color: 'white', fontSize: 32, top: 535, left: 0 }}> ITEMS: </Text>
-                <TouchableHighlight onPress={this.foundKey}>
-                  <Image
-                    source={require('../../Images/key.png')}
-                    resizeMode='contain'
-                    style={[styles.key, styles.row, {
-                      top: 100 + this.props.yOffset,
-                      left: 500 + this.props.xOffset,
-                    }]}
-                  />
-                </TouchableHighlight>
-              </View>
-            )
           }
           </CameraScreen>
         </View>
-      )
+        )
     }
 }
 function mapStateToProps({ augmented }) {
