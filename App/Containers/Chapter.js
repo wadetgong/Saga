@@ -7,7 +7,7 @@ import ChapterDetails from '../Containers/ChapterDetails'
 import ChapterScrollBar from '../Components/ChapterScrollBar'
 
 import firebaseApp from '../Firebase'
-import { setChapter, setStory } from '../Redux/actions/currentStory'
+import { setChapter, setStory, removeStoryUrl } from '../Redux/actions/currentStory'
 
 // Styles
 import styles from './Styles/ChapterStyles'
@@ -151,6 +151,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setChapter: (chapterId) => { dispatch(setChapter(chapterId)) },
     setStory: (journeyId) => { dispatch(setStory(journeyId)) },
+    removeStoryUrl: () => { dispatch(removeStoryUrl()) },
   }
 }
 
