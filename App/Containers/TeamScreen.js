@@ -81,6 +81,7 @@ class TeamScreen extends React.Component {
       ]
     })
 
+    console.log('pending in teamscreen', pending)
 
     return (
       <View style={styles.container}>

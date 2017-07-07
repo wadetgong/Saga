@@ -8,6 +8,7 @@ import CurrentStoryInfo from '../Components/CurrentStoryInfo'
 import styles from './Styles/UserJourneysStyles'
 import {Colors, Metrics} from '../Themes'
 import firebaseApp from '../Firebase'
+import { setStory } from '../Redux/actions/currentStory'
 
 // const UserJourneys = ({ myJourneys, myStoriesList, jid, name, current, screenProps}) => {
 class UserJourneys extends React.Component {
@@ -25,13 +26,16 @@ class UserJourneys extends React.Component {
 
   listenForChange(ref) {
     this.unsubscribe = ref.on('value', journeys => {
-      this.setState({ journeys: journeys.val() })
+      let journeysObj = journeys.val()
+      this.setState({ journeys: journeysObj })
     })
   }
 
   listCurrentStory() {
-    if(this.state.journeys && this.state.journeys.current){
+    let userJourneys = this.state.journeys
+    if(userJourneys && userJourneys.current) {
       return <CurrentStoryInfo
+        key={Object.keys(this.state.journeys.current)[0]}
         journey={Object.keys(this.state.journeys.current)[0]}
         screenProps={this.props.screenProps}
       />
@@ -92,7 +96,7 @@ class UserJourneys extends React.Component {
           <Text style={styles.headerText}>Current Story</Text>
         </View>
         <View style={{flexDirection: 'row'}}>
-          {this.listCurrentStory()}
+          {this.listCurrentStory(this.props.setStory)}
         </View>
         <View style={styles.pendLabel}>
           <Text style={styles.headerText}>Pending Story Invites</Text>
@@ -125,4 +129,8 @@ const mapState = state => ({
 
 })
 
-export default connect(mapState)(UserJourneys)
+const mapDispatch = dispatch => ({
+  setStory: journeyId => dispatch(setStory(journeyId))
+})
+
+export default connect(mapState, mapDispatch)(UserJourneys)

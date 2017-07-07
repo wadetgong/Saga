@@ -4,15 +4,15 @@ import { Colors, Metrics } from '../../Themes'
 export default StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   videoContainer: {
     flexDirection: 'column',
-    height: '80%',
+    height: '100%',
     alignItems: 'center'
   },
   titleSection: {
-    marginTop: 100,
+    marginTop: '60%',
     alignItems: 'center',
     flexDirection: 'column',
     padding: 15,
@@ -27,15 +27,18 @@ export default StyleSheet.create({
     left: 0,
     bottom: 0,
     right: 0,
-    opacity: 0.5
+    opacity: 0.75,
+    height: '100%',
+    'width': '100%',
+    zIndex: -5
   },
   loginSection: {
+    marginTop: '75%',
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
-    backgroundColor:
-    Colors.background
+    backgroundColor: Colors.transparent,
   },
   footer: {
     height: 30,
@@ -43,6 +46,8 @@ export default StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'row',
     borderTopWidth: 1,
-    borderColor: 'lightgray'
+    borderColor: 'lightgray',
+    backgroundColor: Colors.background,
+    width: '100%'
   }
 })

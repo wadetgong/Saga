@@ -3,7 +3,7 @@ import { View, Text, Image, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import RoundedButton from '../Components/Button/RoundedButton'
 import { Images, Fonts } from '../Themes'
-import TreasureHunt from '../Components/TreasureHunt'
+import SimpleMap from '../Components/SimpleMap'
 
 import styles from './Styles/StoryPreviewStyles'
 
@@ -35,7 +35,7 @@ const StoryPreview = ({ navigation, name }) => {
         </View>
         <View style={styles.mapSection}>
           <Text style={styles.mapSectionHeader}>Starting Point</Text>
-          <TreasureHunt
+          <SimpleMap
             longitude={item.startingLocation.long}
             latitude={item.startingLocation.lat}
             style={{height: 150}}

@@ -70,31 +70,37 @@ class LoginScreen extends React.Component {
   }
 
   render () {
+    //LaoSangamMN
+    //Avenir
+    //OriyaSangamMN
+    //TamilSangamMN
     return (
       <View style={styles.container}>
+        <Image
+          source={require('../Images/citybackground.gif')}
+          resizeMode={"stretch"}
+          style={styles.video}
+        />
         <View style={styles.videoContainer}>
           <View style={styles.titleSection}>
-            <Text style={{fontSize: 44, fontWeight: 'bold'}}>SAGA</Text>
-            <Text style={{fontSize: 16, fontStyle: 'italic'}}>Explore your city - save the day.</Text>
+            <Text style={{fontSize: 48, fontWeight: '500', color: 'white', fontFamily: 'Avenir'}}>SAGA</Text>
+            <Text style={{fontSize: 20, fontStyle: 'italic', color: 'white', fontFamily: 'Avenir', marginTop: -10}}>Explore your city - save the day.</Text>
           </View>
-          <Video
-            // source={require('../Images/somethingmorev2mp4.mp4')}
+         {/* <Video
             source={require('../Images/background.mp4')}
             rate={1.0}
             muted={true}
             resizeMode={"cover"}
             repeat={true}
             style={styles.video}
-          />
-        </View>
-        <View style={{height: '20%'}}>
+          />*/}
           <View style={styles.loginSection}>
             <View>
               <TouchableOpacity onPress={() => this.login()}>
                 <Image
                   style={{width: 300}}
                   resizeMode={'contain'}
-                  source={require('../Images/FB-login.png')}
+                  source={require('../Images/facebook-login.png')}
                 />
               </TouchableOpacity>
             </View>

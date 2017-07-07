@@ -20,7 +20,7 @@ import {
 let width = Dimensions.get('window').width;
 let height = Dimensions.get('window').height;
 Gyroscope.setGyroUpdateInterval(0.1);
-DeviceAngles.setDeviceMotionUpdateInterval(0.1)
+// DeviceAngles.setDeviceMotionUpdateInterval(0.1)
 
  class CameraScreen extends Component {
   static navigationOptions = {
@@ -107,8 +107,8 @@ DeviceAngles.setDeviceMotionUpdateInterval(0.1)
     return (
       <View style={styles.camera}>
         <View style={{position: 'absolute', backgroundColor: 'gray', zIndex: 10, height: 20, marginTop: 50}}>
-          <Text>w: {width} h: {height} rotX: {this.state.rotX.toFixed(4)} rotY: {this.state.rotY.toFixed(4)} rotZ: {this.state.rotZ.toFixed(4)}</Text>
-          {/*<Text>pitch: {this.state.pitch.toFixed(4)} yaw: {this.state.yaw.toFixed(4)} roll: {this.state.roll.toFixed(4)}</Text>*/}
+          {/*<Text>w: {width} h: {height} rotX: {this.state.rotX.toFixed(4)} rotY: {this.state.rotY.toFixed(4)} rotZ: {this.state.rotZ.toFixed(4)}</Text>
+          <Text>pitch: {this.state.pitch.toFixed(4)} yaw: {this.state.yaw.toFixed(4)} roll: {this.state.roll.toFixed(4)}</Text>*/}
         </View>
         <TouchableOpacity onPress={this.props.close} style={styles.modalClose}>
           <Image source={Images.closeButton} style={{height: 12, width: 12}}/>

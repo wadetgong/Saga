@@ -129,7 +129,7 @@ class CurrentStoryInfo extends React.Component {
           journey
           ? (
             <View style={{padding: 5, flex: 1}}>
-              <Text>{journey.story.title} ({journey.creator.name})</Text>
+              <Text style={{fontWeight: 'bold'}}>{journey.story.title}</Text>
               {this.getActiveInactiveInfo(journey)}
             </View>
           )
