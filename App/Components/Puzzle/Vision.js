@@ -1,8 +1,8 @@
 import React from 'react'
-import firebaseApp from '../Firebase'
+import firebaseApp from '../../Firebase'
 import { View, Text, StyleSheet } from 'react-native'
 import Camera from 'react-native-camera'
-import { connect } from ''
+import { connect } from 'react-redux'
 
 // upload image
 import RNFetchBlob from 'react-native-fetch-blob'
@@ -32,7 +32,7 @@ class Vision extends React.Component {
     super ()
     
     this.uid = firebaseApp.auth().currentUser.uid
-    this.takePicture = this.takePicture.bind(this)
+    this.takePictureAndClose = this.takePictureAndClose.bind(this)
     this.uploadImage = this.uploadImage.bind(this)
   }
   
@@ -60,11 +60,12 @@ class Vision extends React.Component {
     })
   }
 
-  takePicture() {
+  takePictureAndClose() {
     const uid = this.uid
     const mime = 'image/jpg'
     const options = {};
-    const { puzzleUrl } = this.props
+    const { puzzleUrl, screenProps} = this.props
+    const { close } = screenProps
 
     const Blob = RNFetchBlob.polyfill.Blob
     window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest
@@ -80,6 +81,9 @@ class Vision extends React.Component {
         return this.uploadImage(data.path, imageRef)
       })
       .catch(err => console.error('Taking Picture in PhotoRecog failed', err));
+      
+    // close modal
+    close()
   }
   
   render () {
@@ -94,7 +98,7 @@ class Vision extends React.Component {
           aspect={Camera.constants.Aspect.fill}>
           <Text 
             style={styles.capture}
-            onPress={() => this.takePicture()}
+            onPress={() => this.takePictureAndClose()}
           >capture</Text>
         </Camera>
       </View>
@@ -102,8 +106,8 @@ class Vision extends React.Component {
   }
 }
 
-const mapState = {
+const mapState = state => ({
   puzzleUrl: state.currentStory.puzzleUrl
-}
+})
 
 export default connect(mapState)(Vision)

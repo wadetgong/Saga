@@ -101,7 +101,7 @@ exports.imageRecognition = functions.storage.object()
     console.log(event)
     const object = event.data
     const file = gcs.bucket(object.bucket).file(object.name);
-       
+    
     // Exit if this is triggered on a file that is not an image.
     if (!object.contentType.startsWith('image/')) {
       console.log('This is not an image.');
@@ -113,14 +113,17 @@ exports.imageRecognition = functions.storage.object()
       console.log('This is a deletion event.');
       return;
     }
-    
-    // if in wrong location
-    
+
+    const puzzleRef = admin.database().ref(file.name);
 
     return vision.detectLandmarks(file)
       .then(data => {
-        console.log('vision', file, object.bucket, data[0])
-        console.log(data[1].responses[0])
+        let landmarkArr = data[0] // array of landmarks
+        let answer = puzzleRef.child('answer').val()
+        const correct = landmarkArr.indexOf(answer) > -1
+        
+        if (correct) return puzzleRef.child('status').set('complete');
+        else return true
       })
-//   .catch(err => console.log('error', err))
+      .catch(err => console.log('error', err))
   })
