@@ -81,7 +81,7 @@ class BreakOpen extends Component {
                 fontSize: 30,
                 top: 40,
                 left: width * .125
-            }}> Code Cracked xD ! </Text>
+            }}> Code Cracked! </Text>
           </CameraScreen>
         </View>
     )

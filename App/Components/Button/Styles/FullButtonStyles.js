@@ -3,7 +3,7 @@ import { Fonts, Colors } from '../../../Themes/'
 
 export default StyleSheet.create({
   button: {
-    marginVertical: 5,
+    marginVertical: 2.5,
     // borderTopColor: Colors.fire,
     // borderBottomColor: Colors.bloodOrange,
     borderTopWidth: 1,

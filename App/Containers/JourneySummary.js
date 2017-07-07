@@ -54,6 +54,8 @@ class JourneySummary extends React.Component {
     const timeDif = new Date(endTime - startTime)
     const timeStr = msToTime(timeDif)
 
+
+    const conclusion = this.props.current && this.props.current.story && this.props.current.story.conclusion || ''
     // const resetAction = NavigationActions.reset({
     //   index: 0,
     //   actions: [
@@ -86,7 +88,7 @@ class JourneySummary extends React.Component {
           </View>
           <View style={styles.conclusionDesc}>
             <Text style={{fontStyle: 'italic'}}>
-              Story conclusion text here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque urna arcu, fermentum id elementum quis, blandit sit amet nisi. Donec mi odio, vestibulum in nunc sed, scelerisque tristique turpis. Integer a ante lobortis, porttitor mauris sit amet, pulvinar ligula. Sed convallis ut ante sit amet lacinia.
+              {conclusion}
             </Text>
           </View>
           <View style={styles.teammateSection}>

@@ -12,7 +12,7 @@ export default StyleSheet.create({
     alignItems: 'center'
   },
   titleSection: {
-    marginTop: '60%',
+    marginTop: '55%',
     alignItems: 'center',
     flexDirection: 'column',
     padding: 15,
@@ -33,7 +33,7 @@ export default StyleSheet.create({
     zIndex: -5
   },
   loginSection: {
-    marginTop: '75%',
+    marginTop: '85%',
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
