@@ -6,6 +6,7 @@ import { Images, Fonts } from '../../Themes'
 import FillBlank from './FillBlank'
 import EnterZone from './EnterZone'
 import TreasureChest from './TreasureChest'
+import Vision from './Vision'
 import TreasureChestKey from './TreasureChestKey'
 import AugmentedClick from './AugmentedClick'
 import RoundedButton from '../Button/RoundedButton'
@@ -108,24 +109,43 @@ class Puzzle extends React.Component {
         return (
           <View>
             <RoundedButton onPress={() => this.openCameraModal()} text={"Search"} />
-            <Modal animationType={"slide"} visible={this.state.showModal} onRequestClose={this.closeCameraModal}>
-              <TreasureChestKey
-                screenProps={{ close: this.closeCameraModal}}
+            <Modal 
+              animationType={"slide"} 
+              visible={this.state.showModal} 
+              onRequestClose={this.closeCameraModal}
+            ><TreasureChestKey
+                screenProps={{ close: this.closeCameraModal }}
                 handleSubmit={this.handleSubmit}
               />
             </Modal>
           </View>
         )
         break;
+      case 'vision':
+        return (
+          <View>
+          <RoundedButton onPress={() => this.openCameraModal()} text={"Snap a Picture"} />
+          <Modal 
+            animationType={'slide'} 
+            visible={this.state.showModal}
+            onRequestClose={this.closeCameraModal}
+          ><Vision
+            screenProps={{ close: this.closeCameraModal }}
+            handleSubmit={this.handleSubmit}
+            />
+          </Modal>
+          </View>
+        )
+        break;
       default:
-      return (<View></View>)
+        return (<View></View>)
     }
   }
 
   render() {
     console.log('Puzzle props, ', this.props)
     return (
-      <View style={{flex: 1,}}>
+      <View style={{flex: 1}}>
         {/*<Text>Status: {this.state.status}</Text>
         <Text>Attempts Allowed: {this.props.puzzle.maxAttempts}</Text>
         <Text>Attempts: {this.state.attempts}</Text>*/}
@@ -150,6 +170,7 @@ export const iconMap = {
   'geoLoc': 'location-pin',
   'clickAR': 'cursor',
   'unlockAR': 'key',
+  'vision': 'eye'
 }
 
 export const puzzleDesc = {
@@ -159,4 +180,5 @@ export const puzzleDesc = {
   'geoLoc': 'You need to be within a geo-fence in order to pass.',
   'clickAR': 'Locate the code and tap rapidly in order to pass.',
   'unlockAR': 'Find the key and unlock the treasure chest in order to pass.',
+  'vision': 'Find and take a picture of the landmark.'
 }

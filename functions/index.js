@@ -118,10 +118,25 @@ exports.imageRecognition = functions.storage.object()
       return;
     }
 
+    // exit if not in /journey
+    if (file.name.indexOf('journey') < 0) {
+      return
+    }
+
+    const puzzleRef = admin.database().ref(file.name);
     return vision.detectLandmarks(file)
       .then(data => {
-        console.log('vision', data[0])
-        console.log(data[1].responses[0])
+        let landmarkArr = data[0] // array of landmarks
+        
+        return puzzleRef.child('answer').once('value').then(snap => {
+          const answer = snap.val()
+          const correct = landmarkArr.indexOf(answer) > -1
+        
+          console.log(landmarkArr, correct, file.name)
+        
+          if (correct) return puzzleRef.child('status').set('Complete');
+          else return true
+        })
       })
-//   .catch(err => console.log('error', err))
+      .catch(err => console.log('error in image recognition cloud function', err))
   })

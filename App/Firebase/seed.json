@@ -180,6 +180,16 @@
           },
           "maxAttempts" : 4,
           "puzzleType" : "fillBlank"
+        }, {
+          "answer" : "Merchandise Mart",
+          "description" : "When it opened in 1930, it was the largest building in the world.",
+          "id" : 2,
+          "location" : {
+            "lat" : 41.8885,
+            "long" : 87.6354
+          },
+          "maxAttempts" : 5,
+          "puzzleType" : "vision"
         } ]
       }, {
         "description" : "After making initial contact, the Dark Knight hands you a secure transponder to communicate securely.",
@@ -199,6 +209,14 @@
           "location" : false,
           "maxAttempts" : 4,
           "puzzleType" : "clickAR"
+        }, {
+          "answer" : "pass",
+          "description" : "",
+          "id" : 3,
+          "location" : false,
+          "maxAttempts" : 4,
+          "puzzleType" : "unlockAR"
+
         } ]
       }, {
         "description" : "waha",
