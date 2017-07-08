@@ -1,82 +1,395 @@
 {
   "indexes" : {
-    "journey" : 20
+    "journey" : 34
   },
   "journey" : {
-    "Bob1" : {
-      "failedAttempts" : 0,
-      "hintsLeft" : 1,
-      "status" : {
-        "text" : "Completed",
-        "timestamp" : ""
+    "ZHEIptD0pXhkTxXJDojup0mxXNk230" : {
+      "creator" : {
+        "id" : "rob",
+        "name" : "Rob Tong"
       },
-      "story" : "batman",
+      "failedAttempts" : 0,
+      "hintsLeft" : 10,
+      "id" : "ZHEIptD0pXhkTxXJDojup0mxXNk230",
+      "status" : {
+        "text" : "inactive",
+        "timestamp" : 1499466045933
+      },
+      "story" : {
+        "allowedFails" : 6,
+        "allowedHints" : 4,
+        "chapters" : [ {
+          "description" : "waha",
+          "enabled" : true,
+          "id" : 1,
+          "puzzles" : [ {
+            "answer" : "pass",
+            "description" : "",
+            "id" : 1,
+            "location" : {
+              "lat" : 41.8714,
+              "long" : -87.6224
+            },
+            "maxAttempts" : 4,
+            "puzzleType" : "fillBlank"
+          } ]
+        }, {
+          "description" : "waha",
+          "id" : 2,
+          "puzzles" : [ {
+            "answer" : "pass",
+            "description" : "",
+            "id" : 1,
+            "location" : false,
+            "maxAttempts" : 4,
+            "puzzleType" : "fillBlank"
+          } ]
+        }, {
+          "description" : "waha",
+          "id" : 3,
+          "puzzles" : [ {
+            "answer" : "pass",
+            "description" : "",
+            "id" : 1,
+            "location" : false,
+            "maxAttempts" : 4,
+            "puzzleType" : "fillBlank"
+          } ]
+        }, {
+          "description" : "waha",
+          "id" : 4,
+          "puzzles" : [ {
+            "answer" : "pass",
+            "description" : "",
+            "id" : 1,
+            "location" : {
+              "lat" : 41.8713,
+              "long" : -87.6221
+            },
+            "maxAttempts" : 4,
+            "puzzleType" : "fillBlank"
+          } ]
+        } ],
+        "description" : "Steal stuff from museums. Steal stuff from museums. Steal stuff from museums.",
+        "estimatedTime" : 3.5,
+        "id" : "artThief",
+        "nChapters" : 4,
+        "name" : "artThief",
+        "shortDescription" : "A thief in the night has ransacked the Art Institute!",
+        "startingLocation" : {
+          "lat" : 41.8796,
+          "long" : -87.6237
+        },
+        "title" : "Art Thief"
+      },
       "team" : {
-        "Bob" : true,
-        "Monica" : true,
-        "Sarah" : true,
-        "Steve" : true,
-        "Wade" : true
+        "list" : {
+          "ZHEIptD0pXhkTxXJDojup0mxXNk2" : true
+        },
+        "pending" : {
+          "ehacinom" : true
+        }
       },
       "times" : {
-        "end" : "",
-        "start" : ""
+        "start" : 1499466045933
       }
     },
-    "Justin0" : {
-      "failedAttempts" : 0,
-      "hintsLeft" : 1,
-      "status" : {
-        "text" : "Completed",
-        "timestamp" : ""
+    "dqG6qVu1ArO4HzRJF0ym2ErlM9d226" : {
+      "creator" : {
+        "id" : "dqG6qVu1ArO4HzRJF0ym2ErlM9d2",
+        "name" : "Wade Gong"
       },
-      "story" : "artThief",
+      "failedAttempts" : 0,
+      "hintsLeft" : 10,
+      "id" : "dqG6qVu1ArO4HzRJF0ym2ErlM9d226",
+      "status" : {
+        "text" : "active",
+        "timestamp" : 1499462924588
+      },
+      "story" : {
+        "allowedFails" : 2,
+        "allowedHints" : 10,
+        "chapters" : [ {
+          "description" : "Your mission begins with a rendezvous at a secure location where your team and Batman can communicate. Your current line of communication is not secure; Batman directs you to a secure waypoint via the following encrypted message.",
+          "enabled" : true,
+          "id" : 1,
+          "puzzles" : [ {
+            "answer" : "pass",
+            "description" : "Where water wacks land is where I'm near; meet me when the lake crosses the well - you'll find me here.",
+            "findImage" : "transponder",
+            "id" : 1,
+            "location" : {
+              "lat" : 41.88573,
+              "long" : -87.633939
+            },
+            "maxAttempts" : 4,
+            "puzzleType" : "fillBlank",
+            "status" : "Complete"
+          } ],
+          "status" : "Complete"
+        }, {
+          "description" : "Upon reaching the designated rendezvous point, Batman instructs you to identify and collect a remote transponder to maintain a secure line of communication with Batman and to intercept radio transmissions from Riddler’s team.",
+          "enabled" : true,
+          "id" : 2,
+          "puzzles" : [ {
+            "answer" : "pass",
+            "description" : "Locate and collect the remote transponder device.",
+            "findImage" : "transponder",
+            "id" : 1,
+            "location" : false,
+            "maxAttempts" : 4,
+            "puzzleType" : "simpleFind",
+            "status" : "Complete"
+          }, {
+            "answer" : "pass",
+            "description" : "Upon configuring the transponder, you intercept your first message from one of Riddler's henchman. Unfortunately, the message is encrypted. Hack and decode the message!",
+            "id" : 2,
+            "location" : false,
+            "maxAttempts" : 4,
+            "puzzleType" : "clickAR",
+            "status" : "Complete"
+          }, {
+            "answer" : "pass",
+            "description" : "The decoded message reveals sensitive information about a money transfer to finance Riddler's plot. Intercept riddler's team, seize the cash, and halt Riddler's financing!",
+            "id" : 3,
+            "location" : false,
+            "maxAttempts" : 3,
+            "puzzleType" : "unlockAR",
+            "status" : "Complete"
+          } ],
+          "status" : "Complete"
+        }, {
+          "description" : "With financing dried up, Riddler’s team is in disarray! Operations have become sloppy - your team intercepts a message directly from Riddler himself. Identify Riddler’s location and stop his master plan!",
+          "enabled" : true,
+          "id" : 3,
+          "puzzles" : [ {
+            "answer" : "Merchandise Mart",
+            "description" : "When it opened in 1930, it was the largest building in the world. Now it will be the source of Gotham's demise!",
+            "id" : 1,
+            "location" : {
+              "lat" : 41.8885,
+              "long" : 87.6354
+            },
+            "maxAttempts" : 5,
+            "puzzleType" : "vision",
+            "status" : "Complete"
+          } ],
+          "status" : "Complete"
+        } ],
+        "conclusion" : "Minutes later, you see the dark figure of the Dark Knight propel through the lobby windows of Merchandise Mart’s grand entrance, along with a handcuffed Riddler. As Gotham PD patrol cars arrive at the scene, you hear the distant whip of a grappling hook, as the Dark Knight escapes into the quiet night.",
+        "description" : "The Riddler is loose on Gotham City! A toxin has been planted in the city's water supply, and the Dark Knight needs your help. He's enlisted you and your team to scour the city for clues and identify the source of the toxin. Stay vigilant - one missed clue can spell your demise. But don't linger - the clock is ticking!",
+        "estimatedTime" : 3.5,
+        "id" : "batman",
+        "nChapters" : 3,
+        "name" : "batman",
+        "shortDescription" : "The Riddler is loose on Gotham City! A toxin has been planted in the city's water supply, and the Dark Knight needs your help.",
+        "startingLocation" : {
+          "lat" : 41.8885,
+          "long" : -87.6354
+        },
+        "status" : "Complete",
+        "title" : "Riddle Me This"
+      },
       "team" : {
-        "Justin" : true,
-        "Monica" : true,
-        "Steve" : true,
-        "Wade" : true
+        "list" : {
+          "dqG6qVu1ArO4HzRJF0ym2ErlM9d2" : true
+        }
       },
       "times" : {
-        "end" : "",
-        "start" : ""
+        "end" : 1499464434295,
+        "start" : 1499462931814
       }
     },
-    "Monica3" : {
-      "failedAttempts" : 0,
-      "hintsLeft" : 1,
-      "points" : [ null, 5, 15 ],
-      "solved" : [ null, [ null, true ], [ null, false ] ],
-      "status" : {
-        "text" : "Current",
-        "timestamp" : ""
+    "dqG6qVu1ArO4HzRJF0ym2ErlM9d227" : {
+      "creator" : {
+        "id" : "dqG6qVu1ArO4HzRJF0ym2ErlM9d2",
+        "name" : "Wade Gong"
       },
-      "story" : "woodElves",
+      "failedAttempts" : 0,
+      "hintsLeft" : 10,
+      "id" : "dqG6qVu1ArO4HzRJF0ym2ErlM9d227",
+      "status" : {
+        "text" : "inactive",
+        "timestamp" : 1499464937130
+      },
+      "story" : {
+        "allowedFails" : 10,
+        "allowedHints" : 5,
+        "chapters" : [ {
+          "description" : "something",
+          "enabled" : true,
+          "id" : 1,
+          "puzzles" : [ {
+            "answer" : "pass",
+            "description" : "something",
+            "id" : 1,
+            "location" : false,
+            "maxAttempts" : 5,
+            "puzzleType" : "fillBlank"
+          } ]
+        } ],
+        "description" : "Ragnora's reign of terror heads east towards Chicago! Assemble your team to defend your town from her fiery destruction!",
+        "estimatedTime" : 2.5,
+        "id" : "dragon",
+        "nChapters" : 1,
+        "name" : "dragon",
+        "shortDescription" : "Ragnora's reign of terror heads east towards Chicago! Assemble a team to defend your town from her fiery destruction!",
+        "startingLocation" : {
+          "lat" : 41.8845,
+          "long" : -87.6279
+        },
+        "title" : "Ragnora's Roost"
+      },
       "team" : {
-        "Justin" : true,
-        "Monica" : true,
-        "Wade" : true
+        "list" : {
+          "dqG6qVu1ArO4HzRJF0ym2ErlM9d2" : true
+        }
       },
       "times" : {
-        "end" : "",
-        "start" : ""
+        "start" : 1499464937130
       }
     },
-    "Sarah2" : {
-      "failedAttempts" : 0,
-      "hintsLeft" : 1,
-      "status" : {
-        "text" : "Completed",
-        "timestamp" : ""
+    "dqG6qVu1ArO4HzRJF0ym2ErlM9d229" : {
+      "creator" : {
+        "id" : "dqG6qVu1ArO4HzRJF0ym2ErlM9d2",
+        "name" : "Wade Gong"
       },
-      "story" : "woodElves",
+      "failedAttempts" : 0,
+      "hintsLeft" : 10,
+      "id" : "dqG6qVu1ArO4HzRJF0ym2ErlM9d229",
+      "status" : {
+        "text" : "inactive",
+        "timestamp" : 1499465279555
+      },
+      "story" : {
+        "allowedFails" : 10,
+        "allowedHints" : 4,
+        "chapters" : [ {
+          "description" : "something",
+          "enabled" : true,
+          "id" : 1,
+          "puzzles" : [ {
+            "answer" : "pass",
+            "description" : "",
+            "id" : 1,
+            "location" : false,
+            "maxAttempts" : 4,
+            "puzzleType" : "fillBlank"
+          } ]
+        } ],
+        "description" : "The city port of Chicago is in danger! The devious pirate Captain Dagger has seized control of major parts of the river front. You and your team must devise a way to dismantle Dagger's stronghold on the city!",
+        "estimatedTime" : 2,
+        "id" : "pirate",
+        "nChapters" : 1,
+        "name" : "pirate",
+        "shortDescription" : "The devious pirate Captain Dagger has seized Chicago's major river ports! Devise a way to dismantle Dagger's stronghold!",
+        "startingLocation" : {
+          "lat" : 41.8915,
+          "long" : -87.61275
+        },
+        "title" : "Dagger's Descent"
+      },
       "team" : {
-        "Bob" : true,
-        "Sarah" : true
+        "list" : {
+          "dqG6qVu1ArO4HzRJF0ym2ErlM9d2" : true
+        }
       },
       "times" : {
-        "end" : "",
-        "start" : ""
+        "start" : 1499465279555
+      }
+    },
+    "dqG6qVu1ArO4HzRJF0ym2ErlM9d232" : {
+      "creator" : {
+        "id" : "jacobss",
+        "name" : "Ainsley Faux"
+      },
+      "failedAttempts" : 0,
+      "hintsLeft" : 10,
+      "id" : "dqG6qVu1ArO4HzRJF0ym2ErlM9d232",
+      "status" : {
+        "text" : "inactive",
+        "timestamp" : 1499537006094
+      },
+      "story" : {
+        "allowedFails" : 6,
+        "allowedHints" : 4,
+        "chapters" : [ {
+          "description" : "waha",
+          "enabled" : true,
+          "id" : 1,
+          "puzzles" : [ {
+            "answer" : "pass",
+            "description" : "",
+            "id" : 1,
+            "location" : {
+              "lat" : 41.8714,
+              "long" : -87.6224
+            },
+            "maxAttempts" : 4,
+            "puzzleType" : "fillBlank"
+          } ]
+        }, {
+          "description" : "waha",
+          "id" : 2,
+          "puzzles" : [ {
+            "answer" : "pass",
+            "description" : "",
+            "id" : 1,
+            "location" : false,
+            "maxAttempts" : 4,
+            "puzzleType" : "fillBlank"
+          } ]
+        }, {
+          "description" : "waha",
+          "id" : 3,
+          "puzzles" : [ {
+            "answer" : "pass",
+            "description" : "",
+            "id" : 1,
+            "location" : false,
+            "maxAttempts" : 4,
+            "puzzleType" : "fillBlank"
+          } ]
+        }, {
+          "description" : "waha",
+          "id" : 4,
+          "puzzles" : [ {
+            "answer" : "pass",
+            "description" : "",
+            "id" : 1,
+            "location" : {
+              "lat" : 41.8713,
+              "long" : -87.6221
+            },
+            "maxAttempts" : 4,
+            "puzzleType" : "fillBlank"
+          } ]
+        } ],
+        "description" : "Steal stuff from museums. Steal stuff from museums. Steal stuff from museums.",
+        "estimatedTime" : 3.5,
+        "id" : "artThief",
+        "nChapters" : 4,
+        "name" : "artThief",
+        "shortDescription" : "A thief in the night has ransacked the Art Institute!",
+        "startingLocation" : {
+          "lat" : 41.8796,
+          "long" : -87.6237
+        },
+        "title" : "Art Thief"
+      },
+      "team" : {
+        "list" : {
+          "jacobss" : true
+        },
+        "pending" : {
+          "ben" : true,
+          "charles" : true,
+          "connie" : true,
+          "dqG6qVu1ArO4HzRJF0ym2ErlM9d2" : true
+        }
+      },
+      "times" : {
+        "start" : 1499537006094
       }
     }
   },
@@ -159,7 +472,7 @@
       "estimatedTime" : 3.5,
       "id" : "artThief",
       "nChapters" : 4,
-      "shortDescription" : "A thief in the night has ransacked the Art Institute! Recruit a security team to defend against the next attack.",
+      "shortDescription" : "A thief in the night has ransacked the Art Institute!",
       "startingLocation" : {
         "lat" : 41.8796,
         "long" : -87.6237
@@ -312,7 +625,7 @@
       "estimatedTime" : 2,
       "id" : "pirate",
       "nChapters" : 1,
-      "shortDescription" : "\"The devious pirate Captain Dagger has seized Chicago's major river ports! Devise a way to dismantle Dagger's stronghold!",
+      "shortDescription" : "The devious pirate Captain Dagger has seized Chicago's major river ports! Devise a way to dismantle Dagger's stronghold!",
       "startingLocation" : {
         "lat" : 41.8915,
         "long" : -87.61275
@@ -370,12 +683,11 @@
       "fb_thumbnail" : "https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/18301572_1255980224500833_2431197111270859757_n.jpg?oh=828e3e4e6f596573b1ff09a44bcd362e&oe=5A08A259",
       "friends" : {
         "list" : false,
-        "received" : false,
         "sent" : false
       },
       "id" : "KmlFLDOGvMex7BzKLjp7Xom0OHj1",
       "name" : "Justin Gehr",
-      "profilePicture" : "https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/18301572_1255980224500833_2431197111270859757_n.jpg?oh=828e3e4e6f596573b1ff09a44bcd362e&oe=5A08A259",
+      "profilePicture" : "https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAqWAAAAJDRkNzRjMTcxLWRiMjAtNGI4Mi1hNGZhLTRmZDliNDQ0YTgzZA.jpg",
       "username" : ""
     },
     "ZHEIptD0pXhkTxXJDojup0mxXNk2" : {
@@ -387,33 +699,131 @@
         }
       },
       "id" : "ZHEIptD0pXhkTxXJDojup0mxXNk2",
-      "journeys" : false,
       "name" : "Monica He",
-      "profilePicture" : "https://scontent.xx.fbcdn.net/v/t1.0-1/p100x100/11210392_10155381783731632_799712498863928008_n.jpg?oh=22b6b9cca81aaadd10c94f947ec82562&oe=59D02930",
+      "profilePicture" : "https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAArsAAAAJDY4Y2M4OWY1LTgwZWQtNDc0OC1iYTcwLTVkMDNmODBjMmU5Nw.jpg",
       "username" : ""
+    },
+    "ben" : {
+      "email" : "ben@fullstackacademy.com",
+      "friends" : {
+        "list" : {
+          "dqG6qVu1ArO4HzRJF0ym2ErlM9d2" : true
+        }
+      },
+      "id" : "ben",
+      "journeys" : {
+        "a" : true,
+        "b" : true,
+        "c" : true,
+        "d" : true,
+        "list" : {
+          "a" : true,
+          "b" : true,
+          "c" : true,
+          "d" : true
+        },
+        "pending" : {
+          "dqG6qVu1ArO4HzRJF0ym2ErlM9d232" : "artThief"
+        }
+      },
+      "name" : "Ben Neiswander",
+      "profilePicture" : "https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAWsAAAAJGJhNzQ3ZDZmLWJhNTUtNGJjMS1hY2I0LTQ3Zjg2YTJkOThjOQ.jpg",
+      "username" : "ben"
+    },
+    "bryan" : {
+      "email" : "bkao4@gmail.com",
+      "id" : "bryan",
+      "name" : "Bryan Kao",
+      "profilePicture" : "https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAqEAAAAJDYxYTYxYTQzLTI4ZDktNDE1Ni05ODQ1LTUxM2QxYjAzYTBhZg.jpg",
+      "username" : "bryan"
+    },
+    "charles" : {
+      "email" : "charles.long333@yahoo.com",
+      "friends" : {
+        "list" : {
+          "dqG6qVu1ArO4HzRJF0ym2ErlM9d2" : true
+        }
+      },
+      "id" : "charles",
+      "journeys" : {
+        "list" : {
+          "a" : true
+        },
+        "pending" : {
+          "dqG6qVu1ArO4HzRJF0ym2ErlM9d232" : "artThief"
+        }
+      },
+      "name" : "Charles Long",
+      "profilePicture" : "https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAr9AAAAJDBlMWViMDg0LTdkMmQtNGUyYi05MWU1LWNmM2JhZGU3NGJiOA.jpg",
+      "username" : "charles"
+    },
+    "collin" : {
+      "email" : "collinmd30@gmail.com",
+      "id" : "collin",
+      "name" : "Collin Miller",
+      "profilePicture" : "https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/5/005/097/310/2b89e88.jpg",
+      "username" : "collin"
+    },
+    "connie" : {
+      "email" : "connie@fullstackacademy.com",
+      "friends" : {
+        "list" : {
+          "dqG6qVu1ArO4HzRJF0ym2ErlM9d2" : true
+        }
+      },
+      "id" : "connie",
+      "journeys" : {
+        "a" : true,
+        "b" : true,
+        "c" : true,
+        "list" : {
+          "a" : true,
+          "b" : true,
+          "c" : true,
+          "d" : true
+        },
+        "pending" : {
+          "dqG6qVu1ArO4HzRJF0ym2ErlM9d232" : "artThief"
+        }
+      },
+      "name" : "Connie Lee",
+      "profilePicture" : "https://cloud.fullstackacademy.com/Connie-Lee.jpg?mtime=20170205093713",
+      "username" : "connie"
     },
     "dqG6qVu1ArO4HzRJF0ym2ErlM9d2" : {
       "email" : "wadetgong@gmail.com",
       "fb_thumbnail" : "https://scontent.xx.fbcdn.net/v/t1.0-1/s100x100/1916513_3036695367700_7204003449187997100_n.jpg?oh=658679fa0522f6a3401ab544fbff40cd&oe=59D5CAFE",
       "friends" : {
         "list" : {
-          "ehacinom" : true,
-          "gehrj" : true,
+          "ben" : true,
+          "connie" : true,
           "hurlabob" : true,
+          "jacobss" : true,
+          "nick" : true,
+          "rob" : true,
+          "wadetgong" : true,
+          "will" : true
+        },
+        "received" : {
+          "bryan" : true,
           "snowwhite" : true
         }
       },
       "id" : "dqG6qVu1ArO4HzRJF0ym2ErlM9d2",
+      "journeys" : {
+        "pending" : {
+          "dqG6qVu1ArO4HzRJF0ym2ErlM9d232" : true
+        }
+      },
       "name" : "Wade Gong",
-      "profilePicture" : "https://scontent.xx.fbcdn.net/v/t1.0-1/s100x100/1916513_3036695367700_7204003449187997100_n.jpg?oh=658679fa0522f6a3401ab544fbff40cd&oe=59D5CAFE",
+      "profilePicture" : "https://avatars1.githubusercontent.com/u/7991556?v=3&s=460",
       "username" : ""
     },
     "ehacinom" : {
-      "email" : "monica@gmail.com",
+      "email" : "amcpike0113@gmail.com",
       "friends" : {
         "list" : {
           "ZHEIptD0pXhkTxXJDojup0mxXNk2" : true,
-          "dqG6qVu1ArO4HzRJF0ym2ErlM9d2" : true,
           "gehrj" : true
         },
         "received" : {
@@ -427,14 +837,17 @@
         "Monica3" : "woodElves",
         "current" : {
           "dqG6qVu1ArO4HzRJF0ym2ErlM9d21" : "batman"
+        },
+        "pending" : {
+          "ZHEIptD0pXhkTxXJDojup0mxXNk230" : "artThief"
         }
       },
-      "name" : "Monica He",
-      "profilePicture" : "https://avatars2.githubusercontent.com/u/8092859?v=3&s=400",
+      "name" : "Andrea McPike",
+      "profilePicture" : "https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAdeAAAAJDQ1NTk3MmVhLWJkYjMtNGI1ZC1iYjY4LTg4OWUzNDBlMDVjOQ.jpg",
       "username" : "ehacinom"
     },
     "gehrj" : {
-      "email" : "justin@gmail.com",
+      "email" : "pmorim1@gmail.com",
       "friends" : {
         "list" : {
           "dqG6qVu1ArO4HzRJF0ym2ErlM9d2" : true,
@@ -448,12 +861,12 @@
         "Justin0" : "artThief",
         "Monica3" : "woodElves"
       },
-      "name" : "Justin Gehr",
-      "profilePicture" : "https://avatars1.githubusercontent.com/u/26335236?v=3&s=400",
+      "name" : "Paul Morimoto",
+      "profilePicture" : "https://scontent.fsnc1-1.fna.fbcdn.net/v/t1.0-1/p320x320/11693946_10153367606566343_2716573347927551486_n.jpg?oh=616d2276e266e398a76e27260f53d7e4&oe=59FE96B4",
       "username" : "gehrj"
     },
     "hurlabob" : {
-      "email" : "bob@gmail.com",
+      "email" : "snigdhakumar5@gmail.com",
       "friends" : {
         "list" : {
           "dqG6qVu1ArO4HzRJF0ym2ErlM9d2" : true,
@@ -467,12 +880,12 @@
         "Bob1" : "batman",
         "Sarah2" : "woodElves"
       },
-      "name" : "Bob Smith",
-      "profilePicture" : "https://avatars3.githubusercontent.com/u/7991556?v=3&s=400",
+      "name" : "Snigdha Kumar",
+      "profilePicture" : "https://qph.ec.quoracdn.net/main-thumb-51476126-200-adialqeulliirtydnvogkdcayrmfiesz.jpeg",
       "username" : "hurlabob"
     },
     "jacobss" : {
-      "email" : "sarah@gmail.com",
+      "email" : "ainsley.faux1@yahoo.com",
       "friends" : {
         "list" : {
           "hurlabob" : true,
@@ -485,12 +898,56 @@
         "Bob1" : "batman",
         "Sarah2" : "woodElves"
       },
-      "name" : "Sarah Jacobs",
-      "profilePicture" : "https://avatars3.githubusercontent.com/u/7991556?v=3&s=400",
+      "name" : "Ainsley Faux",
+      "profilePicture" : "https://scontent.fsnc1-1.fna.fbcdn.net/v/t1.0-1/p320x320/16999048_10154152604112373_2401729906071176434_n.jpg?oh=384c1fc1ce3bfd1afe6b54eb97f72370&oe=59FE0997",
       "username" : "jacobss"
     },
+    "jake" : {
+      "email" : "reganj1@gmail.com",
+      "friends" : {
+        "list" : {
+          "dqG6qVu1ArO4HzRJF0ym2ErlM9d2" : true
+        }
+      },
+      "id" : "jake",
+      "journeys" : {
+        "a" : true,
+        "b" : true,
+        "c" : true
+      },
+      "name" : "Jake Regan",
+      "profilePicture" : "https://avatars3.githubusercontent.com/u/21201820?v=3&s=400",
+      "username" : "jake"
+    },
+    "nick" : {
+      "email" : "ndrane1@fullstackacademy.com",
+      "id" : "nick",
+      "name" : "Nick Drane",
+      "profilePicture" : "https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAQIAAAAJDVkYjZmNjQ3LTNjOTAtNDdhMi1iYjU2LTRhYmY2ZjQ1N2Y3ZQ.jpg",
+      "username" : "nick"
+    },
+    "rob" : {
+      "email" : "rob.tong@gmail.com",
+      "friends" : {
+        "list" : {
+          "dqG6qVu1ArO4HzRJF0ym2ErlM9d2" : true
+        }
+      },
+      "id" : "rob",
+      "journeys" : {
+        "a" : true,
+        "b" : true,
+        "c" : true,
+        "current" : {
+          "ZHEIptD0pXhkTxXJDojup0mxXNk230" : "artThief"
+        }
+      },
+      "name" : "Rob Tong",
+      "profilePicture" : "https://avatars0.githubusercontent.com/u/23218836?v=3&s=400",
+      "username" : "rob"
+    },
     "snowwhite" : {
-      "email" : "steve@gmail.com",
+      "email" : "jessicachan4@gmail.com",
       "friends" : {
         "list" : {
           "dqG6qVu1ArO4HzRJF0ym2ErlM9d2" : true,
@@ -506,12 +963,12 @@
         "Bob1" : "batman",
         "Justin0" : "artThief"
       },
-      "name" : "Steve White",
-      "profilePicture" : "https://avatars3.githubusercontent.com/u/7991556?v=3&s=400",
+      "name" : "Jessica Chan",
+      "profilePicture" : "https://nursing.case.edu/nursing/media/nursing/images/people/jessica_chan.jpg",
       "username" : "snowwhite"
     },
     "wadetgong" : {
-      "email" : "wade@gmail.com",
+      "email" : "kimshien@gmail.com",
       "friends" : {
         "list" : {
           "gehrj" : true,
@@ -527,9 +984,16 @@
         "Justin0" : "artThief",
         "Monica3" : "woodElves"
       },
-      "name" : "Wade Gong",
-      "profilePicture" : "https://avatars3.githubusercontent.com/u/7991556?v=3&s=400",
+      "name" : "Shi En Kim",
+      "profilePicture" : "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/1/005/01e/35b/3c5749f.jpg",
       "username" : "wadetgong"
+    },
+    "will" : {
+      "email" : "mccrackenw3@gmail.com",
+      "id" : "will",
+      "name" : "William McCracken",
+      "profilePicture" : "https://avatars2.githubusercontent.com/u/23031274?v=3&s=400",
+      "username" : "will"
     }
   }
 }

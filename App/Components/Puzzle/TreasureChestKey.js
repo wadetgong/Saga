@@ -108,7 +108,7 @@ class TreasureChest extends Component {
                 resizeMode='contain'
                 style={[styles.key, styles.row, {
                     top: 100 + this.props.yOffset,
-                    left: 500 + this.props.xOffset,
+                    left: 100 + this.props.xOffset,
                 }]}
               />
             </TouchableHighlight>

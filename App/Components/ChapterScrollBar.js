@@ -23,7 +23,7 @@ const ChapterScrollBar = ({chapters, handleClick, selectedChap}) => {
                 disabled={!chapter.enabled}
               >
                 <View style={[styles.chapterButton, buttonStyle]}>
-                  <Text style={{color: getTextColor(chapter)}}>{chapter.id}</Text>
+                  <Text style={{color: getTextColor(chapter, selectedChap)}}>{chapter.id}</Text>
                 </View>
               </TouchableOpacity>
             )})
@@ -37,9 +37,10 @@ const ChapterScrollBar = ({chapters, handleClick, selectedChap}) => {
 const getBackgroundStyle = (chapter, selectedChap) => {
   if(chapter.id === selectedChap) {
     return {
-      borderColor: '#16a916',
-      borderColor: Colors.fire,
-      backgroundColor: Colors.buttonActive
+      // borderColor: Colors.fire,
+      // backgroundColor: Colors.buttonActive
+      borderColor: '#111111',
+      backgroundColor: '#444444'
     }
   }
   else if (!chapter.enabled) {
@@ -51,11 +52,12 @@ const getBackgroundStyle = (chapter, selectedChap) => {
   else {
     let background = chapter.status === 'Complete'
     ? {
-      borderColor: 'green',
+      borderColor: '#16a916',
       backgroundColor: 'white'//'lightgreen'
     }
     : {
-      borderColor: Colors.fire,
+      // borderColor: Colors.fire,
+      borderColor: '#444444',
       backgroundColor: 'white'
     }
     return background
@@ -63,14 +65,16 @@ const getBackgroundStyle = (chapter, selectedChap) => {
   }
 }
 
-const getTextColor = (chapter) => {
+const getTextColor = (chapter, selectedChap) => {
   if(!chapter.enabled) {
     return 'gray'
   }
   // if(chapter.status === 'Complete') {
   //   return 'green'
   // }
-  return Colors.text;
+  if(chapter.id === selectedChap)
+    return 'white';
+  return Colors.text
 }
 
 export default ChapterScrollBar

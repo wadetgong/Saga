@@ -11,13 +11,13 @@ export default StyleSheet.create({
   },
   storyButton: {
     borderRadius: 3,
-    paddingHorizontal: 25,
+    paddingHorizontal: 15,
     paddingVertical: 5,
     backgroundColor: Colors.buttonStandard,
     justifyContent: 'center',
     alignItems: 'center',
     margin: 5,
-    width: '60%'
+    width: '45%'
   },
   declineButton: {
     borderRadius: 3,
