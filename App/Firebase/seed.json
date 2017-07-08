@@ -1,6 +1,6 @@
 {
   "indexes" : {
-    "journey" : 34
+    "journey" : 35
   },
   "journey" : {
     "ZHEIptD0pXhkTxXJDojup0mxXNk230" : {
@@ -468,7 +468,7 @@
           "puzzleType" : "fillBlank"
         } ]
       } ],
-      "description" : "Steal stuff from museums. Steal stuff from museums. Steal stuff from museums.",
+      "description" : "A thief in the night has ransacked the Art Institute!",
       "estimatedTime" : 3.5,
       "id" : "artThief",
       "nChapters" : 4,
@@ -665,7 +665,7 @@
           "puzzleType" : "fillBlank"
         } ]
       } ],
-      "description" : "Fairies are everywhere",
+      "description" : "Fairies are everywhere! Save the kingdom from Oberon's fae maliciousness!",
       "estimatedTime" : 1.5,
       "id" : "woodElves",
       "nChapters" : 2,

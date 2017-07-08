@@ -3,6 +3,8 @@ import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native'
 import { Images, Fonts, Colors } from '../Themes'
 import firebaseApp from '../Firebase'
 
+import Icon from 'react-native-vector-icons/SimpleLineIcons'
+
 import styles from './Styles/CurrentStoryInfoStyles'
 
 class CurrentStoryInfo extends React.Component {
@@ -87,7 +89,7 @@ class CurrentStoryInfo extends React.Component {
     if(journey.status.text === 'inactive') {
       return (
         <View>
-          <Text>Status: Waiting for host to start</Text>
+          <Text style={{fontSize: 12}}>Status: Waiting for host to start</Text>
           <View>
             <TouchableOpacity
             onPress={() => {this.declineTeam(this.props.journey)}}
@@ -101,7 +103,7 @@ class CurrentStoryInfo extends React.Component {
     }
     return (
       <View>
-        <Text>Status: Active</Text>
+        <Text style={{fontSize: 12}}>Status: Active</Text>
         <View>
           <TouchableOpacity
           onPress={() => {this.props.screenProps.rootNavigation.navigate('CurrentStory')}}
@@ -131,7 +133,9 @@ class CurrentStoryInfo extends React.Component {
           journey
           ? (
             <View style={{padding: 5, flex: 1}}>
-              <Text style={{fontWeight: 'bold'}}>{journey.story.title}</Text>
+              <Text style={{fontWeight: '600', fontSize: 15}}>
+                {journey.story.title}
+              </Text>
               {this.getActiveInactiveInfo(journey)}
             </View>
           )

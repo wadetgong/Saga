@@ -91,10 +91,9 @@ Gyroscope.setGyroUpdateInterval(0.1);
     this.createAr();
   }
   createAr() {
-    // let startingPosX = Math.random() * width * (Math.random() > 0.5 ? 1 : 1) + (width * 0.5);
-    // let startingPosY = Math.random() * height * .75 * (Math.random() > 0.75 ? 1 : 1) + (height * .8);
-    let startingPosX =150
-    let startingPosY = 100
+    let startingPosX = 100 + 150 * (Math.random() > 0.5 ? 1 : -1)
+    //let startingPosX = 100 + 400 * (Math.random() > 0.5 ? 1 : -1)
+    let startingPosY = 125 + 25 * (Math.random() > 0.5 ? 1 : -1)
 
     this.props.addArObject({
       startingPosX: startingPosX,
