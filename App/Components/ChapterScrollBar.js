@@ -8,7 +8,7 @@ const ChapterScrollBar = ({chapters, handleClick, selectedChap}) => {
   return (
     <View style={styles.scrollContainer}>
       <ScrollView
-        style={{height: 50, }}
+        style={{height: 50, backgroundColor: '#FAFAFA'}}
         centerContent={true}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
@@ -36,6 +36,12 @@ const ChapterScrollBar = ({chapters, handleClick, selectedChap}) => {
 
 const getBackgroundStyle = (chapter, selectedChap) => {
   if(chapter.id === selectedChap) {
+    if(chapter.status==='Complete'){
+      return {
+        borderColor: '#66CF66',
+        backgroundColor: '#66CF66'
+      }
+    }
     return {
       // borderColor: Colors.fire,
       // backgroundColor: Colors.buttonActive
