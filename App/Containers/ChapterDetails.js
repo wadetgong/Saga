@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Modal } from 'react-native'
+import { View, Text, Modal, LayoutAnimation } from 'react-native'
 import { connect } from 'react-redux'
 import FullButton from '../Components/Button/FullButton'
 import PuzzleInfo from '../Containers/PuzzleInfo'
@@ -21,6 +21,8 @@ class ChapterDetails extends React.Component {
     this.closePuzzle = this.closePuzzle.bind(this)
     if(this.props.chapterUrl) this.chapterRef = firebaseApp.database().ref(this.props.chapterUrl)
   }
+
+  componentWillUpdate() { LayoutAnimation.easeInEaseOut() }
 
   componentDidMount() {
     if(this.props.chapterUrl) this.listenForChange(this.chapterRef)

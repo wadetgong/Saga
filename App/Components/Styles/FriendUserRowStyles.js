@@ -32,7 +32,7 @@ export default StyleSheet.create({
     paddingHorizontal: 10,
   },
   addFriendSection: {
-    flex: .75,
+    flex: .25,
     paddingTop: 5,
     flexDirection: 'column',
     justifyContent: 'flex-start',

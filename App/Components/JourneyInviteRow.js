@@ -86,8 +86,8 @@ class JourneyInviteRow extends React.Component {
                   </TouchableOpacity>
                 </View>
                 <View style={{padding: 5, flex: 1}}>
-                    <Text>Story: {journey.story.title}</Text>
-                    <Text>Invited by: {journey.creator.name}</Text>
+                    <Text style={{fontWeight: '600', fontSize: 15}}>{journey.story.title}</Text>
+                    <Text  style={{fontSize: 12}}>Invited by: {journey.creator.name}</Text>
                     <View style={styles.rowContainer}>
                       <View style={styles.buttonCol}>
                         <TouchableOpacity

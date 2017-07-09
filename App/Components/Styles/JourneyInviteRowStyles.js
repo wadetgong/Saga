@@ -28,6 +28,6 @@ export default StyleSheet.create({
   buttonText: {
     color: Colors.snow,
     textAlign: 'center',
-    fontSize: 12
+    fontSize: 13
   }
 })
