@@ -59,7 +59,6 @@ class ChapterDetails extends React.Component {
   }
 
   render() {
-    console.log('ChapterDetails', this.props)
     return (
       <View>
         <View style={styles.chapterDesc}>

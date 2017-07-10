@@ -48,7 +48,6 @@ class JourneySummary extends React.Component {
     const friendsList = (this.state.journey && this.state.journey.team && this.state.journey.team.list) || []
     console.log(friendsList, 'friendlist')
 
-    console.log('this.props in JourneySummary', this.props)
     const startTime = this.props.current.times ? this.props.current.times.start : 0
     const endTime = this.props.current.times ? this.props.current.times.end : 0
     const timeDif = new Date(endTime - startTime)
@@ -104,21 +103,22 @@ class JourneySummary extends React.Component {
               />
           </View>
           <RoundedButton
-            text="View Stories"
+            text="View LeaderBoard"
             onPress={() => {
-              let paths = {}
-              let currentStory = this.props.current;
-              console.log(Object.keys(currentStory.team.list))
-              Object.keys(currentStory.team.list).forEach(user => {
-                paths[`/users/${user}/journeys/current`] = null
-                paths[`/users/${user}/journeys/completed/${currentStory.id}`] = currentStory.story.id
-              })
+              // let paths = {}
+              // let currentStory = this.props.current;
+              // console.log(Object.keys(currentStory.team.list))
+              // Object.keys(currentStory.team.list).forEach(user => {
+              //   paths[`/users/${user}/journeys/current`] = null
+              //   paths[`/users/${user}/journeys/completed/${currentStory.id}`] = currentStory.story.id
+              // })
 
-              firebaseApp.database().ref('/').update(paths)
+              // firebaseApp.database().ref('/').update(paths)
 
-              // this.props.navigation.dispatch(resetAction)
-              this.props.navigation.navigate('UserProfile')
-              this.props.removeJourney()
+              // // this.props.navigation.dispatch(resetAction)
+              // this.props.navigation.navigate('LeaderBoard')
+              // this.props.removeJourney()
+              this.props.navigation.navigate('LeaderBoard')
             }}
           />
         </ScrollView>

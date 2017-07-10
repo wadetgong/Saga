@@ -94,9 +94,6 @@ componentWillReceiveProps(newProps) {
   }
 
   render () {
-    console.log('this.props in chapter.js', this.props)
-    console.log('this.state in chapter.js', this.state)
-    console.log('this.props.storyUrl', this.props.storyUrl)
     const chapters = this.state.story.chapters || []
     const selectedChapInfo = (chapters && chapters[this.state.selectedChap-1]) || 0
     const storyName = this.state.story && this.state.story.title
@@ -141,7 +138,6 @@ componentWillReceiveProps(newProps) {
 }
 
 const mapStateToProps = (state) => {
-  console.log('state in redux', state)
   return {
     storyUrl: state.currentStory.storyUrl,
   }

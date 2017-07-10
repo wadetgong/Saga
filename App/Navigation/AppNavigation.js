@@ -10,6 +10,7 @@ import ChapterDetails from '../Containers/ChapterDetails'
 import PuzzleInfo from '../Containers/PuzzleInfo'
 import CameraScreen from '../Containers/CameraScreen'
 import JourneySummary from '../Containers/JourneySummary'
+import LeaderBoard from '../Containers/LeaderBoard'
 import PhotoRecognition from '../Containers/PhotoRecognition'
 import styles from './Styles/NavigationStyles'
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
@@ -22,6 +23,7 @@ const StoryGameStack = StackNavigator({
     PuzzleInfo: {screen: PuzzleInfo},
     CameraScreen: {screen: CameraScreen},
     JourneySummary: {screen: JourneySummary},
+    LeaderBoard: {screen: LeaderBoard},
   }, {
       // Default config for all screens
       headerMode: 'none',

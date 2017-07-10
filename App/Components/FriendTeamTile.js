@@ -40,13 +40,13 @@ class FriendTeamTile extends React.Component {
     // let lastInitial = names[1].slice(0,1)
 
     return (
-      <View style={styles.touch}>
+      <View style={[styles.touch, this.props.styles]}>
         <TouchableOpacity
           onPress={()=>{}}
         >
           {/*<Text style={styles.nameTag}>{`${firstName} ${lastInitial}.`}</Text>*/}
           <Image
-            style={styles.image}
+            style={[styles.image, this.props.styles]}
             source={{uri: this.state.user.profilePicture}}
           />
         </TouchableOpacity>

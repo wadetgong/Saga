@@ -79,7 +79,6 @@ class CurrentStoryInfo extends React.Component {
     usersList.forEach(user => updateObj[`/users/${user}/journeys/current/${journeyId}`] = null)
     usersPending.forEach(user => updateObj[`/users/${user}/journeys/pending/${journeyId}`] = null)
     updateObj[journeyPath] = null
-    console.log('updateObj', updateObj)
     firebaseApp.database().ref('/').update(updateObj);
     this.props.removeJourney()
 
