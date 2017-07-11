@@ -1,21 +1,16 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { TabNavigator } from 'react-navigation'
 import { View, Text, Image, TouchableOpacity } from 'react-native'
-import { Images } from '../Themes'
-import API from '../Services/FixtureApi'
+import firebaseApp from '../Firebase'
 
+import { Images, Colors } from '../Themes'
 import ViewFriends from './ViewFriends'
 import UserJourneys from './UserJourneys'
-
-
 import styles from './Styles/UserProfileStyles'
-import { Colors } from '../Themes'
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
-
-import { connect } from 'react-redux'
 import { setSelf } from '../Redux/FriendsRedux'
 import { setStory } from '../Redux/actions/currentStory'
-import firebaseApp from '../Firebase'
 
 
 const UserProfileStack = TabNavigator({
@@ -27,7 +22,7 @@ const UserProfileStack = TabNavigator({
       <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
         <Icon name='book-open' size={20} color={tintColor} style={{paddingHorizontal: 5}}/><Text style={{color: tintColor}}>Stories</Text>
       </View>),
-    },
+    }
   },
   ViewFriends: {
     screen: ViewFriends,
@@ -37,7 +32,7 @@ const UserProfileStack = TabNavigator({
       <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
         <Icon name='people' size={20} color={tintColor} style={{paddingHorizontal: 5}}/><Text style={{color: tintColor}}>Friends</Text>
       </View>),
-    },
+    }
   },
 }, {
   initialRouteName: 'UserJourneys',
@@ -46,7 +41,7 @@ const UserProfileStack = TabNavigator({
     tintColor: Colors.tintColor,
     activeBackgroundColor: 'white',
     showLabel: false
-  },
+  }
 })
 
 
