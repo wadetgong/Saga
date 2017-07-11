@@ -1,31 +1,14 @@
 import React, { Component } from 'react'
-// import { connect } from 'react-redux'
 import { View, StatusBar } from 'react-native'
 import Navigation from '../Navigation/AppNavigation'
-// import StartupActions from '../Redux/StartupRedux'
 import ReduxPersist from '../Config/ReduxPersist'
-import { locationStart, locationStop } from '../Services/GeoLocation'
-
-// Styles
+import { locationStart, locationStop } from '../Utils/GeoLocation'
 import styles from './Styles/RootContainerStyles'
 
 class RootContainer extends Component {
-
-  componentWillMount() {
-    locationStart()
-  }
-
-  componentWillUnmount() {
-    locationStop()
-  }
-
-  // componentDidMount () {
-  //   // if redux persist is not active fire startup action
-  //   if (!ReduxPersist.active) {
-  //     this.props.startup()
-  //   }
-  // }
-
+  componentWillMount() { locationStart() }
+  componentWillUnmount() { locationStop() }
+  
   render () {
     return (
       <View style={styles.applicationView}>
@@ -35,12 +18,5 @@ class RootContainer extends Component {
     ) 
   }
 }
-
-// // wraps dispatch to create nicer functions to call within our component
-// const mapDispatchToProps = (dispatch) => ({
-//   startup: () => dispatch(StartupActions.startup())
-// })
-//
-// export default connect(null, mapDispatchToProps)(RootContainer)
 
 export default RootContainer

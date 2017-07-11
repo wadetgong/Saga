@@ -1,11 +1,8 @@
 import React from 'react'
 import { View } from 'react-native'
 import MapView from 'react-native-maps'
-
 import Styles from './Styles/TreasureHuntStyles'
-
-
-import { calculateRegion } from '../Lib/MapHelpers'
+import { calculateRegion } from '../Utils/MapHelpers'
 
 
 const SimpleMap = ({longitude, latitude, style}) => {
