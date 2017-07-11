@@ -80,7 +80,6 @@ class CurrentStoryInfo extends React.Component {
       updateObj[`/users/${user}/journeys/pending/${journeyId}`] = null
     })
     updateObj[journeyPath] = null
-    console.log('updateObj', updateObj)
     firebaseApp.database().ref('/').update(updateObj)
     this.props.removeJourney()
   }

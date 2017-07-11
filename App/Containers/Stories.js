@@ -19,8 +19,12 @@ const ChooseStoryStack = StackNavigator({
       />
     },
     JourneyFriends: { screen: JourneyFriends },
-    TeamScreen: { screen: ({ screenProps }) => <TeamScreen screenProps={screenProps} /> },
-    // TeamScreen: { screen: ({ navigation }) => <TeamScreen screenProps={{ rootNavigation: navigation }} /> }
+    TeamScreen: { screen: ({ screenProps, navigation }) =>
+      <TeamScreen
+        screenProps={screenProps}
+        navigation={navigation}
+      />
+    },
   }, {
     // Default config for all screens
     headerMode: 'none',

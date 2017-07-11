@@ -86,6 +86,7 @@ class PuzzleInfo extends React.Component {
         this.props.puzzleUrl
         ? (
           <View style={styles.container}>
+            {/*needs to be updated*/}
             <Image source={Images.storyMain[this.props.storyKey]} style={styles.bgImage} resizeMode={'cover'}/>
             <View style={styles.sectionHeader}>
               <View>

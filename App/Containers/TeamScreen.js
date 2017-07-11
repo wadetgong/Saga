@@ -116,7 +116,7 @@ class TeamScreen extends React.Component {
         />
       </ScrollView>
       <RoundedButton onPress={() => {
-        //navigation.dispatch(resetAction)
+        navigation.dispatch(resetAction)
         pending.forEach(user => {
           this.removeFriendFromTeam(user.id)
         })

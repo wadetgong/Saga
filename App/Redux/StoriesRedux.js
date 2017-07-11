@@ -116,14 +116,14 @@ export const reducer = (state=initialState, action) => {
       return state
   }
 
-  console.log(action.type, state, newState)
+  // console.log(action.type, state, newState)
   return newState
 }
 
 // action-dispatchers
 // journeys can be null
 export const fetchStories = (stories, journeys) => dispatch => {
-  console.log('REDUX stoires journeys',stories, journeys)
+  // console.log('REDUX stoires journeys',stories, journeys)
   dispatch(setJourneys(journeys))
   dispatch(setStories(stories))
 }
