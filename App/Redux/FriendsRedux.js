@@ -1,28 +1,24 @@
-
-
 // actions
-const SET_USERS = 'SET_USERS';
-const SET_MYFRIENDS = 'SET_MYFRIENDS';
+const SET_USERS = 'SET_USERS'
+const SET_MYFRIENDS = 'SET_MYFRIENDS'
 const SET_ME = 'SET_ME'
 const SET_USER = 'SET_USER'
-// const FILTER_USERS = 'FILTER_USERS'
 
 // action-creators
-const setUsers = users => ({ type: SET_USERS, users });
-const setMyFriends = myFriends => ({ type: SET_MYFRIENDS, myFriends });
-const setMe = uid => ({ type: SET_ME, uid });
-const setUser = user => ({ type: SET_USER, user });
-// const filterUsers = { type: FILTER_USERS }
+const setUsers = users => ({ type: SET_USERS, users })
+const setMyFriends = myFriends => ({ type: SET_MYFRIENDS, myFriends })
+const setMe = uid => ({ type: SET_ME, uid })
+const setUser = user => ({ type: SET_USER, user })
 
 // reducer
 const initialState = {
-  users: [], // filtered users
-  myFriends: {}, // mapped to users/uid/friends
-  list: [],      // list of {user}
+  users: [],          // filtered users
+  myFriends: {},      // mapped to users/uid/friends
+  list: [],           // list of {user}
   sent: [],
   received: [],
   myFriendsList: {},  // has {user}
-  user: {}, //current user object
+  user: {},           // current user object
   uid: ''
 }
 

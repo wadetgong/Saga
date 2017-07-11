@@ -1,4 +1,4 @@
-import { SET_STORY, SET_PUZZLE, SET_CHAPTER } from '../constants/actionTypes';
+import { SET_STORY, SET_PUZZLE, SET_CHAPTER } from '../actions'
 
 export function setStory(journeyId) {
   return dispatch => {

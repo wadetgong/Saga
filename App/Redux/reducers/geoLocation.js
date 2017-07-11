@@ -1,4 +1,4 @@
-import { UPDATE_LOCATION } from '../constants/actionTypes';
+import { UPDATE_LOCATION } from '../actions';
 
 
 const initialState = {

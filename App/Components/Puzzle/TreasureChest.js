@@ -12,13 +12,6 @@ import {
 } from 'react-native';
 import styles from './Styles/TreasureChestStyles';
 import { connect } from 'react-redux';
-
-import {
-    GYRO_MOVE_THRESHOLD_X,
-    GYRO_MOVE_THRESHOLD_Y,
-    MOVE_FACTOR_X,
-    MOVE_FACTOR_Y
-} from '../../Redux/constants';
 import CameraScreen from '../../Containers/CameraScreen'
 
 import { Images } from '../../Themes'

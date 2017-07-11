@@ -1,4 +1,4 @@
-import { SET_STORY, SET_PUZZLE, SET_CHAPTER } from '../constants/actionTypes';
+import { SET_STORY, SET_PUZZLE, SET_CHAPTER, REMOVE_STORY } from '../actions'
 
 const initialState = {
   // storyUrl: '/story/batman',
