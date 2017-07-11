@@ -1,4 +1,4 @@
-import { SET_STORY, SET_PUZZLE, SET_CHAPTER, REMOVE_STORY } from '../actions';
+import { SET_STORY, SET_PUZZLE, SET_CHAPTER, REMOVE_STORY } from '../actions'
 
 const initialState = {
   // storyUrl: '/story/batman',
@@ -24,12 +24,6 @@ export default function reducer(state = initialState, action) {
       break
     case SET_PUZZLE:
       newState.puzzleUrl = `${state.chapterUrl}/puzzles/${action.puzzleId - 1}` // -1 here because Puzzle 1 has an ID of 0
-      break
-    case REMOVE_STORY:
-      newState.storyUrl = null
-      newState.journeyUrl = null
-      newState.chapterUrl = null
-      newState.puzzleURL = null
       break
     default:
       return state

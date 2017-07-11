@@ -10,7 +10,6 @@ import styles from './Styles/JourneySummaryStyles'
 
 
 import { removeJourney } from '../Redux/StoriesRedux'
-import { NavigationActions } from 'react-navigation'
 
 class JourneySummary extends React.Component {
   constructor(props) {
@@ -48,7 +47,6 @@ class JourneySummary extends React.Component {
     const friendsList = (this.state.journey && this.state.journey.team && this.state.journey.team.list) || []
     console.log(friendsList, 'friendlist')
 
-    console.log('this.props in JourneySummary', this.props)
     const startTime = this.props.current.times ? this.props.current.times.start : 0
     const endTime = this.props.current.times ? this.props.current.times.end : 0
     const timeDif = new Date(endTime - startTime)
@@ -56,12 +54,7 @@ class JourneySummary extends React.Component {
 
 
     const conclusion = this.props.current && this.props.current.story && this.props.current.story.conclusion || ''
-    // const resetAction = NavigationActions.reset({
-    //   index: 0,
-    //   actions: [
-    //     NavigationActions.navigate({ routeName: 'Chapter'})
-    //   ]
-    // })
+
 
 
     let friendsSource = friendsList && new ListView
@@ -104,22 +97,8 @@ class JourneySummary extends React.Component {
               />
           </View>
           <RoundedButton
-            text="View Stories"
-            onPress={() => {
-              let paths = {}
-              let currentStory = this.props.current;
-              console.log(Object.keys(currentStory.team.list))
-              Object.keys(currentStory.team.list).forEach(user => {
-                paths[`/users/${user}/journeys/current`] = null
-                paths[`/users/${user}/journeys/completed/${currentStory.id}`] = currentStory.story.id
-              })
-
-              firebaseApp.database().ref('/').update(paths)
-
-              // this.props.navigation.dispatch(resetAction)
-              this.props.navigation.navigate('UserProfile')
-              this.props.removeJourney()
-            }}
+            text="View LeaderBoard"
+            onPress={() => { this.props.navigation.navigate('LeaderBoard') }}
           />
         </ScrollView>
       </View>

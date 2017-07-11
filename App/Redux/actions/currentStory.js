@@ -1,4 +1,4 @@
-import { SET_STORY, SET_PUZZLE, SET_CHAPTER, REMOVE_STORY } from '../actions';
+import { SET_STORY, SET_PUZZLE, SET_CHAPTER } from '../actions'
 
 export function setStory(journeyId) {
   return dispatch => {
@@ -27,10 +27,4 @@ export function setPuzzle(puzzleId) {
       puzzleId
     })
   }
-}
-
-export function removeStoryUrl() {
-  return dispatch => dispatch({
-    type: REMOVE_STORY
-  })
 }

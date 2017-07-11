@@ -5,4 +5,3 @@ export const UPDATE_LOCATION = 'UPDATE_LOCATION';
 export const SET_STORY = 'SET_STORY';
 export const SET_CHAPTER = 'SET_CHAPTER';
 export const SET_PUZZLE = 'SET_PUZZLE';
-export const REMOVE_STORY = 'REMOVE_STORY';

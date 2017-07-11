@@ -12,7 +12,6 @@ import { Images } from '../Themes'
 
 let width = Dimensions.get('window').width;
 let height = Dimensions.get('window').height;
-Gyroscope.setGyroUpdateInterval(0.1);
 // DeviceAngles.setDeviceMotionUpdateInterval(0.1)
 
  class CameraScreen extends Component {
@@ -40,6 +39,7 @@ Gyroscope.setGyroUpdateInterval(0.1);
   componentWillMount() {
     this.handleArStart();
     // DeviceAngles.startMotionUpdates();
+    Gyroscope.setGyroUpdateInterval(0.1);
     Gyroscope.startGyroUpdates();
   }
 
