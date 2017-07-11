@@ -1,6 +1,6 @@
 import React from 'react'
 import { ScrollView, Text, Image, View } from 'react-native'
-import DevscreensButton from '../../ignite/DevScreens/DevscreensButton.js'
+// import DevscreensButton from '../../ignite/DevScreens/DevscreensButton.js'
 import RoundedButton from '../Components/Button/RoundedButton'
 import { Images } from '../Themes'
 
@@ -16,7 +16,6 @@ export default class LaunchScreen extends React.Component {
         <Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch' />
         <ScrollView style={styles.container}>
 
-
           <View style={styles.section} >
             <Image source={Images.ready} />
             <Text style={styles.sectionText}>
@@ -24,7 +23,6 @@ export default class LaunchScreen extends React.Component {
             </Text>
           </View>
 
-          <DevscreensButton />
           <RoundedButton onPress={() => navigate('PhotoRecognition')}>
             PhotoRecognition
           </RoundedButton>

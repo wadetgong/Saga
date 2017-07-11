@@ -24,7 +24,7 @@ const images = {
   storyMain: {
     artThief: require('../Images/Story/artThief/Main.gif'),
     batman: require('../Images/Story/batman/riddler.jpg'),
-    woodElves: require('../Images/Story/woodElves/Main.jpg'),
+    woodElves: require('../Images/Story/woodElves/Main.jpg')
   },
   emptyStory: require('../Images/emptyStory.jpeg'),
   treasureChest: require('../Images/treasureChest.png'),
