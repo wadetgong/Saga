@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, TextInput, TouchableOpacity } from 'react-native'
+import { View, TextInput } from 'react-native'
 import styles from './Styles/SearchBarStyles'
 import { Colors, Metrics } from '../Themes/'
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
@@ -7,19 +7,17 @@ import Icon from 'react-native-vector-icons/SimpleLineIcons'
 export default class SearchBar extends React.Component {
   static propTypes = {
     onSearch: React.PropTypes.func.isRequired,
-    // onCancel: React.PropTypes.func.isRequired,
     searchTerm: React.PropTypes.string
   }
 
   render () {
-    const { onSearch, onCancel, searchTerm } = this.props
+    const { onSearch, searchTerm } = this.props
     const onSubmitEditing = () => onSearch(searchTerm)
     return (
       <View style={styles.container}>
         <Icon name='magnifier' size={Metrics.icons.tiny} style={styles.searchIcon} />
         <TextInput
           ref='searchText'
-          //autoFocus
           placeholder='Search'
           placeholderTextColor={Colors.charcoal}
           underlineColorAndroid='transparent'
@@ -32,9 +30,6 @@ export default class SearchBar extends React.Component {
           autoCorrect={false}
           selectionColor={Colors.charcoal}
         />
-        {/*<TouchableOpacity onPress={onCancel} style={styles.cancelButton}>
-          <Text style={styles.buttonLabel}>Cancel</Text>
-        </TouchableOpacity>*/}
       </View>
     )
   }

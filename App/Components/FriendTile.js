@@ -1,16 +1,16 @@
 import React from 'react'
-import { View, Text, Image, TouchableOpacity} from 'react-native'
+import { View, Text, Image, TouchableOpacity } from 'react-native'
 import styles from './Styles/FriendTileStyles'
 
 const FriendTile = ({user}) => {
-  let names = user.name.split(" ")
+  let names = user.name.split(' ')
   let firstName = names[0]
-  let lastInitial = names[1].slice(0,1)
+  let lastInitial = names[1].slice(0, 1)
 
   return (
     <View style={styles.touch}>
       <TouchableOpacity
-        onPress={()=>{}}
+        onPress={() => {}}
       >
         <Text style={styles.nameTag}>{`${firstName} ${lastInitial}.`}</Text>
         <Image
@@ -23,4 +23,3 @@ const FriendTile = ({user}) => {
 }
 
 export default FriendTile
-

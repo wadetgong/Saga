@@ -4,7 +4,7 @@ import { View, Text, Image, TouchableOpacity } from 'react-native'
 import styles from './Styles/LoginScreenStyles'
 import {Images, Metrics} from '../Themes'
 import RoundedButton from '../Components/Button/RoundedButton'
-import LoginActions from '../Redux/LoginRedux'
+// import LoginActions from '../Redux/LoginRedux'
 import RootContainer from './RootContainer'
 import { NavigationActions } from 'react-navigation'
 

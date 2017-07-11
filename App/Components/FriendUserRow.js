@@ -1,9 +1,7 @@
 import React from 'react'
 import { View, Text, Image, TouchableOpacity } from 'react-native'
-import { Images } from '../Themes'
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
-import IconFA from 'react-native-vector-icons/FontAwesome';
-import { Fonts, Colors, Metrics } from '../Themes/'
+import IconFA from 'react-native-vector-icons/FontAwesome'
 import firebaseApp from '../Firebase'
 
 import styles from './Styles/FriendUserRowStyles'
@@ -11,7 +9,6 @@ import styles from './Styles/FriendUserRowStyles'
 class FriendUserRow extends React.Component {
   constructor () {
     super()
-
     this.addFriend = this.addFriend.bind(this)
     this.uid = firebaseApp.auth().currentUser.uid
   }
@@ -21,49 +18,48 @@ class FriendUserRow extends React.Component {
   }
 
   addFriend (fid) {
-    const uid = this.uid,
-          path1 = uid + '/friends/sent/' + fid,
-          path2 = fid + '/friends/received/' + uid;
-    this.usersRef.update({ [path1] : true, [path2] : true })
+    const uid = this.uid
+    const path1 = uid + '/friends/sent/' + fid
+    const path2 = fid + '/friends/received/' + uid
+    this.usersRef.update({ [path1]: true, [path2]: true })
   }
 
-  render() {
+  render () {
     const { user } = this.props
     const addFriend = this.addFriend
 
     return (
       <View style={styles.rowSection}>
-          <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity onPress={() => {}}>
           <Image
             style={{width: 64, height: 64}}
             source={{uri: user.profilePicture}}
           />
-          </TouchableOpacity>
-          <View style={styles.nameSection}
+        </TouchableOpacity>
+        <View style={styles.nameSection}
+        >
+          <Text style={{fontWeight: 'bold'}}><Icon name='user' style={styles.icon} /> {user.name}</Text>
+          <Text style={{fontSize: 12}}><Icon name='envelope' style={styles.icon} /> {user.email}</Text>
+        </View>
+        <View style={styles.addFriendSection}>
+          <TouchableOpacity
+            onPress={() => addFriend(user.uid)}
+            style={styles.addFriend}
           >
-            <Text style={{fontWeight: 'bold'}}><Icon name='user' style={styles.icon}/> {user.name}</Text>
-            <Text style={{fontSize: 12}}><Icon name='envelope' style={styles.icon}/> {user.email}</Text>
-          </View>
-          <View style={styles.addFriendSection}>
-            <TouchableOpacity
-              onPress={() => addFriend(user.uid)}
-              style={styles.addFriend}
-            >
-              <Text style={styles.buttonText}>
-                <IconFA
-                  name='plus'
-                  size={16}
-                  style={{
-                    justifyContent: 'center'
-                  }}
-                />
-              </Text>
-            </TouchableOpacity>
-          </View>
+            <Text style={styles.buttonText}>
+              <IconFA
+                name='plus'
+                size={16}
+                style={{
+                  justifyContent: 'center'
+                }}
+              />
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     )
   }
 }
-
 
 export default FriendUserRow

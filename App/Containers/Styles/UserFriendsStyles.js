@@ -20,6 +20,5 @@ export default StyleSheet.create({
     color: Colors.text,
     textAlign: 'center',
     marginBottom: Metrics.smallMargin
-  },
-
+  }
 })

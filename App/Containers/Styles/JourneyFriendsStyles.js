@@ -23,7 +23,7 @@ export default StyleSheet.create({
   },
   searchBarContainer: {
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   friendSearchContainer: {
     flex: 1,
@@ -31,5 +31,4 @@ export default StyleSheet.create({
     alignItems: 'flex-start',
     paddingHorizontal: 10
   }
-
 })

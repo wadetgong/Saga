@@ -1,14 +1,14 @@
-const functions = require('firebase-functions');
-const admin = require('firebase-admin');
-const vision = require('@google-cloud/vision')();
-const gcs = require('@google-cloud/storage')();
+const functions = require('firebase-functions')
+const admin = require('firebase-admin')
+const vision = require('@google-cloud/vision')()
+const gcs = require('@google-cloud/storage')()
 
-admin.initializeApp(functions.config().firebase);
+admin.initializeApp(functions.config().firebase)
 
 exports.initUser = functions.auth.user()
   .onCreate(event => {
     // The Firebase user.
-    const { displayName, email, photoURL, uid } = event.data;
+    const { displayName, email, photoURL, uid } = event.data
     const user = {
       email,
       name: displayName,
@@ -21,11 +21,11 @@ exports.initUser = functions.auth.user()
       id: uid,
       journeys: false,
       profilePicture: photoURL,
-      username: false,
+      username: false
     }
 
     return admin.database().ref('/users').child(uid).set(user)
-  });
+  })
 
 // needs work
 // exports.deleteUser = functions.auth.user().onDelete(event => {
@@ -36,21 +36,19 @@ exports.initUser = functions.auth.user()
 exports.onPuzzleComplete = functions.database.ref('/journey/{journeyId}/story/chapters/{chapterId}/puzzles/{puzzleId}/status').onWrite(event => {
   // console.log('something happened in the cloud hook function. ', event, event.data)
 
-  const {journeyId, chapterId, puzzleId} = event.params;
+  const { journeyId, chapterId } = event.params // puzzleId
   admin.database().ref(`/journey/${journeyId}/story/chapters`).once('value')
     .then(snapshot => {
       // console.log('snapshot in admin database', snapshot.val()[chapterId].puzzles)
-      let chapPuzzles = snapshot.val()[chapterId].puzzles;
-      let chapterComplete = true;
-      for(let i = 0; i < chapPuzzles.length; i++) {
-        if(chapPuzzles[i].status !== 'Complete') {
-          chapterComplete = false;
-        }
+      let chapPuzzles = snapshot.val()[chapterId].puzzles
+      let chapterComplete = true
+      for (let i = 0; i < chapPuzzles.length; i++) {
+        if (chapPuzzles[i].status !== 'Complete') chapterComplete = false
       }
-      let nextChap = parseInt(chapterId) + 1 + "";
+      let nextChap = parseInt(chapterId) + 1 + ''
 
-      if(chapterComplete) {
-        if(snapshot.hasChild(nextChap)) {
+      if (chapterComplete) {
+        if (snapshot.hasChild(nextChap)) {
           return Promise.all([
             admin.database()
               .ref(`/journey/${journeyId}/story/chapters/${nextChap}`)
@@ -58,8 +56,7 @@ exports.onPuzzleComplete = functions.database.ref('/journey/{journeyId}/story/ch
             admin.database()
               .ref(`/journey/${journeyId}/story/chapters/${chapterId}`)
               .child('status').set('Complete')])
-        }
-        else {
+        } else {
           return Promise.all([
             admin.database()
               .ref(`/journey/${journeyId}/story`)
@@ -70,11 +67,10 @@ exports.onPuzzleComplete = functions.database.ref('/journey/{journeyId}/story/ch
             admin.database()
               .ref(`/journey/${journeyId}/times/`)
               .child('end').set(admin.database.ServerValue.TIMESTAMP)
-              ])
+          ])
         }
       }
-    // return admin.database().ref('/story/batman/chapters/1').child('enabled').set(true)
-  })
+    })
 })
 
 // on create/update/destroy current journey
@@ -104,26 +100,24 @@ exports.imageRecognition = functions.storage.object()
   .onChange(event => {
     console.log(event)
     const object = event.data
-    const file = gcs.bucket(object.bucket).file(object.name);
+    const file = gcs.bucket(object.bucket).file(object.name)
 
     // Exit if this is triggered on a file that is not an image.
     if (!object.contentType.startsWith('image/')) {
-      console.log('This is not an image.');
-      return;
+      console.log('This is not an image.')
+      return
     }
 
     // Exit if this is a move or deletion event.
     if (object.resourceState === 'not_exists') {
-      console.log('This is a deletion event.');
-      return;
-    }
-
-    // exit if not in /journey
-    if (file.name.indexOf('journey') < 0) {
+      console.log('This is a deletion event.')
       return
     }
 
-    const puzzleRef = admin.database().ref(file.name);
+    // exit if not in /journey
+    if (file.name.indexOf('journey') < 0) return
+
+    const puzzleRef = admin.database().ref(file.name)
     return vision.detectLandmarks(file)
       .then(data => {
         let landmarkArr = data[0] // array of landmarks
@@ -134,8 +128,8 @@ exports.imageRecognition = functions.storage.object()
 
           console.log(landmarkArr, correct, file.name)
 
-          if (correct) return puzzleRef.child('status').set('Complete');
-          else return puzzleRef.child('status').set('Incorrect');
+          if (correct) return puzzleRef.child('status').set('Complete')
+          else return puzzleRef.child('status').set('Incorrect')
         })
       })
       .catch(err => console.log('error in image recognition cloud function', err))
