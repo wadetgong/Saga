@@ -6,16 +6,9 @@ import styles from './Styles/CameraScreenStyles.js';
 import Camera from 'react-native-camera';
 import TreasureChest from '../Components/Puzzle/TreasureChest';
 import { Gyroscope, DeviceAngles } from 'NativeModules';
-import { addArObject, updateGyroData } from '../Redux/actions/augmented';
+import { addArObject, updateGyroData } from '../Redux/AugmentedRedux';
 import { connect } from 'react-redux';
 import { Images } from '../Themes'
-
-import {
-    GYRO_MOVE_THRESHOLD_X,
-    GYRO_MOVE_THRESHOLD_Y,
-    MOVE_FACTOR_X,
-    MOVE_FACTOR_Y
-} from '../Redux/constants';
 
 let width = Dimensions.get('window').width;
 let height = Dimensions.get('window').height;

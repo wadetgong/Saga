@@ -5,8 +5,8 @@ import styles from './Styles/JourneyInviteRowStyles'
 /* global alert */
 
 class JourneyInviteRow extends React.Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
     this.state = {
       errorMessage: '',
       picUrl: 'https://firebasestorage.googleapis.com/v0/b/breach-5ea6b.appspot.com/o/no-image-avail.png?alt=media&token=2cb55c5a-1676-4400-8e1c-00960387de64' // No image image
