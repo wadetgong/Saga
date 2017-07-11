@@ -6,7 +6,7 @@ const firebaseConfig = {
   authDomain: secrets.ios_authDomain,
   databaseURL: secrets.ios_databaseURL,
   storageBucket: secrets.ios_storageBucket
-};
+}
 const firebaseApp = firebase.initializeApp(firebaseConfig)
 
 export default firebaseApp

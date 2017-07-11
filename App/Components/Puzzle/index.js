@@ -11,8 +11,8 @@ import AugmentedClick from './AugmentedClick'
 import RoundedButton from '../Button/RoundedButton'
 
 class Puzzle extends React.Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
     this.state = {
       attempts: 0,
       showModal: false,

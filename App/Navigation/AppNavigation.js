@@ -16,21 +16,19 @@ import Icon from 'react-native-vector-icons/SimpleLineIcons'
 import React from 'react'
 import { Colors } from '../Themes'
 
-const StoryGameStack = StackNavigator({
-    Chapter: {screen: Chapter},
-    ChapterDetails: {screen: ChapterDetails},
-    PuzzleInfo: {screen: PuzzleInfo},
-    CameraScreen: {screen: CameraScreen},
-    JourneySummary: {screen: JourneySummary},
-  }, {
-      // Default config for all screens
-      headerMode: 'none',
-      initialRouteName: 'Chapter',
-      navigationOptions: {
-        headerStyle: styles.header
-      }
-  });
-
+const StoryGameStack = StackNavigator(
+{
+  Chapter: { screen: Chapter },
+  ChapterDetails: { screen: ChapterDetails },
+  PuzzleInfo: { screen: PuzzleInfo },
+  CameraScreen: { screen: CameraScreen },
+  JourneySummary: { screen: JourneySummary }
+}, {
+  // Default config for all screens
+  headerMode: 'none',
+  initialRouteName: 'Chapter',
+  navigationOptions: { headerStyle: styles.header }
+});
 
 const DevStack = StackNavigator({
     LaunchScreen: {screen: LaunchScreen},
@@ -64,7 +62,7 @@ const TabNav = TabNavigator({
       tabBarLabel: 'Current Story',
       tabBarIcon: ({ tintColor }) => (
       <Icon name='notebook' size={20} color={tintColor} />),
-    },
+    }
   },
   Stories: {
     screen: ({ navigation }) => <Stories screenProps={{ rootNavigation: navigation }} />,
