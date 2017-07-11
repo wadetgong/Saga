@@ -1,5 +1,5 @@
 import { StackNavigator, TabNavigator } from 'react-navigation'
-import TextablesScreen from '../Containers/TextablesScreen'
+// import TextablesScreen from '../Containers/TextablesScreen'
 import LaunchScreen from '../Containers/LaunchScreen'
 import LoginScreen from '../Containers/LoginScreen'
 import Stories from '../Containers/Stories'
@@ -40,7 +40,6 @@ const DevStack = StackNavigator({
         tabBarVisible: false
       }
     },
-    TextablesScreen: { screen: TextablesScreen },
     LoginScreen: {
       screen: LoginScreen,
       navigationOptions: { title: 'Login' }
@@ -71,8 +70,7 @@ const TabNav = TabNavigator({
     screen: ({ navigation }) => <Stories screenProps={{ rootNavigation: navigation }} />,
     navigationOptions: {
       tabBarLabel: 'Search',
-      tabBarIcon: ({ tintColor }) => (
-      <Icon name='magnifier' size={20} color={tintColor} />),
+      tabBarIcon: ({ tintColor }) => <Icon name='magnifier' size={20} color={tintColor} />,
     },
   },
   UserProfile: {
@@ -120,31 +118,5 @@ const HomeStack = StackNavigator({
     headerMode: 'none',
     initialRouteName: 'Login'
   })
-
-// Manifest of possible screens
-// const PrimaryNav = StackNavigator({
-//   TextablesScreen: { screen: TextablesScreen },
-//   CameraScreen: {screen: CameraScreen},
-//   LaunchScreen: { screen: LaunchScreen },
-//   LoginScreen: {
-//     screen: LoginScreen,
-//     navigationOptions: { title: 'Login' }
-//   },
-//   StoryScreen: { screen: StoryScreen },
-//   StoryPreview: { screen: StoryPreview },
-//   Friends: { screen: Friends },
-//   UserProfile: { screen: UserProfile },
-//   TeamScreen: { screen: TeamScreen },
-
-//   Chapter: {screen: Chapter},
-//   PuzzleInfo: {screen: PuzzleInfo},
-// }, {
-//   // Default config for all screens
-//   headerMode: 'none',
-//   initialRouteName: 'StoryScreen',
-//   navigationOptions: {
-//     headerStyle: styles.header
-//   }
-// })
 
 export default HomeStack

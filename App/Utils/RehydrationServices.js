@@ -35,4 +35,4 @@ const updateReducers = (store: Object) => {
   })
 }
 
-export default {updateReducers}
+export default { updateReducers }
