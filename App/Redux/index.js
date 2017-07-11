@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 import configureStore from './CreateStore'
-import rootSaga from '../Sagas/'
+// import rootSaga from '../Sagas/'
 import augmented from './reducers/augmented';
 import geoLocation from './reducers/geoLocation';
 import currentStory from './reducers/currentStory';
@@ -8,9 +8,6 @@ import currentStory from './reducers/currentStory';
 export default () => {
   /* ------------- Assemble The Reducers ------------- */
   const rootReducer = combineReducers({
-    github: require('./GithubRedux').reducer,
-    login: require('./LoginRedux').reducer,
-    search: require('./SearchRedux').reducer,
     friends: require('./FriendsRedux').reducer,
     stories: require('./StoriesRedux').reducer,
     augmented,
@@ -18,5 +15,5 @@ export default () => {
     currentStory
   })
 
-  return configureStore(rootReducer, rootSaga)
+  return configureStore(rootReducer)
 }

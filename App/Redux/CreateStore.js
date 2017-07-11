@@ -13,13 +13,15 @@ export default (rootReducer, rootSaga) => {
   const middleware = []
   const enhancers = []
 
- /* ------------- thunkMiddleWare ------------- */  
-middleware.push(thunkMiddleWare)
-  /* ------------- Saga Middleware ------------- */
-
-  const sagaMonitor = Config.useReactotron ? console.tron.createSagaMonitor() : null
-  const sagaMiddleware = createSagaMiddleware({ sagaMonitor })
-  middleware.push(sagaMiddleware)
+  /* ------------- thunkMiddleWare ------------- */  
+  
+  middleware.push(thunkMiddleWare)
+  
+  // /* ------------- Saga Middleware ------------- */
+  //
+  // const sagaMonitor = Config.useReactotron ? console.tron.createSagaMonitor() : null
+  // const sagaMiddleware = createSagaMiddleware({ sagaMonitor })
+  // middleware.push(sagaMiddleware)
 
   /* ------------- Assemble Middleware ------------- */
 
@@ -41,8 +43,8 @@ middleware.push(thunkMiddleWare)
     RehydrationServices.updateReducers(store)
   }
 
-  // kick off root saga
-  sagaMiddleware.run(rootSaga)
+  // // kick off root saga
+  // sagaMiddleware.run(rootSaga)
 
   return store
 }
