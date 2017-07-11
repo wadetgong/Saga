@@ -1,6 +1,5 @@
 import React from 'react'
-import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native'
-
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native'
 import { Colors } from '../Themes'
 import styles from './Styles/ChapterScrollBarStyles'
 
@@ -14,7 +13,7 @@ const ChapterScrollBar = ({chapters, handleClick, selectedChap}) => {
         showsHorizontalScrollIndicator={false}
       >
         {
-          chapters.map((chapter,i) => {
+          chapters.map((chapter, i) => {
             let buttonStyle = getBackgroundStyle(chapter, selectedChap)
             return (
               <TouchableOpacity
@@ -26,17 +25,17 @@ const ChapterScrollBar = ({chapters, handleClick, selectedChap}) => {
                   <Text style={{color: getTextColor(chapter, selectedChap)}}>{chapter.id}</Text>
                 </View>
               </TouchableOpacity>
-            )})
+            )
+          })
         }
       </ScrollView>
     </View>
   )
 }
 
-
 const getBackgroundStyle = (chapter, selectedChap) => {
-  if(chapter.id === selectedChap) {
-    if(chapter.status==='Complete'){
+  if (chapter.id === selectedChap) {
+    if (chapter.status === 'Complete') {
       return {
         borderColor: '#66CF66',
         backgroundColor: '#66CF66'
@@ -48,38 +47,28 @@ const getBackgroundStyle = (chapter, selectedChap) => {
       borderColor: '#111111',
       backgroundColor: '#444444'
     }
-  }
-  else if (!chapter.enabled) {
+  } else if (!chapter.enabled) {
     return {
       backgroundColor: 'lightgray',
       borderColor: 'lightgray'
     }
-  }
-  else {
-    let background = chapter.status === 'Complete'
-    ? {
-      borderColor: '#16a916',
-      backgroundColor: 'white'//'lightgreen'
-    }
-    : {
-      // borderColor: Colors.fire,
-      borderColor: '#444444',
-      backgroundColor: 'white'
-    }
-    return background
-
+  } else {
+    return chapter.status === 'Complete'
+      ? {
+        borderColor: '#16a916',
+        backgroundColor: 'white' // 'lightgreen'
+      }
+      : {
+        // borderColor: Colors.fire,
+        borderColor: '#444444',
+        backgroundColor: 'white'
+      }
   }
 }
 
 const getTextColor = (chapter, selectedChap) => {
-  if(!chapter.enabled) {
-    return 'gray'
-  }
-  // if(chapter.status === 'Complete') {
-  //   return 'green'
-  // }
-  if(chapter.id === selectedChap)
-    return 'white';
+  if (!chapter.enabled) return 'gray'
+  if (chapter.id === selectedChap) return 'white'
   return Colors.text
 }
 

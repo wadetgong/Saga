@@ -1,7 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import { autoRehydrate } from 'redux-persist'
 import Config from '../Config/DebugConfig'
-import createSagaMiddleware from 'redux-saga'
 import RehydrationServices from '../Utils/RehydrationServices'
 import ReduxPersist from '../Config/ReduxPersist'
 import thunkMiddleWare from 'redux-thunk'
@@ -13,10 +12,10 @@ export default (rootReducer, rootSaga) => {
   const middleware = []
   const enhancers = []
 
-  /* ------------- thunkMiddleWare ------------- */  
-  
+  /* ------------- thunkMiddleWare ------------- */
+
   middleware.push(thunkMiddleWare)
-  
+
   // /* ------------- Saga Middleware ------------- */
   //
   // const sagaMonitor = Config.useReactotron ? console.tron.createSagaMonitor() : null

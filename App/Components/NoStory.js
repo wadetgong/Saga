@@ -1,8 +1,7 @@
 import React from 'react'
-import { View, Text, Button, Image, TouchableOpacity } from 'react-native'
-import { Images, Colors} from '../Themes'
+import { View, Text, Image } from 'react-native'
+import { Images } from '../Themes'
 import RoundedButton from '../Components/Button/RoundedButton'
-
 import styles from './Styles/NoStoryStyles'
 
 const NoStory = ({ navigation }) => (
@@ -16,22 +15,18 @@ const NoStory = ({ navigation }) => (
         <View style={styles.cardHeader}>
           <Text style={styles.title}>No Current Story</Text>
         </View>
-    </View>
-      <View style={{
-        padding: 10,
-      }}>
-
+      </View>
+      <View style={{padding: 10}}>
         <Text style={styles.cardBody}>
           You are currently not participating in a live story. Find one via the button below, or join one when your friends invite you!
         </Text>
-
       </View>
     </View>
     <View style={styles.buttonContainer}>
-    <RoundedButton
-      text="Browse Stories"
-      onPress={() => {navigation.navigate('Stories')}}
-    />
+      <RoundedButton
+        text='Browse Stories'
+        onPress={() => navigation.navigate('Stories')}
+      />
     </View>
   </View>
 )

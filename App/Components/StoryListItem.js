@@ -5,27 +5,25 @@ import firebaseApp from '../Firebase'
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
 
 class StoryListItem extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
-      picUrl: 'https://firebasestorage.googleapis.com/v0/b/breach-5ea6b.appspot.com/o/no-image-avail.png?alt=media&token=2cb55c5a-1676-4400-8e1c-00960387de64' //No image image
+      picUrl: 'https://firebasestorage.googleapis.com/v0/b/breach-5ea6b.appspot.com/o/no-image-avail.png?alt=media&token=2cb55c5a-1676-4400-8e1c-00960387de64' // No image image
     }
     this.picRef = firebaseApp.database().ref('/photos/story/' + this.props.item.name)
   }
 
-  componentDidMount() {
-    if(this.props.item.name) this.listenForChange(this.picRef)
+  componentDidMount () {
+    if (this.props.item.name) this.listenForChange(this.picRef)
   }
 
   componentWillUnmount () {
-    if(this.props.item.name) this.picRef.off('value', this.unsubscribe)
+    if (this.props.item.name) this.picRef.off('value', this.unsubscribe)
   }
 
-  listenForChange(ref) {
+  listenForChange (ref) {
     this.unsubscribe = ref.on('value', pic => {
-      this.setState({
-        picUrl : pic.val()
-      })
+      this.setState({ picUrl: pic.val() })
     })
   }
 
