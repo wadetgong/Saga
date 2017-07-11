@@ -78,7 +78,6 @@ class LeaderBoard extends React.Component {
       time: 6841580,
       team: {
         gehrj: true,
-        ehacinom: true,
         jake: true,
       }
     }]
