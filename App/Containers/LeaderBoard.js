@@ -88,6 +88,17 @@ class LeaderBoard extends React.Component {
     let teamList = teams && new ListView
       .DataSource({rowHasChanged : (r1, r2) => r1 != r2})
       .cloneWithRows(teams)
+
+
+
+    // const resetAction = NavigationActions.reset({
+    //   index: 0,
+    //   actions: [
+    //     NavigationActions.navigate({ routeName: 'Chapter'})
+    //   ]
+    // })
+
+
     return (
       <View style={{
         flex: 1,
@@ -159,7 +170,7 @@ class LeaderBoard extends React.Component {
                   paths[`/users/${user}/journeys/current`] = null
                   paths[`/users/${user}/journeys/completed/${currentStory.id}`] = currentStory.story.id
                 })
-
+                paths[`/journey/${currentStory.id}/status/text`] = 'Complete'
                 firebaseApp.database().ref('/').update(paths)
 
                 // this.props.navigation.dispatch(resetAction)
@@ -191,13 +202,13 @@ const mapStateToProps = (state) => {
   console.log('state in redux', state)
   return {
     journeyUrl: state.currentStory.journeyUrl,
-    current: state.stories.current
+    current: state.stories.current,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    removeJourney: () => dispatch(removeJourney())
+    removeJourney: () => dispatch(removeJourney()),
   }
 }
 

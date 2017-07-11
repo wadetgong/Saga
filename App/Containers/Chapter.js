@@ -98,8 +98,10 @@ componentWillReceiveProps(newProps) {
     const selectedChapInfo = (chapters && chapters[this.state.selectedChap-1]) || 0
     const storyName = this.state.story && this.state.story.title
 
+    const storyStatus = this.state.story.status && this.state.story.status.text || 'None'
+
     return (
-      this.props.storyUrl
+      storyStatus !== 'Complete' && this.props.storyUrl
       ? (
         <View style={styles.container}>
         {/*<Image
