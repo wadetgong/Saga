@@ -43,6 +43,7 @@
 
 
 //new stuff above, old stuff below
+//had to export some things that otherwise shouldnt be exported for the sake of testing...
 
 // constants
 const GYRO_MOVE_THRESHOLD_X = .10;
