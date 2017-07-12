@@ -7,8 +7,8 @@ Saga is built using React Native. Scaffolding taken from Infinite Red's [Ignite 
 
 ## Screenshots
 
-![alt text](http://i1.kym-cdn.com/entries/icons/mobile/000/013/564/doge.jpg)
-
+![alt text](https://github.com/wadetgong/TestIgniteApp/blob/master/screenshots/screen1.png?raw=true)
+![alt text](https://github.com/wadetgong/TestIgniteApp/blob/master/screenshots/screen2.png?raw=true)
 
 ## Contributors
 
