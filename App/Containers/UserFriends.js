@@ -45,12 +45,6 @@ const FriendStack = TabNavigator({
   },
 })
 
-
-// currently hardcoding the uid pretending we are already logged in :D :D
-// tabnavigator renders UserProfile before user is logged in
-// as we have it on all pages
-// when we reorder the tabnavigator undo this hardcode
-
 class UserFriends extends React.Component {
   constructor() {
     super()
