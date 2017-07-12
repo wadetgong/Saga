@@ -6,7 +6,7 @@ import CameraScreen from '../../Containers/CameraScreen'
 
 let width = Dimensions.get('window').width
 class BreakOpen extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       offScreenLeft: false,
@@ -16,7 +16,7 @@ class BreakOpen extends Component {
     }
     this.clickedTreasureChest = this.clickedTreasureChest.bind(this);
   }
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     if ((nextProps.arObject.startingPosX + nextProps.xOffset) < 0) {
       this.setState({ offScreenLeft: true });
     } else {
@@ -28,13 +28,13 @@ class BreakOpen extends Component {
       this.setState({ offScreenRight: false });
     }
   }
-  shouldComponentUpdate(nextProps) {
+  shouldComponentUpdate (nextProps) {
     return (
       this.props.xOffset != nextProps.xOffset ||
       this.props.yOffset != nextProps.yOffset
     )
   }
-  clickedTreasureChest() {
+  clickedTreasureChest () {
     if (this.state.timesClicked > 34) {
       this.props.handleSubmit('Pass')
       // this.forceUpdate();
@@ -46,7 +46,7 @@ class BreakOpen extends Component {
     // this.forceUpdate();  // can probably remove this when running non-simulator version
   }
       // cracked the code!!
-  render() {
+  render () {
     // console.log('top is?????? ', this.props.arObject.startingPosY + this.props.yOffset, this.props.arObject.startingPosY, this.props.yOffset )
     // console.log('left is?????? ', this.props.arObject.startingPosX + this.props.xOffset, this.props.arObject.startingPosX, this.props.xOffset )
     return (

@@ -12,7 +12,7 @@ export const sendLocation = (location) => {
 }
 
 export const locationStart = () => {
-  // console.log('listener added for location changes')
+  console.log('listener added for location changes')
   BackgroundGeolocation.on('location', sendLocation)
   BackgroundGeolocation.configure({
     // Geolocation Config

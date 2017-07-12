@@ -6,11 +6,11 @@ import geolib from 'geolib'
 import { Fonts, Colors, Metrics } from '../../Themes/'
 
 class EnterZone extends React.Component {
-  constructor() {
+  constructor () {
     super()
   }
 
-  getGeofence(locObj) {
+  getGeofence (locObj) {
     const delta = 0.0003;
     let polygon = [
       { longitude: locObj.longitude - delta, latitude: locObj.latitude - delta },
@@ -23,7 +23,7 @@ class EnterZone extends React.Component {
     return polygon
   }
 
-  render() {
+  render () {
 
     const locTarget = {
       longitude: this.props.puzzle.location.long,
@@ -81,12 +81,8 @@ class EnterZone extends React.Component {
   }
 }
 
+const mapState = state => ({
+  location: state.geoLocation.location,
+})
 
-
-const mapStateToProps = (state) => {
-  return {
-    location: state.geoLocation.location,
-  }
-}
-
-export default connect(mapStateToProps, null)(EnterZone)
+export default connect(mapState)(EnterZone)

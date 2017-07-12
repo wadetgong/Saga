@@ -8,7 +8,7 @@ import styles from './Styles/FindFriendsStyles'
 /// search/checkMatch must deal with new user objects
 
 class FindFriends extends React.Component {
-  constructor() {
+  constructor () {
     super()
     this.state = {
       ds: new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 }),
@@ -20,14 +20,14 @@ class FindFriends extends React.Component {
 
   onSearch (searchTerm) { this.setState({ text: searchTerm }) }
 
-  checkMatch(searchTerm, friend) {
+  checkMatch (searchTerm, friend) {
     let searchVal = searchTerm.toLowerCase()
-    if(friend.email.toLowerCase().indexOf(searchVal) !== -1) return true
-    if(friend.name.toLowerCase().indexOf(searchVal) !== -1) return true
+    if (friend.email.toLowerCase().indexOf(searchVal) !== -1) return true
+    if (friend.name.toLowerCase().indexOf(searchVal) !== -1) return true
     return false
   }
 
-  render() {
+  render () {
     const { text, ds } = this.state
     const { users } = this.props
     const filteredFriends = text.length

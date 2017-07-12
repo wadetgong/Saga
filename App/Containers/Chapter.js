@@ -14,7 +14,7 @@ import styles from './Styles/ChapterStyles'
 
 class Chapter extends React.Component {
   constructor (props) {
-    super (props)
+    super(props)
     this.state = {
       selectedChap: 1,
       story: {},

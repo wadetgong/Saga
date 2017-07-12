@@ -3,13 +3,14 @@ import { View, Text, TextInput } from 'react-native'
 import RoundedButton from '../Button/RoundedButton'
 
 class FillBlank extends React.Component {
-  constructor() {
+  constructor () {
     super()
     this.state = {
       text: ''
     }
   }
-  render() {
+  
+  render () {
     console.log('fill in blank state is ', this.state)
     return (
       <View style={{padding: 5, margin: 5, /*backgroundColor: 'lightblue'*/}}>

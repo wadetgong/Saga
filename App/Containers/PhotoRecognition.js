@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 
 class PhotoRecognition extends React.Component {
   constructor () {
-    super ()
+    super()
     
     this.uid = firebaseApp.auth().currentUser.uid
     this.takePicture = this.takePicture.bind(this)

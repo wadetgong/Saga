@@ -15,7 +15,7 @@ const initialState = {
   }
 }
 
-export default const reducer = (state = initialState, action) => {
+export const reducer = (state = initialState, action) => {
   console.log('Reducer of Geolocation')
   const newState = Object.assign({}, state)
   switch (action.type) {
