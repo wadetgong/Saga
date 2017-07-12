@@ -1,11 +1,13 @@
 import React from 'react'
 import { Text, View, ListView, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
+
 import FriendListItem from '../Components/FriendListItem'
 import SearchBar from '../Components/SearchBar'
 import RoundedButton from '../Components/Button/RoundedButton'
-import firebaseApp from '../Firebase'
-import { Colors } from '../Themes'
+
+import firebaseApp from '../../Firebase'
+import { Colors } from '../../Themes'
 import styles from './Styles/JourneyFriendsStyles'
 
 class JourneyFriends extends React.Component {

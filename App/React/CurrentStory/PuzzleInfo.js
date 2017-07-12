@@ -1,11 +1,11 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, Image, LayoutAnimation} from 'react-native'
 import { connect } from 'react-redux'
-import firebaseApp from '../Firebase'
+import firebaseApp from '../../Firebase'
 
 import RoundedButton from '../Components/Button/RoundedButton'
 import Puzzle, {iconMap, puzzleDesc}from '../Components/Puzzle'
-import { ApplicationStyles, Images } from '../Themes'
+import { ApplicationStyles, Images } from '../../Themes'
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
 
 // Styles

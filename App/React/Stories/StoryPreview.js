@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import RoundedButton from '../Components/Button/RoundedButton'
-import { Images, Fonts } from '../Themes'
+import { Images, Fonts } from '../../Themes'
 import SimpleMap from '../Components/SimpleMap'
 
 import styles from './Styles/StoryPreviewStyles'

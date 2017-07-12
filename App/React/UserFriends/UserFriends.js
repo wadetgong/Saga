@@ -1,10 +1,10 @@
 import React from 'react'
 import { TabNavigator } from 'react-navigation'
 import { View, Text, Image } from 'react-native'
-import { Images, Colors } from '../Themes'
+import { Images, Colors } from '../../Themes'
 
 import { connect } from 'react-redux'
-import { setMyFriendsAndUsers } from '../Redux/FriendsRedux'
+import { setMyFriendsAndUsers } from '../../Redux/FriendsRedux'
 
 import FindFriends from './FindFriends'
 import PendingFriends from './PendingFriends'
@@ -12,7 +12,7 @@ import PendingFriends from './PendingFriends'
 import styles from './Styles/UserFriendsStyles'
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
 
-import firebaseApp from '../Firebase'
+import firebaseApp from '../../Firebase'
 
 const FriendStack = TabNavigator({
   FindFriends: {
@@ -44,12 +44,6 @@ const FriendStack = TabNavigator({
     showLabel: false
   },
 })
-
-
-// currently hardcoding the uid pretending we are already logged in :D :D
-// tabnavigator renders UserProfile before user is logged in
-// as we have it on all pages
-// when we reorder the tabnavigator undo this hardcode
 
 class UserFriends extends React.Component {
   constructor() {

@@ -1,14 +1,13 @@
 'use strict'
-
-import React, { Component } from 'react';
-import { StyleSheet, Text, View, Switch, Image, Dimensions, DeviceEventEmitter, TouchableOpacity } from 'react-native';
-import styles from './Styles/CameraScreenStyles.js';
-import Camera from 'react-native-camera';
-import TreasureChest from '../Components/Puzzle/TreasureChest';
-import { Gyroscope, DeviceAngles } from 'NativeModules';
-import { addArObject, updateGyroData } from '../Redux/AugmentedRedux';
-import { connect } from 'react-redux';
-import { Images } from '../Themes'
+import React, { Component } from 'react'
+import { StyleSheet, Text, View, Switch, Image, Dimensions, DeviceEventEmitter, TouchableOpacity } from 'react-native'
+import styles from './Styles/CameraScreenStyles.js'
+import Camera from 'react-native-camera'
+import TreasureChest from '../Components/Puzzle/TreasureChest'
+import { Gyroscope, DeviceAngles } from 'NativeModules'
+import { addArObject, updateGyroData } from '../../Redux/AugmentedRedux'
+import { connect } from 'react-redux'
+import { Images } from '../../Themes'
 
 let width = Dimensions.get('window').width;
 let height = Dimensions.get('window').height;

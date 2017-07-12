@@ -3,11 +3,11 @@ import { View, Text, Button, ScrollView, Image, TouchableOpacity } from 'react-n
 import { connect } from 'react-redux'
 import TreasureHunt from '../Components/TreasureHunt'
 import NoStory from '../Components/NoStory'
-import ChapterDetails from '../Containers/ChapterDetails'
+import ChapterDetails from './ChapterDetails'
 import ChapterScrollBar from '../Components/ChapterScrollBar'
 
-import firebaseApp from '../Firebase'
-import { setChapter, setStory, removeStoryUrl } from '../Redux/actions/currentStory'
+import firebaseApp from '../../Firebase'
+import { setChapter, setStory, removeStoryUrl } from '../../Redux/actions/currentStory'
 
 // Styles
 import styles from './Styles/ChapterStyles'
@@ -32,10 +32,10 @@ class Chapter extends React.Component {
         }
       })
 
-    if(this.props.storyUrl) this.storyRef = firebaseApp.database().ref(this.props.storyUrl)
+    if (this.props.storyUrl) this.storyRef = firebaseApp.database().ref(this.props.storyUrl)
   }
 
-  componentDidMount() {
+  componentDidMount () {
     if(this.props.storyUrl) this.listenForChange(this.storyRef)
   }
 

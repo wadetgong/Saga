@@ -1,23 +1,24 @@
 import React from 'react'
 import { View, Text, ScrollView, ListView } from 'react-native'
 import { connect } from 'react-redux'
-import RoundedButton from '../Components/Button/RoundedButton'
 import { NavigationActions } from 'react-navigation'
+
+import RoundedButton from '../Components/Button/RoundedButton'
 import FriendTile from '../Components/FriendTile'
 import CancelJourneyFriend from '../Components/CancelJourneyFriend'
 
-import { setStory } from '../Redux/actions/currentStory'
+import { setStory } from '../../Redux/actions/currentStory'
 
-import { Colors, Metrics } from '../Themes'
+import { Colors, Metrics } from '../../Themes'
 
-import firebaseApp from '../Firebase'
+import firebaseApp from '../../Firebase'
 import * as firebase from 'firebase'
 import styles from './Styles/TeamScreenStyles'
 
 // const TeamScreen = ({ teamList, friends, uid, navigation, user, screenProps }) => {
 
 class TeamScreen extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       journey: {},
@@ -27,10 +28,10 @@ class TeamScreen extends React.Component {
     this.pendingFriends = new ListView.DataSource({rowHasChanged : (r1, r2) => r1 != r2})
     this.removeFriendFromTeam = this.removeFriendFromTeam.bind(this)
   }
-  componentDidMount() {this.listenForChange(this.journeyRef) }
-  componentWillUnmount () {this.journeyRef.off('value', this.unsubscribe) }
+  componentDidMount () { this.listenForChange(this.journeyRef) }
+  componentWillUnmount () { this.journeyRef.off('value', this.unsubscribe) }
 
-  listenForChange(ref) {
+  listenForChange (ref) {
     this.unsubscribe = ref.on('value', journey => {
       this.setState({ journey: journey.val() })
     })

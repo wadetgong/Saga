@@ -1,38 +1,37 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { StackNavigator } from 'react-navigation'
-import StoryScreen from '../Containers/StoryScreen'
-import StoryPreview from '../Containers/StoryPreview'
-import JourneyFriends from '../Containers/JourneyFriends'
-import TeamScreen from '../Containers/TeamScreen'
-import firebaseApp from '../Firebase'
-import { fetchStories, fetchJourney } from '../Redux/StoriesRedux'
+
+import StoryScreen from './StoryScreen'
+import StoryPreview from './StoryPreview'
+import JourneyFriends from './JourneyFriends'
+import TeamScreen from './TeamScreen'
+
+import firebaseApp from '../../Firebase'
+import { fetchStories, fetchJourney } from '../../Redux/StoriesRedux'
 
 const ChooseStoryStack = StackNavigator({
-    StoryScreen: { screen: StoryScreen },
-    StoryPreview: { screen: ({ navigation, name, current, screenProps }) =>
-      <StoryPreview
-        screenProps={screenProps}
-        navigation={navigation}
-        name={name}
-        current={current}
-      />
-    },
-    JourneyFriends: { screen: JourneyFriends },
-    TeamScreen: { screen: ({ screenProps, navigation }) =>
-      <TeamScreen
-        screenProps={screenProps}
-        navigation={navigation}
-      />
-    },
-  }, {
-    // Default config for all screens
-    headerMode: 'none',
-    initialRouteName: 'StoryScreen',
-    // navigationOptions: {
-    //   headerStyle: styles.header
-    // }
-  });
+  StoryScreen: { screen: StoryScreen },
+  StoryPreview: { screen: ({ navigation, name, current, screenProps }) =>
+    <StoryPreview
+      screenProps={screenProps}
+      navigation={navigation}
+      name={name}
+      current={current}
+    />
+  },
+  JourneyFriends: { screen: JourneyFriends },
+  TeamScreen: { screen: ({ screenProps, navigation }) =>
+    <TeamScreen
+      screenProps={screenProps}
+      navigation={navigation}
+    />
+  }
+}, {
+  // Default config for all screens
+  headerMode: 'none',
+  initialRouteName: 'StoryScreen'
+})
 
 class Stories extends React.Component {
   constructor() {
@@ -62,11 +61,11 @@ class Stories extends React.Component {
 
   componentWillUnmount () {
     if (this.unsubscribeMyJourneysRef)
-      this.unsubscribeMyJourneysRef();
+      this.unsubscribeMyJourneysRef()
     if (this.unsubscribeMyCurrentJourneyRef)
-      this.unsubscribeMyCurrentJourneyRef();
+      this.unsubscribeMyCurrentJourneyRef()
     if (this.unsubscribeCurrentJourneyRef)
-      this.unsubscribeCurrentJourneyRef();
+      this.unsubscribeCurrentJourneyRef()
   }
 
   getJourneysAndStories (journeyRef, storyRef) {

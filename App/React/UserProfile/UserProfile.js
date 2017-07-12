@@ -2,16 +2,17 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { TabNavigator } from 'react-navigation'
 import { View, Text, Image, TouchableOpacity } from 'react-native'
-import firebaseApp from '../Firebase'
+import firebaseApp from '../../Firebase'
 
-import { Images, Colors } from '../Themes'
-import ViewFriends from './ViewFriends'
-import UserJourneys from './UserJourneys'
+import { Images, Colors } from '../../Themes'
 import styles from './Styles/UserProfileStyles'
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
-import { setSelf } from '../Redux/FriendsRedux'
-import { setStory } from '../Redux/actions/currentStory'
 
+import { setSelf } from '../../Redux/FriendsRedux'
+import { setStory } from '../../Redux/actions/currentStory'
+
+import ViewFriends from './ViewFriends'
+import UserJourneys from './UserJourneys'
 
 const UserProfileStack = TabNavigator({
   UserJourneys: {

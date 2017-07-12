@@ -1,12 +1,11 @@
-
 import React from 'react'
 import { View, Text, Modal, LayoutAnimation } from 'react-native'
 import { connect } from 'react-redux'
 import FullButton from '../Components/Button/FullButton'
-import PuzzleInfo from '../Containers/PuzzleInfo'
-import { setPuzzle } from '../Redux/actions/currentStory'
-import firebaseApp from '../Firebase'
-import { Colors } from '../Themes'
+import PuzzleInfo from './PuzzleInfo'
+import { setPuzzle } from '../../Redux/actions/currentStory'
+import firebaseApp from '../../Firebase'
+import { Colors } from '../../Themes'
 
 import styles from './Styles/ChapterDetailsStyles'
 
