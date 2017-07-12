@@ -6,10 +6,10 @@ import JourneyInviteRow from '../Components/JourneyInviteRow'
 import CurrentStoryInfo from '../Components/CurrentStoryInfo'
 
 import styles from './Styles/UserJourneysStyles'
-import {Colors, Metrics} from '../Themes'
-import firebaseApp from '../Firebase'
-import { setStory } from '../Redux/actions/currentStory'
-import { removeJourney } from '../Redux/StoriesRedux'
+import { Colors, Metrics } from '../../Themes'
+import firebaseApp from '../../Firebase'
+import { setStory } from '../../Redux/actions/currentStory'
+import { removeJourney } from '../../Redux/StoriesRedux'
 
 // const UserJourneys = ({ myJourneys, myStoriesList, jid, name, current, screenProps}) => {
 class UserJourneys extends React.Component {
