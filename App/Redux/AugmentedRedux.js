@@ -1,18 +1,64 @@
+// import { createReducer, createActions } from 'reduxsauce'
+// import Immutable from 'seamless-immutable'
+
+// /* ------------- Types and Action Creators ------------- */
+
+// const { Types, Creators } = createActions({
+//   userRequest: ['username'],
+//   userSuccess: ['avatar'],
+// })
+
+// export const AugmentedReduxTypes = Types
+// export default Creators
+
+// /* ------------- Initial State ------------- */
+
+// export const INITIAL_STATE = Immutable({
+//   arObject: {},
+//   gyroX: 0,
+//   gyroY: 0,
+//   xOffset: 0,
+//   yOffset: 0,
+//   active: true
+// })
+
+//  ------------- Reducers -------------
+
+// // request the temperature for a city
+// export const move = (state, { rotationRate, moveX, moveY }) =>
+//   state.merge({ rotationRate, moveX, moveY})
+
+// // successful temperature lookup
+// export const setArObject = (state, { arObject }) => {
+//   const { avatar } = action
+//   return state.merge({ arObject })
+// }
+
+// /* ------------- Hookup Reducers To Types ------------- */
+
+// export const reducer = createReducer(INITIAL_STATE, {
+//   [Types.ADD_AR_OBJECT]: setArObject,
+//   [Types.UPDATE_GYRO_DATA]: move,
+// })
+
+
+//new stuff above, old stuff below
+
 // constants
 const GYRO_MOVE_THRESHOLD_X = .10;
 const GYRO_MOVE_THRESHOLD_Y = .10;
-const MOVE_FACTOR_Y = 40
-const MOVE_FACTOR_X = MOVE_FACTOR_Y * .8
+export const MOVE_FACTOR_Y = 40
+export const MOVE_FACTOR_X = MOVE_FACTOR_Y * .8
 
 // actions
 const ADD_AR_OBJECT = 'ADD_AR_OBJECT'
 const UPDATE_GYRO_DATA = 'UPDATE_GYRO_DATA'
 
 // action-creators
-const setArObject = arObject => ({
+export const setArObject = arObject => ({
   type: ADD_AR_OBJECT, arObject
 })
-const move = (rotationRate, moveX, moveY) => ({
+export const move = (rotationRate, moveX, moveY) => ({
   type: UPDATE_GYRO_DATA,
   rotationRate,
   moveX,
@@ -20,7 +66,7 @@ const move = (rotationRate, moveX, moveY) => ({
 })
 
 // reducer
-const initialState = {
+export const initialState = {
   arObject: {},
   gyroX: 0,
   gyroY: 0,
@@ -37,15 +83,6 @@ export const reducer = (state = initialState, action) => {
         arObject: action.arObject
       }
     case UPDATE_GYRO_DATA:
-      // console.log('xOffset is? ', state.xOffset + (action.moveX * (MOVE_FACTOR_X * action.rotationRate.y)) )
-      // console.log('moveX is? ', action.moveX * (MOVE_FACTOR_X * action.rotationRate.y))
-      // console.log('old sate.xoffSet is? ', state.xOffset)
-      // console.log('YRotation rate is? ', action.rotationRate.y)
-      // console.log('yOffset is? ', state.yOffset + (action.moveY * (MOVE_FACTOR_Y * action.rotationRate.x)) )
-      // console.log('moveY is? ', action.moveY * (MOVE_FACTOR_Y * action.rotationRate.x))
-      // console.log('old sate.yoffSet is? ', state.yOffset)
-      // console.log('xRotation rate is? ', action.rotationRate.x)
-
       return {
         ...state,
         gyroX: action.rotationRate.x,
@@ -59,19 +96,17 @@ export const reducer = (state = initialState, action) => {
 }
 
 
-
-
 // action-dispatchers
 export const addArObject = arObject => dispatch => {
   dispatch(setArObject(arObject))
 }
 export const updateGyroData = gyroData => dispatch => {
   const moveX = Number(
-    gyroData.rotationRate.x > GYRO_MOVE_THRESHOLD_Y || 
+    gyroData.rotationRate.x > GYRO_MOVE_THRESHOLD_Y ||
     gyroData.rotationRate.x < GYRO_MOVE_THRESHOLD_Y * -1
   )
   const moveY = Number(
-    gyroData.rotationRate.y > GYRO_MOVE_THRESHOLD_X || 
+    gyroData.rotationRate.y > GYRO_MOVE_THRESHOLD_X ||
     gyroData.rotationRate.y < GYRO_MOVE_THRESHOLD_X * -1
   )
   // if (moveX || moveY)
