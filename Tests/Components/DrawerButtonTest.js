@@ -1,6 +1,6 @@
 import 'react-native'
 import React from 'react'
-import DrawerButton from '../../App/Components/DrawerButton'
+import DrawerButton from '../../App/Components/Button/DrawerButton'
 import { shallow } from 'enzyme'
 import renderer from 'react-test-renderer'
 
