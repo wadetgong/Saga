@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, StatusBar } from 'react-native'
-import Navigation from '../Navigation/AppNavigation'
+import Navigation from './Navigation'
 import { locationStart, locationStop } from '../Utils/GeoLocation'
 import styles from './Styles/RootContainerStyles'
 

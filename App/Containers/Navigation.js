@@ -1,17 +1,17 @@
 import { StackNavigator, TabNavigator } from 'react-navigation'
 import React from 'react'
 
-import LoginScreen from '../Containers/LoginScreen'
+import LoginScreen from './LoginScreen'
 
-import Stories from '../Containers/Stories'
-import UserProfile from '../Containers/UserProfile'
-import UserFriends from '../Containers/UserFriends'
+import Stories from './Stories/Stories'
+import UserProfile from './UserProfile/UserProfile'
+import UserFriends from './UserFriends/UserFriends'
 
-import Chapter from '../Containers/Chapter'
-import ChapterDetails from '../Containers/ChapterDetails'
-import PuzzleInfo from '../Containers/PuzzleInfo'
-import CameraScreen from '../Containers/CameraScreen'
-import JourneySummary from '../Containers/JourneySummary'
+import Chapter from './CurrentStory/Chapter'
+import ChapterDetails from './CurrentStory/ChapterDetails'
+import PuzzleInfo from './CurrentStory/PuzzleInfo'
+import CameraScreen from './CurrentStory/CameraScreen'
+import JourneySummary from './CurrentStory/JourneySummary'
 
 import styles from './Styles/NavigationStyles'
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
