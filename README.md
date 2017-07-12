@@ -12,7 +12,7 @@ Saga is built using React Native. Scaffolding taken from Infinite Red's [Ignite 
 
 ## Contributors
 
-Saga was built as our Capstone project at [Fullstack Academy](http://www.fullstackacademy.com/) Chicago
+Saga was built as our Capstone project at [Fullstack Academy](http://www.fullstackacademy.com/) in Chicago
 * [Justin Gehr](https://www.linkedin.com/in/justin-gehr-088159144/)
 * [Wade Gong](https://www.linkedin.com/in/wade-gong-64562222/)
 * [Monica He](https://www.linkedin.com/in/monica-he-58b088143/)
