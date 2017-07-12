@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import ApproveFriendRow from '../Components/ApproveFriendRow'
 import PendingFriendRow from '../Components/PendingFriendRow'
 import styles from './Styles/PendingFriendsStyles'
-import { Colors } from '../Themes'
+import { Colors } from '../../Themes'
 
 const noRequests = () => (
   <View style={{alignItems: 'center'}}>

@@ -1,18 +1,16 @@
 import React from 'react'
 import { View, Text, Image, ScrollView, ListView } from 'react-native'
 import { connect } from 'react-redux'
-import firebaseApp from '../Firebase'
-import { Images } from '../Themes'
+import firebaseApp from '../../Firebase'
+import { Images } from '../../Themes'
 import RoundedButton from '../Components/Button/RoundedButton'
 import FriendTeamTile from '../Components/FriendTeamTile'
 
 import styles from './Styles/JourneySummaryStyles'
-
-
-import { removeJourney } from '../Redux/StoriesRedux'
+import { removeJourney } from '../../Redux/StoriesRedux'
 
 class JourneySummary extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       journey: {},
@@ -21,7 +19,7 @@ class JourneySummary extends React.Component {
     this.journeyRef = firebaseApp.database().ref(this.props.journeyUrl)
   }
 
-  componentDidMount() {
+  componentDidMount () {
     if(this.props.journeyUrl) this.listenForChange(this.journeyRef)
   }
 
@@ -29,7 +27,7 @@ class JourneySummary extends React.Component {
     if(this.props.journeyUrl) this.journeyRef.off('value', this.unsubscribe)
   }
 
-  listenForChange(ref) {
+  listenForChange (ref) {
     this.unsubscribe = ref.on('value', journey => {
       let journeyObj = journey.val()
       if(journeyObj) {
@@ -43,7 +41,7 @@ class JourneySummary extends React.Component {
     })
   }
 
-  render() {
+  render () {
     const friendsList = (this.state.journey && this.state.journey.team && this.state.journey.team.list) || []
     console.log(friendsList, 'friendlist')
 

@@ -37,6 +37,7 @@ class ViewFriends extends React.Component {
     )
   }
 }
+
 const mapState = state => ({
   user: state.friends.user,
   friends: state.friends.list
