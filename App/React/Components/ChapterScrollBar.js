@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, ScrollView } from 'react-native'
-import { Colors } from '../Themes'
+import { Colors } from '../../Themes'
 import styles from './Styles/ChapterScrollBarStyles'
 
 const ChapterScrollBar = ({chapters, handleClick, selectedChap}) => {

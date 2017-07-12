@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { Image, View, Dimensions, TouchableHighlight, Text } from 'react-native';
-import styles from './Styles/TreasureChestStyles';
-import { connect } from 'react-redux';
-import CameraScreen from '../../Containers/CameraScreen'
+import React, { Component } from 'react'
+import { Image, View, Dimensions, TouchableHighlight, Text } from 'react-native'
+import styles from './Styles/TreasureChestStyles'
+import { connect } from 'react-redux'
+import Camera from '../../Camera'
 
 let width = Dimensions.get('window').width
 class BreakOpen extends Component {
@@ -52,12 +52,12 @@ class BreakOpen extends Component {
     return (
       (this.state.timesClicked < 35) ?
         <View style={styles.container}>
-          <CameraScreen close={this.props.screenProps.close} >
+          <Camera close={this.props.screenProps.close} >
             {/*<Text style={{ color: 'white', fontSize: 15, top: 0, left: 50 }}> Keep on Clicking to Break the Code! </Text>*/}
             <Text style={{color: 'green', fontSize: 30, top: 40, left: width * .255 }}> {this.state.progress}% Cracked! </Text>
             <TouchableHighlight onPress={this.clickedTreasureChest}>
               <Image
-                source={require('../../Images/codeBreak.jpg')}
+                source={require('../../../Images/codeBreak.jpg')}
                 resizeMode='contain'
                 style={[styles.arObject, styles.row, {
                     top: this.props.arObject.startingPosY + this.props.yOffset,
@@ -65,18 +65,18 @@ class BreakOpen extends Component {
                 }]}
               />
             </TouchableHighlight>
-          </CameraScreen>
+          </Camera>
         </View>
         :
         <View>
-          <CameraScreen close={this.props.screenProps.close} >
+          <Camera close={this.props.screenProps.close} >
             <Text style={{
                 color: 'green',
                 fontSize: 30,
                 top: 40,
                 left: width * .125
             }}> Code Cracked! </Text>
-          </CameraScreen>
+          </Camera>
         </View>
     )
   }

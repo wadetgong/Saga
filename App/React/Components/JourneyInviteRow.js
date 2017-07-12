@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, Image, TouchableOpacity } from 'react-native'
-import firebaseApp from '../Firebase'
+import firebaseApp from '../../Firebase'
 import styles from './Styles/JourneyInviteRowStyles'
 /* global alert */
 

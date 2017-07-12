@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
-import firebaseApp from '../Firebase'
+import firebaseApp from '../../Firebase'
 import styles from './Styles/PendingFriendRowStyles'
 
 const PendingFriendRow = ({ user, cancel }) => (

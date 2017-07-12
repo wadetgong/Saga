@@ -1,6 +1,6 @@
 import React from 'react'
 import { ListView, View, Text } from 'react-native'
-import firebaseApp from '../Firebase'
+import firebaseApp from '../../Firebase'
 import * as firebase from 'firebase'
 import { connect } from 'react-redux'
 import { fetchJourney } from '../../Redux/StoriesRedux'

@@ -1,5 +1,5 @@
 import BackgroundGeolocation from 'react-native-background-geolocation'
-import { store } from '../Containers/App'
+import { store } from '../React/App'
 
 export const sendLocation = (location) => {
   let longitude = location.coords.longitude

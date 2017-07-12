@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import { Image, View, Dimensions, TouchableHighlight, PanResponder, Animated, Text } from 'react-native';
-import styles from './Styles/TreasureChestStyles';
-import { connect } from 'react-redux';
-import CameraScreen from '../../Containers/CameraScreen'
+import React from 'react'
+import { Image, View, Dimensions, TouchableHighlight, PanResponder, Animated, Text } from 'react-native'
+import styles from './Styles/TreasureChestStyles'
+import { connect } from 'react-redux'
+import Camera from '../../Camera'
 
 let width = Dimensions.get('window').width
 let height = Dimensions.get('window').height
-let topShift = 605;
-let leftShift = 115;
-let threeOh = 30;
+let topShift = 605
+let leftShift = 115
+let threeOh = 30
 
-class TreasureChest extends Component {
-  constructor(props) {
+class TreasureChest extends React.Component {
+  constructor (props) {
     super(props);
     this.state = {
       offScreenLeft: false,
@@ -50,7 +50,7 @@ class TreasureChest extends Component {
     this.foundKey = this.foundKey.bind(this);
     this.unlockChest = this.unlockChest.bind(this);
   }
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps (nextProps) {
       if ((nextProps.arObject.startingPosX + nextProps.xOffset) < 0) {
         this.setState({ offScreenLeft: true });
       } else {
@@ -62,32 +62,32 @@ class TreasureChest extends Component {
         this.setState({ offScreenRight: false });
       }
     }
-    shouldComponentUpdate(nextProps) {
+    shouldComponentUpdate (nextProps) {
       return (
         this.props.xOffset != nextProps.xOffset ||
         this.props.yOffset != nextProps.yOffset
       )
     }
-    clickedTreasureChest() {
+    clickedTreasureChest () {
       if (!this.state.hasKey) alert('The Treasure Chest is locked! Find the key to open it');
       if (this.state.hasKey) alert('Use the Key to Open the Treasure Chest!')
     }
-    foundKey() {
+    foundKey () {
       this.setState({ hasKey: true });
     }
-    unlockChest() {
+    unlockChest () {
       //this.props.screenProps.close()
       this.setState({ foundBooty: true })
       this.props.handleSubmit('Pass')
     }
 
-    whichKey() {
+    whichKey () {
       return (
         this.state.hasKey
         ? <View style={{ position: 'absolute', top: topShift, left: leftShift }}>
             <Text style={{ color: 'white', fontSize: 32, top: threeOh, left: -leftShift }}> ITEMS: </Text>
             <Animated.Image
-              source={require('../../Images/key.png')}
+              source={require('../../../Images/key.png')}
               {...this.PanResponder.panHandlers}
               resizeMode='contain'
               style={[this.state.pan.getLayout(), styles.key, styles.row,]}
@@ -97,7 +97,7 @@ class TreasureChest extends Component {
             <Text style={{ color: 'white', fontSize: 32, top: 635, left: 0 }}> ITEMS: </Text>
             <TouchableHighlight onPress={this.foundKey}>
               <Image
-                source={require('../../Images/key.png')}
+                source={require('../../../Images/key.png')}
                 resizeMode='contain'
                 style={[styles.key, styles.row, {
                     top: 100 + this.props.yOffset,
@@ -112,13 +112,13 @@ class TreasureChest extends Component {
     render() {
       return (
         <View style={styles.container}>
-          <CameraScreen close={this.props.screenProps.close} >
+          <Camera close={this.props.screenProps.close} >
           {
             (!this.state.foundBooty)
             ? <View>
                 <TouchableHighlight onPress={this.clickedTreasureChest}>
                     <Image
-                      source={require('../../Images/treasureChest.png')}
+                      source={require('../../../Images/treasureChest.png')}
                       resizeMode='contain'
                       style={[styles.arObject, styles.row, {
                         top: this.props.arObject.startingPosY + this.props.yOffset,
@@ -131,13 +131,13 @@ class TreasureChest extends Component {
             : <View>
                 <Text style={{ color:'black', fontSize: 24, top: 20, left: 95 }}>Treasure Found!</Text>
                 <Image
-                    source={require('../../Images/piratesBooty.png')}
+                    source={require('../../../Images/piratesBooty.png')}
                     resizeMode='contain'
                     style={[styles.booty, { top: this.props.arObject.startingPosY + this.props.yOffset, left: this.props.arObject.startingPosX + this.props.xOffset }]}
                 />
               </View>
           }
-          </CameraScreen>
+          </Camera>
         </View>
         )
     }

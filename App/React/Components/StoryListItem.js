@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native'
-import { Images, Fonts } from '../Themes'
-import firebaseApp from '../Firebase'
+import { Images, Fonts } from '../../Themes'
+import firebaseApp from '../../Firebase'
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
 
 class StoryListItem extends React.Component {

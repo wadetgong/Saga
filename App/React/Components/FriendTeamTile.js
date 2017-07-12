@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Image, TouchableOpacity } from 'react-native'
 import styles from './Styles/FriendTeamTileStyles'
-import firebaseApp from '../Firebase'
+import firebaseApp from '../../Firebase'
 
 class FriendTeamTile extends React.Component {
   constructor (props) {

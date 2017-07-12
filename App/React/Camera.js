@@ -1,48 +1,47 @@
 'use strict'
-import React, { Component } from 'react'
+import React from 'react'
 import { StyleSheet, Text, View, Switch, Image, Dimensions, DeviceEventEmitter, TouchableOpacity } from 'react-native'
-import styles from './Styles/CameraScreenStyles.js'
+import styles from './Styles/CameraStyles.js'
 import Camera from 'react-native-camera'
-import TreasureChest from '../Components/Puzzle/TreasureChest'
 import { Gyroscope, DeviceAngles } from 'NativeModules'
-import { addArObject, updateGyroData } from '../../Redux/AugmentedRedux'
+import { addArObject, updateGyroData } from '../Redux/AugmentedRedux'
 import { connect } from 'react-redux'
-import { Images } from '../../Themes'
+import { Images } from '../Themes'
 
-let width = Dimensions.get('window').width;
-let height = Dimensions.get('window').height;
+let width = Dimensions.get('window').width
+let height = Dimensions.get('window').height
 // DeviceAngles.setDeviceMotionUpdateInterval(0.1)
 
- class CameraScreen extends Component {
+ class CameraScreen extends React.Component {
   static navigationOptions = {
       title: 'Camera'
   }
 
-  constructor(props) {
+  constructor (props) {
     super(props);
 
-    //wadestuff
+    // wadestuff
     this.state = {
-      rotX: 0, //wadestuff
-      rotY: 0, //wadestuff
-      rotZ: 0, //wadestuff
+      rotX: 0, // wadestuff
+      rotY: 0, // wadestuff
+      rotZ: 0, // wadestuff
       pitch: 0,
       roll:0,
       yaw:0
     }
-    //wadestuff
+    // wadestuff
 
     this.handleArStart = this.handleArStart.bind(this);
     this.createAr = this.createAr.bind(this);
   }
-  componentWillMount() {
-    this.handleArStart();
-    // DeviceAngles.startMotionUpdates();
-    Gyroscope.setGyroUpdateInterval(0.1);
-    Gyroscope.startGyroUpdates();
+  componentWillMount () {
+    this.handleArStart()
+    // DeviceAngles.startMotionUpdates()
+    Gyroscope.setGyroUpdateInterval(0.1)
+    Gyroscope.startGyroUpdates()
   }
 
-  componentDidMount() {
+  componentDidMount () {
     console.log('initialize gyro')
     this.gyro = (data) => {
       if(data.rotationRate.y && data.rotationRate.x){
@@ -118,20 +117,17 @@ let height = Dimensions.get('window').height;
   }
 }
 
-function mapStateToProps({ augmented }) {
+function mapState({ augmented }) {
   return {
     ...augmented
   }
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatch(dispatch) {
   return {
     addArObject: arObj => dispatch(addArObject(arObj)),
     updateGyroData: data => dispatch(updateGyroData(data)),
   }
 }
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(CameraScreen);
+export default connect(mapState, mapDispatch)(CameraScreen);

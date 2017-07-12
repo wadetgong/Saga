@@ -10,9 +10,9 @@ import UserFriends from './UserFriends/UserFriends'
 import Chapter from './CurrentStory/Chapter'
 import ChapterDetails from './CurrentStory/ChapterDetails'
 import PuzzleInfo from './CurrentStory/PuzzleInfo'
-import CameraScreen from './CurrentStory/CameraScreen'
+import Camera from './Camera'
 import JourneySummary from './CurrentStory/JourneySummary'
-import LeaderBoard from '../CurrentStory/LeaderBoard'
+import LeaderBoard from './CurrentStory/LeaderBoard'
 
 import styles from './Styles/NavigationStyles'
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
@@ -22,7 +22,7 @@ const StoryGameStack = StackNavigator({
   Chapter: { screen: Chapter },
   ChapterDetails: { screen: ChapterDetails },
   PuzzleInfo: { screen: PuzzleInfo },
-  CameraScreen: { screen: CameraScreen },
+  Camera: { screen: Camera },
   JourneySummary: { screen: JourneySummary },
   LeaderBoard: { screen: LeaderBoard }
 }, {
