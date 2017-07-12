@@ -1,7 +1,7 @@
 import React from 'react'
 import { TabNavigator } from 'react-navigation'
 import { View, Text, Image } from 'react-native'
-import { Images } from '../Themes'
+import { Images, Colors } from '../Themes'
 
 import { connect } from 'react-redux'
 import { setMyFriendsAndUsers } from '../Redux/FriendsRedux'
@@ -10,13 +10,9 @@ import FindFriends from './FindFriends'
 import PendingFriends from './PendingFriends'
 
 import styles from './Styles/UserFriendsStyles'
-import { Colors } from '../Themes'
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
 
 import firebaseApp from '../Firebase'
-
-
-// not sure the filtering works yet since there's still no friends
 
 const FriendStack = TabNavigator({
   FindFriends: {
@@ -58,10 +54,8 @@ const FriendStack = TabNavigator({
 class UserFriends extends React.Component {
   constructor() {
     super()
-    // unsubscribing
     this.unsubscribeMyFriendsRef = null
     this.unsubscribeUsers = null
-
     this.uid = firebaseApp.auth().currentUser.uid
   }
 

@@ -9,7 +9,7 @@ import SearchBar from '../Components/SearchBar'
 import styles from './Styles/StoryScreenStyles'
 
 class StoryScreen extends React.Component {
-  constructor() {
+  constructor () {
     super()
     this.state = {
       ds: new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 }),

@@ -1,4 +1,5 @@
 
+
 // Left drift is coming from render styling maybe we can fix this top and left maybe we can find other way?
 //take a look at ../reducers/constants/index to see the threshold to mess with that as well
 
@@ -19,7 +20,7 @@ import { Images } from '../../Themes'
 let width = Dimensions.get('window').width
 
 class TreasureChest extends Component {
-    constructor(props) {
+    constructor (props) {
         super(props);
         this.state = {
             offScreenLeft: false,

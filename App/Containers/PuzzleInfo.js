@@ -12,19 +12,19 @@ import Icon from 'react-native-vector-icons/SimpleLineIcons'
 import styles from './Styles/PuzzleInfoStyles'
 
 class PuzzleInfo extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       puzzle: {},
       showInfoModal: false,
     }
-    if(this.props.puzzleUrl) this.puzzleRef = firebaseApp.database().ref(this.props.puzzleUrl)
+    if (this.props.puzzleUrl) this.puzzleRef = firebaseApp.database().ref(this.props.puzzleUrl)
   }
 
   componentDidMount() { if(this.props.puzzleUrl) this.listenForChange(this.puzzleRef) }
   componentWillUnmount () { if(this.props.puzzleUrl) this.puzzleRef.off('value', this.unsubscribe) }
 
-  listenForChange(ref) {
+  listenForChange (ref) {
     this.unsubscribe = ref.on('value', puzzle => {
       this.setState({ puzzle: puzzle.val() })
     })
@@ -41,8 +41,8 @@ class PuzzleInfo extends React.Component {
 
   componentWillUpdate() { LayoutAnimation.easeInEaseOut() }
 
-  getHelperText(puzzle) {
-    if(puzzle) {
+  getHelperText (puzzle) {
+    if (puzzle) {
       let iconName = iconMap[puzzle.puzzleType] || 'game-controller';
       let iconDesc = puzzleDesc[puzzle.puzzleType]
       return (
@@ -61,8 +61,8 @@ class PuzzleInfo extends React.Component {
     return <View></View>
   }
 
-  getIconList(puzzle) {
-    if(puzzle){
+  getIconList (puzzle) {
+    if (puzzle){
       let iconName = iconMap[puzzle.puzzleType] || 'game-controller';
       return (
         <View style={{flexDirection: 'row'}}>
@@ -80,7 +80,7 @@ class PuzzleInfo extends React.Component {
     return <View></View>
   }
 
-  render() {
+  render () {
     console.log('state in puzzle info', this.state)
     return (
         this.props.puzzleUrl
@@ -135,7 +135,6 @@ class PuzzleInfo extends React.Component {
               </View>
             </View>
 
-
             <Puzzle puzzle={this.state.puzzle} close={this.props.screenProps.close}/>
           </View>
         )
@@ -144,17 +143,8 @@ class PuzzleInfo extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    puzzleUrl: state.currentStory.puzzleUrl,
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(PuzzleInfo)
+const mapState = state => ({
+  puzzleUrl: state.currentStory.puzzleUrl
+})
+export default connect(mapState)(PuzzleInfo)
 

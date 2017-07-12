@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { View, Text, Modal, LayoutAnimation } from 'react-native'
 import { connect } from 'react-redux'
@@ -10,7 +11,7 @@ import { Colors } from '../Themes'
 import styles from './Styles/ChapterDetailsStyles'
 
 class ChapterDetails extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       showModal: false,
@@ -22,26 +23,26 @@ class ChapterDetails extends React.Component {
     if(this.props.chapterUrl) this.chapterRef = firebaseApp.database().ref(this.props.chapterUrl)
   }
 
-  componentWillUpdate() { LayoutAnimation.easeInEaseOut() }
+  componentWillUpdate () { LayoutAnimation.easeInEaseOut() }
 
-  componentDidMount() {
-    if(this.props.chapterUrl) this.listenForChange(this.chapterRef)
+  componentDidMount () {
+    if (this.props.chapterUrl) this.listenForChange(this.chapterRef)
   }
   componentWillUnmount () {
-    if(this.props.chapterUrl) this.chapterRef.off('value', this.unsubscribe)
+    if (this.props.chapterUrl) this.chapterRef.off('value', this.unsubscribe)
   }
 
-  listenForChange(ref) {
+  listenForChange (ref) {
     this.unsubscribe = ref.on('value', chapter => {
       this.setState({ chapter: chapter.val() })
     })
   }
 
-  openPuzzle() { this.setState({ showModal: true }) }
-  closePuzzle() { this.setState({ showModal: false }) }
+  openPuzzle () { this.setState({ showModal: true }) }
+  closePuzzle () { this.setState({ showModal: false }) }
 
-  getButtonStyle(puzzle) {
-    if(puzzle.status === 'Complete') {
+  getButtonStyle (puzzle) {
+    if (puzzle.status === 'Complete') {
       return {
         backgroundColor: '#16a916',
         borderTopColor: '#007400',
@@ -58,7 +59,7 @@ class ChapterDetails extends React.Component {
     }
   }
 
-  render() {
+  render () {
     return (
       <View>
         <View style={styles.chapterDesc}>
@@ -102,13 +103,13 @@ class ChapterDetails extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     chapterUrl: state.currentStory.chapterUrl,
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     setPuzzle: (puzzleId) => { dispatch(setPuzzle(puzzleId)) }
   }
