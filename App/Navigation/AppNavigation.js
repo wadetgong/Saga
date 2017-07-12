@@ -23,7 +23,8 @@ const StoryGameStack = StackNavigator(
   ChapterDetails: { screen: ChapterDetails },
   PuzzleInfo: { screen: PuzzleInfo },
   CameraScreen: { screen: CameraScreen },
-  JourneySummary: { screen: JourneySummary }
+  JourneySummary: { screen: JourneySummary },
+  LeaderBoard: { screen: LeaderBoard }
 }, {
   // Default config for all screens
   headerMode: 'none',
