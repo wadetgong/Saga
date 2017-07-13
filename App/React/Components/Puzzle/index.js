@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, Modal } from 'react-native'
 import { connect } from 'react-redux'
-import firebaseApp from '../../Firebase'
+import firebaseApp from '../../../Firebase'
 import FillBlank from './FillBlank'
 import EnterZone from './EnterZone'
 import TreasureChest from './TreasureChest'

@@ -4,7 +4,7 @@ import styles from './Styles/FriendListItemStyles'
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
 import FriendTeamTile from '../Components/FriendTeamTile'
 
-import { Fonts, Colors, Metrics } from '../Themes/'
+import { Fonts, Colors, Metrics } from '../../Themes/'
 
 const TeamListRow = ({id, team}) => {
 

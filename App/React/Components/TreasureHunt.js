@@ -8,7 +8,7 @@ import Styles from './Styles/TreasureHuntStyles'
 
 // Generate this MapHelpers file with `ignite generate map-utilities`
 // You must have Ramda as a dev dependency to use this.
-import { calculateRegion } from '../Utils/MapHelpers'
+import { calculateRegion } from '../../Utils/MapHelpers'
 
 /* ***********************************************************
 * IMPORTANT!!! Before you get started, if you are going to support Android,

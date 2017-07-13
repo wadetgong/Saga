@@ -1,25 +1,23 @@
-
-
 // Left drift is coming from render styling maybe we can fix this top and left maybe we can find other way?
 //take a look at ../reducers/constants/index to see the threshold to mess with that as well
 
-import React, { Component } from 'react';
+import React from 'react'
 import {
     Image,
     View,
     Dimensions,
     TouchableHighlight,
     Text
-} from 'react-native';
-import styles from './Styles/TreasureChestStyles';
-import { connect } from 'react-redux';
-import CameraScreen from '../../Containers/CameraScreen'
+} from 'react-native'
+import styles from './Styles/TreasureChestStyles'
+import { connect } from 'react-redux'
+import Camera from '../../Camera'
 
-import { Images } from '../../Themes'
+import { Images } from '../../../Themes'
 
 let width = Dimensions.get('window').width
 
-class TreasureChest extends Component {
+class TreasureChest extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
@@ -54,7 +52,7 @@ class TreasureChest extends Component {
     render() {
       return (
         <View style={styles.container}>
-          <CameraScreen close={this.props.screenProps.close} >
+          <Camera close={this.props.screenProps.close} >
           <TouchableHighlight onPress={this.clickedTreasureChest}>
             <Image
               source={Images[this.props.findObj]}
@@ -65,7 +63,7 @@ class TreasureChest extends Component {
               }]}
             />
           </TouchableHighlight>
-          </CameraScreen>
+          </Camera>
         </View>
       )
     }

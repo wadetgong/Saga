@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, Image } from 'react-native'
-import { Images } from '../Themes'
+import { Images } from '../../Themes'
 import RoundedButton from '../Components/Button/RoundedButton'
 import styles from './Styles/NoStoryStyles'
 

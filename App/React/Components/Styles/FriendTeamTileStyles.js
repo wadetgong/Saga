@@ -1,5 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native'
-import { ApplicationStyles, Metrics, Colors } from '../../Themes/'
+import { ApplicationStyles, Metrics, Colors } from '../../../Themes/'
 
 
 let width = Dimensions.get('window').width - 30

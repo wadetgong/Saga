@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity } from 'react-native'
 import RoundedButton from '../Button/RoundedButton'
 import { connect } from 'react-redux'
 import geolib from 'geolib'
-import { Fonts, Colors, Metrics } from '../../Themes/'
+import { Fonts, Colors, Metrics } from '../../../Themes/'
 
 class EnterZone extends React.Component {
   constructor () {

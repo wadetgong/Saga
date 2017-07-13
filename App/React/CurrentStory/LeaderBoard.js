@@ -1,14 +1,14 @@
 import React from 'react'
 import { View, Text, Image, ScrollView, ListView } from 'react-native'
 import { connect } from 'react-redux'
-import firebaseApp from '../Firebase'
-import { Images, Metrics, Colors } from '../Themes'
+import firebaseApp from '../../Firebase'
+import { Images, Metrics, Colors } from '../../Themes'
 import RoundedButton from '../Components/Button/RoundedButton'
 import TeamListRow from '../Components/TeamListRow'
 
 import styles from './Styles/JourneySummaryStyles'
 
-import { removeJourney } from '../Redux/StoriesRedux'
+import { removeJourney } from '../../Redux/StoriesRedux'
 import { NavigationActions } from 'react-navigation'
 
 class LeaderBoard extends React.Component {

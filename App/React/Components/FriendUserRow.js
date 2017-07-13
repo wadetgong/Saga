@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
 import IconFA from 'react-native-vector-icons/FontAwesome'
-import firebaseApp from '../Firebase'
+import firebaseApp from '../../Firebase'
 
 import styles from './Styles/FriendUserRowStyles'
 

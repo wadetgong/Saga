@@ -1,5 +1,5 @@
 import React from 'react'
-import firebaseApp from '../../Firebase'
+import firebaseApp from '../../../Firebase'
 import { View, StyleSheet } from 'react-native'
 import Camera from 'react-native-camera'
 import { connect } from 'react-redux'
