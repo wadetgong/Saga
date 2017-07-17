@@ -12,30 +12,12 @@ import Icon from 'react-native-vector-icons/SimpleLineIcons'
 import styles from './Styles/PuzzleInfoStyles'
 
 class PuzzleInfo extends React.Component {
-  constructor (props) {
-    super(props)
+  constructor () {
+    super()
     this.state = {
-      puzzle: {},
       showInfoModal: false,
     }
-    if (this.props.puzzleUrl) this.puzzleRef = firebaseApp.database().ref(this.props.puzzleUrl)
   }
-
-  componentDidMount() { if(this.props.puzzleUrl) this.listenForChange(this.puzzleRef) }
-  componentWillUnmount () { if(this.props.puzzleUrl) this.puzzleRef.off('value', this.unsubscribe) }
-
-  listenForChange (ref) {
-    this.unsubscribe = ref.on('value', puzzle => {
-      this.setState({ puzzle: puzzle.val() })
-    })
-  }
-
-  // componentWillReceiveProps(newProps) {
-  //   if(newProps.puzzleUrl !== this.props.puzzleUrl) {
-  //     this.puzzleRef = firebaseApp.database().ref(newProps.puzzleUrl)
-  //     this.listenForChange(this.puzzleRef)
-  //   }
-  // }
 
   toggleInfoModal() { this.setState({showInfoModal: !this.state.showInfoModal}) }
 
@@ -81,9 +63,8 @@ class PuzzleInfo extends React.Component {
   }
 
   render () {
-    console.log('state in puzzle info', this.state)
     return (
-        this.props.puzzleUrl
+        this.props.puzzle.id
         ? (
           <View style={styles.container}>
             {/*needs to be updated*/}
@@ -94,7 +75,7 @@ class PuzzleInfo extends React.Component {
                   <Image source={Images.closeButton} style={{height: 12, width: 12}}/>
                 </TouchableOpacity>
                 {
-                  this.state.puzzle.status === 'Complete'
+                  this.props.puzzle.status === 'Complete'
                   ? (
                     <View style={styles.completeText}>
                       <Text style={{fontStyle: 'italic', color: '#3c763d'}}>Congratulations, you completed this puzzle!</Text>
@@ -102,7 +83,7 @@ class PuzzleInfo extends React.Component {
                   )
                   : null
                 }
-                <Text style={styles.boldLabel}></Text>{/*Puzzle #{this.state.puzzle.id}*/}
+                <Text style={styles.boldLabel}></Text>{/*Puzzle #{this.props.puzzle.id}*/}
               </View>
             </View>
 
@@ -110,32 +91,32 @@ class PuzzleInfo extends React.Component {
               <View style={styles.puzzleCardHeader}
               >
                 <View style={{flexDirection: 'row'}}>
-                  <Text style={{fontWeight: 'bold'}}>Puzzle #{this.state.puzzle.id}</Text>
+                  <Text style={{fontWeight: 'bold'}}>Puzzle #{this.props.puzzle.id}</Text>
                 </View>
                 <View style={{flex: 1, alignItems: 'flex-end'}}>
                   <TouchableOpacity onPress={() => {this.toggleInfoModal()}}>
-                    {this.getIconList(this.state.puzzle)}
+                    {this.getIconList(this.props.puzzle)}
                   </TouchableOpacity>
                 </View>
               </View>
               {
                 this.state.showInfoModal
-                ? this.getHelperText(this.state.puzzle)
+                ? this.getHelperText(this.props.puzzle)
                 : null
 
               }
               <View style={styles.infoText}>
                 <Text style={{ fontSize: 24}}>
                   {
-                    this.state.puzzle.description
-                    ? this.state.puzzle.description
+                    this.props.puzzle.description
+                    ? this.props.puzzle.description
                     : 'Description is empty in Firebase.'
                   }
                 </Text>
               </View>
             </View>
 
-            <Puzzle puzzle={this.state.puzzle} close={this.props.screenProps.close}/>
+            <Puzzle close={this.props.screenProps.close}/>
           </View>
         )
         : <View></View>
@@ -144,7 +125,7 @@ class PuzzleInfo extends React.Component {
 }
 
 const mapState = state => ({
-  puzzleUrl: state.currentStory.puzzleUrl
+  puzzle: state.stories.currentPuzzle
 })
 export default connect(mapState)(PuzzleInfo)
 

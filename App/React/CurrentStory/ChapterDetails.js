@@ -3,9 +3,12 @@ import { View, Text, Modal, LayoutAnimation } from 'react-native'
 import { connect } from 'react-redux'
 import FullButton from '../Components/Button/FullButton'
 import PuzzleInfo from './PuzzleInfo'
-import { setPuzzle } from '../../Redux/actions/currentStory'
+// import { setPuzzle } from '../../Redux/actions/currentStory'
 import firebaseApp from '../../Firebase'
 import { Colors } from '../../Themes'
+
+
+import { fetchPuzzle } from '../../Redux/StoriesRedux'
 
 import styles from './Styles/ChapterDetailsStyles'
 
@@ -15,27 +18,12 @@ class ChapterDetails extends React.Component {
     this.state = {
       showModal: false,
       selectedPuzzle: null,
-      chapter: {}
     }
     this.openPuzzle = this.openPuzzle.bind(this)
     this.closePuzzle = this.closePuzzle.bind(this)
-    if(this.props.chapterUrl) this.chapterRef = firebaseApp.database().ref(this.props.chapterUrl)
   }
 
   componentWillUpdate () { LayoutAnimation.easeInEaseOut() }
-
-  componentDidMount () {
-    if (this.props.chapterUrl) this.listenForChange(this.chapterRef)
-  }
-  componentWillUnmount () {
-    if (this.props.chapterUrl) this.chapterRef.off('value', this.unsubscribe)
-  }
-
-  listenForChange (ref) {
-    this.unsubscribe = ref.on('value', chapter => {
-      this.setState({ chapter: chapter.val() })
-    })
-  }
 
   openPuzzle () { this.setState({ showModal: true }) }
   closePuzzle () { this.setState({ showModal: false }) }
@@ -61,24 +49,25 @@ class ChapterDetails extends React.Component {
         <View style={styles.chapterDesc}>
           <Text style={{fontStyle: 'italic'}}>
             {
-              this.props.chapterInfo.description
-              ? this.props.chapterInfo.description
+              this.props.chapter.description
+              ? this.props.chapter.description
               : 'Description is empty in Firebase.'
             }
           </Text>
         </View>
         <View>
           {
-            this.props.chapterInfo
-            ? this.props.chapterInfo.puzzles.map((puzzle,i) => (
+            this.props.chapter.puzzles
+            ? this.props.chapter.puzzles.map((puzzle,i) => (
                 <FullButton
                   styles={this.getButtonStyle(puzzle)}
                   key={i}
                   onPress={() => {
                     this.openPuzzle()
-                    this.props.setPuzzle(puzzle.id)
+                    // this.props.setPuzzle(puzzle.id)
+                    this.props.fetchPuzzle(puzzle.id)
                   }}
-                  text={`Chapter ${this.props.selectedChap} - Puzzle ${puzzle.id}`}
+                  text={`Chapter ${this.props.chapter.id} - Puzzle ${puzzle.id}`}
                 />
               ))
             : null
@@ -89,7 +78,7 @@ class ChapterDetails extends React.Component {
             onRequestClose={this.closePuzzle}>
             <PuzzleInfo
               screenProps={{ close: this.closePuzzle}}
-              puzzleInfo={this.state.selectedPuzzle}
+              puzzleInfo={this.props.puzzle}
               storyKey={this.props.storyKey}
             />
           </Modal>
@@ -101,13 +90,16 @@ class ChapterDetails extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    chapterUrl: state.currentStory.chapterUrl,
+    // chapterUrl: state.currentStory.chapterUrl,
+    chapter: state.stories.currentChapter,
+    puzzle: state.stories.currentPuzzle
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    setPuzzle: (puzzleId) => { dispatch(setPuzzle(puzzleId)) }
+    // setPuzzle: (puzzleId) => { dispatch(setPuzzle(puzzleId)) }
+    fetchPuzzle: (puzzleId) => { dispatch(fetchPuzzle(puzzleId)) }
   }
 }
 

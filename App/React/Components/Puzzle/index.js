@@ -22,7 +22,7 @@ class Puzzle extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this)
     this.closeCameraModal = this.closeCameraModal.bind(this)
-    if (this.props.puzzleUrl) this.puzzleRef = firebaseApp.database().ref(this.props.puzzleUrl)
+    // if (this.props.puzzleUrl) this.puzzleRef = firebaseApp.database().ref(this.props.puzzleUrl)
   }
 
   handleSubmit (answer) {
@@ -33,22 +33,22 @@ class Puzzle extends React.Component {
     }
   }
 
-  componentDidMount () {
-    if (this.props.puzzleUrl) this.listenForChange(this.puzzleRef)
-  }
+  // componentDidMount () {
+  //   if (this.props.puzzleUrl) this.listenForChange(this.puzzleRef)
+  // }
 
-  componentWillUnmount () {
-    if (this.props.puzzleUrl) this.puzzleRef.off('value', this.unsubscribe)
-  }
+  // componentWillUnmount () {
+  //   if (this.props.puzzleUrl) this.puzzleRef.off('value', this.unsubscribe)
+  // }
 
-  listenForChange (ref) {
-    this.unsubscribe = ref.on('value', puzzle => {
-      console.log('new info', puzzle.val())
-      this.setState({
-        puzzle: puzzle.val()
-      })
-    })
-  }
+  // listenForChange (ref) {
+  //   this.unsubscribe = ref.on('value', puzzle => {
+  //     console.log('new info', puzzle.val())
+  //     this.setState({
+  //       puzzle: puzzle.val()
+  //     })
+  //   })
+  // }
 
   openCameraModal () { this.setState({ showModal: true }) }
   closeCameraModal () { this.setState({ showModal: false }) }
@@ -125,7 +125,7 @@ class Puzzle extends React.Component {
     return (
       <View style={{flex: 1}}>
         {
-          this.state.puzzle.status === 'Incorrect'
+          this.props.puzzle.status === 'Incorrect'
           ? (
             <View style={{
               margin: 15,
@@ -153,7 +153,8 @@ class Puzzle extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  puzzleUrl: state.currentStory.puzzleUrl
+  // puzzleUrl: state.currentStory.puzzleUrl,
+  puzzle: state.stories.currentPuzzle
 })
 
 export default connect(mapStateToProps, null)(Puzzle)

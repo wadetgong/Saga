@@ -1,3 +1,5 @@
+import firebaseApp from '../Firebase'
+
 
 const PENDING = "pending"
 const FAILED = "failed"
@@ -9,6 +11,8 @@ const CURRENT = "current"
 const SET_STORIES = 'SET_STORIES'
 const SET_JOURNEYS = 'SET_JOURNEYS'
 const SET_JOURNEY = 'SET_JOURNEY'   // JourneyFriends uses this
+const SET_CHAPTER = 'SET_CHAPTER'
+const SET_PUZZLE = 'SET_PUZZLE'
 const DELETE_JOURNEY = 'DELETE_JOURNEY'   // JourneyFriends uses this
 
 // action-creators
@@ -20,6 +24,14 @@ const setJourneys = (journeys) => ({
 })
 const setJourney = (jid, journey) => ({
   type: SET_JOURNEY, journey, jid
+});
+
+const setChapter = (chapId) => ({
+  type: SET_CHAPTER, chapId
+});
+
+const setPuzzle = (puzzleId) => ({
+  type: SET_PUZZLE, puzzleId
 });
 
 const deleteJourney = () => ({
@@ -54,6 +66,8 @@ const initialState = {
   jid: '',
   name: '',
   current: {},
+  currentChapter: {},
+  currentPuzzle: {},
   team: {},       // mapped to /journey/jid/team
   teamList: {},   // { uid: status } // get user obj from FriendsRedux
 }
@@ -97,6 +111,7 @@ export const reducer = (state=initialState, action) => {
       newState.jid = action.jid
       newState.name = action.journey.story.name
       newState.current = Object.assign({}, action.journey)
+      newState.currentChapter = Object.assign({}, newState.current.story.chapters[0])
       newState.team = Object.assign({}, action.journey.team)
 
       let teamList = {}
@@ -106,9 +121,16 @@ export const reducer = (state=initialState, action) => {
       }
       newState.teamList = teamList;
       break;
+    case SET_CHAPTER:
+      newState.currentChapter = Object.assign({}, newState.current.story.chapters[action.chapId-1])
+      break
+    case SET_PUZZLE:
+      newState.currentPuzzle = Object.assign({}, newState.currentChapter.puzzles[action.puzzleId-1])
+      break
     case DELETE_JOURNEY:
       newState.jid = ''
       newState.current = {}
+      newState.currentChapter = {}
       newState.team = {}
       newState.teamList = {}
       break
@@ -123,7 +145,6 @@ export const reducer = (state=initialState, action) => {
 // action-dispatchers
 // journeys can be null
 export const fetchStories = (stories, journeys) => dispatch => {
-  // console.log('REDUX stoires journeys',stories, journeys)
   dispatch(setJourneys(journeys))
   dispatch(setStories(stories))
 }
@@ -134,4 +155,14 @@ export const fetchJourney = (jid, journey) => dispatch => {
 
 export const removeJourney = () => dispatch => {
   dispatch(deleteJourney())
+}
+
+export const fetchChapter = (chapId) => dispatch => {
+  console.log('chapter being set to ', chapId)
+  dispatch(setChapter(chapId))
+}
+
+export const fetchPuzzle = (puzzleId) => dispatch => {
+  console.log('puzzle being set to ', puzzleId)
+  dispatch(setPuzzle(puzzleId))
 }
