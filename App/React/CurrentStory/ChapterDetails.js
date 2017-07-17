@@ -49,9 +49,6 @@ class ChapterDetails extends React.Component {
       }
     }
     return {
-      // backgroundColor: Colors.ember,
-      // borderTopColor: Colors.fire,
-      // borderBottomColor: Colors.bloodOrange,
       backgroundColor: '#333333',
       borderTopColor: '#111111',
       borderBottomColor: '#444444',

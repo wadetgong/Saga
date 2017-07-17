@@ -18,7 +18,6 @@ class Chapter extends React.Component {
     this.state = {
       selectedChap: 1,
       story: {},
-      //picUrl: 'https://firebasestorage.googleapis.com/v0/b/breach-5ea6b.appspot.com/o/no-image-avail.png?alt=media&token=2cb55c5a-1676-4400-8e1c-00960387de64' //No image image
     }
     this.handleClick = this.handleClick.bind(this);
 
@@ -58,14 +57,6 @@ componentWillReceiveProps(newProps) {
       this.setState({
         story: storyObj,
       })
-      // if(storyObj) {
-      //   firebaseApp.database().ref('/photos/story/' + storyObj.id).once('value', pic => {
-      //     this.setState({
-      //       story: storyObj,
-      //       picUrl: pic.val()
-      //     })
-      //   })
-      // }
     })
   }
 
@@ -104,10 +95,6 @@ componentWillReceiveProps(newProps) {
       storyStatus !== 'Complete' && this.props.storyUrl
       ? (
         <View style={styles.container}>
-        {/*<Image
-          source={{uri: this.state.picUrl}}
-          style={{position: 'absolute', zIndex: -10, height: 200, width: '100%', top: 0, opacity: 0.25}}
-        />*/}
           {
             this.showWinMessage()
           }
