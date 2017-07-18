@@ -158,7 +158,7 @@ export const reducer = (state=initialState, action) => {
       return state
   }
 
-  // console.log(action.type, state, newState)
+  console.log(action.type, state, newState)
   return newState
 }
 
