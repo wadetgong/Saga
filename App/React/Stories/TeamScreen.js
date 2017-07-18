@@ -7,7 +7,7 @@ import RoundedButton from '../Components/Button/RoundedButton'
 import FriendTile from '../Components/FriendTile'
 import CancelJourneyFriend from '../Components/CancelJourneyFriend'
 
-import { setStory } from '../../Redux/actions/currentStory'
+import { fetchJourney } from '../../Redux/StoriesRedux'
 
 import { Colors, Metrics } from '../../Themes'
 
@@ -127,7 +127,7 @@ class TeamScreen extends React.Component {
           ['status/text']: 'active',
           ['times/start']: currentTime,
         })
-        this.props.setStory(this.props.jid)
+        // this.props.fetchJourney(this.props.jid, this.props.current)
         screenProps.rootNavigation.navigate('CurrentStory')
       }}>
         begin journey
@@ -145,9 +145,10 @@ const mapState = state => ({
   teamList : state.stories.teamList,
   friends : state.friends.myFriendsList,
   jid: state.stories.jid,
+  // current: state.stories.current,
 })
 
 const mapDispatch = dispatch => ({
-  setStory: (journeyId) => {dispatch(setStory(journeyId))}
+  // fetchJourney: (jid, journey) => {dispatch(fetchJourney(jid, journey))}
 })
 export default connect(mapState, mapDispatch)(TeamScreen)

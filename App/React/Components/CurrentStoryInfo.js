@@ -1,7 +1,11 @@
 import React from 'react'
 import { View, Text, Image, TouchableOpacity } from 'react-native'
+import { connect } from 'react-redux'
+
 import firebaseApp from '../../Firebase'
 import styles from './Styles/CurrentStoryInfoStyles'
+
+import { removeJourney } from '../../Redux/StoriesRedux'
 
 class CurrentStoryInfo extends React.Component {
   constructor (props) {
@@ -25,11 +29,8 @@ class CurrentStoryInfo extends React.Component {
     this.unsubscribe = ref.on('value', journey => {
       let journeyObj = journey.val()
       if (journeyObj) {
-        firebaseApp.database().ref('/photos/story/' + journeyObj.story.id).once('value', pic => {
-          this.setState({
-            journey: journeyObj,
-            picUrl: pic.val()
-          })
+        this.setState({
+          journey: journeyObj,
         })
       }
     })
@@ -55,6 +56,8 @@ class CurrentStoryInfo extends React.Component {
     const path2 = `/users/${uid}/journeys/pending/${journeyId}`
     const path3 = `/users/${uid}/journeys/current/${journeyId}`
     // If you are the host of the story, cancel this story for all users
+    this.props.removeJourney()
+
     if (this.state.journey.creator.id === uid) {
       this.removeAll(journeyId)
     } else {
@@ -124,11 +127,12 @@ class CurrentStoryInfo extends React.Component {
             <TouchableOpacity onPress={() => {}}>
               <Image
                 style={{width: 75, height: 75}}
-                source={{uri: this.state.picUrl}}
+                source={{uri: this.props.journeyImage}}
               />
             </TouchableOpacity>
           </View>
-          { journey
+          {
+            journey
             ? (<View style={{padding: 5, flex: 1}}>
               <Text style={{fontWeight: '600', fontSize: 15}}>
                 {journey.story.title}
@@ -143,4 +147,17 @@ class CurrentStoryInfo extends React.Component {
   }
 }
 
-export default CurrentStoryInfo
+const mapStateToProps = (state) => {
+  return {
+    journeyImage: state.stories.journeyImage
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    removeJourney: () => { dispatch(removeJourney()) }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CurrentStoryInfo)
+

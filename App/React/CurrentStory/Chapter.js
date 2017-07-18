@@ -50,10 +50,10 @@ class Chapter extends React.Component {
     const chapters = this.props.current.story && this.props.current.story.chapters || []
     const storyName = this.props.current.story && this.props.current.story.title
 
-    const storyStatus = this.props.current.story && this.props.current.story.status && this.props.current.story.status.text || 'None'
+    const storyStatus = this.props.current && this.props.current.status && this.props.current.status.text || 'None'
 
     return (
-      this.props.current.story && storyStatus !== 'Complete'
+      this.props.current.story && storyStatus !== 'inactive'
       ? (
         <View style={styles.container}>
           {

@@ -10,45 +10,25 @@ import TreasureChestKey from './TreasureChestKey'
 import AugmentedClick from './AugmentedClick'
 import RoundedButton from '../Button/RoundedButton'
 
-class Puzzle extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      attempts: 0,
-      showModal: false,
-      status: 'Incomplete',
-      puzzle: {}
-    }
 
+import { closePuzzle } from '../../../Redux/StoriesRedux'
+
+class Puzzle extends React.Component {
+  constructor () {
+    super()
+    this.state = {
+      showModal: false,
+    }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.closeCameraModal = this.closeCameraModal.bind(this)
-    // if (this.props.puzzleUrl) this.puzzleRef = firebaseApp.database().ref(this.props.puzzleUrl)
   }
 
   handleSubmit (answer) {
-    console.log('handleSubmit called', answer, this.state.attempts)
+    console.log('handleSubmit called', answer)
     if (answer.toLowerCase() === this.props.puzzle.answer.toLowerCase()) {
-      this.puzzleRef.child('status').set('Complete')
-      this.setState({ status: 'Complete' })
+      this.props.closePuzzle()
     }
   }
-
-  // componentDidMount () {
-  //   if (this.props.puzzleUrl) this.listenForChange(this.puzzleRef)
-  // }
-
-  // componentWillUnmount () {
-  //   if (this.props.puzzleUrl) this.puzzleRef.off('value', this.unsubscribe)
-  // }
-
-  // listenForChange (ref) {
-  //   this.unsubscribe = ref.on('value', puzzle => {
-  //     console.log('new info', puzzle.val())
-  //     this.setState({
-  //       puzzle: puzzle.val()
-  //     })
-  //   })
-  // }
 
   openCameraModal () { this.setState({ showModal: true }) }
   closeCameraModal () { this.setState({ showModal: false }) }
@@ -153,11 +133,14 @@ class Puzzle extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  // puzzleUrl: state.currentStory.puzzleUrl,
   puzzle: state.stories.currentPuzzle
 })
 
-export default connect(mapStateToProps, null)(Puzzle)
+const mapDispatchToProps = dispatch => ({
+  closePuzzle: () => dispatch(closePuzzle())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Puzzle)
 
 export const iconMap = {
   'fillBlank': 'note',
