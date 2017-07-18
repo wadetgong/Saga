@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text, Image, TouchableOpacity } from 'react-native'
+import { connect } from 'react-redux'
 import firebaseApp from '../../Firebase'
 import styles from './Styles/JourneyInviteRowStyles'
 /* global alert */
@@ -107,4 +108,11 @@ class JourneyInviteRow extends React.Component {
   }
 }
 
-export default JourneyInviteRow
+const mapStateToProps = state => {
+  return {
+  }
+}
+
+
+export default connect(mapStateToProps)(JourneyInviteRow)
+

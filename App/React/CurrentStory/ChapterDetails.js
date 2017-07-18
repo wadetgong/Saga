@@ -3,8 +3,6 @@ import { View, Text, Modal, LayoutAnimation } from 'react-native'
 import { connect } from 'react-redux'
 import FullButton from '../Components/Button/FullButton'
 import PuzzleInfo from './PuzzleInfo'
-// import { setPuzzle } from '../../Redux/actions/currentStory'
-import firebaseApp from '../../Firebase'
 import { Colors } from '../../Themes'
 
 
@@ -90,7 +88,6 @@ class ChapterDetails extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    // chapterUrl: state.currentStory.chapterUrl,
     chapter: state.stories.currentChapter,
     puzzle: state.stories.currentPuzzle
   }
@@ -98,7 +95,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    // setPuzzle: (puzzleId) => { dispatch(setPuzzle(puzzleId)) }
     fetchPuzzle: (puzzleId) => { dispatch(fetchPuzzle(puzzleId)) }
   }
 }
