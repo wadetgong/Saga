@@ -89,8 +89,7 @@ class JourneyFriends extends React.Component {
             dataSource={friendList}
             removeClippedSubviews={false}
             enableEmptySections={true}
-            renderRow={(friend) => <
-                FriendListItem
+            renderRow={(friend) => <FriendListItem
                 friend={friend}
                 navigate={navigation.navigate}
                 addFriendToTeam={this.addFriendToTeam}

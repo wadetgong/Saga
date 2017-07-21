@@ -105,7 +105,6 @@ class TreasureHunt extends React.Component {
 
     return (
       <View>
-        {/*<Text>Location is: {this.props.latitude}, {this.props.longitude}</Text>*/}
         <MapView
           style={this.props.style || Styles.map}
           region={newRegion}
@@ -119,7 +118,6 @@ class TreasureHunt extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    // ...redux state to props here
     longitude: state.geoLocation.location.longitude,
     latitude: state.geoLocation.location.latitude,
   }

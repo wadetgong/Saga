@@ -42,8 +42,6 @@ const getBackgroundStyle = (chapter, selectedChap) => {
       }
     }
     return {
-      // borderColor: Colors.fire,
-      // backgroundColor: Colors.buttonActive
       borderColor: '#111111',
       backgroundColor: '#444444'
     }
@@ -56,10 +54,9 @@ const getBackgroundStyle = (chapter, selectedChap) => {
     return chapter.status === 'Complete'
       ? {
         borderColor: '#16a916',
-        backgroundColor: 'white' // 'lightgreen'
+        backgroundColor: 'white'
       }
       : {
-        // borderColor: Colors.fire,
         borderColor: '#444444',
         backgroundColor: 'white'
       }

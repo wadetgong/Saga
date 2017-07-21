@@ -8,7 +8,6 @@ import CurrentStoryInfo from '../Components/CurrentStoryInfo'
 import styles from './Styles/UserJourneysStyles'
 import { Colors, Metrics } from '../../Themes'
 import firebaseApp from '../../Firebase'
-import { setStory } from '../../Redux/actions/currentStory'
 import { removeJourney } from '../../Redux/StoriesRedux'
 
 // const UserJourneys = ({ myJourneys, myStoriesList, jid, name, current, screenProps}) => {
@@ -98,7 +97,7 @@ class UserJourneys extends React.Component {
           <Text style={styles.headerText}>Current Story</Text>
         </View>
         <View style={{flexDirection: 'row'}}>
-          {this.listCurrentStory(this.props.setStory)}
+          {this.listCurrentStory()}
         </View>
         <View style={styles.pendLabel}>
           <Text style={styles.headerText}>Pending Story Invites</Text>
@@ -132,7 +131,6 @@ const mapState = state => ({
 })
 
 const mapDispatch = dispatch => ({
-  setStory: journeyId => dispatch(setStory(journeyId)),
   removeJourney: () => dispatch(removeJourney())
 })
 

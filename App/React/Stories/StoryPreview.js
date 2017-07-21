@@ -11,6 +11,8 @@ const StoryPreview = ({ navigation, name, current, screenProps }) => {
   const { item, createJourney, picUrl } = navigation.state.params
   const { navigate } = screenProps.rootNavigation
 
+  console.log('current in storypreview', current)
+
   const getButton = (name, item) => {
   {/*not sure what the ternary is for*/}
   return (name && name == item._key)

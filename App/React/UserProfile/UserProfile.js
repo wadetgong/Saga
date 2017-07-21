@@ -9,7 +9,7 @@ import styles from './Styles/UserProfileStyles'
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
 
 import { setSelf } from '../../Redux/FriendsRedux'
-import { setStory } from '../../Redux/actions/currentStory'
+import { fetchJourney } from '../../Redux/StoriesRedux'
 
 import ViewFriends from './ViewFriends'
 import UserJourneys from './UserJourneys'
@@ -71,7 +71,7 @@ class UserProfile extends React.Component {
           .once('value', journey => {
             let journeyData = journey.val()
             if(journeyData && journeyData.status && journeyData.status.text === 'active') {
-              this.props.setStory(journeyData.id)
+              this.props.fetchJourney(journeyData.id, journeyData)
             }
         })
       }
@@ -121,7 +121,7 @@ const mapState = state => ({
 })
 const mapDispatch = dispatch => ({
   setUser: (user) => dispatch(setSelf(user)),  // definitely should try do elsewhere
-  setStory: (journeyId) => dispatch(setStory(journeyId))
+  fetchJourney: (jid, journey) => dispatch(fetchJourney(jid, journey)),
 })
 
 export default connect(mapState, mapDispatch)(UserProfile)

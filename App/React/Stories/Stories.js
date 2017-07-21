@@ -39,7 +39,7 @@ class Stories extends React.Component {
     this.uid = firebaseApp.auth().currentUser.uid
     this.unsubscribeMyJourneysRef = null;
     this.unsubscribeMyCurrentJourneyRef = null;
-    this.unsubscribeCurrentJourneyRef = null;
+    // this.unsubscribeCurrentJourneyRef = null;
   }
 
   componentDidMount () {
@@ -64,8 +64,8 @@ class Stories extends React.Component {
       this.unsubscribeMyJourneysRef()
     if (this.unsubscribeMyCurrentJourneyRef)
       this.unsubscribeMyCurrentJourneyRef()
-    if (this.unsubscribeCurrentJourneyRef)
-      this.unsubscribeCurrentJourneyRef()
+    // if (this.unsubscribeCurrentJourneyRef)
+    //   this.unsubscribeCurrentJourneyRef()
   }
 
   getJourneysAndStories (journeyRef, storyRef) {
@@ -87,6 +87,7 @@ class Stories extends React.Component {
 
     this.unsubscribeMyCurrentJourneyRef = myCurrentJourneyRef.on('value', snap => {
       const value = snap.val() // {jid : storyname}
+      console.log('val in currentJourneyRef', value)
       if (value) {
         //
         // CODEREVIEW TODO: what is best way to unsubscribe
@@ -102,14 +103,14 @@ class Stories extends React.Component {
 
         const jid = Object.keys(value)[0], name = value[jid]
         const currentJourneyRef = firebaseApp.database().ref('/journey/' + jid)
-        this.unsubscribeCurrentJourneyRef = currentJourneyRef
-          .on('value', csnap => {
-            const cur = csnap.val()
-            console.log('STORIES STORIES STORIES listener ran', jid, cur)
-            if(cur){ //check to see if currentjourney exists - built removal for current story elsewhere
-              fetchJourney(jid, cur)
-            }
-          })
+        // this.unsubscribeCurrentJourneyRef = currentJourneyRef
+        currentJourneyRef.once('value', csnap => {
+          const cur = csnap.val()
+          console.log('STORIES STORIES STORIES listener ran', jid, cur)
+          if(cur){ //check to see if currentjourney exists - built removal for current story elsewhere
+            fetchJourney(jid, cur)
+          }
+        })
       }
     })
   }
