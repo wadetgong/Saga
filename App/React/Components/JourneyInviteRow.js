@@ -27,10 +27,13 @@ class JourneyInviteRow extends React.Component {
   listenForChange (ref) {
     this.unsubscribe = ref.on('value', journey => {
       let journeyObj = journey.val()
-      firebaseApp.database().ref('/photos/story/' + journeyObj.story.id)
-        .once('value', pic => {
-          this.setState({ journey: journeyObj, picUrl: pic.val() })
-        })
+      console.log('journey val in JourneyInviteRow', journeyObj)
+      if(journeyObj)
+        firebaseApp.database().ref('/photos/story/' + journeyObj.story.id)
+          .once('value')
+          .then(pic => {
+            if(pic.val() !== this.state.picUrl) this.setState({ journey: journeyObj, picUrl: pic.val() })
+          })
     })
   }
 
