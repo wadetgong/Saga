@@ -7,7 +7,7 @@ import SimpleMap from '../Components/SimpleMap'
 
 import styles from './Styles/StoryPreviewStyles'
 
-const StoryPreview = ({ navigation, name, current, screenProps }) => {
+const StoryPreview = ({ navigation, name, current, screenProps, uid}) => {
   const { item, createJourney, picUrl } = navigation.state.params
   const { navigate } = screenProps.rootNavigation
 
@@ -20,25 +20,44 @@ const StoryPreview = ({ navigation, name, current, screenProps }) => {
   : <RoundedButton onPress={() => createJourney(item)}>Assemble Team</RoundedButton>
   }
 
+  const getAlert = (current, uid) => {
+    if(Object.keys(current).length) {
+      if(current.status.text === 'inactive'&& current.creator.id === uid) {
+        return (
+          <View style={styles.alertSection}>
+            <Text style={styles.alertText}>New stories can't be started when you have a pending story.{' '}
+                <Text
+                  style={{fontWeight: 'bold'}}
+                  onPress={() => {navigation.navigate('JourneyFriends')}}
+                >
+                   Go to pending story: {current.story.title}
+                </Text>
+            </Text>
+          </View>
+        )
+      } else {
+        return (
+          <View style={styles.alertSection}>
+            <Text style={styles.alertText}>New stories can't be started when you have a current story.{' '}
+                <Text
+                  style={{fontWeight: 'bold'}}
+                  onPress={() => {navigate('CurrentStory')}}
+                >
+                   Go to current story
+                </Text>
+            </Text>
+          </View>
+        )
+      }
+    } else {
+      return null
+    }
+  }
+
   return (
     <View style={styles.container}>
       <ScrollView>
-        {
-          Object.keys(current).length
-          ? (
-            <View style={styles.alertSection}>
-              <Text style={styles.alertText}>New stories can't be started when you have a current story.{' '}
-                  <Text
-                    style={{fontWeight: 'bold'}}
-                    onPress={() => {navigate('CurrentStory')}}
-                  >
-                     Go to current story
-                  </Text>
-              </Text>
-            </View>
-          )
-          : null
-        }
+        {getAlert(current, uid)}
         <View>
           <Image
             style={styles.bgImage}
@@ -81,6 +100,7 @@ const StoryPreview = ({ navigation, name, current, screenProps }) => {
 }
 
 const mapState = state => ({
+  uid : state.friends.uid,
   name : state.stories.name,
   current : state.stories.current
 })
