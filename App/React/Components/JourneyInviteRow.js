@@ -3,6 +3,9 @@ import { View, Text, Image, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import firebaseApp from '../../Firebase'
 import styles from './Styles/JourneyInviteRowStyles'
+
+import { removeJourney } from '../../Redux/StoriesRedux'
+
 /* global alert */
 
 class JourneyInviteRow extends React.Component {
@@ -62,6 +65,9 @@ class JourneyInviteRow extends React.Component {
     const uid = this.uid
     const path1 = `/journey/${journeyId}/team/pending/${uid}`
     const path2 = `/users/${uid}/journeys/pending/${journeyId}`
+
+    this.props.removeJourney()
+    console.log('removeJourney called')
     firebaseApp.database().ref('/').update({
       [path1]: null,
       [path2]: null
@@ -115,7 +121,11 @@ const mapStateToProps = state => {
   return {
   }
 }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    removeJourney: () => { dispatch(removeJourney()) }
+  }
+}
 
-
-export default connect(mapStateToProps)(JourneyInviteRow)
+export default connect(mapStateToProps, mapDispatchToProps)(JourneyInviteRow)
 

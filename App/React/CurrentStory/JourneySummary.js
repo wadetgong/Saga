@@ -6,7 +6,6 @@ import RoundedButton from '../Components/Button/RoundedButton'
 import FriendTeamTile from '../Components/FriendTeamTile'
 
 import styles from './Styles/JourneySummaryStyles'
-import { removeJourney } from '../../Redux/StoriesRedux'
 
 const JourneySummary =({ current, journeyImage, navigation }) => {
   const friendsList = (current && current.team && current.team.list) || []
@@ -93,7 +92,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    removeJourney: () => dispatch(removeJourney())
   }
 }
 

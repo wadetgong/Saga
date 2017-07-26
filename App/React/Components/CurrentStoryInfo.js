@@ -57,6 +57,7 @@ class CurrentStoryInfo extends React.Component {
     const path3 = `/users/${uid}/journeys/current/${journeyId}`
     // If you are the host of the story, cancel this story for all users
     this.props.removeJourney()
+    console.log('removeJourney called')
 
     if (this.state.journey.creator.id === uid) {
       this.removeAll(journeyId)
