@@ -38,6 +38,7 @@ class UserJourneys extends React.Component {
         key={Object.keys(this.state.journeys.current)[0]}
         journey={Object.keys(this.state.journeys.current)[0]}
         screenProps={this.props.screenProps}
+        navigation={this.props.navigation}
         removeJourney={() => this.props.removeJourney()}
       />
     }
@@ -70,8 +71,6 @@ class UserJourneys extends React.Component {
   render () {
     const { myJourneys, myStoriesList, jid, name, current, screenProps} = this.props
     // journeys are not saved here but the story is, which has the story image
-    // I think it would be nice to have the list of stories like the
-    // square friend boxes :D but your choice, not a strong preference
 
     // also current journey is at (jid, name, journey)
 
@@ -105,15 +104,6 @@ class UserJourneys extends React.Component {
         <View style={{flexDirection: 'row'}}>
           {this.listPendingInvites()}
         </View>
-        {/*<View style={{flex: 1, flexDirection: 'row', padding: 10, backgroundColor: 'green'}}>
-          <Text style={styles.boldLabel}>Current Story</Text>
-            <TouchableOpacity onPress={() => navigate('CurrentStory')}>
-              <Text>Go to my current story</Text>
-            </TouchableOpacity>
-        </View>*/}
-        {/*<View style={{flex: 1, flexDirection: 'row', padding: 10, backgroundColor: 'blue'}}>
-          <Text style={styles.boldLabel}>My History</Text>
-        </View>*/}
       </View>
     )
   }

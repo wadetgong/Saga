@@ -14,9 +14,13 @@ import { fetchJourney } from '../../Redux/StoriesRedux'
 import ViewFriends from './ViewFriends'
 import UserJourneys from './UserJourneys'
 
+
 const UserProfileStack = TabNavigator({
   UserJourneys: {
-    screen: ({ screenProps }) => <UserJourneys screenProps={screenProps} />,
+    screen: ({ screenProps, navigation }) => <UserJourneys
+      screenProps={screenProps}
+      navigation={navigation}
+    />,
     navigationOptions: {
       tabBarLabel: 'My Stories',
       tabBarIcon: ({ tintColor }) => (

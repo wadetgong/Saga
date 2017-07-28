@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 import firebaseApp from '../../Firebase'
 import styles from './Styles/CurrentStoryInfoStyles'
 
+import { NavigationActions } from 'react-navigation'
+
 import { removeJourney } from '../../Redux/StoriesRedux'
 
 class CurrentStoryInfo extends React.Component {
@@ -15,6 +17,7 @@ class CurrentStoryInfo extends React.Component {
     }
     this.uid = firebaseApp.auth().currentUser.uid
     this.journeyRef = firebaseApp.database().ref('/journey/' + this.props.journey)
+    this.resetStack = this.resetStack.bind(this)
   }
 
   componentDidMount () {
@@ -50,6 +53,19 @@ class CurrentStoryInfo extends React.Component {
     })
   }
 
+  resetStack () {
+    console.log('resetting story stack')
+    const resetAction = NavigationActions.reset({
+      index: 0,
+      // key: null,
+      actions: [
+        NavigationActions.navigate({ routeName: 'StoryScreen'})
+      ]
+    })
+    console.log('props', this.props)
+    this.props.navigation.dispatch(resetAction)
+  }
+
   declineTeam (journeyId) {
     const uid = this.uid
     const path1 = `/journey/${journeyId}/team/pending/${uid}`
@@ -57,7 +73,7 @@ class CurrentStoryInfo extends React.Component {
     const path3 = `/users/${uid}/journeys/current/${journeyId}`
     // If you are the host of the story, cancel this story for all users
     this.props.removeJourney()
-    console.log('removeJourney called')
+    this.resetStack()
 
     if (this.state.journey.creator.id === uid) {
       this.removeAll(journeyId)
